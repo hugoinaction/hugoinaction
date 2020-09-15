@@ -1,5 +1,0 @@
-build:
-  command: ls
-  processing:
-    skip_processing: false
-publish: public
