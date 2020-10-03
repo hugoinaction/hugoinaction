@@ -1,0 +1,8 @@
+{{$scratch := newScratch}}
+{{$products := resources.GetMatch "products.csv"}}
+{{$parsedProducts := $products | transform.Unmarshal (dict "delimiter" ",")}}
+{{ range $r := $parsedProducts }}
+{{$scratch.Set (index $r 0) (index $r 2)}}
+{{ end }}
+
+{{return $scratch}}

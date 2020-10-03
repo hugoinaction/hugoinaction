@@ -1,0 +1,234 @@
+<h1>Hugo Templates</h1>
+<h2>Variables</h2>
+<b>Custom Variables</b>                                        <br />
+{{$mycustom := .Site.Title}}
+Site Title: {{$mycustom}}                                      <br />
+{{/* Override $mycustom */}}
+{{$mycustom = .Page.Title}}
+Page Title: {{$mycustom}}                                      <br />
+                                                               <br />
+<b>Data Types</b>                                              <br />
+Integer: {{2}}                                                 <br />
+Float: {{3.14}}                                                <br />
+Boolean: {{false}}                                             <br />
+String: {{"hello"}}                                            <br />
+                                                               <br />
+Slice: {{slice "foo" "bar" "buzz"}}                            <br />
+Dict: {{dict "key1" "val1" "w" 10 "h" 20}}                     <br />
+Time: {{time "2020-01-01T00:00:00+08:00"}}                     <br />
+                                                               <br />
+{{ $scratch := newScratch }}
+{{ $scratch.Set "message" "Hello" }}
+Scratch: {{ $scratch }}                                        <br />
+Getter: {{ $scratch.Get "message" }}                           <br />
+{{/* Appends a string, adds a number, inserts in a slice */}}
+{{ $scratch.Add "message" " World" }}
+Updated: {{$scratch.Get "message"}}                            <br />
+{{ $scratch := newScratch }}
+{{/* You can also create a dictionary in a scratchpad */}}
+{{ $scratch.SetInMap "message" "english" "Hello World" }}
+{{ $scratch.SetInMap "message" "french" "Bonjour le monde" }}
+Dict: {{ $scratch.Get "message" }}                             <br />
+<h2> Functions </h2>
+<b>Boolean Functions</b>
+5 &lt; 3 : {{lt 5 3}}                                          <br />
+5 &gt; 3 : {{gt 5 3}}                                          <br />
+5 &ge; 3 : {{ge 5 3}}                                          <br />
+5 &le; 3 : {{le 5 3}}                                          <br />
+5 = 3 : {{eq 5 3}}                                             <br />
+5 &ne; 3 : {{ne 5 3}}                                          <br />
+                                                               <br />
+<b>Logical Functions</b>
+true and false : {{and true false}}                            <br />
+true or false : {{or true false}}                              <br />
+not true : {{not true}}                                        <br />
+                                                               <br />
+<b>Arithmetic Functions</b>
+2 + 3 : {{add 2 3}}                                            <br />
+2 - 3 : {{sub 2 3}}                                            <br />
+2 x 3 : {{mul 2 3}}                                            <br />
+2 &divide; 3 : {{div 2 3}} {{/* Int types   */}}               <br />
+2 &divide; 3 : {{div 2.0 3}} {{/* Float types */}}             <br />
+2 % 3 : {{mod 2 3}}                                            <br />
+2 % 3? : {{modBool 2 3}}                                       <br />
+                                                               <br />
+<b>Nested Functions</b>
+5/(2 + (3 x 2.0)) : {{div 5 (add 2 (mul 3 2.0))}}              <br />
+                                                               <br />
+<b>Piped Functions</b>
+5/(2 + (3 x 2.0)) : {{mul 3 2.0 | add 2 | div 5}}              <br />
+                                                               <br />
+<b>Nested + Piped Hybrid</b>
+5/(2 + (3 x 2.0)) : {{div 5 (mul 3 2.0 | add 2)}}              <br />
+
+<h2> Conditionals </h2>
+<b>If</b>
+{{$condition := false}}
+{{/* Condition via if */}}
+{{if $condition}}
+{{$condition}} is true.
+{{else}}
+{{$condition}} is false.
+{{end}}                                                        <br />
+                                                               <br />
+<b>With</b>
+{{$condition := "test"}}
+
+{{/* Condition via with */}}
+{{with $condition}}
+{{.}} is the value of the condition
+{{else}}
+Condition is not defined.
+{{end}}                                                       <br />
+                                                               <br />
+<b>Cond</b>
+{{$count := 1}}
+{{cond (eq $count 1) "page" "pages"}}
+
+<h2>Loops</h2>
+<b>All website pages:</b>
+<ul>
+{{range .Site.Pages}}
+<li> {{.Title}}</li>
+{{end}}
+</ul>
+<b>Range context</b>
+<ul>
+{{$title := .Site.Title}}
+{{range .Site.Pages}}
+<li> {{.Title}} @ {{$title}}</li>
+{{end}}
+</ul>
+<h2>Debugging</h2>
+{{ printf "%#v" $.Site }}
+
+<h2>
+  Image Processing & Manipulation
+</h2>
+{{$original := resources.GetMatch "image/hia.jpg"}}
+<style>
+  img {
+    display: inline;
+    max-width: 200px;
+    border: 1px solid black;
+  }
+</style>
+<style>
+  figure {
+   display: inline-block;
+  }
+</style>
+<center>
+<figure>
+  <img src="{{$original.RelPermalink}}">
+  <figcaption>Original</figcaption>
+</figure>
+
+<br>
+<figure>
+  <img src="{{($original.Resize "200x100").RelPermalink}}">
+  <figcaption>Resize</figcaption>
+</figure>
+
+<figure>
+  <img src="{{($original.Fit "200x100").RelPermalink}}">
+  <figcaption>Fit</figcaption>
+</figure>
+
+<figure>
+  <img src="{{($original.Fill "200x100 top").RelPermalink}}">
+  <figcaption>Fill Top</figcaption>
+</figure>
+
+<figure>
+  <img src="{{($original.Fill "200x100 bottom").RelPermalink}}">
+  <figcaption>Fill Bottom</figcaption>
+</figure>
+
+<figure>
+  <img src="{{($original.Fill "200x100 center").RelPermalink}}">
+  <figcaption>Fill center</figcaption>
+</figure>
+
+<figure>
+  <img src="{{($original.Fill "200x100 smart").RelPermalink}}">
+  <figcaption>Fill smart</figcaption>
+</figure>
+
+<br>
+
+<figure>
+  <img src="{{($original | images.Filter (images.Brightness -40)).RelPermalink}}">
+  <figcaption>Brightness -40</figcaption>
+</figure>
+
+<figure>
+  <img src="{{($original | images.Filter (images.ColorBalance 100 200 300)).RelPermalink}}">
+  <figcaption>ColorBalance 100 200 300</figcaption>
+</figure>
+
+<figure>
+  <img src="{{($original | images.Filter (images.Colorize 200 100 50)).RelPermalink}}">
+  <figcaption>Colorize 200 100 50</figcaption>
+</figure>
+
+<figure>
+  <img src="{{($original | images.Filter (images.Contrast 30)).RelPermalink}}">
+  <figcaption>Contrast 30</figcaption>
+</figure>
+
+<figure>
+  <img src="{{($original | images.Filter (images.Gamma 3)).RelPermalink}}">
+  <figcaption>Gamma 3</figcaption>
+</figure>
+
+<figure>
+  <img src="{{($original | images.Filter (images.GaussianBlur 80)).RelPermalink}}">
+  <figcaption>GaussianBlur 80</figcaption>
+</figure>
+
+<figure>
+  <img src="{{($original | images.Filter (images.Grayscale)).RelPermalink}}">
+  <figcaption>Grayscale</figcaption>
+</figure>
+
+<figure>
+  <img src="{{($original | images.Filter (images.Hue 100)).RelPermalink}}">
+  <figcaption>Hue 100</figcaption>
+</figure>
+
+<figure>
+  <img src="{{($original | images.Filter (images.Invert)).RelPermalink}}">
+  <figcaption>Invert</figcaption>
+</figure>
+
+<figure>
+  <img src="{{($original | images.Filter (images.Pixelate 100)).RelPermalink}}">
+  <figcaption>Pixelate 100</figcaption>
+</figure>
+
+<figure>
+  <img src="{{($original | images.Filter (images.Pixelate 100)).RelPermalink}}">
+  <figcaption>Pixelate 100</figcaption>
+</figure>
+
+<figure>
+  <img src="{{($original | images.Filter (images.Saturation 80)).RelPermalink}}">
+  <figcaption>Saturation 80</figcaption>
+</figure>
+
+<figure>
+  <img src="{{($original | images.Filter (images.Sepia 200)).RelPermalink}}">
+  <figcaption>Sepia 200</figcaption>
+</figure>
+
+<figure>
+  <img src="{{($original | images.Filter (images.Sigmoid 20 5)).RelPermalink}}">
+  <figcaption>Sigmoid 20 10</figcaption>
+</figure>
+
+<figure>
+  <img src="{{($original | images.Filter (images.UnsharpMask 40 1.2 0.5)).RelPermalink}}">
+  <figcaption>UnsharpMask 40 1.2 0.5</figcaption>
+</figure>
+</center>

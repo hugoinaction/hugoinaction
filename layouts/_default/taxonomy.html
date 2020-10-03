@@ -1,0 +1,42 @@
+{{define "bodyClass"}}list{{end}}
+
+{{define "body"}}
+<section>
+  <article>
+    <h1>{{$.CurrentSection.Data.Singular | humanize}} - {{.Title | humanize}}</h1>
+    {{.Content}}
+    {{$pages := .RegularPages}}
+    {{range .Sections}}
+    {{$pages = append $pages .RegularPages}}
+    {{end}}
+    {{$paginator := .Paginate $pages}}
+    {{if eq $paginator.PageNumber 1}} {{/* Only run on page number 1  */}}
+    {{if gt (len .Sections) 0}} {{/* Only print these headings if subsections are present  */}}
+    <h2> {{/* Allow overriding text  */}}
+      {{ default "Subsections" (.Param "subsectionTitle")}}
+    </h2>
+    <div class="posts subsections">
+      {{end}}
+      {{range .Sections}} {{/* Looping through subsections  */}}
+      <div class="post subsection"> {{/* Provide a good default to the title  */}}
+        <a href="{{.Permalink}}">{{default (.File.Path | path.Dir | path.Base | humanize) .Title}}</a>
+        <summary>{{.Summary}}</summary>
+      </div>
+      {{end}}
+      {{if gt (len .Sections) 0}}
+    </div>
+    <h2>{{ default "Posts" (.Param "postTitle")}}</h2>
+    {{end}}
+    {{end}}
+    <div class="posts">
+      {{ range $paginator.Pages }}
+      <div class="post">
+        <a href="{{.Permalink}}">{{default (.File.ContentBaseName | humanize | title) .Title}}</a>
+        <summary>{{.Summary}}</summary>
+      </div>
+      {{end}}
+    </div>
+    {{ template "_internal/pagination.html" . }}
+  </article>
+</section>
+{{ end }}

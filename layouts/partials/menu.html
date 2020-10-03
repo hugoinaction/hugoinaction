@@ -1,0 +1,16 @@
+<nav>
+  <ul>
+    {{ range $.Menu }}
+    <li>
+      <a href="{{.URL}}">{{.Name | humanize}}</a>
+      {{if and .HasChildren $.RenderSubmenus}}
+      <ul>
+        {{ range .Children }}
+        <li><a href="{{.URL}}">{{.Name | humanize}}</a></li>
+        {{ end }}
+      </ul>
+      {{end}}
+    </li>
+    {{end}}
+  </ul>
+</nav>

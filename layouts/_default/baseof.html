@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  {{ $css := resources.Match "*.css.tpl" | resources.Concat "index.css" | resources.ExecuteAsTemplate "index.css" . | resources.Minify }}
+  <link rel="stylesheet" type="text/css" href="{{$css.Permalink}}">
+  {{with (default .Site.Title .Page.Title)}}<title>{{.}}</title>{{end}}
+  {{with .Page.Description}}
+  <meta name="description" content="{{.}}" />{{end}}
+{{ template "_internal/twitter_cards.html" . }}
+{{ template "_internal/opengraph.html" . }}
+</head>
+
+<body class="{{block "bodyClass" .}}page{{end}}">
+  {{block "header" .}}
+  <header>
+    {{ $logo := resources.GetMatch "image/logo.svg.tpl" | resources.ExecuteAsTemplate "logo.svg" . }}
+
+    <a href="/"><img src="{{$logo.Permalink}}" width="60px"></a>
+    {{ partialCached "menu.html" (dict "Menu" $.Site.Menus.main  "RenderSubmenus" true) "main" "true" }}
+  </header>
+  {{ end }}
+  {{block "body" .}}
+    <section>
+      <main>
+        {{with .Page.Title}}<h1>{{.}}</h1>{{end}}
+        {{if .Param "toc"}}
+        <h2>Table of Contents</h2>
+        {{.TableOfContents}}
+        {{end}}
+        {{.Content}}
+      </main>
+    </section>
+  {{end}}
+  {{block "footer" .}}
+  <footer>
+    {{ partialCached "menu.html" (dict "Menu" $.Site.Menus.footer  "RenderSubmenus" false) "footer" "false"}}
+    <br>
+    {{.Param "copyright" | markdownify}}
+  </footer>
+  {{ end }}
+</body>
+
+</html>
