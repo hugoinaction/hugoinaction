@@ -1,0 +1,3 @@
+header {
+  text-transform: uppercase;
+}
