@@ -1,6 +1,6 @@
 <nav>
 <ul>
-{{ range $.Site.Menus.main }}
+{{ range $ }}
 <li><a href="{{.URL}}">{{.Name | humanize}}</a></li>
 {{end}}
 </ul>
