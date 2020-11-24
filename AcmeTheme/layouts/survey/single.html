@@ -6,7 +6,11 @@
   <main>
     <h2>{{.Title}}</h2>
 {{.Content}}
+{{if getenv "NETLIFY" }}
 <form name="{{.Title}}" netlify="true">
+{{ else }}
+<form action="https://formspree.io/{{.Param "form"}}" method="post">
+{{ end }}
   <ol>
 {{ range $index, $item := .Params.survey }}
   <li>
