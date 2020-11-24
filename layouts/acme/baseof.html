@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  {{ $css := resources.GetMatch "index.css"}}
+  {{ $css := resources.GetMatch "index.scss" | resources.ToCSS}}
   <link rel="stylesheet" type="text/css" href="{{$css.Permalink}}">
   {{with (default .Site.Title .Page.Title)}}<title>{{.}}</title>{{end}}
   {{with .Page.Description}}
