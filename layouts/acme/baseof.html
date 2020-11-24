@@ -12,7 +12,7 @@
   {{block "header" .}}
   <header>
     <a href="/"><img src="/image/logo.svg" width="60px"></a>
-    {{ partialCached "menu.html" (dict "Menu" $.Site.Menus.main  "RenderSubmenus" true) }}
+    {{ partialCached "menu.html" (dict "Menu" $.Site.Menus.main  "RenderSubmenus" true) "main" "true" }}
   </header>
   {{ end }}
   {{block "body" .}}
@@ -25,7 +25,7 @@
   {{end}}
   {{block "footer" .}}
   <footer>
-    {{ partialCached "menu.html" (dict "Menu" $.Site.Menus.footer  "RenderSubmenus" false)}}
+    {{ partialCached "menu.html" (dict "Menu" $.Site.Menus.footer  "RenderSubmenus" false) "footer" "false"}}
     <br>
     {{.Param "copyright" | markdownify}}
   </footer>

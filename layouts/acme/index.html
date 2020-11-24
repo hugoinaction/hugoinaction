@@ -9,7 +9,7 @@
     {{with $title}}<h1 class="intro">{{.}}</h1>{{end}}
     {{with .Param "subtitle"}}<h2>{{. | humanize | markdownify}}</h2>{{end}}
     {{.Content}}
-    {{ partialCached "menu.html" (dict "Menu" $.Site.Menus.main  "RenderSubmenus" false) }}
+    {{ partialCached "menu.html" (dict "Menu" $.Site.Menus.main  "RenderSubmenus" false) "main" "false"}}
   </main>
 </section>
 <section>
