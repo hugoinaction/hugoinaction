@@ -1,3 +1,0 @@
-{{- $manifest := resources.Get "json/manifest.json" -}}
-{{- $manifest = $manifest | resources.ExecuteAsTemplate "manifest.json" . }}
-<link rel="manifest" href="{{$manifest.RelPermalink}}">
