@@ -54,6 +54,25 @@
       </article>
     </section>
     {{end}}
+    <section>
+      <article>
+        <h1> Our Products</h1>
+        <table>
+          {{$products := .Resources.GetMatch "products.csv"}}
+          {{$parsedProducts := $products | transform.Unmarshal (dict "delimiter" ",")}}
+          {{ range $i, $value := $parsedProducts  }}
+          {{if eq $i 0}}<thead>{{end}}
+            <tr>
+              {{range $value}}
+              <td>{{ . }}</td>
+              {{ end }}
+            </tr>
+            {{if eq $i 0}}</thead>{{end}}
+          {{ end }}
+        </table>
+        <a href="{{$products.RelPermalink}}" download>Click here to download this listing.</a>
+      </article>
+    </section>
     <footer>
       {{ range $.Site.Menus.footer }}
       <a href="{{.URL}}">{{.Name | humanize}}</a>
