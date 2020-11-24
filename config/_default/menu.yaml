@@ -1,0 +1,9 @@
+main:                                       #    - Name of the menu
+  - identifier: about                       #       - Identifier
+    name: About                             #       - Display name (theme specific key)
+    url: /about                             #       - Target URL
+    weight: 1                               #       - Sorting order
+  - identifier: contact
+    name: Contact
+    url: /contact
+    weight: 2
