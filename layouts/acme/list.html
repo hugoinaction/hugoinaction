@@ -3,15 +3,16 @@
 {{define "body"}}
 <section>
   <article>
-    <h1>{{.Title}}</h1>
+    <h1> Recent Posts</h1>
     <div class="posts">
-      {{ range .RegularPages }}
+      {{ range .Paginator.Pages }}
       <div class="post">
         <a href="{{.Permalink}}">{{default (.File.ContentBaseName | humanize | title) .Title}}</a>
         <summary>{{.Summary}}</summary>
       </div>
       {{end}}
     </div>
+    {{ template "_internal/pagination.html" . }}
   </article>
 </section>
 {{ end }}

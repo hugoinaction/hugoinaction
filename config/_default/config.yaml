@@ -4,3 +4,4 @@ title: Acme Corporation                       # Name of the website
 theme: Eclectic                               # Name of the theme
 enableEmoji: true                             # Enable Emoticons
 enableGitInfo: true                           # Allow access to Git data
+Paginate: 3                                   # 3 Posts per page
