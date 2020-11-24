@@ -1,5 +1,5 @@
 function addFormHandler() {
-  document.querySelectorAll('form')
+  document.querySelectorAll("[data-dynamic-form]")
     .forEach(async form => form.addEventListener('submit', async event => {
       event.preventDefault();
       const form = event.target;
@@ -9,22 +9,22 @@ function addFormHandler() {
       const response = await fetch(action, {
         method,
         body: data,
-        headers: { 'Accept': 'application/json'}
+        headers: { "Accept": "application/json" }
       });
       if (response.ok) {
-          form.insertAdjacentHTML('afterend',
-            '<div class = "success">The form has been submitted.</div>');
+        form.insertAdjacentHTML('afterend',
+          document.querySelector(form.dataset.success).innerHTML);
       } else {
         form.insertAdjacentHTML('afterend',
-          '<div class = "error">The form could not be submitted. Please try again later.</div>');
+          document.querySelector(form.dataset.error).innerHTML);
       }
       const message = form.nextElementSibling;
       form.reset();
       setTimeout(() => message.remove(), 10000);
-  }));
+    }));
 }
 
-if(document.readyState === 'loading') {
+if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', addFormHandler);
 } else {
   addFormHandler();
