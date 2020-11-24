@@ -5,6 +5,22 @@
 {{ else }}
 <div class="comments">
 <h3> Comments </h3>
+{{$comments := dict}}
+{{if getenv "NETLIFY" }}
+  {{$comments = partialCached "netlifyCommentList.html" .}}
+{{else}}
+  {{$comments = partialCached "formspreeCommentList.html" .}}
+{{end}}
+
+{{range (index $comments .RelPermalink)}}
+<div class="comment">
+  {{(resources.Get "image/avatar.svg").Content | safeHTML}}
+  <div class="author">{{.name}}</div>
+  <div class="message">{{.message}}</div>
+</div>
+{{end}}
+
+<h3> Post a comment</h3>
 {{if getenv "NETLIFY" }}
   <form netlify="true" name="Comments">
 {{ else }}
