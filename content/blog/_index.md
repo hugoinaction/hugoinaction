@@ -10,7 +10,7 @@ menu:
 cascade:
   layout: blog
   type: acme
-type: default
+layout: list
 ---
 The Acme Blog
 ============
