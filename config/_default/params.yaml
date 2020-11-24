@@ -8,6 +8,8 @@ footer:
     recentCount: 7
   - title: Contact Us
     contact: true
+  - title: Important Links
+    menu: true
 style: green
 logo: /image/logo.png
 logo_small: /image/logo.png

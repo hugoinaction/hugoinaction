@@ -1,3 +1,9 @@
+---
+menu:
+  footer:
+    name: Privacy Policy
+    weight: 3
+---
 Privacy Policy
 ==============
 
