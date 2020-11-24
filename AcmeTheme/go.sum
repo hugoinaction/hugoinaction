@@ -2,3 +2,5 @@ github.com/hugoinaction/Resources v0.8.0 h1:NoIshrFdQcqvOi/63vI/is73As9d6OsRBQiu
 github.com/hugoinaction/Resources v0.8.0/go.mod h1:4QxFKDTfHDA4Ylif1aM/ea5IFtOXGWKuAcD0czC/0I8=
 github.com/hugoinaction/Resources v0.10.0 h1:kR4zA61nfViTPVdN0MrOIipLOcFdQyP3H6W3YWmjOD0=
 github.com/hugoinaction/Resources v0.10.0/go.mod h1:4QxFKDTfHDA4Ylif1aM/ea5IFtOXGWKuAcD0czC/0I8=
+github.com/hugoinaction/hugo-debug-utils v0.0.0-20200427035302-d4636e5c27cf h1:6rMTTNHfMot+cuzlkQsw9Na6xIrKmjCf2TneR95m75g=
+github.com/hugoinaction/hugo-debug-utils v0.0.0-20200427035302-d4636e5c27cf/go.mod h1:YA0Taxzbbqz9oEvtMUW/uuPRE2v93r0WPMLkWaqiuBs=
