@@ -1,0 +1,5 @@
+goldmark:                             # The default Hugo Markdown engine
+  renderer:                           # Settings for markdown rendering
+    unsafe: true                      # Enable 'unsafe' inline HTML
+highlight:                            # Options for code highlighting
+  lineNos: true                       # Enable line numbers
