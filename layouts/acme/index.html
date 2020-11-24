@@ -4,6 +4,8 @@
 {{define "body"}}
 {{$title:= default .Site.Title .Page.Title}}
 <section>
+  {{ $hero := resources.GetMatch "image/hero.*" }}
+  <img src="{{$hero.Permalink}}" class="hero">
   <main>
     {{ $logo := resources.GetMatch "image/logo.svg.tpl" | resources.ExecuteAsTemplate "logo.svg" . }}
     <img src="{{$logo.Permalink}}" width="60px">
