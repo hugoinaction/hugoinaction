@@ -24,6 +24,10 @@
     <section>
       <main>
         {{with .Page.Title}}<h1>{{.}}</h1>{{end}}
+        {{if .Param "toc"}}
+        <h2>Table of Contents</h2>
+        {{.TableOfContents}}
+        {{end}}
         {{.Content}}
       </main>
     </section>
