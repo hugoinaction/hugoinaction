@@ -43,12 +43,19 @@
     <div class="testimonials">
       <ol>
         {{range .}}
+        {{$author := default "" .author}}
+        {{$content := default "" .content}}
+        {{if .tweet}}
+        {{$tweet := getJSON "https://api.twitter.com/1/statuses/oembed.json?id=" .tweet  "&hide_media=1&hide_thread=1&omit_script=1" }}
+        {{$author = print $tweet.author_name " via Twitter" }}
+        {{$content = $tweet.html }}
+        {{end}}
         <li>
           <details>
             <summary>
-              <h3>{{.author | title}}</h3>
+              <h3>{{$author | title}}</h3>
             </summary>
-            <p>{{.content}}</p>
+            <p>{{$content | safeHTML}}</p>
           </details>
         </li>
         {{end}}
