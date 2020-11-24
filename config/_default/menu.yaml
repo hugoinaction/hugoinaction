@@ -7,3 +7,10 @@ main:                                       #    - Name of the menu
     name: Contact
     url: /contact
     weight: 2
+footer:
+  - name: Privacy Policy
+    weight: 3
+    url: /privacy
+  - name: Terms of Use
+    weight: 2
+    url: /terms
