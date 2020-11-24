@@ -1,3 +1,8 @@
+---
+title: Square License
+tags: [shape, style, manufacturing]
+categories: [square, general ]
+---
 A license (American English) or licence (British English) is an official permission or permit to do, use, or own something (as well as the document of that permission or permit).
 
 A license can be granted by a party to another party as an element of an agreement between those parties. A shorthand definition of a license is "an authorization to use licensed material."

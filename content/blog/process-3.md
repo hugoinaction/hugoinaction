@@ -1,6 +1,8 @@
 ---
 title: Our Manufacturing Process Part III
 date: "2019-01-03T00:00:00Z"
+tags: [manufacturing]
+categories: [circle, manufacturing]
 ---
 
 Machining is any process in which a cutting tool is used to remove small chips of material from the workpiece (the workpiece is often called the "work"). To perform the operation, relative motion is required between the tool and the work. This relative motion is achieved in most machining operation by means of a primary motion, called "cutting speed" and a secondary motion called "feed".[7] The shape of the tool and its penetration into the work surface, combined with these motions, produce the desired shape of the resulting work surface.

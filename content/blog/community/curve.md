@@ -1,3 +1,8 @@
+---
+title: Curve
+tags: [shape, product, line]
+categories: [shape, public ]
+---
 In mathematics, a curve (also called a curved line in older texts) is, generally speaking, an object similar to a line but that need not be straight. Thus, a curve is a generalization of a line, in that it may be curved.<!--more-->
 
 Intuitively, a curve may be thought as the trace left by a moving point. This is the definition that appeared, more 2000 years, ago in Euclid's Elements: "The [curved] line[a] is […] the first species of quantity, which has only one dimension, namely length, without any width nor depth, and is nothing else than the flow or run of the point which […] will leave from its imaginary moving some vestige in length, exempt of any width."[1]

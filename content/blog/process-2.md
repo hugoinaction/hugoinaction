@@ -1,6 +1,8 @@
 ---
 title: Our Manufacturing Process Part II
 date: "2019-01-02T00:00:00Z"
+tags: [manufacturing]
+categories: [square, manufacturing]
 ---
 
 The three principal machining processes are classified as turning, drilling and milling. Other operations falling into miscellaneous categories include shaping, planing, boring, broaching and sawing.[5]
