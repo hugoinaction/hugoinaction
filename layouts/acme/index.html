@@ -5,7 +5,8 @@
 {{$title:= default .Site.Title .Page.Title}}
 <section>
   <main>
-    <img src="./image/logo.svg" width="60px">
+    {{ $logo := resources.GetMatch "image/logo.svg.tpl" | resources.ExecuteAsTemplate "logo.svg" . }}
+    <img src="{{$logo.Permalink}}" width="60px">
     {{with $title}}<h1 class="intro">{{.}}</h1>{{end}}
     {{with .Param "subtitle"}}<h2>{{. | humanize | markdownify}}</h2>{{end}}
     {{.Content}}

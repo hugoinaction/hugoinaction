@@ -2,7 +2,8 @@ body {
   margin: 0;
   padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  background-image: url(image/background.svg);
+  {{ $background := resources.GetMatch "image/background.svg.tpl" | resources.ExecuteAsTemplate "background.svg" . }}
+  background-image: url({{$background.Permalink}});
   background-size: cover;
 }
 
@@ -123,7 +124,7 @@ h1 {
 }
 
 a {
-  color: #71B180;
+  color: {{$.Param "color"}};
   text-decoration: none;
   padding: 10px;
   white-space: nowrap;
@@ -150,7 +151,7 @@ a:hover {
   margin: 15px;
   box-sizing: border-box;
   padding: 10px;
-  border: 1px solid #71B180;
+  border: 1px solid {{$.Param "color"}};
   display: inline-block;
 }
 
@@ -171,7 +172,7 @@ thead td {
 details summary {
   display: block;
   cursor: pointer;
-  color: #71B180;
+  color: {{$.Param "color"}};
 }
 
 details summary::-webkit-details-marker {

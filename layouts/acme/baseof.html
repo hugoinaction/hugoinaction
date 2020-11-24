@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  {{ $css := resources.GetMatch "index.scss" | resources.ToCSS}}
+  {{ $css := resources.GetMatch "index.css.tpl" | resources.ExecuteAsTemplate "index.css" . }}
   <link rel="stylesheet" type="text/css" href="{{$css.Permalink}}">
   {{with (default .Site.Title .Page.Title)}}<title>{{.}}</title>{{end}}
   {{with .Page.Description}}
@@ -12,7 +12,9 @@
 <body class="{{block "bodyClass" .}}page{{end}}">
   {{block "header" .}}
   <header>
-    <a href="/"><img src="/image/logo.svg" width="60px"></a>
+    {{ $logo := resources.GetMatch "image/logo.svg.tpl" | resources.ExecuteAsTemplate "logo.svg" . }}
+
+    <a href="/"><img src="{{$logo.Permalink}}" width="60px"></a>
     {{ partialCached "menu.html" (dict "Menu" $.Site.Menus.main  "RenderSubmenus" true) "main" "true" }}
   </header>
   {{ end }}
