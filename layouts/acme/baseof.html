@@ -9,6 +9,12 @@
 </head>
 
 <body class="{{block "bodyClass" .}}page{{end}}">
+  {{block "header" .}}
+  <header>
+    <a href="/"><img src="/image/logo.svg" width="60px"></a>
+    {{ partial "menu.html" . }}
+  </header>
+  {{ end }}
   {{block "body" .}}
     <section>
       <main>
@@ -21,9 +27,9 @@
   <footer>
     <nav>
       <ul>
-        {{ range $.Site.Menus.footer }}
+      {{ range $.Site.Menus.footer }}
         <li><a href="{{.URL}}">{{.Name | humanize}}</a></li>
-        {{ end }}
+      {{ end }}
       </ul>
     </nav>
     <br>

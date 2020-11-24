@@ -1,4 +1,5 @@
 {{define "bodyClass"}}home{{end}}
+{{define "header"}}<!-- Empty Header -->{{end}}
 
 {{define "body"}}
 {{$title:= default .Site.Title .Page.Title}}
@@ -8,13 +9,7 @@
     {{with $title}}<h1 class="intro">{{.}}</h1>{{end}}
     {{with .Param "subtitle"}}<h2>{{. | humanize | markdownify}}</h2>{{end}}
     {{.Content}}
-    <nav>
-      <ul>
-        {{ range $.Site.Menus.main }}
-        <li><a href="{{.URL}}">{{.Name | humanize}}</a></li>
-        {{end}}
-      </ul>
-    </nav>
+    {{ partial "menu.html" . }}
   </main>
 </section>
 <section>
