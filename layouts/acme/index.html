@@ -5,8 +5,14 @@
 {{$title:= default .Site.Title .Page.Title}}
 <section>
   {{ $hero := resources.GetMatch "image/hero.*" }}
-  {{ $hero = $hero.Resize "1920x jpg q80 #000000" }}
-  <img src="{{$hero.Permalink}}" class="hero">
+  {{ $hero = $hero.Resize "2000x jpg q80 #000000" | images.Filter (images.Contrast 40) (images.Brightness 10) }}
+  {{ $small := $hero.Fill "375x406 top left"}}
+  <img class="hero" srcset="
+  {{ ($hero.Fill "1920x540 top left").RelPermalink}} 1920w,
+  {{ ($hero.Fill "1024x384 top left").RelPermalink}} 1024w,
+  {{ ($hero.Fill "768x512 top left").RelPermalink}} 768w,
+  {{ $small.RelPermalink }} 375w" src="{{ $small.RelPermalink }}"
+  sizes="100vw">
   <main>
     {{ $logo := resources.GetMatch "image/logo.svg.tpl" | resources.ExecuteAsTemplate "logo.svg" . }}
     <img src="{{$logo.Permalink}}" width="60px">
