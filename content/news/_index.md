@@ -1,6 +1,4 @@
 ---
-cascade:
-  type: acme
 menu:
   main:
     name: News

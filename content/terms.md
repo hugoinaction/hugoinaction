@@ -3,7 +3,6 @@ menu:
   footer:
     name: Terms of Use
     weight: 2
-type: acme
 toc: true
 title: Terms of Use
 ---
