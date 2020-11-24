@@ -1,5 +1,6 @@
 ---
 title: Our Manufacturing Process Part IV
+series: [manufacturing]
 date: "2019-01-04T00:00:00Z"
 ---
 
@@ -15,6 +16,6 @@ The rake face which directs the flow of newly formed chip, is oriented at a cert
 
 A single point tool has one cutting edge and is used for turning, boring and planing. During machining, the point of the tool penetrates below the original work surface of the workpart. The point is sometimes rounded to a certain radius, called the nose radius.
 
-Multiple-cutting-edge tools have more than one cutting edge and usually achieve their motion relative to the workpart by rotating. Drilling and milling uses rotating multiple-cutting-edge tools. Although the shapes of these tools are different from a single-point tool, many elements of tool geometry are similar.
+Multiple-cutting-edge tools have more than one cutting edge and usually achieve their motion relative to the workpart by rotating. Drilling and milling uses rotating multiple-cutting-edge tools. Although the shapes of these tools are different from a single-point tool, many elements of tool geometry are similar. 
 
 Content from [wikipedia](https://en.wikipedia.org/wiki/Machining).
