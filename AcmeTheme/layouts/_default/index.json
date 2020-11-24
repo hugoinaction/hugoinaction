@@ -1,0 +1,6 @@
+{{- $result := newScratch -}}
+{{- $result.Set "pages" slice -}}
+{{- range $.Site.RegularPages -}}
+{{- $result.Add "pages" (dict "url" .RelPermalink "content" .Plain "title" .Title "tags" .Params.Tags) -}}
+{{- end -}}
+{{- $result.Get "pages" | jsonify -}}
