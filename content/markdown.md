@@ -89,4 +89,95 @@ Content with a -- (dash) and a --- (long dash).
 
 Sample inline code `a++` can be specified here.
 
-![Alt Text](/image/logo.png "Optional Tooltip")
+![Alt Text](/path/to/image "Optional Tooltip")
+
+
+## HTML Escaped characters and inline HTML
+
+Copyright: &copy;
+
+Registered: &reg;
+
+Trademark: &trade;
+
+Less Than: &lt;
+
+Greater Than: &gt;
+
+Ampersand: &gt;
+
+Smiley: &#x1F604;
+
+Embedded HTML: x<sup>2</sup>
+
+Floating image via HTML: <img src="/image/logo.png" style="float: right; padding: 0 0 0 10px"> Follow up text after the image. This honors the floats and wraps around the image, automatically going into the next line.
+
+## Tables, Code Blocks and Task lists
+
+   Name | Job
+--------|------
+   Alex | Web Developer
+    Bob | Sys Admin
+   Gabby| Technical Writer
+
+
+### Alternate Table
+
+
+|  Name | Mantra |
+|  ---  | --- |
+| Alex  | There must be a better way. |
+| Bob   | Play it safe. |
+| Gabby | Try everything, but do what you like. |
+
+## Acme Website task list
+
+- [x] Get the home page up
+- [x] Update Privacy Policy and Terms of Use
+- [ ] Add the about page
+- [ ] Start the blog
+- [ ] Enable contact us
+
+## Code block
+
+```javascript
+var x= 10;
+x++;
+console.log(x);
+```
+
+With highlighting:
+
+```javascript {linenos=true,hl_lines=[2,"4-6"],linenostart=199}
+while (!success) {
+  tryAgain();
+  attempt++;
+  if (Dead) {
+    break;
+  }
+}
+```
+
+## Direct Emojis
+Smile please :smile:
+
+I :heart: Hugo
+
+Wink :wink:
+
+A link to [Emojis](#direct-emojis)
+
+
+## Definition Lists
+
+Alex
+: Hippy Web Developer
+: Technophile
+
+Bob
+: Classic SysAdmin
+: Conservative
+
+Gabby
+: Cool Content Master
+: Cautious
