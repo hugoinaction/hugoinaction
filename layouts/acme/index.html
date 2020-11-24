@@ -72,15 +72,4 @@
     <a href="{{$products.RelPermalink}}" download>Click here to download this listing.</a>
   </article>
 </section>
-<footer>
-  <nav>
-    <ul>
-      {{ range $.Site.Menus.footer }}
-      <li><a href="{{.URL}}">{{.Name | humanize}}</a></li>
-      {{ end }}
-    </ul>
-  </nav>
-  <br>
-  {{.Param "copyright" | markdownify}}
-</footer>
 {{ end }}
