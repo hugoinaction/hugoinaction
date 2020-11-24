@@ -1,0 +1,263 @@
+<!-- Pretty Print for Debug -->
+<!-- https://github.com/kaushalmodi/hugo-debugprint/blob/master/layouts/partials/debugprint.html -->
+<!-- Usage examples (remove /* and */ when using):
+     {{/* partial "debug/debugprint.html" .Params */}}
+     {{/* partial "debug/debugprint.html" site */}}
+     {{/* partial "debug/debugprint.html" site.Menus */}}
+     {{/* partial "debug/debugprint.html" .GitInfo */}}
+     {{/* partial "debug/debugprint.html" .Resources */}}
+     {{/* partial "debug/debugprint.html" .File */}}
+-->
+<!-- Associated CSS file:
+     https://github.com/kaushalmodi/hugo-debugprint/blob/master/layouts/partials/debugprint.css
+
+     Inline that CSS file in your site <head> using below (remove /* and */ when using):
+
+     <style>{{/* partial "debugprint.css" | safeCSS */}}</style>
+
+     See https://github.com/kaushalmodi/hugo-debugprint/blob/master/layouts/_default/baseof.html for example.
+-->
+{{ $value                      := . }}
+{{ $type                       := (printf "%T" $value) }}
+{{ $typeIsBool                 := (eq "bool" $type) }}
+{{ $typeIsNumber               := (or (eq "int" $type) (eq "int64" $type) (eq "float64" $type)) }}
+{{ $typeIsString               := (findRE "^(string|template\\.(CSS|HTML|HTMLAttr|JS|JSStr|URL))$" $type) }}
+{{ $typeIsTime                 := (eq "time.Time" $type) }}
+{{ $typeIsSlice                := (findRE "^([[][]]|.*TaxonomyList|output\\.Formats|resource\\.Resources|\\*?hugolib\\.Menu$|\\*?hugolib\\.Pages$|hugolib\\.OrderedTaxonomy$|hugolib\\.WeightedPages)" $type) }}
+<!-- match ^[] -->
+{{ $typeIsMap                  := (findRE "^(map[[].+[]]|.*SiteSocial|\\*hugolib\\.Menus|hugolib\\.AuthorList|hugolib\\.Taxonomy)" $type) }}
+<!-- match ^map[*] -->
+
+{{ $typeIsSiteInfo             := (eq "*hugolib.SiteInfo" $type) }}
+{{ $typeIsGitInfo              := (findRE "^.*gitmap\\.GitInfo" $type) }}
+{{ $typeIsOutputFormat         := (eq "output.Format" $type) }}
+{{ $typeIsResource             := (findRE "^\\*resource" $type) }}
+{{ $typeIsPage                 := (findRE "^\\*hugolib\\.Page" $type) }}
+{{ $typeIsFileInfo             := (findRE "^\\*(hugolib|source)\\.[fF]ileInfo$" $type) }}
+<!-- terms pages for e.g. uses source.FileInfo, regular pages using hugolib.fileInfo -->
+{{ $typeIsMenuEntry            := (eq "*hugolib.MenuEntry" $type) }}
+{{ $typeIsOrderedTaxonomyEntry := (eq "hugolib.OrderedTaxonomyEntry" $type) }}
+{{ $typeIsWeightedPage         := (eq "hugolib.WeightedPage" $type) }}
+{{ $typeIsStruct               := (or $typeIsSiteInfo $typeIsGitInfo $typeIsOutputFormat $typeIsFileInfo $typeIsPage $typeIsMenuEntry $typeIsOrderedTaxonomyEntry) }}
+{{ $typeIsInterface            := (or $typeIsResource) }}
+{{ $typeIsSpecial              := (or $typeIsWeightedPage) }}
+
+{{ if $typeIsBool }}
+{{ printf `<span class="debugprint"><span class="%#v">%#v</span></span>` $value $value | safeHTML }}
+{{ else if (or $typeIsNumber $typeIsString) }}
+<!-- Use %#v for strings so that their values always get double-quoted.
+         That is helpful to tell if a space char is within a string. -->
+{{ printf "%#v" $value | htmlUnescape }}
+{{ else if $typeIsTime }}
+{{ printf "%s" $value | safeHTML }}
+{{ else if $typeIsSlice }}
+{{ range $value }}
+{{ partial "debug/debugprint.html" . }}
+<!-- Recursive call FTW! -->
+{{ end }}
+{{ else if $typeIsMap }}
+{{ if (gt (len $value) 0) }}
+<div class="debugprint_wrap">
+  <table class="debugprint">
+    <tr>
+      <th class="key">Key</th>
+      <th class="type">Type</th>
+      <th class="value">Value</th>
+    </tr>
+    {{ range $key1, $value1 := $value }}
+    {{ $type1       := (printf "%T" $value1) }}
+    {{ $type1IsTime := (eq "time.Time" $type1) }}
+    {{ if $type1IsTime }}
+    <!-- Print the date only if it is not at its initial value of Jan 1, 0001 -->
+    {{ if (ne "0001-01-01" ($value1.Format "2006-01-02")) }}
+    {{ printf `<tr><td class="key">%s</td><td class="type">%s</td><td class="value">` $key1 $type1 | safeHTML }}
+    {{ partial "debug/debugprint.html" $value1 }}
+    <!-- Recursive call FTW! -->
+    {{ printf "</td></tr>" | safeHTML }}
+    {{ end }}
+    {{ else }}
+    {{ printf `<tr><td class="key">%s</td><td class="type">%s</td><td class="value">` $key1 $type1 | safeHTML }}
+    {{ partial "debug/debugprint.html" $value1 }}
+    <!-- Recursive call FTW! -->
+    {{ printf "</td></tr>" | safeHTML }}
+    {{ end }}
+    {{ end }}
+  </table>
+</div>
+{{ end }}
+{{ else if $typeIsStruct }}
+<div class="debugprint_wrap">
+  {{ if $typeIsSiteInfo }}
+  <!-- https://github.com/gohugoio/hugo/blob/master/hugolib/site.go -->
+  {{ $siteVarNames   := (slice "Title" "Author" "Social" "LastChange" "DisqusShortname" "GoogleAnalytics" "Copyright" "LanguageCode" "BuildDrafts" "Params") }}
+  {{ $siteVarSymbols := (slice .Title  .Author  .Social  .LastChange  .DisqusShortname  .GoogleAnalytics  .Copyright  .LanguageCode  .BuildDrafts  .Params ) }}
+  <table class="debugprint">
+    <tr>
+      <th class="key">SiteInfo Variable</th>
+      <th class="value">Value</th>
+    </tr>
+    {{ range $idx, $elem := $siteVarNames }}
+    {{ printf `<tr><td class="key">%s</td><td class="value">` $elem | safeHTML }}
+    {{ partial "debug/debugprint.html" (index $siteVarSymbols $idx) }}
+    <!-- Recursive call FTW! -->
+    {{ printf "</td></tr>" | safeHTML }}
+    {{ end }}
+  </table>
+  {{ else if $typeIsGitInfo }}
+  <!-- https://github.com/bep/gitmap/blob/master/gitmap.go -->
+  {{ $gitInfoVarNames   := (slice "Hash" "AbbreviatedHash" "Subject" "AuthorName" "AuthorEmail" "AuthorDate") }}
+  {{ $gitInfoVarSymbols := (slice .Hash  .AbbreviatedHash  .Subject  .AuthorName  .AuthorEmail  .AuthorDate ) }}
+  <table class="debugprint">
+    <tr>
+      <th class="key">GitInfo Variable</th>
+      <th class="value">Value</th>
+    </tr>
+    {{ range $idx, $elem := $gitInfoVarNames }}
+    {{ printf `<tr><td class="key">%s</td><td class="value">` $elem | safeHTML }}
+    {{ partial "debug/debugprint.html" (index $gitInfoVarSymbols $idx) }}
+    <!-- Recursive call FTW! -->
+    {{ printf "</td></tr>" | safeHTML }}
+    {{ end }}
+  </table>
+  {{ else if $typeIsOutputFormat }}
+  <!-- https://github.com/gohugoio/hugo/blob/master/output/outputFormat.go -->
+  {{ $OutputFormatVarNames   := (slice "Name" "MediaType" "Path" "BaseName" "Rel" "Protocol" "IsPlainText" "IsHTML" "NoUgly" "NotAlternative") }}
+  {{ $OutputFormatVarSymbols := (slice .Name  .MediaType  .Path  .BaseName  .Rel  .Protocol  .IsPlainText  .IsHTML  .NoUgly  .NotAlternative ) }}
+  <table class="debugprint">
+    <tr>
+      <th class="key">OutputFormat Variable</th>
+      <th class="value">Value</th>
+    </tr>
+    {{ range $idx, $elem := $OutputFormatVarNames }}
+    {{ printf `<tr><td class="key">%s</td><td class="value">` $elem | safeHTML }}
+    {{ partial "debug/debugprint.html" (index $OutputFormatVarSymbols $idx) }}
+    <!-- Recursive call FTW! -->
+    {{ printf "</td></tr>" | safeHTML }}
+    {{ end }}
+  </table>
+  {{ else if $typeIsFileInfo }}
+  <!-- https://github.com/gohugoio/hugo/blob/master/hugolib/fileInfo.go (*hugolib.fileInfo - used by regular pages)  -->
+  <!-- https://github.com/gohugoio/hugo/blob/master/source/fileInfo.go (*source.FileInfo - used by term pages) -->
+  {{ $FileInfoVarNames   := (slice "UniqueID" "BaseFileName" "TranslationBaseName" "Lang" "Section" "LogicalName" "Dir" "Ext" "Path") }}
+  {{ $FileInfoVarSymbols := (slice .UniqueID  .BaseFileName  .TranslationBaseName  .Lang  .Section  .LogicalName  .Dir  .Ext  .Path ) }}
+  <table class="debugprint">
+    <tr>
+      <th class="key">FileInfo Variable</th>
+      <th class="value">Value</th>
+    </tr>
+    {{ range $idx, $elem := $FileInfoVarNames }}
+    {{ printf `<tr><td class="key">%s</td><td class="value">` $elem | safeHTML }}
+    {{ partial "debug/debugprint.html" (index $FileInfoVarSymbols $idx) }}
+    <!-- Recursive call FTW! -->
+    {{ printf "</td></tr>" | safeHTML }}
+    {{ end }}
+  </table>
+  {{ else if $typeIsPage }}
+  <!-- https://github.com/gohugoio/hugo/blob/master/hugolib/page.go -->
+  {{ $PageVarNames   := (slice "Name" "Title" "ResourceType" "Kind" "Section" "Draft" "Type" "Layout" "Permalink" "RelPermalink" "Data") }}
+  {{ $PageVarSymbols := (slice .Name  .Title  .ResourceType  .Kind  .Section  .Draft  .Type  .Layout  .Permalink  .RelPermalink  .Data ) }}
+  <table class="debugprint">
+    <tr>
+      <th class="key">Page Variable</th>
+      <th class="value">Value</th>
+    </tr>
+    {{ range $idx, $elem := $PageVarNames }}
+    {{ printf `<tr><td class="key">%s</td><td class="value">` $elem | safeHTML }}
+    {{ partial "debug/debugprint.html" (index $PageVarSymbols $idx) }}
+    <!-- Recursive call FTW! -->
+    {{ printf "</td></tr>" | safeHTML }}
+    {{ end }}
+    {{ with .NextPage }}
+    {{ printf `<tr><td class="key">NextPage</td><td class="value"><a href="%s">%s</a></td></tr>` .Permalink .Title | safeHTML }}
+    {{ else }}
+    {{ printf `<tr><td class="key">NextPage</td><td class="value">None</td></tr>` | safeHTML }}
+    {{ end }}
+    {{ with .PrevPage }}
+    {{ printf `<tr><td class="key">PrevPage</td><td class="value"><a href="%s">%s</a></td></tr>` .Permalink .Title | safeHTML }}
+    {{ else }}
+    {{ printf `<tr><td class="key">PrevPage</td><td class="value">None</td></tr>` | safeHTML }}
+    {{ end }}
+    {{ with .NextInSection }}
+    {{ printf `<tr><td class="key">NextInSection</td><td class="value"><a href="%s">%s</a></td></tr>` .Permalink .Title | safeHTML }}
+    {{ else }}
+    {{ printf `<tr><td class="key">NextInSection</td><td class="value">None</td></tr>` | safeHTML }}
+    {{ end }}
+    {{ with .PrevInSection }}
+    {{ printf `<tr><td class="key">PrevInSection</td><td class="value"><a href="%s">%s</a></td></tr>` .Permalink .Title | safeHTML }}
+    {{ else }}
+    {{ printf `<tr><td class="key">PrevInSection</td><td class="value">None</td></tr>` | safeHTML }}
+    {{ end }}
+  </table>
+  {{ else if $typeIsMenuEntry }}
+  <!-- https://github.com/gohugoio/hugo/blob/master/hugolib/menu.go -->
+  {{ $MenuEntryVarNames   := (slice "Menu" "Title" "Name" "URL" "Identifier" "Weight" "Pre" "Post" "Parent" "Children") }}
+  {{ $MenuEntryVarSymbols := (slice .Menu  .Title  .Name  .URL  .Identifier  .Weight  .Pre  .Post  .Parent  .Children ) }}
+  <table class="debugprint">
+    <tr>
+      <th class="key">MenuEntry Variable</th>
+      <th class="value">Value</th>
+    </tr>
+    {{ range $idx, $elem := $MenuEntryVarNames }}
+    {{ printf `<tr><td class="key">%s</td><td class="value">` $elem | safeHTML }}
+    {{ partial "debug/debugprint.html" (index $MenuEntryVarSymbols $idx) }}
+    <!-- Recursive call FTW! -->
+    {{ printf "</td></tr>" | safeHTML }}
+    {{ end }}
+  </table>
+  {{ else if $typeIsOrderedTaxonomyEntry }}
+  <!-- https://github.com/gohugoio/hugo/blob/master/hugolib/taxonomy.go -->
+  {{ $OrderedTaxonomyEntryVarNames   := (slice "Name" "Count" "Term" "WeightedPages") }}
+  {{ $OrderedTaxonomyEntryVarSymbols := (slice .Name  .Count  .Term  .WeightedPages ) }}
+  <table class="debugprint">
+    <tr>
+      <th class="key">OrderedTaxonomyEntry Variable</th>
+      <th class="value">Value</th>
+    </tr>
+    {{ range $idx, $elem := $OrderedTaxonomyEntryVarNames }}
+    {{ printf `<tr><td class="key">%s</td><td class="value">` $elem | safeHTML }}
+    {{ partial "debug/debugprint.html" (index $OrderedTaxonomyEntryVarSymbols $idx) }}
+    <!-- Recursive call FTW! -->
+    {{ printf "</td></tr>" | safeHTML }}
+    {{ end }}
+  </table>
+  {{ end }}
+</div>
+{{ else if $typeIsInterface }}
+<div class="debugprint_wrap">
+  {{ if $typeIsResource }}
+  <!-- https://github.com/gohugoio/hugo/blob/master/resource/resource.go -->
+  {{ $ResourceVarNames   := (slice "Name" "Title" "ResourceType" "Permalink" "RelPermalink" "Params") }}
+  {{ $ResourceVarSymbols := (slice .Name  .Title  .ResourceType  .Permalink  .RelPermalink  .Params ) }}
+  <!-- There's .AbsSourceFilename too, but it's not very useful. -->
+  <table class="debugprint">
+    <tr>
+      <th class="key">Resource Variable</th>
+      <th class="value">Value</th>
+    </tr>
+    {{ range $idx, $elem := $ResourceVarNames }}
+    {{ printf `<tr><td class="key">%s</td><td class="value">` $elem | safeHTML }}
+    {{ partial "debug/debugprint.html" (index $ResourceVarSymbols $idx) }}
+    <!-- Recursive call FTW! -->
+    {{ printf "</td></tr>" | safeHTML }}
+    {{ end }}
+  </table>
+  {{ end }}
+</div>
+{{ else if $typeIsSpecial }}
+{{ if $typeIsWeightedPage }}
+<!-- https://github.com/gohugoio/hugo/blob/master/hugolib/taxonomy.go -->
+<table>
+  {{ printf "<tr><td>%s</td><td>W:%d</td></tr>" .Page.Title .Weight | safeHTML }}
+</table>
+{{ end }}
+<!-- Anything Else -->
+{{ else }}
+{{ printf "%#v (<i>type:%s</i>)" $value $type | safeHTML }}
+{{ end }}
+
+<!-- Older, simpler version -->
+<!-- <table class="debugprint"> -->
+{{/* range $key1, $value1 := . */}}
+{{/* printf "<tr><td>%#v</td><td>%#v</td></tr>" $key1 $value1 | safeHTML */}}
+{{/* end */}}
+<!-- </table> -->

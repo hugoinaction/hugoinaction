@@ -1,0 +1,4 @@
+{{ $icon := resources.Get $.path | resources.Minify }}
+{{ $result := print "<svg class=\"" $.class "\" width=\"" $.size "px\" " }}
+{{ $icon = replace $icon.Content "<svg " $result }}
+{{ $icon | safeHTML }}

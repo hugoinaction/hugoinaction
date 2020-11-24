@@ -1,0 +1,5 @@
+<!-- guitar -->
+{{- $json := getJSON $.Site.Params.Guitar "?" (querify "q" .Inner) -}}
+{{- with $json.svg -}}
+{{. | safeHTML}}
+{{- end -}}
