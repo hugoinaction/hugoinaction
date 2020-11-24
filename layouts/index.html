@@ -2,22 +2,18 @@
 <html>
   <head>
     <link rel="stylesheet" type="text/css" href="./index.css">
-    {{if $.Page.Title}}
-    <title>{{$.Page.Title}}</title>
-    {{else if $.Site.Title}}
-    <title>{{$.Site.Title}}</title>
+    {{$title := $.Page.Title}}
+    {{if not $.Page.Title}}
+    {{$title = $.Site.Title}}
     {{end}}
+    {{if $title}}<title>{{$title}}</title>{{end}}
     {{if $.Page.Description}}<meta name="description" content="{{$.Page.Description}}" />{{end}}
   </head>
   <body>
     <section>
       <main>
         <img src="./image/logo.svg" width="60px">
-        {{if $.Page.Title}}
-        <h1 class="intro">{{$.Page.Title}}</h1>
-        {{else if $.Site.Title}}
-        <h1 class="intro">{{$.Site.Title}}</h1>
-        {{end}}
+        {{if $title}}<h1 class="intro">{{$title}}</h1>{{end}}
         {{if $.Page.Params.subtitle}}<h2>{{$.Page.Params.subtitle}}</h2>{{end}}
         <a href="./about">About Us</a>
         <a href="./privacy">Privacy Policy</a>
