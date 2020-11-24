@@ -1,84 +1,84 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <link rel="stylesheet" type="text/css" href="./index.css">
-    {{$title:= default .Site.Title .Page.Title}}
-    {{with $title}}<title>{{.}}</title>{{end}}
-    {{with .Page.Description}}<meta name="description" content="{{.}}" />{{end}}
-  </head>
-  <body>
-    <section>
-      <main>
-        <img src="./image/logo.svg" width="60px">
-        {{with $title}}<h1 class="intro">{{.}}</h1>{{end}}
-        {{with .Param "subtitle"}}<h2>{{. | humanize | markdownify}}</h2>{{end}}
-        {{.Content}}
+{{define "body"}}
+{{$title:= default .Site.Title .Page.Title}}
+<section>
+  <main>
+    <img src="./image/logo.svg" width="60px">
+    {{with $title}}<h1 class="intro">{{.}}</h1>{{end}}
+    {{with .Param "subtitle"}}<h2>{{. | humanize | markdownify}}</h2>{{end}}
+    {{.Content}}
+    <nav>
+      <ul>
         {{ range $.Site.Menus.main }}
-        <a href="{{.URL}}">{{.Name | humanize}}</a>
+        <li><a href="{{.URL}}">{{.Name | humanize}}</a></li>
         {{end}}
-      </main>
-    </section>
-    <section>
-      {{/* Recent Blog Posts */}}
-      <article>
-        <h1> Recent Blog Posts</h1>
-        <div class="posts">
-          {{ range first 3 (where (where $.Site.RegularPages ".Section" "blog" ) ".Draft" false)}}
-          <div class="post">
-            <a href="{{.Permalink}}">{{default (.File.ContentBaseName | humanize | title) .Title}}</a>
-            <summary>{{.Summary}}</summary>
-          </div>
-          {{end}}
-        </div>
-      </article>
-    </section>
-    {{with .Page.Params.testimonials}}
-    <section>
-      <article>
-        <h1>Our clients</h1>
-        <div class="testimonials">
-          <ol>
-            {{range .}}
-            <li>
-              <details>
-                <summary>
-                  <h3>{{.author | title}}</h3>
-                </summary>
-                <p>{{.content}}</p>
-              </details>
-            </li>
-            {{end}}
-          </ol>
-          <small>Click each to see testimonials.</small>
-        </div>
-      </article>
-    </section>
-    {{end}}
-    <section>
-      <article>
-        <h1> Our Products</h1>
-        <table>
-          {{$products := resources.GetMatch "products.csv"}}
-          {{$parsedProducts := $products | transform.Unmarshal (dict "delimiter" ",")}}
-          {{ range $i, $value := $parsedProducts  }}
-          {{if eq $i 0}}<thead>{{end}}
-            <tr>
-              {{range $value}}
-              <td>{{ . }}</td>
-              {{ end }}
-            </tr>
-            {{if eq $i 0}}</thead>{{end}}
+      </ul>
+    </nav>
+  </main>
+</section>
+<section>
+  {{/* Recent Blog Posts */}}
+  <article>
+    <h1> Recent Blog Posts</h1>
+    <div class="posts">
+      {{ range first 3 (where (where $.Site.RegularPages ".Section" "blog" ) ".Draft" false)}}
+      <div class="post">
+        <a href="{{.Permalink}}">{{default (.File.ContentBaseName | humanize | title) .Title}}</a>
+        <summary>{{.Summary}}</summary>
+      </div>
+      {{end}}
+    </div>
+  </article>
+</section>
+{{with .Page.Params.testimonials}}
+<section>
+  <article>
+    <h1>Our clients</h1>
+    <div class="testimonials">
+      <ol>
+        {{range .}}
+        <li>
+          <details>
+            <summary>
+              <h3>{{.author | title}}</h3>
+            </summary>
+            <p>{{.content}}</p>
+          </details>
+        </li>
+        {{end}}
+      </ol>
+      <small>Click each to see testimonials.</small>
+    </div>
+  </article>
+</section>
+{{end}}
+<section>
+  <article>
+    <h1> Our Products</h1>
+    <table>
+      {{$products := resources.GetMatch "products.csv"}}
+      {{$parsedProducts := $products | transform.Unmarshal (dict "delimiter" ",")}}
+      {{ range $i, $value := $parsedProducts  }}
+      {{if eq $i 0}}<thead>{{end}}
+        <tr>
+          {{range $value}}
+          <td>{{ . }}</td>
           {{ end }}
-        </table>
-        <a href="{{$products.RelPermalink}}" download>Click here to download this listing.</a>
-      </article>
-    </section>
-    <footer>
-      {{ range $.Site.Menus.footer }}
-      <a href="{{.URL}}">{{.Name | humanize}}</a>
+        </tr>
+        {{if eq $i 0}}</thead>{{end}}
       {{ end }}
-      <br>
-      {{.Param "copyright" | markdownify}}
-    </footer>
-  </body>
-</html>
+    </table>
+    <a href="{{$products.RelPermalink}}" download>Click here to download this listing.</a>
+  </article>
+</section>
+<footer>
+  <nav>
+    <ul>
+      {{ range $.Site.Menus.footer }}
+      <li><a href="{{.URL}}">{{.Name | humanize}}</a></li>
+      {{ end }}
+    </ul>
+  </nav>
+  <br>
+  {{.Param "copyright" | markdownify}}
+</footer>
+{{ end }}

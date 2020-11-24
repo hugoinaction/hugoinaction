@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="/index.css">
+  {{with (default .Site.Title .Page.Title)}}<title>{{.}}</title>{{end}}
+  {{with .Page.Description}}
+  <meta name="description" content="{{.}}" />{{end}}
+</head>
+
+<body>
+  {{block "body" .}}
+    <section>
+      <main>
+        {{with .Page.Title}}<h1>{{.}}</h1>{{end}}
+        {{.Content}}
+      </main>
+    </section>
+  {{end}}
+</body>
+
+</html>
