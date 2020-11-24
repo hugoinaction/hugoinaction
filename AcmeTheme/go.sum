@@ -1,3 +1,5 @@
+github.com/hugoinaction/AcmeShared v0.0.0-20200531072543-7d4950ba7dcf h1:i70wzDXLS61IPUU7tStQiXGgNmkTB+Yz62P7NC0tXFs=
+github.com/hugoinaction/AcmeShared v0.0.0-20200531072543-7d4950ba7dcf/go.mod h1:GUwyL42B9E5VQcUWvOGH1tg3C0iMuiZ8jeNm1vv6A/A=
 github.com/hugoinaction/Resources v0.8.0 h1:NoIshrFdQcqvOi/63vI/is73As9d6OsRBQiuOztNsl8=
 github.com/hugoinaction/Resources v0.8.0/go.mod h1:4QxFKDTfHDA4Ylif1aM/ea5IFtOXGWKuAcD0czC/0I8=
 github.com/hugoinaction/Resources v0.10.0 h1:kR4zA61nfViTPVdN0MrOIipLOcFdQyP3H6W3YWmjOD0=

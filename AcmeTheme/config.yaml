@@ -7,3 +7,4 @@ module:
         - source: assets
           target: assets
     - path: github.com/hugoinaction/hugo-debug-utils
+    - path: github.com/hugoinaction/AcmeShared
