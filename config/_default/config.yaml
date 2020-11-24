@@ -1,6 +1,6 @@
 baseURL: http://example.org/                  # Hosting location.
 languageCode: en-us                           # Locale
-theme: github.com/hugoinaction/Universal      # Name of the website
+theme: github.com/hugoinaction/Acme           # Name of the website
 enableEmoji: true                             # Enable Emoticons
 enableGitInfo: true                           # Allow access to Git data
 Paginate: 3                                   # 3 Posts per page
