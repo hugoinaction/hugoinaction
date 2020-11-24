@@ -146,18 +146,6 @@ x++;
 console.log(x);
 ```
 
-With highlighting:
-
-```javascript {linenos=true,hl_lines=[2,"4-6"],linenostart=199}
-while (!success) {
-  tryAgain();
-  attempt++;
-  if (Dead) {
-    break;
-  }
-}
-```
-
 ## Direct Emojis
 Smile please :smile:
 
@@ -165,14 +153,23 @@ I :heart: Hugo
 
 Wink :wink:
 
-A link to [Emojis](#direct-emojis)
+
+## Fractions
+
+1/2
+
+100/999
+
+Not a Number/5
+
+A link to [Fractions](#fractions)
 
 
-## Definition Lists
+## Definition List
 
 Alex
 : Hippy Web Developer
-: Technophile
+: Technofile
 
 Bob
 : Classic SysAdmin
