@@ -7,6 +7,8 @@
   {{with (default .Site.Title .Page.Title)}}<title>{{.}}</title>{{end}}
   {{with .Page.Description}}
   <meta name="description" content="{{.}}" />{{end}}
+  {{ $js := resources.Get "index.js" | js.Build (dict "minify" (not $.Site.IsServer))}}
+<script type="text/javascript" src="{{ $js.RelPermalink }}" defer></script>
 {{ template "_internal/twitter_cards.html" . }}
 {{ template "_internal/opengraph.html" . }}
 </head>
