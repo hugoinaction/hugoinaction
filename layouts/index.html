@@ -2,15 +2,15 @@
 <html>
   <head>
     <link rel="stylesheet" type="text/css" href="./index.css">
-    <title>{{$.Page.Title}}</title>
-    <meta name="description" content="{{$.Page.Description}}" />
+    {{if $.Page.Title}}<title>{{$.Page.Title}}</title>{{end}}
+    {{if $.Page.Description}}<meta name="description" content="{{$.Page.Description}}" />{{end}}
   </head>
   <body>
     <section>
       <main>
         <img src="./image/logo.svg" width="60px">
-        <h1 class="intro">{{$.Page.Title}}</h1>
-        <h2>{{$.Page.Params.subtitle}}</h2>
+        {{if $.Page.Title}}<h1 class="intro">{{$.Page.Title}}</h1>{{end}}
+        {{if $.Page.Params.subtitle}}<h2>{{$.Page.Params.subtitle}}</h2>{{end}}
         <a href="./about">About Us</a>
         <a href="./privacy">Privacy Policy</a>
         <a href="./terms">Terms of Use</a>
