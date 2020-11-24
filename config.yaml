@@ -1,7 +1,7 @@
 baseURL: http://example.org/                  # Hosting location.
 languageCode: en-us                           # Locale
 title: Acme Corporation                       # Name of the website
-theme: Eclectic                               # Name of the theme
+theme: Universal                              # Name of the theme
 author:                                       # Information about the website author
   facebook: "https://facebook.com/example"
   twitter: "https://twitter.com/example"
