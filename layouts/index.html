@@ -58,7 +58,7 @@
       <article>
         <h1> Our Products</h1>
         <table>
-          {{$products := .Resources.GetMatch "products.csv"}}
+          {{$products := resources.GetMatch "products.csv"}}
           {{$parsedProducts := $products | transform.Unmarshal (dict "delimiter" ",")}}
           {{ range $i, $value := $parsedProducts  }}
           {{if eq $i 0}}<thead>{{end}}
