@@ -49,7 +49,7 @@ Also a # tag.
 Horizontal Lines:
 
 ------------------------------------
-. 
+.
 ***********************************
 .
 ***
@@ -59,3 +59,34 @@ Horizontal Lines:
 
 > Block Quote
 
+## Inline Formatting
+
+*Italics*
+
+_Italics_
+
+__Bold__
+
+___Bold+Italics___
+
+this_is_not_emphasis
+
+~~Strikethough~~
+
+Content with a -- (dash) and a --- (long dash).
+
+[link](http://link/path/to/target)
+
+[link](http://link/path/to/target "TITLE ON LINK")
+
+[Shared Links with footnotes][target 1]
+
+[Second shared link][target 1]
+
+[target 1]
+
+[target 1]: http://footnote.com
+
+Sample inline code `a++` can be specified here.
+
+![Alt Text](/image/logo.png "Optional Tooltip")
