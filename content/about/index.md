@@ -56,9 +56,3 @@ Gabby
 : Cool Content Master
 : Cautious
 
-Our Values
------------
-{{< repeat 5>}}
-Customer is our *number 1* priority.
-{{< / repeat>}}
-Nothing else.

@@ -1,8 +1,0 @@
-threshold: 50  # Require a page to have a minimum score of 50 points to be listed as a related page (higher is better). It needs to be a number between 0 and 100.
-includeNewer: true # Pages created after the supplied page are also matched to find related pages. This can cause the list of related pages to change as we add more content.
-indices:
-- name: tags  # The tags from the front matter are matched to create the score
-  weight: 10  # Each matching tag gives 10 points.
-- name: date  # Give scores to pages matching the date pattern
-  weight: 1
-  pattern: 2006 # Pages in the same calendar year get 1 point.
