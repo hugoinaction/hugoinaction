@@ -3,7 +3,8 @@
 {{define "body"}}
 <section>
   <article>
-    <h1> Recent Posts</h1>
+    <h1>{{.Title}}</h1>
+    {{.Content}}
     <div class="posts">
       {{ range .Paginator.Pages }}
       <div class="post">
