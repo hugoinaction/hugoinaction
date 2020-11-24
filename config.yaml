@@ -1,4 +1,34 @@
 baseURL: http://example.org/                  # Hosting location.
-languageCode: en-us
-title: My New Hugo Site
-theme: Eclectic
+languageCode: en-us                           # Locale
+title: Acme Corporation                       # Name of the website
+theme: Eclectic                               # Name of the theme
+author:                                       # Information about the website author
+  facebook: "https://facebook.com/example"
+  twitter: "https://twitter.com/example"
+  email: "contact@example.org"
+  name: "Acme Corporation"
+  location: New York
+  phone: (999) 999-9999
+  hours: "**Mon-Fri:** 9:00AM - 6:00PM, ET"
+
+menu:                                         # Menu placement
+  main:                                       #    - Name of the menu
+    - identifier: about                       #       - Identifier
+      name: About                             #       - Display name (theme specific key)
+      url: /about                             #       - Target URL
+      weight: 1                               #       - Sorting order
+    - identifier: contact
+      name: Contact
+      url: /contact
+      weight: 2
+params:                                       # Theme specific parameters
+  color: "#71B180"
+  copyright: "Copyright &copy; 2020 Acme Corporation. All Rights Reserved."
+  footer:
+    - title: About
+      content: Acme Corporation is the world's leading manufacturer of digital shapes. From squares and circles to triangles and hexagons, we have it all. Browse through our collection of various forms with different thickness and line styles. We shape the world. You live in it.
+    - title: Recent Blog Posts
+      recents: blog
+      recentCount: 7
+    - title: Contact Us
+      contact: true
