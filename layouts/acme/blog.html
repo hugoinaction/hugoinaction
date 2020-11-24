@@ -1,0 +1,51 @@
+{{define "body"}}
+<section>
+  <aside>
+    <h2>Information</h2>
+    <table>
+      <tr>
+        <td colspan="2">{{.Summary}}</td>
+      </tr>
+      <tr>
+        <th>Reading time</th>
+        <td>{{.ReadingTime}} min.</td>
+      </tr>
+      <tr>
+        <th>Word Count</th>
+        <td>≈ {{.FuzzyWordCount}}</td>
+      </tr>
+      <tr>
+        <th>
+          Tags
+        </th>
+        <td>
+          {{range .Params.tags }}
+          <a href="{{ "/tags/" | relURL }}{{ . | urlize }}">{{ . | humanize }} </a>
+          {{ end }}
+        </td>
+      </tr>
+      {{ $related := .Site.RegularPages.Related . | first 5 }}
+      {{ with $related }}
+      <tr>
+        <th colspan="2">
+          Related Pages
+        </th>
+      <tr>
+      </tr>
+      <td colspan="2">
+        <ol>
+          {{ range . }}
+          <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+          {{ end }}
+        </ol>
+      </td>
+      </tr>
+      {{ end }}
+    </table>
+  </aside>
+  <main>
+    {{with .Page.Title}}<h1>{{.}}</h1>{{end}}
+    {{.Content}}
+  </main>
+</section>
+{{end}}

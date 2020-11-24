@@ -7,6 +7,10 @@ menu:
   footer:
     name: Blog
     weight: 1
+cascade:
+  layout: blog
+  type: acme
+type: default
 ---
 The Acme Blog
 ============
