@@ -9,6 +9,7 @@ testimonials:
     content: Sharp and sturdy - Just like you want them.
   - author: Richter @ Richter Measures
     content: Undoubted accuracy. Safety guarantee. We love what Acme delivers.
+type: acme
 ---
 
 Acme Corporation&trade; is the _world's leading manufacturer of digital shapes_. From squares and circles to triangles and hexagons, we have it all. Browse through our collection of various forms with different thickness and line styles.
