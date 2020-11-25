@@ -19,8 +19,17 @@ jobs:
           hugo-version: '0.78.2'
           extended: true
 
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '14.x'
+
+      - name: Install NPM Dependencies
+        run: npm ci
+
+
       - name: Build
-        run: hugo --minify --baseURL=https://hugoinaction.github.io/GitHubPages
+        run: hugo --minify --baseURL=https://hugoinaction.github.io/GitHubPagesNpm
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
