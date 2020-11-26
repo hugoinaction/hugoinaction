@@ -17,5 +17,8 @@
  },
  "main": "api.js",
  "name": "acme-corporation-website",
+ "scripts": {
+  "start": "node api.js"
+ },
  "version": "0.1.0"
 }
