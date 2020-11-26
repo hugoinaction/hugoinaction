@@ -6,13 +6,11 @@ module.exports = {
    * Function to handle calls to the API endpoint of the cloud function.
    */
   async handler(event, context) {
-    if (!event.queryStringParams || !event.queryStringParams.tex) {
+    if (!event.queryStringParams && !event.queryStringParams.tex) {
       return {
         statusCode: 400,
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          event,
-          context,
           error: "The required `tex` parameter not supplied.",
         })
       }
