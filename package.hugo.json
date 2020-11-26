@@ -1,7 +1,7 @@
 {
   "name": "acme-corporation-website",
   "version": "0.1.0",
-  "dependencies": {
+  "devDependencies": {
     "@easylogic/editor": "0.10.0"
   }
 }

@@ -1,16 +1,18 @@
 {
  "comments": {
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
    "@easylogic/editor": "project",
    "fuse.js": "github.com/hugoinaction/Acme"
-  },
-  "devDependencies": {}
+  }
  },
  "dependencies": {
+  "mathjax": "^3.1.2"
+ },
+ "devDependencies": {
   "@easylogic/editor": "0.10.0",
   "fuse.js": "^6.4.3"
  },
- "devDependencies": {},
  "name": "acme-corporation-website",
  "version": "0.1.0"
 }
