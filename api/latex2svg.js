@@ -6,6 +6,18 @@ module.exports = {
    * Function to handle calls to the API endpoint of the cloud function.
    */
   async handler(event, context) {
+    console.log("Password", process.env.LATEX2SVG_PASSWORD);
+    if (!event.queryStringParameters || event.queryStringParameters.password !== process.env.LATEX2SVG_PASSWORD) {
+        return {
+          statusCode: 401,
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({
+            error: "Access Denied.",
+            process.env
+          })
+        }
+      }
+
     if (!event.queryStringParameters || !event.queryStringParameters.tex) {
       return {
         statusCode: 400,
