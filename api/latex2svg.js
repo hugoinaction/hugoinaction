@@ -11,8 +11,7 @@ module.exports = {
           statusCode: 401,
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({
-            error: "Access Denied.",
-            env: process.env
+            error: "Access Denied."
           })
         }
       }
