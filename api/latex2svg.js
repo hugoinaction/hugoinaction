@@ -6,7 +6,7 @@ module.exports = {
    * Function to handle calls to the API endpoint of the cloud function.
    */
   async handler(event, context) {
-    if (!event.queryStringParams && !event.queryStringParams.tex) {
+    if (!event.queryStringParameters || !event.queryStringParameters.tex) {
       return {
         statusCode: 400,
         headers: { 'Content-Type': 'application/json' },
@@ -21,13 +21,13 @@ module.exports = {
       });
     }
 
-    const svg = MathJax.tex2svg(event.queryStringParams.tex, {
-      display: event.queryStringParams.display,
-      em: event.queryStringParams.em,
-      ex: event.queryStringParams.ex,
-      containerWidth: event.queryStringParams.containerWidth,
-      lineWidth: event.queryStringParams.lineWidth,
-      scale: event.queryStringParams.scale
+    const svg = MathJax.tex2svg(event.queryStringParameters.tex, {
+      display: event.queryStringParameters.display,
+      em: event.queryStringParameters.em,
+      ex: event.queryStringParameters.ex,
+      containerWidth: event.queryStringParameters.containerWidth,
+      lineWidth: event.queryStringParameters.lineWidth,
+      scale: event.queryStringParameters.scale
     });
 
     return {
