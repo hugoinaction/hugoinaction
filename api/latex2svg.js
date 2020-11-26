@@ -13,7 +13,7 @@ module.exports = {
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({
             error: "Access Denied.",
-            process.env
+            env: process.env
           })
         }
       }
