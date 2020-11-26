@@ -11,7 +11,8 @@ module.exports = {
         statusCode: 400,
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          error: "The requires `tex` parameter not supplied.",
+          params: event.queryStringParams,
+          error: "The required `tex` parameter not supplied.",
         })
       }
     }
