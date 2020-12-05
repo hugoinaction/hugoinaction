@@ -20,7 +20,6 @@
 </div>
 {{end}}
 
-<h3> Post a comment</h3>
 <template id="comment-success">
 <div class="success">
 {{default "Your comment has been successfully submitted for moderation. It will be available on the website soon." (site.Param "comment-success")}}
@@ -36,6 +35,7 @@
 {{ else }}
   <form data-dynamic-form data-success="#comment-success" data-error="#comment-error" action="https://formspree.io/{{.FormspreeCommentForm}}" method="post">
 {{ end }}
+  <h3> Post a comment</h3>
   <input type="hidden" name="url" value="{{.RelPermalink}}">
   <div>
     <label for="name">Name:</label>

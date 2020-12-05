@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "Theme for the acme corporation website in Hugo in Action",
   "main": "n/a",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "fuse.js": "^6.4.3"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "n/a"
   },
