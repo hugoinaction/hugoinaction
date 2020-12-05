@@ -7,9 +7,9 @@ const server = http.createServer().listen(port);
 
 server.on('request', async function (req, res) {
   const url = new URL(req.url, `http://${req.headers.host}`);
-  const queryStringParams = url.search && querystring.parse(url.search.slice(1));
+  const queryStringParameters = url.search && querystring.parse(url.search.slice(1));
   const request = {
-    queryStringParams,
+    queryStringParameters,
     path: url.pathname,
     httpMethod: req.method,
     headers: req.headers,
