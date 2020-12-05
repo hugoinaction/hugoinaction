@@ -8,6 +8,7 @@ module.exports = {
   async handler(event, context) {
     if (
       !event.queryStringParameters ||
+      !process.env.LATEX2SVG_PASSWORD ||
       event.queryStringParameters.password !== process.env.LATEX2SVG_PASSWORD
     ) {
       return {

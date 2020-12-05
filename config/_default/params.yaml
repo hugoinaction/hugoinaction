@@ -9,3 +9,4 @@ TermsAndPrivacy:
 FormspreeCommentForm: xpzozyyg
 NetlifyCommentForm: 5f6af880fd7ebf0007984d2f
 RemoveFormOnSubmission: true
+Latex2Svg: https://ch11-1.hugoinaction.com/.netlify/functions/latex2svg
