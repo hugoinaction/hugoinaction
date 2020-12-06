@@ -1,6 +1,7 @@
 const http = require("http");
 const querystring = require("querystring");
 const latex2svg = require("./api/latex2svg");
+const rebuild = require('./api/rebuild');
 
 const port = process.env.PORT || 3000;
 const server = http.createServer().listen(port);
@@ -26,6 +27,9 @@ server.on("request", async function (req, res) {
     switch (url.pathname) {
       case "/latex2svg":
         response = await latex2svg.handler(request);
+        break;
+      case 'rebuild':
+        response = await rebuild.handler(request);
         break;
     }
   } catch (e) {

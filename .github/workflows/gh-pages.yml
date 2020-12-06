@@ -2,8 +2,9 @@ name: github pages
 
 on:
   push:
-    branches:
-      - main
+      branches:
+        - main
+  workflow_dispatch:
 
 jobs:
   deploy:
