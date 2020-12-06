@@ -127,7 +127,7 @@ module.exports = {
             return {
               statusCode: 429,
               headers: {
-                'Retry-After': (DEPLOY_MIN_INTERVAL - new Date().getTime() + new Date(!list[0].created_at).getTime())/1000
+                'Retry-After': (DEPLOY_MIN_INTERVAL - new Date().getTime() + new Date(list[0].created_at).getTime())/1000
               }
             }
           }
