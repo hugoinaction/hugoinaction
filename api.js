@@ -28,7 +28,7 @@ server.on("request", async function (req, res) {
       case "/latex2svg":
         response = await latex2svg.handler(request);
         break;
-      case 'rebuild':
+      case '/rebuild':
         response = await rebuild.handler(request);
         break;
     }

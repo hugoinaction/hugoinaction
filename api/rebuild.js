@@ -1,3 +1,4 @@
+const fetch = require("node-fetch");
 const DEPLOY_MIN_INTERVAL = 60 * 1000; // The sample code might have a different value.
 
 module.exports = {
@@ -25,29 +26,30 @@ module.exports = {
         );
         if (deploys.ok) {
           const list = await deploys.json();
-          if (
-            Array.isArray(list) &&
+          if ( Array.isArray(list) &&
             (!list[0] ||
-              new Date().getTime() - new Date(!list[0].created_at).getTime() >
+              new Date().getTime() - new Date(list[0].created_at).getTime() >
                 DEPLOY_MIN_INTERVAL)
           ) {
 
             /** Changes for a single branch begin **/
 
             // const rebuild = await fetch(
-            //   `https://api.netlify.com/build_hooks/${process.env.BUILD_HOOK_ID}`
+            //   `https://api.netlify.com/build_hooks/${process.env.BUILD_HOOK_ID}`, {method: 'POST'}
             // );
 
             /** Changes for a single branch end **/
 
             /** Changes for multiple branches begin **/
             const branches = ['ch11-3'];
-            const rebuild = {ok: false, status: 400};
+            let rebuild = {ok: false, status: 400};
             do {
               const branch = branches.shift();
-              trigger_branch
               rebuild = await fetch(
-                `https://api.netlify.com/build_hooks/${process.env.BUILD_HOOK_ID}&trigger_branch=${branch}`
+                `https://api.netlify.com/build_hooks/${process.env.BUILD_HOOK_ID}?trigger_branch=${branch}`,
+                {
+                  method: 'POST'
+                }
               );
 
             } while(rebuild.ok && branches.length > 0)
@@ -56,16 +58,29 @@ module.exports = {
             if (rebuild.ok) {
               return {
                 statusCode: 200,
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({response: "Triggered successfully"})
               };
             } else {
-              return { statusCode: rebuild.status };
+              return {
+                headers: rebuild.headers,
+                statusCode: rebuild.status,
+                body: await rebuild.text()
+              };
+            }
+          } else {
+            return {
+              statusCode: 429,
+              headers: {
+                'Retry-After': Array.isArray(list) && list[0] ? (DEPLOY_MIN_INTERVAL - new Date().getTime() + new Date(list[0].created_at).getTime())/1000: 1,
+              }
             }
           }
         }
       }
       if (process.env.GITHUB_ACCESS_TOKEN) {
         const response = await fetch(
-          "https://api.github.com/repos/hugoinaction/hugoinaction/actions/workflows/gh-pages",
+          "https://api.github.com/repos/hugoinaction/GitHubPagesRebuild/actions/workflows/gh-pages.yml/runs",
           {
             headers: {
               Accept: "application/vnd.github.v3+json",
@@ -79,11 +94,11 @@ module.exports = {
           if (
             Array.isArray(list) &&
             (!list[0] ||
-              new Date().getTime() - new Date(!list[0].created_at).getTime() >
+              new Date().getTime() - new Date(list[0].created_at).getTime() >
                 DEPLOY_MIN_INTERVAL)
           ) {
             const rebuild = await fetch(
-              "https://api.github.com/repos/hugoinaction/hugoinaction/workflows/gh-pages/dispatches",
+              "https://api.github.com/repos/hugoinaction/GitHubPagesRebuild/actions/workflows/gh-pages.yml/dispatches",
               {
                 method: "POST",
                 headers: {
@@ -98,17 +113,35 @@ module.exports = {
             if (rebuild.ok) {
               return {
                 statusCode: 200,
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({response: "Triggered successfully"})
               };
             } else {
               return {
+                headers: rebuild.headers,
                 statusCode: rebuild.status,
+                body: await rebuild.text()
               };
             }
+          } else {
+            return {
+              statusCode: 429,
+              headers: {
+                'Retry-After': (DEPLOY_MIN_INTERVAL - new Date().getTime() + new Date(!list[0].created_at).getTime())/1000
+              }
+            }
           }
+        } else {
+          return {
+            headers: response.headers,
+            statusCode: response.status,
+            body: await response.text()
+          };
         }
       }
       return {
         statusCode: 400,
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           error: "Missing data.",
         }),
@@ -116,6 +149,7 @@ module.exports = {
     } catch (e) {
       return {
         statusCode: 500,
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           error: "Please try again later.",
         }),
