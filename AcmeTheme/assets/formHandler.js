@@ -13,6 +13,14 @@ export default {
           headers: { "Accept": "application/json" }
         });
         if (response.ok) {
+          if (form.dataset.pre) {
+            let content = document.querySelector(form.dataset.pre).innerHTML;
+            for (let pair of  data) {
+              let key = pair[0], value = pair[1];
+              content = content.replaceAll(`[[${key}]]`,value);
+            }
+            form.insertAdjacentHTML('beforebegin', content);
+          }
           form.insertAdjacentHTML('afterend',
             document.querySelector(form.dataset.success).innerHTML);
         } else {
