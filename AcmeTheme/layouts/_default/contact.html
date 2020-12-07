@@ -1,0 +1,37 @@
+{{define "bodyClass"}}contact{{end}}
+
+
+{{define "body"}}
+<div class="map">
+  <img class="contact-backdrop" src="{{(resources.GetMatch "image/contact.svg").Permalink}}">
+  <img class="marker" src="{{(resources.GetMatch "image/pin.svg").Permalink}}">
+</div>
+<div class="attribution">Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a>
+  from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+  Map from <a
+    href="https://www.openstreetmap.org/query?lat=41.0634&lon=-72.3369#map=16/41.0634/-72.3394">OpenStreetMaps</a></div>
+</div>
+<section>
+  <main>
+    <h1>{{.Title}}</h1>
+    {{.Content}}
+    <form>
+      <div>
+        <label for="name">Name:</label>
+        <input name="name" type="text" required>
+      </div>
+      <div>
+        <label for="email">Email:</label>
+        <input name="email" type="email" required>
+      </div>
+      <div>
+        <label for="message">Message:</label>
+        <textarea name="message" cols="50" rows="10" required></textarea>
+      </div>
+      <div>
+        <button type="submit">Send</button>
+      </div>
+    </form>
+  </main>
+</section>
+{{ end }}
