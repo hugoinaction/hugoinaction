@@ -1,0 +1,7 @@
+{{define "bodyClass"}}editor{{end}}
+{{define "body"}}
+{{ $js := resources.Get "editor.js" | js.Build }}
+<script type="text/javascript" src="{{ $js.RelPermalink }}" defer></script>
+{{ $style := resources.Get "editor.scss" | toCSS | minify }}
+<link rel="stylesheet" href="{{ $style.Permalink }}">
+{{end}}
