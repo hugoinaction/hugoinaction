@@ -15,10 +15,20 @@
   <main>
     <h1>{{.Title}}</h1>
     {{.Content}}
+  <template id="contact-success">
+  <div class="success">
+  {{default "Thank you for contacting us. You will hear from us soon." ($.Param "contact-success")}}
+  </div>
+  </template>
+  <template id="contact-error">
+  <div class="error">
+  {{default "We are facing an issue submitting the contact form. Please try again later." ($.Param "contact-error")}}
+  </div>
+  </template>
   {{if getenv "NETLIFY" }}
-    <form netlify="true" name="Contact">
+    <form data-dynamic-form data-success="#contact-success" data-error="#contact-error" netlify="true" name="Contact">
   {{ else }}
-    <form action="https://formspree.io/{{.Param "contact"}}" method="post">
+    <form data-dynamic-form data-success="#contact-success" data-error="#contact-error" action="https://formspree.io/{{.Param "contact"}}" method="post">
   {{ end }}
       <div>
         <label for="name">Name:</label>
