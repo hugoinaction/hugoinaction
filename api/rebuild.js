@@ -78,6 +78,67 @@ module.exports = {
           }
         }
       }
+      if (process.env.GITHUB_ACCESS_TOKEN) {
+        const response = await fetch(
+          "https://api.github.com/repos/hugoinaction/GitHubPagesRebuild/actions/workflows/gh-pages.yml/runs",
+          {
+            headers: {
+              Accept: "application/vnd.github.v3+json",
+              Authorization: `token ${process.env.GITHUB_ACCESS_TOKEN}`,
+            },
+          }
+        );
+        if (response.ok) {
+          const data = await response.json();
+          const list = data.workflow_runs;
+          if (
+            Array.isArray(list) &&
+            (!list[0] ||
+              new Date().getTime() - new Date(list[0].created_at).getTime() >
+                DEPLOY_MIN_INTERVAL)
+          ) {
+            const rebuild = await fetch(
+              "https://api.github.com/repos/hugoinaction/GitHubPagesRebuild/actions/workflows/gh-pages.yml/dispatches",
+              {
+                method: "POST",
+                headers: {
+                  Accept: "application/vnd.github.v3+json",
+                  Authorization: `token ${process.env.GITHUB_ACCESS_TOKEN}`,
+                },
+                body: JSON.stringify({
+                  ref: "main",
+                }),
+              }
+            );
+            if (rebuild.ok) {
+              return {
+                statusCode: 200,
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({response: "Triggered successfully"})
+              };
+            } else {
+              return {
+                headers: rebuild.headers,
+                statusCode: rebuild.status,
+                body: await rebuild.text()
+              };
+            }
+          } else {
+            return {
+              statusCode: 429,
+              headers: {
+                'Retry-After': (DEPLOY_MIN_INTERVAL - new Date().getTime() + new Date(list[0].created_at).getTime())/1000
+              }
+            }
+          }
+        } else {
+          return {
+            headers: response.headers,
+            statusCode: response.status,
+            body: await response.text()
+          };
+        }
+      }
       return {
         statusCode: 400,
         headers: { "Content-Type": "application/json" },
