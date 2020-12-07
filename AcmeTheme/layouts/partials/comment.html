@@ -20,6 +20,13 @@
 </div>
 {{end}}
 
+<template id="comment-pre">
+<div class="comment">
+  {{(resources.Get "image/avatar.svg").Content | safeHTML}}
+  <div class="author">[[name]]</div>
+  <div class="message">[[message]]</div>
+</div>
+</template>
 <template id="comment-success">
 <div class="success">
 {{default "Your comment has been successfully submitted for moderation. It will be available on the website soon." (site.Param "comment-success")}}
@@ -30,10 +37,10 @@
 {{default "We are facing an issue submitting the comment. Please try again later." (site.Param "comment-error")}}
 </div>
 </template>
-{{if getenv "NETLIFY" }}
-  <form data-dynamic-form data-success="#comment-success" data-error="#comment-error" netlify="true" name="Comments">
+{{ if getenv "NETLIFY" }}
+  <form data-dynamic-form data-success="#comment-success" data-error="#comment-error" data-pre="#comment-pre" netlify="true" name="Comments">
 {{ else }}
-  <form data-dynamic-form data-success="#comment-success" data-error="#comment-error" action="https://formspree.io/{{.FormspreeCommentForm}}" method="post">
+  <form data-dynamic-form data-success="#comment-success" data-error="#comment-error" data-pre="#comment-pre" action="https://formspree.io/{{.FormspreeCommentForm}}" method="post">
 {{ end }}
   <h3> Post a comment</h3>
   <input type="hidden" name="url" value="{{.RelPermalink}}">

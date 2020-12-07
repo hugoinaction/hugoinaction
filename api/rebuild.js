@@ -41,7 +41,7 @@ module.exports = {
             /** Changes for a single branch end **/
 
             /** Changes for multiple branches begin **/
-            const branches = ['ch11-3'];
+            const branches = ['ch11-3', 'ch11-4'];
             let rebuild = {ok: false, status: 400};
             do {
               const branch = branches.shift();
