@@ -15,7 +15,7 @@
   <main>
     <h1>{{.Title}}</h1>
     {{.Content}}
-    <form>
+    <form netlify="true" name="Contact">
       <div>
         <label for="name">Name:</label>
         <input name="name" type="text" required>
@@ -31,7 +31,7 @@
       <div>
         <button type="submit">Send</button>
       </div>
-    </form>
+      </form>
   </main>
 </section>
 {{ end }}
