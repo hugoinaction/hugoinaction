@@ -1,0 +1,14 @@
+{
+ "comments": {
+  "dependencies": {},
+  "devDependencies": {
+   "fuse.js": "github.com/hugoinaction/Acme"
+  }
+ },
+ "dependencies": {},
+ "devDependencies": {
+  "fuse.js": "^6.4.3"
+ },
+ "name": "acme-corporation-website",
+ "version": "0.1.0"
+}
