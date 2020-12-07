@@ -13,6 +13,12 @@ A circle may also be defined as a special kind of ellipse in which the two foci 
 
 The circle is priced at `{{< price product="Circle" >}}`.
 
+## Area
+
+The area of a circle is {{<latex display="false">}} \pi r^2 {{</latex>}}
+
+{{<latex>}}\text{Area} = \pi r^2{{</latex>}}
+
 ## Terminology
 
 * **Annulus** a ring-shaped object, the region bounded by two concentric circles.

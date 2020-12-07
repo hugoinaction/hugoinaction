@@ -1,0 +1,47 @@
+{{/* layouts/shortcodes/latex.html */}}
+{{/* defaults taken from http://docs.mathjax.org/en/latest/web/typeset.html}}
+
+{{/*  a Boolean specifying whether the math is in display-mode or inline mode */}}
+{{ $display := true }}
+{{ with .Get "display" }}
+{{ $display = . }}
+{{ end }}
+
+{{/*  a number giving the number of pixels in an em for the surrounding font. */}}
+{{ $em := 8 }}
+{{ with .Get "em" }}
+{{ $em = . }}
+{{ end }}
+
+
+{{/*  a number giving the number of pixels in an em for the surrounding font. */}}
+{{ $ex := 16 }}
+{{ with .Get "ex" }}
+{{ $ex = . }}
+{{ end }}
+
+{{/*  a number giving the width of the container, in pixels. */}}
+{{ $containerWidth := (mul 80 $ex) }}
+{{ with .Get "containerWidth" }}
+{{ $containerWidth = . }}
+{{ end }}
+
+
+{{/*  a number giving the line-breaking width in em units. Default is a very large number (100000), so effectively no line breaking. */}}
+{{ $lineWidth := 100000 }}
+{{ with .Get "lineWidth" }}
+{{ $lineWidth = . }}
+{{ end }}
+
+{{/*  a number giving a scaling factor to apply to the resulting conversion. Default is 1. */}}
+{{ $scale := 1 }}
+{{ with .Get "scale" }}
+{{ $scale = . }}
+{{ end }}
+
+{{ if (and $.Site.Params.Latex2Svg (getenv "LATEX2SVG_PASSWORD") ) }}
+  {{ $json := getJSON $.Site.Params.Latex2Svg "?" (querify "tex" .Inner) "&password=" (getenv "LATEX2SVG_PASSWORD") "&display=" $display "&em=" $em "&ex=" $ex "&containerWidth=" $containerWidth "&lineWidth=" $lineWidth "&scale=" $scale}}
+  {{ with $json.data }}
+  {{. | safeHTML}}
+{{ end }}
+{{ end }}
