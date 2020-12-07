@@ -2,8 +2,9 @@ name: github pages
 
 on:
   push:
-    branches:
-      - main
+      branches:
+        - main
+  workflow_dispatch:
 
 jobs:
   deploy:
@@ -29,7 +30,7 @@ jobs:
 
 
       - name: Build
-        run: hugo --minify --baseURL=https://hugoinaction.github.io/GitHubPagesNpm
+        run: hugo --minify --baseURL=https://hugoinaction.github.io/GitHubPagesRebuild
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3

@@ -4,7 +4,7 @@
 
   {{$comments:= getJSON "https://user:" (getenv "COMMENTS_TOKEN") "@formspree.io/api/0/forms/" site.Params.FormspreeCommentForm "/submissions" }}
 
-  {{ range $comments.submissions }}
+  {{ range sort $comments.submissions "_date" "ASC" }}
     {{if not ($response.Get .url)}}
       {{$response.Set .url (slice )}}
     {{end}}
