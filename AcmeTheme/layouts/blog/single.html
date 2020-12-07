@@ -46,6 +46,7 @@
   <main>
     {{with .Page.Title}}<h1>{{.}}</h1>{{end}}
     {{.Content}}
+    {{ partial "comment.html" (dict "FormspreeCommentForm" ($.Param "FormspreeCommentForm") "RelPermalink" .Page.RelPermalink "Disabled" ($.Param "CommentDisabled")) }}
   </main>
 </section>
 {{end}}
