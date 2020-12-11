@@ -24,6 +24,10 @@
   margin: 10px 0;
 }
 
+.store .intro {
+  text-align: center;
+}
+
 .store main {
   width: 100%;
 }
