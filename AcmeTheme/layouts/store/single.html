@@ -1,0 +1,42 @@
+{{define "bodyClass"}}store{{end}}
+
+{{define "body"}}
+{{$price := 0}}
+{{with .Page.Params.product}}
+{{$price = (partialCached "price.html" "nothing").Get .}}
+{{end}}
+<section>
+  <aside>
+    <img src="{{with .Resources.GetMatch "hero.*"}}{{.RelPermalink}}{{end}}" alt="{{.Page.Title}}">
+    <button class="addToCart">Add to cart</button>
+    <button class="buyNow">Buy now</button>
+  </aside>
+  <main>
+    <div class="content">
+    {{with .Page.Title}}<h1>{{.}}</h1>{{end}}
+    <div class="price"> Price: <span class="value">{{ $price }}</span></div>
+    {{.Content}}
+    </div>
+  </main>
+</section>
+<section>
+  <main>
+    {{ $related := (where (.Site.RegularPages.Related . ) "Section" .Section) | first 3 }}
+    {{with $related}}
+    <h2>Related Products</h2>
+    {{range .}}
+      <div class="card">
+        <a href="{{.RelPermalink}}"><img class="card-img-top" src="{{ with (.Resources.GetMatch "hero.*")}}{{.RelPermalink}}{{end}}" alt="{{.Title}}"></a>
+        <div class="card-body">
+          <h5 class="card-title">{{.Title}}</h5>
+          <p class="card-text">{{.Summary}}</p>
+          <button>Add to cart</button>
+        </div>
+      </div>
+    {{end}}
+    {{end}}
+
+        {{ partial "comment.html" (dict "FormspreeCommentForm" ($.Param "FormspreeCommentForm") "RelPermalink" .Page.RelPermalink "Disabled" ($.Param "CommentDisabled")) }}
+  </main>
+</section>
+{{end}}
