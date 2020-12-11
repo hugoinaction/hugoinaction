@@ -40,28 +40,10 @@
   <main>
     {{ $related := (where (.Site.RegularPages.Related . ) "Section" .Section) | first 3 }}
     {{with $related}}
-    <h2>Related Products</h2>
-    {{range .}}
-      {{$product := (dict "colors" "" "rating" 0 "price" 0)}}
-      {{if .Params.product}}
-        {{$product = (partialCached "product.html" "nothing").Get .Page.Params.product}}
+      <h2>Related Products</h2>
+      {{range .}}
+        {{.Render "card"}}
       {{end}}
-      <div class="card">
-        <a href="{{.RelPermalink}}"><img class="card-img-top" src="{{ with (.Resources.GetMatch "hero.*")}}{{.RelPermalink}}{{end}}" alt="{{.Title}}"></a>
-        <div class="card-body">
-          <h5 class="card-title">{{.Title}}</h5>
-          <p class="card-text">{{.Summary}}</p>
-          {{if gt (len $product.colors) 0}}
-          <select>
-            {{range split $product.colors ","}}
-              <option value="{{trim . " "}}">{{trim . " "}}</option>
-            {{end}}
-          </select>
-          {{end}}
-          <button data-price="{{$product.price}}">Add to cart</button>
-        </div>
-      </div>
-    {{end}}
     {{end}}
 
         {{ partial "comment.html" (dict "FormspreeCommentForm" ($.Param "FormspreeCommentForm") "RelPermalink" .Page.RelPermalink "Disabled" ($.Param "CommentDisabled")) }}
