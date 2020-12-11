@@ -1,46 +1,37 @@
 {{define "bodyClass"}}store{{end}}
 
 {{define "body"}}
-{{$price := 0}}
-{{$colors := ""}}
-{{$rating := "0"}}
 
+
+{{$product := (dict "colors" "" "rating" 0 "price" 0)}}
 {{if .Page.Params.product}}
-  {{$products := resources.GetMatch "products.csv"}}
-  {{$parsedProducts := $products | transform.Unmarshal (dict "delimiter" ",")}}
-  {{ range $r := $parsedProducts }}
-    {{if eq (index $r 0) $.Page.Params.product }}
-      {{$colors = index $r 1}}
-      {{$price = index $r 2}}
-      {{$rating = index $r 3}}
-    {{ end }}
-  {{ end }}
+  {{$product = (partialCached "product.html" "nothing").Get .Page.Params.product}}
 {{end}}
 <section>
   <aside>
     <img src="{{with .Resources.GetMatch "hero.*"}}{{.RelPermalink}}{{end}}" alt="{{.Page.Title}}">
-    {{if gt (len $colors) 0}}
+    {{if gt (len $product.colors) 0}}
     <select>
-      {{range split $colors ","}}
+      {{range split $product.colors ","}}
         <option value="{{trim . " "}}">{{trim . " "}}</option>
       {{end}}
     </select>
     {{end}}
-    <button data-price="{{$price}}" class="addToCart">Add to cart</button>
-    <button data-price="{{$price}}" class="buyNow">Buy now</button>
+    <button data-price="{{$product.price}}" class="addToCart">Add to cart</button>
+    <button data-price="{{$product.price}}" class="buyNow">Buy now</button>
   </aside>
   <main>
     <div class="content">
     {{with .Page.Title}}<h1>{{.}}</h1>{{end}}
     <div class="rating">
-    {{range (seq $rating)}}
+    {{range (seq $product.rating)}}
       &#9733;
     {{end}}
-    {{range after $rating (seq 5)}}
+    {{range after $product.rating (seq 5)}}
       &#9734;
     {{end}}
     </div>
-    <div class="price"> Price: <span class="value">{{ $price }}</span></div>
+    <div class="price"> Price: <span class="value">{{ $product.price }}</span></div>
     {{.Content}}
     </div>
   </main>
@@ -51,12 +42,23 @@
     {{with $related}}
     <h2>Related Products</h2>
     {{range .}}
+      {{$product := (dict "colors" "" "rating" 0 "price" 0)}}
+      {{if .Params.product}}
+        {{$product = (partialCached "product.html" "nothing").Get .Page.Params.product}}
+      {{end}}
       <div class="card">
         <a href="{{.RelPermalink}}"><img class="card-img-top" src="{{ with (.Resources.GetMatch "hero.*")}}{{.RelPermalink}}{{end}}" alt="{{.Title}}"></a>
         <div class="card-body">
           <h5 class="card-title">{{.Title}}</h5>
           <p class="card-text">{{.Summary}}</p>
-          <button>Add to cart</button>
+          {{if gt (len $product.colors) 0}}
+          <select>
+            {{range split $product.colors ","}}
+              <option value="{{trim . " "}}">{{trim . " "}}</option>
+            {{end}}
+          </select>
+          {{end}}
+          <button data-price="{{$product.price}}">Add to cart</button>
         </div>
       </div>
     {{end}}
