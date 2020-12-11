@@ -28,6 +28,12 @@
   width: 100%;
 }
 
+.store aside select {
+  margin: 10px 0;
+  padding: 0;
+  width: 100%;
+}
+
 .store .card {
   width: 250px;
   display: inline-block;

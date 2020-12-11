@@ -2,18 +2,44 @@
 
 {{define "body"}}
 {{$price := 0}}
-{{with .Page.Params.product}}
-{{$price = (partialCached "price.html" "nothing").Get .}}
+{{$colors := ""}}
+{{$rating := "0"}}
+
+{{if .Page.Params.product}}
+  {{$products := resources.GetMatch "products.csv"}}
+  {{$parsedProducts := $products | transform.Unmarshal (dict "delimiter" ",")}}
+  {{ range $r := $parsedProducts }}
+    {{if eq (index $r 0) $.Page.Params.product }}
+      {{$colors = index $r 1}}
+      {{$price = index $r 2}}
+      {{$rating = index $r 3}}
+    {{ end }}
+  {{ end }}
 {{end}}
 <section>
   <aside>
     <img src="{{with .Resources.GetMatch "hero.*"}}{{.RelPermalink}}{{end}}" alt="{{.Page.Title}}">
-    <button class="addToCart">Add to cart</button>
-    <button class="buyNow">Buy now</button>
+    {{if gt (len $colors) 0}}
+    <select>
+      {{range split $colors ","}}
+        <option value="{{trim . " "}}">{{trim . " "}}</option>
+      {{end}}
+    </select>
+    {{end}}
+    <button data-price="{{$price}}" class="addToCart">Add to cart</button>
+    <button data-price="{{$price}}" class="buyNow">Buy now</button>
   </aside>
   <main>
     <div class="content">
     {{with .Page.Title}}<h1>{{.}}</h1>{{end}}
+    <div class="rating">
+    {{range (seq $rating)}}
+      &#9733;
+    {{end}}
+    {{range after $rating (seq 5)}}
+      &#9734;
+    {{end}}
+    </div>
     <div class="price"> Price: <span class="value">{{ $price }}</span></div>
     {{.Content}}
     </div>
