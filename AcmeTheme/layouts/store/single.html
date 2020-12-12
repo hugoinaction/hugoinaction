@@ -1,8 +1,10 @@
 {{define "bodyClass"}}store{{end}}
 
+{{define "header"}}
+{{ partialCached "header.html" (dict "cart" true) "true" }}
+{{ end }}
+
 {{define "body"}}
-
-
 {{$product := (dict "colors" "" "rating" 0 "price" 0)}}
 {{if .Page.Params.product}}
   {{$product = (partialCached "product.html" "nothing").Get .Page.Params.product}}
@@ -43,7 +45,7 @@
 </section>
 <section>
   <main>
-    {{ $related := (where (.Site.RegularPages.Related . ) "Section" .Section) | first 3 }}
+    {{ $related := (where (site.RegularPages.Related . ) "Section" .Section) | first 3 }}
     {{with $related}}
       <h2>Related Products</h2>
       {{range .}}

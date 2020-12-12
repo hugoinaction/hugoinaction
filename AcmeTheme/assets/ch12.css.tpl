@@ -17,7 +17,7 @@
 
 .store .price .value {
   font-size: 24px;
-  color:  {{$.Param "color"}};
+  color:  {{site.Param "color"}};
 }
 
 .store aside button {

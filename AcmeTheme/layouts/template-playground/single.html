@@ -1,7 +1,7 @@
 <h1>Hugo Templates</h1>
 <h2>Variables</h2>
 <b>Custom Variables</b>                                        <br />
-{{$mycustom := .Site.Title}}
+{{$mycustom := site.Title}}
 Site Title: {{$mycustom}}                                      <br />
 {{/* Override $mycustom */}}
 {{$mycustom = .Page.Title}}
@@ -88,19 +88,19 @@ Condition is not defined.
 <h2>Loops</h2>
 <b>All website pages:</b>
 <ul>
-{{range .Site.Pages}}
+{{range site.Pages}}
 <li> {{.Title}}</li>
 {{end}}
 </ul>
 <b>Range context</b>
 <ul>
-{{$title := .Site.Title}}
-{{range .Site.Pages}}
+{{$title := site.Title}}
+{{range site.Pages}}
 <li> {{.Title}} @ {{$title}}</li>
 {{end}}
 </ul>
 <h2>Debugging</h2>
-{{ printf "%#v" $.Site }}
+{{ printf "%#v" site }}
 
 <h2>
   Image Processing & Manipulation

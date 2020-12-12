@@ -1,5 +1,9 @@
 {{define "bodyClass"}}terms store{{end}}
 
+{{define "header"}}
+{{ partialCached "header.html" (dict "cart" true) "true" }}
+{{ end }}
+
 {{define "body"}}
 <section>
   <main>

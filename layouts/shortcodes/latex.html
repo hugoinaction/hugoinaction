@@ -39,8 +39,8 @@
 {{ $scale = . }}
 {{ end }}
 
-{{ if (and $.Site.Params.Latex2Svg (getenv "LATEX2SVG_PASSWORD") ) }}
-  {{ $json := getJSON $.Site.Params.Latex2Svg "?" (querify "tex" .Inner) "&password=" (getenv "LATEX2SVG_PASSWORD") "&display=" $display "&em=" $em "&ex=" $ex "&containerWidth=" $containerWidth "&lineWidth=" $lineWidth "&scale=" $scale}}
+{{ if (and site.Params.Latex2Svg (getenv "LATEX2SVG_PASSWORD") ) }}
+  {{ $json := getJSON site.Params.Latex2Svg "?" (querify "tex" .Inner) "&password=" (getenv "LATEX2SVG_PASSWORD") "&display=" $display "&em=" $em "&ex=" $ex "&containerWidth=" $containerWidth "&lineWidth=" $lineWidth "&scale=" $scale}}
   {{ with $json.data }}
   {{. | safeHTML}}
 {{ end }}

@@ -124,7 +124,7 @@ h1 {
 }
 
 a {
-  color: {{$.Param "color"}};
+  color: {{site.Param "color"}};
   text-decoration: none;
   padding: 10px;
   white-space: nowrap;
@@ -151,7 +151,7 @@ a:hover {
   margin: 15px;
   box-sizing: border-box;
   padding: 10px;
-  border: 1px solid {{$.Param "color"}};
+  border: 1px solid {{site.Param "color"}};
   display: inline-block;
 }
 
@@ -172,7 +172,7 @@ thead td {
 details summary {
   display: block;
   cursor: pointer;
-  color: {{$.Param "color"}};
+  color: {{site.Param "color"}};
 }
 
 details summary::-webkit-details-marker {

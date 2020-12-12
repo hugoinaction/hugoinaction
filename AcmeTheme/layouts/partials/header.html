@@ -1,0 +1,13 @@
+  <header>
+    {{ $logo := resources.GetMatch "image/logo.svg.tpl" | resources.ExecuteAsTemplate "logo.svg" . }}
+
+    <a href="{{site.BaseURL}}"><img src="{{$logo.Permalink}}" width="60px"></a>
+    <span id="search">
+      <input type="search" placeholder="Search">
+      <div></div>
+    </span>
+    {{if $.cart }}
+    <a class="cart">{{(resources.Get "cart.svg").Content | safeHTML}}</a>
+    {{ end }}
+    {{ partialCached "menu.html" (dict "Menu" site.Menus.main  "RenderSubmenus" true) "main" "true" }}
+  </header>

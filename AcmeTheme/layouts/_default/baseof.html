@@ -4,11 +4,11 @@
 <head>
   {{ $css := resources.Match "*.css.tpl" | resources.Concat "index.css" | resources.ExecuteAsTemplate "index.css" . | resources.Minify }}
   <link rel="stylesheet" type="text/css" href="{{$css.Permalink}}">
-  {{with (default .Site.Title .Page.Title)}}<title>{{.}}</title>{{end}}
+  {{with (default site.Title .Page.Title)}}<title>{{.}}</title>{{end}}
   {{with .Page.Description}}
   <meta name="description" content="{{.}}" />{{end}}
-  {{ $defines := dict "REMOVE_FORM_ON_SUBMISSION" (default "false" ($.Site.Param "RemoveFormOnSubmission")) "BASE_URL" (print "\"" site.BaseURL "\"" )}}
-  {{ $js := resources.Get "index.js" | js.Build (dict "defines" $defines "minify" (not $.Site.IsServer))}}
+  {{ $defines := dict "REMOVE_FORM_ON_SUBMISSION" (default "false" (site.Param "RemoveFormOnSubmission")) "BASE_URL" (print "\"" site.BaseURL "\"" )}}
+  {{ $js := resources.Get "index.js" | js.Build (dict "defines" $defines "minify" (not site.IsServer))}}
 <script type="text/javascript" src="{{ $js.RelPermalink }}" defer></script>
 {{ template "_internal/twitter_cards.html" . }}
 {{ template "_internal/opengraph.html" . }}
@@ -16,16 +16,7 @@
 
 <body class="{{block "bodyClass" .}}page{{end}}">
   {{block "header" .}}
-  <header>
-    {{ $logo := resources.GetMatch "image/logo.svg.tpl" | resources.ExecuteAsTemplate "logo.svg" . }}
-
-    <a href="/"><img src="{{$logo.Permalink}}" width="60px"></a>
-    <span id="search">
-      <input type="search" placeholder="Search">
-      <div></div>
-    </span>
-    {{ partialCached "menu.html" (dict "Menu" $.Site.Menus.main  "RenderSubmenus" true) "main" "true" }}
-  </header>
+  {{ partialCached "header.html" (dict "cart" false) "false" }}
   {{ end }}
   {{block "body" .}}
     <section>
@@ -40,12 +31,12 @@
       </main>
     </section>
   {{end}}
-  {{if .Site.IsServer}}
+  {{if site.IsServer}}
     {{- partial "debug/debug.html" (dict "context" .) -}}
   {{end}}
   {{block "footer" .}}
   <footer>
-    {{ partialCached "menu.html" (dict "Menu" $.Site.Menus.footer  "RenderSubmenus" false) "footer" "false"}}
+    {{ partialCached "menu.html" (dict "Menu" site.Menus.footer  "RenderSubmenus" false) "footer" "false"}}
     <br>
     {{.Param "copyright" | markdownify}}
   </footer>

@@ -132,7 +132,7 @@ section {
 .terms section main summary h3:before {
   content: ' ';
 
-  border: solid {{$.Param "color"}};
+  border: solid {{site.Param "color"}};
   border-width: 0 2px 2px 0;
   display: inline-block;
   padding: 0 5px 5px 0;
