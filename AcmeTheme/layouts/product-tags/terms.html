@@ -1,0 +1,23 @@
+{{define "bodyClass"}}terms store{{end}}
+
+{{define "body"}}
+<section>
+  <main>
+    <h1>{{.Title}}</h1>
+  {{ range .Data.Terms.Alphabetical }}
+    <details>
+      <summary>
+        <h3><a href="{{ .Page.Permalink }}">{{ .Page.Title | humanize }}<small>({{ .Count }})</small></a></h3>
+      </summary>
+    {{if gt .Count 0}}
+    <ul>
+      {{range .Page.Pages}}
+        {{.Render "card"}}
+      {{end}}
+    </ul>
+    {{end}}
+    </details>
+  {{ end }}
+</main>
+</section>
+{{ end }}

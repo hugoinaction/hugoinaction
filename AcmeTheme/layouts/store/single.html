@@ -33,6 +33,11 @@
     </div>
     <div class="price"> Price: <span class="value">{{ $product.price }}</span></div>
     {{.Content}}
+    <div class="tags">
+      {{range $.Page.Params.Get "product-tags"}}
+        <a href="{{"/product-tags/" | relURL }}{{. | urlize}}">#{{.}}</a>
+      {{ end }}
+    </div>
     </div>
   </main>
 </section>

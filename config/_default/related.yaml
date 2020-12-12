@@ -6,3 +6,5 @@ indices:
 - name: date  # Give scores to pages matching the date pattern
   weight: 1
   pattern: 2006 # Pages in the same calendar year get 1 point.
+- name: product-tags
+  weight: 50

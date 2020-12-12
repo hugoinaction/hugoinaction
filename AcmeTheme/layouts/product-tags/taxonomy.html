@@ -1,0 +1,18 @@
+{{define "bodyClass"}}store{{end}}
+
+{{define "body"}}
+<section>
+  <main>
+    <div class="intro">
+    {{with .Page.Title}}
+    <h1>{{ . | humanize }}</h1>
+    {{end}}
+{{.Content}}
+</div>
+{{range .RegularPages}}
+{{.Render "card"}}
+{{end}}
+ <center>{{ template "_internal/pagination.html" . }}</center>
+</main>
+</section>
+{{end}}

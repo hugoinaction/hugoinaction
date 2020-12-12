@@ -24,6 +24,10 @@
   margin: 10px 0;
 }
 
+.store .tags {
+  text-align: right;
+}
+
 .store .intro {
   text-align: center;
 }

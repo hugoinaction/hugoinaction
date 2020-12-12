@@ -1,7 +1,7 @@
 ---
 title: Rhombus
 product: Rhombus
-tags:  ['shape', 'geometry']
+product-tags:  ['shape', '2d', 'quadrilateral']
 summary: A parallelogram in which a diagonal bisects an interior angle
 ---
 

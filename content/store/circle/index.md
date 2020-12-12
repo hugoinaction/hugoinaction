@@ -1,7 +1,7 @@
 ---
 title: Circle
 product: Circle
-tags: ['shape', 'geometry']
+product-tags: ['shape', '2d']
 Summary: A circle is a shape consisting of all points in a plane that are a given distance from a given point, the centre.
 ---
 
