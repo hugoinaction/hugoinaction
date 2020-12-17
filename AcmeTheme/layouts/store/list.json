@@ -1,0 +1,10 @@
+{{$values := newScratch}}
+{{range .Pages}}
+{{if .Params.product}}
+{{$values.Add .Params.product ((partialCached "product.html" "nothing").Get .Params.product)}}
+{{ if (.Resources.GetMatch "hero.*")}}
+{{$values.SetInMap .Params.product "cover" ((.Resources.GetMatch "hero.*").Fill "100x100 center").Permalink}}
+{{end}}
+{{end}}
+{{end}}
+{{$values.Values | jsonify}}

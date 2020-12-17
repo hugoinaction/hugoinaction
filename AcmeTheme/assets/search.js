@@ -58,6 +58,6 @@ export default {
   },
 
   removeSearch() {
-    document.querySelector("#search").remove();
+    document.querySelector("#search")?.remove();
   }
 }

@@ -2,10 +2,12 @@
 
 {{$products := resources.GetMatch "products.csv"}}
   {{$parsedProducts := $products | transform.Unmarshal (dict "delimiter" ",")}}
-  {{ range $r := $parsedProducts }}
+  {{ range $i, $r := $parsedProducts }}
+    {{ if ne $i 0}}
     {{ $return.SetInMap (index $r 0) "colors" (index $r 1) }}
     {{ $return.SetInMap (index $r 0) "price" (index $r 2) }}
     {{ $return.SetInMap (index $r 0) "rating" (index $r 3) }}
+    {{ end }}
   {{ end }}
 
 {{return $return}}

@@ -1,9 +1,9 @@
 {{$product := (dict "colors" "" "rating" 0 "price" 0)}}
 {{if .Params.product}}
-  {{$product = (partialCached "product.html" "nothing").Get .Page.Params.product}}
+  {{$product = (partialCached "product.html" "nothing").Get .Params.product}}
 {{end}}
 <div class="card">
-  <a href="{{.RelPermalink}}"><img class="card-img-top" src="{{ with (.Resources.GetMatch "hero.*")}}{{.RelPermalink}}{{end}}" alt="{{.Title}}"></a>
+  <a href="{{.RelPermalink}}"><img class="card-img-top" src="{{ with (.Resources.GetMatch "hero.*")}}{{(.Fit "500x500").RelPermalink}}{{end}}" alt="{{.Title}}"></a>
   <div class="card-body">
     <h5 class="card-title">{{.Title}}</h5>
     <p class="card-text">{{.Summary}}</p>
@@ -14,7 +14,7 @@
       {{end}}
     </select>
     {{end}}
-    <button data-price="{{$product.price}}">Add to cart</button>
+    <button class="addToCart" data-name="{{.Page.Params.product}}">Add to cart</button>
   </div>
 </div>
 
