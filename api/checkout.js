@@ -28,11 +28,7 @@ module.exports = {
 
     try {
 
-      if (!Array.isArray(event.queryStringParameters.products)) {
-        event.queryStringParameters.products = [event.queryStringParameters.products];
-      }
-
-      const products = event.queryStringParameters.products;
+      const products = event.queryStringParameters.products.split(",");
 
       const data = await fetch(`${endpoint}/store/index.json`);
 
@@ -49,8 +45,8 @@ module.exports = {
         };
 
         products.forEach(x => {
-          const name = x.split(",")[0];
-          const color = x.split(",")[1];
+          const name = x.split("_")[0];
+          const color = x.split("_")[1];
           stripeData.line_items.push({
             price_data: {
               currency: 'usd',
@@ -69,7 +65,8 @@ module.exports = {
           statusCode: 200,
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            sessionId: session.id
+            sessionId: session.id,
+            stripeData
           }),
         };
       } else {
