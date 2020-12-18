@@ -8,12 +8,25 @@ module.exports = {
   async handler(event, context) {
     const data = await fetch(`${env.DEPLOY_PRIME_URL}/store/index.json`);
 
+    if (data.ok) {
+
+      return {
+        statusCode: 200,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          data: await data.json(),
+        }),
+      };
+    }
+
     return {
-      statusCode: 200,
+      statusCode: 500,
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        data,
+        error: "Could not fetch pricing table."
       }),
     };
+
+
   },
 };
