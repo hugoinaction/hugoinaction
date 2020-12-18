@@ -28,7 +28,7 @@ module.exports = {
 
     try {
       if (!Array.isArray(event.queryStringParameters.products)) {
-        event.queryStringParameters.products = [event.queryStringParameters.products];
+        event.queryStringParameters.products = event.queryStringParameters.products.split(",");
       }
       const products = event.queryStringParameters.products;
 
