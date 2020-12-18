@@ -1,7 +1,7 @@
+const disk = JSON.parse(window.localStorage.getItem("store") || "[]");
 const store = Array.isArray(disk) ? disk : [];
 const stripe = Stripe("pk_test_51HzWldGtPsFUGVMkhc6CpV68fwK7E4dzvI6m9Q2RsTA92TBB7AD0NDxnGdgG1jbP65eWz89KTMs8x2tE8mwuS7uN003Q3yiak0");
 
-const disk = JSON.parse(window.localStorage.getItem("store") || "[]");
 let products = {};
 
 export default {
