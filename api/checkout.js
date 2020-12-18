@@ -27,8 +27,10 @@ module.exports = {
     let error = "Unknown error";
 
     try {
-
-      const products = event.queryStringParameters.products.split(",");
+      if (!Array.isArray(event.queryStringParameters.products)) {
+        event.queryStringParameters.products = [event.queryStringParameters.products];
+      }
+      const products = event.queryStringParameters.products;
 
       const data = await fetch(`${endpoint}/store/index.json`);
 
