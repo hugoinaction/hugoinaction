@@ -56,11 +56,32 @@
 
 }
 
-.store .cart .badge {
-  display: none;
+.store .cart {
+  visibility: hidden;
 }
 
-.store .cart .badge.visible {
+.store .cart.visible {
+  visibility: visible;
+}
+
+.store .cart .delete svg {
+  width: 15px;
+  float: right;
+  fill: red;
+}
+
+.store .cart .right {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.store .cart .right {
+  padding: 0;
+}
+
+.store .cart .badge {
   display: block;
   position: absolute;
   top: 0;
@@ -80,7 +101,7 @@
 }
 
 .store .cart > div {
-  display: none;
+  // display: none;
   position: absolute;
   top: 80px;
   margin: 0;
