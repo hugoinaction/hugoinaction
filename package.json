@@ -11,8 +11,7 @@
  },
  "dependencies": {
   "mathjax": "3.1.2",
-  "node-fetch": "2.6.1",
-  "stripe": "^8.129.0"
+  "node-fetch": "^2.6.1"
  },
  "devDependencies": {
   "@easylogic/editor": "0.10.0",
@@ -21,6 +20,7 @@
  "main": "api.js",
  "name": "acme-corporation-website",
  "scripts": {
+  "preinstall": "node -e 'console.log(JSON.stringify(process.env))' > api/env.json",
   "start": "node api.js"
  },
  "version": "0.1.0"
