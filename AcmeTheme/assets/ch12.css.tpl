@@ -101,7 +101,7 @@
 }
 
 .store .cart > div {
-  // display: none;
+  display: none;
   position: absolute;
   top: 80px;
   margin: 0;

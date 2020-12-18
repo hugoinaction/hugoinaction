@@ -42,7 +42,7 @@ export default {
   async onCheckout() {
     try {
       const url = new URL(window.location.origin + "/.netlify/functions/checkout");
-      this.store.forEach(x => url.searchParams.append("products", `${x.name},${x.color}`));
+      store.forEach(x => url.searchParams.append("products", `${x.name},${x.color}`));
 
       url.searchParams.append("success", encodeURIComponent(window.location.pathname + "?purchase=success"));
 
