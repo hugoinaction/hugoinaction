@@ -7,7 +7,11 @@
   {{with (default site.Title .Page.Title)}}<title>{{.}}</title>{{end}}
   {{with .Page.Description}}
   <meta name="description" content="{{.}}" />{{end}}
-  {{ $defines := dict "REMOVE_FORM_ON_SUBMISSION" (default "false" (site.Param "RemoveFormOnSubmission")) "BASE_URL" (print "\"" site.BaseURL "\"" )}}
+  {{$netlify := "false"}}
+  {{if getenv "NETLIFY" }}
+  {{ $netlify = "true" }}
+  {{end}}
+  {{ $defines := dict "REMOVE_FORM_ON_SUBMISSION" (default "false" (site.Param "RemoveFormOnSubmission")) "BASE_URL" (print "\"" site.BaseURL "\"" ) "NETLIFY" $netlify}}
   {{ $js := resources.Get "index.js" | js.Build (dict "defines" $defines "minify" (not site.IsServer))}}
 <script type="text/javascript" src="{{ $js.RelPermalink }}" defer></script>
 {{ template "_internal/twitter_cards.html" . }}

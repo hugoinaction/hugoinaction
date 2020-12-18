@@ -1,8 +1,7 @@
+const store = Array.isArray(disk) ? disk : [];
+const stripe = Stripe("pk_test_51HzWldGtPsFUGVMkhc6CpV68fwK7E4dzvI6m9Q2RsTA92TBB7AD0NDxnGdgG1jbP65eWz89KTMs8x2tE8mwuS7uN003Q3yiak0");
 
 const disk = JSON.parse(window.localStorage.getItem("store") || "[]");
-
-const store = Array.isArray(disk) ? disk : [];
-
 let products = {};
 
 export default {
@@ -33,6 +32,34 @@ export default {
     });
     await this.productInfo();
     this.render();
+  },
+
+  buyNow() {
+
+  },
+
+  async onCheckout() {
+    try {
+      const url = new URL(window.location.origin + "/.netlify/functions/checkout");
+      this.store.forEach(x => url.searchParams.append("products", `${x.name},${x.color}`));
+
+      url.searchParams.append("success", encodeURIComponent(window.location.pathname + "?purchase=success"));
+
+      url.searchParams.append("cancel", encodeURIComponent(window.location.pathname + "?purchase=cancel"));
+
+      if (NETLIFY === true) {
+        const response = await window.fetch(url.href);
+
+        if (response.ok) {
+          const resp = await response.json();
+          stripe.redirectToCheckout({ sessionId: resp.sessionId });
+
+        }
+      }
+    } catch (e) {
+      // TODO
+      console.log("Error");
+    }
   },
 
   async productInfo() {
@@ -78,11 +105,12 @@ export default {
         // Find the prices.
         document.querySelector(".cart > div").innerHTML = `
             ${info.map(x => this.matchTemplate(this.template, Object.entries(x))).join("\n")}
-            <a href="${BASE_URL}/store/checkout"><button class="checkout">Checkout</button></a>
+            <a href="${BASE_URL}/store/checkout"><button id="checkout">Checkout</button></a>
           `;
         for (let del of document.querySelectorAll(".cart .delete")) {
           del.addEventListener("click", this.onDelete.bind(this));
         }
+        document.querySelector("#checkout").addEventListener("click", this.onCheckout.bind(this));
       }
     } catch (e) {
       console.error(e)
