@@ -27,10 +27,10 @@ module.exports = {
     let error = "Unknown error";
 
     try {
-      if (!Array.isArray(event.queryStringParameters.products)) {
-        event.queryStringParameters.products = event.queryStringParameters.products.split(",");
+      let products = event.queryStringParameters.products;
+      if (!Array.isArray(products)) {
+        products = products.split(",");
       }
-      const products = event.queryStringParameters.products;
 
       const data = await fetch(`${endpoint}/store/index.json`);
 
@@ -47,8 +47,8 @@ module.exports = {
         };
 
         products.forEach(x => {
-          const name = x.split("_")[0];
-          const color = x.split("_")[1];
+          const name = x.split("_")[0].trim();
+          const color = x.split("_")[1].trim();
           stripeData.line_items.push({
             price_data: {
               currency: 'usd',
