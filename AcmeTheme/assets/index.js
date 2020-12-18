@@ -13,6 +13,9 @@ function router() {
   const location = new URL(window.location.href);
   if (location.pathname.match(/\/store\/.*/)) {
     Store.init();
+    if (location.searchParams.purchase === "success") {
+      // Show success screen
+    }
   }
 
 }
