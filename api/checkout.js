@@ -42,8 +42,8 @@ module.exports = {
           line_items: [
           ],
           mode: 'payment',
-          success_url: `${endpoint}${event.queryStringParameters.success}`,
-          cancel_url: `${endpoint}${event.queryStringParameters.cancel}`,
+          success_url: `${endpoint}${decodeURIComponent(event.queryStringParameters.success)}`,
+          cancel_url: `${endpoint}${decodeURIComponent(event.queryStringParameters.cancel)}`,
         };
 
         products.forEach(x => {
@@ -68,7 +68,8 @@ module.exports = {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             sessionId: session.id,
-            stripeData
+            stripeData,
+            products
           }),
         };
       } else {
