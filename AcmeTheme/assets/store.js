@@ -106,7 +106,7 @@ export default {
         // Find the prices.
         document.querySelector(".cart > div").innerHTML = `
             ${info.map(x => this.matchTemplate(this.template, Object.entries(x))).join("\n")}
-            <a href="${BASE_URL}/store/checkout"><button id="checkout">Checkout</button></a>
+            <button id="checkout">Checkout</button>
           `;
         for (let del of document.querySelectorAll(".cart .delete")) {
           del.addEventListener("click", this.onDelete.bind(this));
