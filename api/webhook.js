@@ -1,4 +1,6 @@
 const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY);
+const sgMail = require('@sendgrid/mail')
+const result = require('./result.json');
 
 module.exports = {
   /**
@@ -17,14 +19,29 @@ module.exports = {
       return res.status(400).send(`Webhook Error: ${err.message}`);
     }
 
-
-    console.log(stripeEvent.data, stripeEvent.data.object.id, stripeEvent.data.object.line_items, stripeEvent.data.object.customer);
-
     const session = await stripe.checkout.sessions.retrieve(stripeEvent.data.object.id, {
       expand: ['customer', 'line_items'],
     });
 
-    console.log((session.customer && session.customer.email), session.line_items, session.payment_status);
+    if (session.customer && session.customer.email && session.payment_status === 'paid' && session.line_items.data.length > 0) {
+      // NOTE: We are not handling pagination of line items which should be handled in the production environment.
+      // Try to send email to the customer:
+      sgMail.setApiKey(process.env.SENDGRID_API_KEY)
+      const msg = {
+        to: session.customer_email, // Change to your recipient
+        from: 'noreply@hugoinaction.com', // Change to your verified sender
+        subject: 'Your purchase with Acme Corporation (Hugo In Action)',
+        text: 'Confirming purchase. Please find attached the products. Note that colors are just user for showing in the interface. The colors are not implemented in results currently.',
+      }
+      try {
+        await sgMail.send(msg)
+      } catch (err) {
+        console.log("Failed to send email. Returning error to make stripe try again");
+        return {
+          statusCode: 500
+        };
+      }
+    }
 
     return {
       statusCode: 200
