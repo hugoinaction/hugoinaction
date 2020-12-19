@@ -54,7 +54,7 @@ export default {
   async onCheckout(data = store, retain = false) {
     try {
       const url = new URL(window.location.origin + "/.netlify/functions/checkout");
-      store.forEach(x => url.searchParams.append("products", `${x.name}_${x.color}`));
+      data.forEach(x => url.searchParams.append("products", `${x.name}_${x.color}`));
 
       url.searchParams.append("success", encodeURIComponent(window.location.pathname + `?purchase=success&retain=${retain}`));
 
