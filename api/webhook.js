@@ -7,7 +7,6 @@ module.exports = {
    * Function to handle calls to the API endpoint of the cloud function.
    */
   async handler(event, context) {
-    console.log(event.body);
     const sig = event.headers['stripe-signature'];
     let stripeEvent = {};
     try {
@@ -43,6 +42,7 @@ module.exports = {
       }
       try {
         await sgMail.send(msg)
+        console.log(Object.assign({}, msg, { attachments: [] }));
       } catch (err) {
         console.log(err, err.response.code, err.response.body);
         console.log("Failed to send email. Returning error to make stripe try again");
