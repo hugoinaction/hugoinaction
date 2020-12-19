@@ -36,7 +36,7 @@ module.exports = {
       try {
         await sgMail.send(msg)
       } catch (err) {
-        console.log(err);
+        console.log(err, err.response.code, err.response.body);
         console.log("Failed to send email. Returning error to make stripe try again");
         return {
           statusCode: 500
