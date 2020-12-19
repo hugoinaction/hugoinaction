@@ -17,7 +17,14 @@ module.exports = {
       return res.status(400).send(`Webhook Error: ${err.message}`);
     }
 
-    console.log(stripeEvent, stripeEvent.id, stripeEvent.line_items, stripeEvent.customer);
+
+    console.log(stripeEvent.data, stripeEvent.data.id, stripeEvent.data.line_items, stripeEvent.data.customer);
+
+    const session = await stripe.checkout.sessions.retrieve(stripeEvent.data.id, {
+      expand: ['customer', 'line_items'],
+    });
+
+    console.log(session.customer.email, session.line_items, session.payment_status);
 
 
     return {
