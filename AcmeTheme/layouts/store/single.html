@@ -19,8 +19,8 @@
       {{end}}
     </select>
     {{end}}
-    <button data-price="{{$product.price}}" class="addToCart">Add to cart</button>
-    <button data-price="{{$product.price}}" class="buyNow">Buy now</button>
+    <button data-name="{{.Page.Params.product}}" class="addToCart">Add to cart</button>
+    <button data-name="{{.Page.Params.product}}" class="buyNow">Buy now</button>
   </aside>
   <main>
     <div class="content">

@@ -31,20 +31,32 @@ export default {
         this.save();
       });
     });
+    document.querySelectorAll(".buyNow").forEach(buy => {
+      buy.addEventListener("click", () => {
+        let sibling = buy.previousSibling;
+        while (sibling) {
+          if (sibling instanceof HTMLSelectElement) {
+            break;
+          }
+          sibling = sibling.previousSibling;
+        };
+        let color = "";
+        if (sibling) {
+          color = sibling.value;
+        }
+        this.onCheckout([{ name: buy.dataset.name, color }], true);
+      })
+    });
     await this.productInfo();
     this.render();
   },
 
-  buyNow() {
-
-  },
-
-  async onCheckout() {
+  async onCheckout(data = store, retain = false) {
     try {
       const url = new URL(window.location.origin + "/.netlify/functions/checkout");
       store.forEach(x => url.searchParams.append("products", `${x.name}_${x.color}`));
 
-      url.searchParams.append("success", encodeURIComponent(window.location.pathname + "?purchase=success"));
+      url.searchParams.append("success", encodeURIComponent(window.location.pathname + `?purchase=success&retain=${retain}`));
 
       url.searchParams.append("cancel", encodeURIComponent(window.location.pathname + "?purchase=cancel"));
 
@@ -120,12 +132,15 @@ export default {
   },
 
   async handleSuccess() {
-    store.length = 0;
-    this.save();
+    const url = new URL(window.location.href);
+    if (url.searchParams.get("retain") === "false") {
+      store.length = 0;
+      this.save();
+    }
     document.querySelector(".intro").insertAdjacentHTML("beforebegin", '<div class="alert"><div class="head">Order Confirmed.</div> You should receive an email within the next 10 hours with your digital purchase.<br> <small>In case of any issues please contact customer support.</small></div>');
 
-    const url = new URL(window.location.href);
     url.searchParams.delete("purchase");
+    url.searchParams.delete("retain");
     window.history.replaceState(null, "", url);
   }
 }

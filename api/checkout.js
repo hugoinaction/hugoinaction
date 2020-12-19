@@ -48,7 +48,7 @@ module.exports = {
         };
 
         products.forEach((x, i) => {
-          stripeData.metadata[i] = x;
+          stripeData.metadata["item " + i] = x;
           const name = x.split("_")[0].trim();
           const color = x.split("_")[1].trim();
           stripeData.line_items.push({
