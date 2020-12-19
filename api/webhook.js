@@ -18,14 +18,13 @@ module.exports = {
     }
 
 
-    console.log(stripeEvent.data, stripeEvent.data.id, stripeEvent.data.line_items, stripeEvent.data.customer);
+    console.log(stripeEvent.data, stripeEvent.data.object.id, stripeEvent.data.object.line_items, stripeEvent.data.object.customer);
 
-    const session = await stripe.checkout.sessions.retrieve(stripeEvent.data.id, {
+    const session = await stripe.checkout.sessions.retrieve(stripeEvent.data.object.id, {
       expand: ['customer', 'line_items'],
     });
 
-    console.log(session.customer.email, session.line_items, session.payment_status);
-
+    console.log((session.customer && session.customer.email), session.line_items, session.payment_status);
 
     return {
       statusCode: 200
