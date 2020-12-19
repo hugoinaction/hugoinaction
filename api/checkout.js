@@ -44,9 +44,11 @@ module.exports = {
           mode: 'payment',
           success_url: `${endpoint}${decodeURIComponent(event.queryStringParameters.success)}`,
           cancel_url: `${endpoint}${decodeURIComponent(event.queryStringParameters.cancel)}`,
+          metadata: { }
         };
 
-        products.forEach(x => {
+        products.forEach((x, i) => {
+          stripeData.metadata[i] = x;
           const name = x.split("_")[0].trim();
           const color = x.split("_")[1].trim();
           stripeData.line_items.push({
