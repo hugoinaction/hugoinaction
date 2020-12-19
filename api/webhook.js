@@ -28,10 +28,18 @@ module.exports = {
       // Try to send email to the customer:
       sgMail.setApiKey(process.env.SENDGRID_API_KEY)
       const msg = {
-        to: session.customer_email, // Change to your recipient
+        to: session.customer.email, // Change to your recipient
         from: 'noreply@hugoinaction.com', // Change to your verified sender
         subject: 'Your purchase with Acme Corporation (Hugo In Action)',
         text: 'Confirming purchase. Please find attached the products. Note that colors are just user for showing in the interface. The colors are not implemented in results currently.',
+        attachments: [
+          {
+            content: result.Circle,
+            filename: "Circle.png",
+            type: "image/png",
+            disposition: "attachment"
+          }
+        ]
       }
       try {
         await sgMail.send(msg)
