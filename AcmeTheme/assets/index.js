@@ -13,8 +13,10 @@ function router() {
   const location = new URL(window.location.href);
   if (location.pathname.match(/\/store\/.*/)) {
     Store.init();
-    if (location.searchParams.purchase === "success") {
-      // Show success screen
+    if (location.searchParams.get("purchase") === "success") {
+      Store.handleSuccess();
+    } else if (location.searchParams.get("purchase") === "cancel") {
+      console.log("cancel")
     }
   }
 

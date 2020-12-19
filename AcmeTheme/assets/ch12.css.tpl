@@ -100,6 +100,19 @@
   color: white;
 }
 
+.store .alert {
+  border-radius: 5px;
+  color: #155724;
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+  padding: 20px;
+}
+
+.store .alert .head {
+  font-size: 20px;
+  padding-bottom: 20px;
+}
+
 .store .cart > div {
   display: none;
   position: absolute;
