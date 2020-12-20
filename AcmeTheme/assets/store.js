@@ -71,7 +71,7 @@ export default {
       }
     } catch (e) {
       // TODO
-      console.log("Error");
+      console.log("Error", e);
     }
   },
 
