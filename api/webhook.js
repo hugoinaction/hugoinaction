@@ -19,7 +19,7 @@ module.exports = {
     }
 
     const session = await stripe.checkout.sessions.retrieve(stripeEvent.data.object.id, {
-      expand: ['customer', 'customer.sources'],
+      expand: ['customer', 'payment_intent', 'payment_intent.payment_method'],
     });
 
     if (session.customer && session.customer.email && session.payment_status === 'paid' && Object.values(session.metadata || {}).length > 0) {
@@ -28,11 +28,10 @@ module.exports = {
       // Get name of the payment owner and use that as the customer name.
       // Keeps the form simple
 
-      const source = session.customer.sources && Array.isArray(session.customer.sources.data) && session.customer.sources.data.find(x => x.owner && x.owner.name);
+      const name = session.payment_intent && session.payment_intent.payment_method && session.payment_intent.payment_method.billing_details && session.payment_intent.payment_method.billing_details.name;
 
       console.log(JSON.stringify(session));
 
-      const name = source && source.owner && source.owner.name;
 
       // Try to send email to the customer:
       sgMail.setApiKey(process.env.SENDGRID_API_KEY)
