@@ -68,6 +68,7 @@
   width: 15px;
   float: right;
   fill: red;
+  cursor: pointer;
 }
 
 .store .cart .right {
