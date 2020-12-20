@@ -1,6 +1,4 @@
-const disk = JSON.parse(window.localStorage.getItem("store") || "[]");
-const store = Array.isArray(disk) ? disk : [];
-
+let cart = [];
 let products = {};
 let stripe = undefined;
 
@@ -24,8 +22,8 @@ export default {
         if (sibling) {
           color = sibling.value;
         }
-        if (!store.find(x => x.name === name && x.color === color)) {
-          store.push({ name, color });
+        if (!cart.find(x => x.name === name && x.color === color)) {
+          cart.push({ name, color });
         }
         this.render();
         this.save();
@@ -48,10 +46,17 @@ export default {
       })
     });
     await this.productInfo();
+    window.addEventListener('storage', this.updateCart.bind(this));
+    this.updateCart();
+  },
+
+  updateCart() {
+    const disk = JSON.parse(window.localStorage.getItem("cart") || "[]");
+    cart= Array.isArray(disk) ? disk : [];
     this.render();
   },
 
-  async onCheckout(data = store, retain = false) {
+  async onCheckout(data =cart, retain = false) {
     try {
       const url = new URL(window.location.origin + "/.netlify/functions/checkout");
       data.forEach(x => url.searchParams.append("products", `${x.name}_${x.color}`));
@@ -83,7 +88,7 @@ export default {
   },
 
   save() {
-    window.localStorage.setItem("store", JSON.stringify(store));
+    window.localStorage.setItem("cart", JSON.stringify(cart));
   },
 
   matchTemplate(content, data) {
@@ -95,7 +100,7 @@ export default {
   },
 
   onDelete: function (e) {
-    store.splice(store.findIndex(x =>
+    cart.splice(cart.findIndex(x =>
       x.name == e.currentTarget.dataset.name && x.color === e.currentTarget.dataset.color
     ), 1);
     this.render();
@@ -103,8 +108,8 @@ export default {
   },
 
   render() {
-    this.badge.innerText = store.length;
-    if (store.length === 0) {
+    this.badge.innerText =cart.length;
+    if (cart.length === 0) {
       document.querySelector(".cart").classList.remove("visible");
     } else {
       document.querySelector(".cart").classList.add("visible");
@@ -112,7 +117,7 @@ export default {
 
     try {
 
-      const info = store.map(x => ({ ...x, price: parseFloat(products[x.name].price.substr(1)), cover: products[x.name].cover }));
+      const info =cart.map(x => ({ ...x, price: parseFloat(products[x.name].price.substr(1)), cover: products[x.name].cover }));
 
       if (info.length > 0) {
         // Find the prices.
@@ -134,7 +139,7 @@ export default {
   async handleSuccess() {
     const url = new URL(window.location.href);
     if (url.searchParams.get("retain") === "false") {
-      store.length = 0;
+      cart.length = 0;
       this.save();
     }
     (document.querySelector(".intro") || document.querySelector(".content")).insertAdjacentHTML("beforebegin", '<div class="alert"><div class="head">Order Confirmed.</div> You should receive an email within the next 10 hours with your digital purchase.<br> <small>In case of any issues please contact customer support.</small></div>');
