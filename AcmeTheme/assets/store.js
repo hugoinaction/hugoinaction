@@ -123,7 +123,7 @@ export default {
         for (let del of document.querySelectorAll(".cart .delete")) {
           del.addEventListener("click", this.onDelete.bind(this));
         }
-        document.querySelector("#checkout").addEventListener("click", this.onCheckout.bind(this));
+        document.querySelector("#checkout").addEventListener("click", () => this.onCheckout());
       }
     } catch (e) {
       console.error(e)
