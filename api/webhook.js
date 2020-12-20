@@ -29,7 +29,10 @@ module.exports = {
       // Keeps the form simple
 
       const source = session.customer.sources && Array.isArray(session.customer.sources.data) && session.customer.sources.data.find(x => x.owner && x.owner.name);
-      const name = source.owner && source.owner.name;
+
+      console.log(JSON.stringify(session));
+
+      const name = source && source.owner && source.owner.name;
 
       // Try to send email to the customer:
       sgMail.setApiKey(process.env.SENDGRID_API_KEY)
