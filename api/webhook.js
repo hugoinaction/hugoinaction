@@ -30,9 +30,6 @@ module.exports = {
 
       const name = session.payment_intent && session.payment_intent.payment_method && session.payment_intent.payment_method.billing_details && session.payment_intent.payment_method.billing_details.name;
 
-      console.log(JSON.stringify(session));
-
-
       // Try to send email to the customer:
       sgMail.setApiKey(process.env.SENDGRID_API_KEY)
       const msg = {
