@@ -19,18 +19,24 @@ module.exports = {
     }
 
     const session = await stripe.checkout.sessions.retrieve(stripeEvent.data.object.id, {
-      expand: ['customer'],
+      expand: ['customer', 'customer.sources'],
     });
 
     if (session.customer && session.customer.email && session.payment_status === 'paid' && Object.values(session.metadata || {}).length > 0) {
       // NOTE: We are not handling pagination of line items which should be handled in the production environment.
+
+      // Get cardholder name and use it as customer name for email.
+      // Keeps the form simple
+
+      const name = session.customer.sources && Array.isArray(session.customer.sources.data) && session.customer.sources.data.find(x => x.name).name;
+
       // Try to send email to the customer:
       sgMail.setApiKey(process.env.SENDGRID_API_KEY)
       const msg = {
         to: session.customer.email, // Change to your recipient
         from: 'noreply@hugoinaction.com', // Change to your verified sender
         subject: 'Your purchase with Acme Corporation (Hugo In Action)',
-        text: `Dear ${session.customer.name || "User"},\n\n Thank you for purchasing digital shapes from the Acme Corporation. Your purchased shaped are attached to this email. The invoice should arrive separately and can be used to request a fresh copy of the files.`,
+        text: `Dear ${name || "User"},\n\nThank you for purchasing digital shapes from the Acme Corporation. Your purchased shapes are attached to this email.`,
         attachments: Object.values(session.metadata).filter(img => result[img]).map(img => ({
             content: result[img],
             filename: img + '.png',
