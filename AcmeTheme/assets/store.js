@@ -23,7 +23,7 @@ export default {
     document.querySelectorAll(".buyNow").forEach(buy => {
       buy.addEventListener("click", (e) => {
         e.preventDefault();
-        const data = new FormData(add.form);
+        const data = new FormData(buy.form);
         this.onCheckout([{ name: data.get("name"), color: data.get("color") }], true);
       })
     });
