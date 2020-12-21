@@ -7,14 +7,17 @@
   <div class="card-body">
     <h5 class="card-title">{{.Title}}</h5>
     <p class="card-text">{{.Summary}}</p>
+    <form>
+    <input type="hidden" value="{{.Page.Params.product}}" name="name">
     {{if gt (len $product.colors) 0}}
-    <select>
+    <select name="color">
       {{range split $product.colors ","}}
         <option value="{{trim . " "}}">{{trim . " "}}</option>
       {{end}}
     </select>
     {{end}}
-    <button class="addToCart" data-name="{{.Page.Params.product}}">Add to cart</button>
+    <button class="addToCart">Add to cart</button>
+    </form>
   </div>
 </div>
 

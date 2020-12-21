@@ -12,15 +12,18 @@
 <section>
   <aside>
     <img src="{{with .Resources.GetMatch "hero.*"}}{{.RelPermalink}}{{end}}" alt="{{.Page.Title}}">
+    <form>
+    <input type="hidden" value="{{.Page.Params.product}}" name="name">
     {{if gt (len $product.colors) 0}}
-    <select>
+    <select name="color">
       {{range split $product.colors ","}}
         <option value="{{trim . " "}}">{{trim . " "}}</option>
       {{end}}
     </select>
     {{end}}
-    <button data-name="{{.Page.Params.product}}" class="addToCart">Add to cart</button>
-    <button data-name="{{.Page.Params.product}}" class="buyNow">Buy now</button>
+    <button class="addToCart">Add to cart</button>
+    <button class="buyNow">Buy now</button>
+    </form>
   </aside>
   <main>
     <div class="content">

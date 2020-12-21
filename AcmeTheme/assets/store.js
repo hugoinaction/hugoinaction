@@ -8,20 +8,11 @@ export default {
     this.template = document.querySelector("#cart-item").innerHTML;
     this.badge = document.querySelector(".cart .badge");
     document.querySelectorAll(".addToCart").forEach(add => {
-      add.addEventListener("click", () => {
-        const name = add.dataset.name;
-        // Find the color from the select element.
-        let sibling = add.previousSibling;
-        while (sibling) {
-          if (sibling instanceof HTMLSelectElement) {
-            break;
-          }
-          sibling = sibling.previousSibling;
-        };
-        let color = "";
-        if (sibling) {
-          color = sibling.value;
-        }
+      add.addEventListener("click", (e) => {
+        e.preventDefault();
+        const data = new FormData(add.form);
+        const name = data.get("name");
+        const color = data.get("color");
         if (!cart.find(x => x.name === name && x.color === color)) {
           cart.push({ name, color });
         }
@@ -31,18 +22,9 @@ export default {
     });
     document.querySelectorAll(".buyNow").forEach(buy => {
       buy.addEventListener("click", () => {
-        let sibling = buy.previousSibling;
-        while (sibling) {
-          if (sibling instanceof HTMLSelectElement) {
-            break;
-          }
-          sibling = sibling.previousSibling;
-        };
-        let color = "";
-        if (sibling) {
-          color = sibling.value;
-        }
-        this.onCheckout([{ name: buy.dataset.name, color }], true);
+        e.preventDefault();
+        const data = new FormData(add.form);
+        this.onCheckout([{ name: data.get("name"), color: data.get("color") }], true);
       })
     });
     await this.productInfo();
