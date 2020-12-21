@@ -21,7 +21,7 @@ export default {
       });
     });
     document.querySelectorAll(".buyNow").forEach(buy => {
-      buy.addEventListener("click", () => {
+      buy.addEventListener("click", (e) => {
         e.preventDefault();
         const data = new FormData(add.form);
         this.onCheckout([{ name: data.get("name"), color: data.get("color") }], true);
