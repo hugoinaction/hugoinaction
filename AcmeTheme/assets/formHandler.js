@@ -1,3 +1,5 @@
+import { matchTemplate } from "./util"
+
 export default {
   init() {
     document.querySelectorAll("[data-dynamic-form]")
@@ -15,10 +17,7 @@ export default {
         if (response.ok) {
           if (form.dataset.pre) {
             let content = document.querySelector(form.dataset.pre).innerHTML;
-            for (let pair of  data) {
-              let key = pair[0], value = pair[1];
-              content = content.replaceAll(`[[${key}]]`,value);
-            }
+            content = matchTemplate(data, content);
             form.insertAdjacentHTML('beforebegin', content);
           }
           form.insertAdjacentHTML('afterend',
