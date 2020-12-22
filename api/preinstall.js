@@ -5,7 +5,7 @@ const fs = require('fs').promises;
 const path = require('path');
 
 (async () => {
-  await fs.writeFile(__dirname + '/env.json', JSON.stringify(process.env));
+  await fs.writeFile(__dirname + '/env.json', JSON.stringify(process.env, null, 2));
 
   const data = {};
 

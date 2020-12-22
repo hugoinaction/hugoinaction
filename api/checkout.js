@@ -3,9 +3,6 @@ const stripe = require('stripe')(env.STRIPE_PRIVATE_KEY);
 const fetch = require("node-fetch");
 const endpoint = env.NETLIFY ? env.DEPLOY_PRIME_URL : "https://5fdc54db1faa0100079c259c--hugoinaction.netlify.app/"; // "https://hugoinaction.github.io/GitHubPagesStore"
 
-// http://localhost:3000/checkout?products=Circle,Red&products=Line,Blue&success=store/circle?success&cancel=store/circle?cancel
-
-
 module.exports = {
   /**
    * Function to handle calls to the API endpoint of the cloud function.
@@ -23,6 +20,8 @@ module.exports = {
         }),
       };
     }
+
+    console.log(process.env);
 
     let error = "Unknown error";
 
