@@ -22,7 +22,7 @@
  "main": "api.js",
  "name": "acme-corporation-website",
  "scripts": {
-  "preinstall": "node api/preinstall.js",
+  "postinstall": "node api/postinstall.js",
   "start": "node api.js"
  },
  "version": "0.1.0"

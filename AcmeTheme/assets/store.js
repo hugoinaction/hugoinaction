@@ -42,24 +42,21 @@ export default {
 
   async onCheckout(data =cart, retain = false) {
     try {
-      const url = new URL(window.location.origin + "/.netlify/functions/checkout");
+      const url = NETLIFY ? new URL(window.location.origin + "/.netlify/functions/checkout") : new URL("https://hugoinaction.herokuapp.com/checkout");
       data.forEach(x => url.searchParams.append("products", `${x.name}_${x.color}`));
 
       url.searchParams.append("success", encodeURIComponent(window.location.pathname + `?purchase=success&retain=${retain}`));
 
       url.searchParams.append("cancel", encodeURIComponent(window.location.pathname + "?purchase=cancel"));
 
-      if (NETLIFY === true) {
         const response = await window.fetch(url.href);
 
-        if (response.ok) {
-          const resp = await response.json();
-          stripe.redirectToCheckout({ sessionId: resp.sessionId });
-
-        }
+      if (response.ok) {
+        const resp = await response.json();
+        stripe.redirectToCheckout({ sessionId: resp.sessionId });
       }
+
     } catch (e) {
-      // TODO
       console.log("Error", e);
     }
   },

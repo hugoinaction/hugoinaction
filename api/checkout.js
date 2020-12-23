@@ -1,7 +1,21 @@
-const env = require("./env.json");
 const stripe = require('stripe')(env.STRIPE_PRIVATE_KEY);
 const fetch = require("node-fetch");
-const endpoint = env.NETLIFY ? env.DEPLOY_PRIME_URL : "https://5fdc54db1faa0100079c259c--hugoinaction.netlify.app/"; // "https://hugoinaction.github.io/GitHubPagesStore"
+
+let endpoint = "https://hugoinaction.github.io/GitHubPagesStore"
+
+////////////////////////////////////////////////////////////////
+// Getting deploy path for multi-branch builds on Netlify
+// using stored environment variables begin
+// the env.json is dynamically created by preinstall.js script
+// provided along with the current file.
+////////////////////////////////////////////////////////////////
+const env = require("./env.json");
+if (env.NETLIFY) {
+  endpoint = env.DEPLOY_PRIME_URL;
+}
+////////////////////////////////////////////////////////////////
+// End custom code for getting build details from Netlify.
+////////////////////////////////////////////////////////////////
 
 module.exports = {
   /**
@@ -20,8 +34,6 @@ module.exports = {
         }),
       };
     }
-
-    console.log(process.env);
 
     let error = "Unknown error";
 

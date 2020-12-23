@@ -11,6 +11,6 @@
   "main": "api.js",
   "scripts": {
     "start": "node api.js",
-    "preinstall": "node api/preinstall.js"
+    "postinstall": "node api/postinstall.js"
   }
 }
