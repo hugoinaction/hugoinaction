@@ -6,7 +6,15 @@ let stripe = undefined;
 
 export default {
   async init() {
-    stripe = Stripe("pk_test_51HzWldGtPsFUGVMkhc6CpV68fwK7E4dzvI6m9Q2RsTA92TBB7AD0NDxnGdgG1jbP65eWz89KTMs8x2tE8mwuS7uN003Q3yiak0");
+    // Import stripe.
+    const s = document.createElement('script');
+    s.setAttribute('src', "https://js.stripe.com/v3/");
+    s.onload = () => {
+      stripe = Stripe("pk_test_51HzWldGtPsFUGVMkhc6CpV68fwK7E4dzvI6m9Q2RsTA92TBB7AD0NDxnGdgG1jbP65eWz89KTMs8x2tE8mwuS7uN003Q3yiak0");
+    };
+    s.defer = true;
+    document.body.appendChild(s);
+
     this.template = document.querySelector("#cart-item").innerHTML;
     this.badge = document.querySelector(".cart .badge");
     document.querySelectorAll(".addToCart").forEach(add => {

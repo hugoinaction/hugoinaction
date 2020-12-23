@@ -19,7 +19,6 @@ function router() {
       console.log("cancel")
     }
   }
-
 }
 
 if (document.readyState === 'loading') {
