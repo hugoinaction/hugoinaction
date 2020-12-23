@@ -18,42 +18,41 @@ module.exports = {
       return res.status(400).send(`Webhook Error: ${err.message}`);
     }
 
-    const session = await stripe.checkout.sessions.retrieve(stripeEvent.data.object.id, {
-      expand: ['customer', 'payment_intent', 'payment_intent.payment_method'],
-    });
+    try {
 
-    if (session.customer && session.customer.email && session.payment_status === 'paid' && Object.values(session.metadata || {}).length > 0) {
-      // NOTE: We are not handling pagination of line items which should be handled in the production environment.
+      const session = await stripe.checkout.sessions.retrieve(stripeEvent.data.object.id, {
+        expand: ['customer', 'payment_intent', 'payment_intent.payment_method'],
+      });
 
-      // Get name of the payment owner and use that as the customer name.
-      // Keeps the form simple
+      if (!(session.customer && session.customer.email && session.payment_status === 'paid' && Object.values(session.metadata || {}).length > 0)) {
+        throw new Error("Could not get customer or payment information.");
+      }
 
       const name = session.payment_intent && session.payment_intent.payment_method && session.payment_intent.payment_method.billing_details && session.payment_intent.payment_method.billing_details.name;
 
-      // Try to send email to the customer:
-      sgMail.setApiKey(process.env.SENDGRID_API_KEY)
+      sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
+      // NOTE: We are not handling pagination of line items which should be handled in the production environment.
       const msg = {
         to: session.customer.email, // Change to your recipient
         from: 'noreply@hugoinaction.com', // Change to your verified sender
         subject: 'Your purchase with Acme Corporation (Hugo In Action)',
         text: `Dear ${name || "User"},\n\nThank you for purchasing digital shapes from the Acme Corporation. Your purchased shapes are attached to this email.`,
         attachments: Object.values(session.metadata).filter(img => result[img]).map(img => ({
-            content: result[img],
-            filename: img + '.png',
-            type: "image/png",
-            disposition: "attachment"
+          content: result[img],
+          filename: img + '.png',
+          type: "image/png",
+          disposition: "attachment"
         }))
-      }
-      try {
-        await sgMail.send(msg)
-        console.log(Object.assign({}, msg, { attachments: [] }));
-      } catch (err) {
-        console.log(err, err.response.code, err.response.body);
-        console.log("Failed to send email. Returning error to make stripe try again");
-        return {
-          statusCode: 500
-        };
-      }
+      };
+
+      await sgMail.send(msg)
+    }
+    catch (err) {
+      return {
+        statusCode: 500,
+        body: JSON.stringify(err)
+      };
     }
 
     return {
