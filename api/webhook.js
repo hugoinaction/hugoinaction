@@ -30,12 +30,13 @@ module.exports = {
 
       const name = session.payment_intent && session.payment_intent.payment_method && session.payment_intent.payment_method.billing_details && session.payment_intent.payment_method.billing_details.name;
 
+      const email = session.customer.email;
+
       sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-      // NOTE: We are not handling pagination of line items which should be handled in the production environment.
       const msg = {
-        to: session.customer.email, // Change to your recipient
-        from: 'noreply@hugoinaction.com', // Change to your verified sender
+        to: email,
+        from: 'noreply@hugoinaction.com',
         subject: 'Your purchase with Acme Corporation (Hugo In Action)',
         text: `Dear ${name || "User"},\n\nThank you for purchasing digital shapes from the Acme Corporation. Your purchased shapes are attached to this email.`,
         attachments: Object.values(session.metadata).filter(img => result[img]).map(img => ({
