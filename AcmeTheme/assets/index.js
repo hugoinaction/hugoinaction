@@ -11,7 +11,7 @@ function init() {
 
 function router() {
   const location = new URL(window.location.href);
-  if (location.pathname.match(/\/store\/.*/)) {
+  if (location.pathname.match(/\/store\/.*/) || location.pathname.match(/\/product\-tags\/.*/)) {
     Store.init();
     if (location.searchParams.get("purchase") === "success") {
       Store.handleSuccess();
