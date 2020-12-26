@@ -3,6 +3,7 @@ const querystring = require("querystring");
 const latex2svg = require("./api/latex2svg");
 const rebuild = require('./api/rebuild');
 const checkout = require('./api/checkout');
+const webhook = require('./api/webhook');
 
 const port = process.env.PORT || 3000;
 const server = http.createServer().listen(port);
@@ -34,6 +35,9 @@ server.on("request", async function (req, res) {
         break;
       case '/checkout':
         response = await checkout.handler(request);
+        break;
+      case '/webhook':
+        response = await webhook.handler(request);
         break;
     }
   } catch (e) {

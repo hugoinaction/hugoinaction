@@ -49,7 +49,7 @@ Also a # tag.
 Horizontal Lines:
 
 ------------------------------------
-. 
+.
 ***********************************
 .
 ***
@@ -123,12 +123,19 @@ Floating image via HTML: <img src="/image/logo.png" style="float: right; padding
 
 ### Alternate Table
 
-
 |  Name | Mantra |
 |  ---  | --- |
 | Alex  | There must be a better way. |
 | Bob   | Play it safe. |
 | Gabby | Try everything, but do what you like. |
+
+### Table alignment
+
+| Index |  Product | Edges |
+| --:   |  :--  | :-: |
+| 1.  | Circle  | 0 |
+| 2.  | Line   | 1 |
+| 3.  | Square | 4 |
 
 ## Acme Website task list
 
