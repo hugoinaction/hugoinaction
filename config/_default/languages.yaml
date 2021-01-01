@@ -1,0 +1,12 @@
+en:
+  params:
+fr:
+  params:
+    copyright: "Copyright &copy; 2020 Acme Corporation. Tous les droits sont réservés."
+  menu:
+    main:
+      - identifier: about
+        name: à propos
+        url: /fr/about
+        weight: 1
+    footer: []

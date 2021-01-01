@@ -1,0 +1,29 @@
+{{define "main"}}
+<h1>{{.Title}}</h1>
+{{.Content}}
+<h2> Pages </h2>
+<ul>
+{{range .RegularPages}}
+{{$page := .}}
+{{with  .OutputFormats.Get "PLAIN" }}
+<li>
+  <a href="{{.Permalink}}">{{default $page.File.ContentBaseName $page.Title | humanize}}</a>
+</li>
+{{end}}
+{{end}}
+</ul>
+
+{{if gt (len .Sections) 0}}
+<h2>Subsections</h2>
+<ul>
+  {{range .Sections}}
+{{$page := .}}
+{{with  .OutputFormats.Get "PLAIN" }}
+<li>
+  <a href="{{.Permalink}}">{{default (path.Base $page.File.Dir) $page.Title | humanize}}</a>
+</li>
+{{end}}
+  {{end}}
+</ul>
+{{end}}
+{{end}}

@@ -1,6 +1,3 @@
-const stripe = require('stripe')(env.STRIPE_PRIVATE_KEY);
-const fetch = require("node-fetch");
-
 let endpoint = "https://hugoinaction.github.io/GitHubPagesStore"
 
 ////////////////////////////////////////////////////////////////
@@ -16,6 +13,10 @@ if (env.NETLIFY) {
 ////////////////////////////////////////////////////////////////
 // End custom code for getting build details from Netlify.
 ////////////////////////////////////////////////////////////////
+
+const stripe = require('stripe')(env.STRIPE_PRIVATE_KEY);
+const fetch = require("node-fetch");
+const origin = new URL(endpoint).origin;
 
 module.exports = {
   /**
@@ -53,8 +54,8 @@ module.exports = {
           line_items: [
           ],
           mode: 'payment',
-          success_url: `${endpoint}${decodeURIComponent(event.queryStringParameters.success)}`,
-          cancel_url: `${endpoint}${decodeURIComponent(event.queryStringParameters.cancel)}`,
+          success_url: `${origin}${decodeURIComponent(event.queryStringParameters.success)}`,
+          cancel_url: `${origin}${decodeURIComponent(event.queryStringParameters.cancel)}`,
           metadata: { }
         };
 

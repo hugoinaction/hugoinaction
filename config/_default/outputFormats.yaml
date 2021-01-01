@@ -1,0 +1,5 @@
+PLAIN:
+  mediaType: text/html
+  isHTML: true
+  name: plain
+  path: /plain
