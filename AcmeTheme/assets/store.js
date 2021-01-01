@@ -15,7 +15,7 @@ export default {
     s.defer = true;
     document.body.appendChild(s);
 
-    this.template = document.querySelector("#cart-item").innerHTML;
+    this.template = document.querySelector("#cart-item")?.innerHTML;
     this.badge = document.querySelector(".cart .badge");
     document.querySelectorAll(".addToCart").forEach(add => {
       add.addEventListener("click", (e) => {
@@ -89,11 +89,11 @@ export default {
   },
 
   render() {
-    this.badge.innerText =cart.length;
+    this.badge ? this.badge.innerText = cart.length : "";
     if (cart.length === 0) {
-      document.querySelector(".cart").classList.remove("visible");
+      document.querySelector(".cart")?.classList.remove("visible");
     } else {
-      document.querySelector(".cart").classList.add("visible");
+      document.querySelector(".cart")?.classList.add("visible");
     }
 
     try {

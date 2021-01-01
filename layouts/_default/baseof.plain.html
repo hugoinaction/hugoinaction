@@ -1,82 +1,102 @@
 <html>
   <head>
-  <link rel="stylesheet" href="https://vanillacss.com/vanilla.css">
-  <style>
-    body {
-      margin: 0 auto;
-      max-width: 1000px;
-    }
-    header {
-      border-bottom: 1px solid #555;
-    }
-    header .title {
-      font-size: 48px;
-      text-align: center;
-    }
-    header .title a {
-      color: var(--text-color);
-      text-decoration: none;
-      text-align: center;
-    }
-    header li {
-      list-style: none;
-      display: inline-block;
-      padding: 5px 20px;
-      font-size:smaller;
-    }
-    footer {
-      border-top: 1px solid #555;
-      padding: 20px;
-    }
-    footer li {
-      list-style: none;
-      display: inline-block;
-      padding: 5px 20px;
-      font-size:smaller;
-      margin: 0;
-    }
-    footer ul, header ul {
-      text-align: center;
-      padding: 0;
-      margin: 0;
-    }
-  </style>
+    <link rel="stylesheet" href="https://vanillacss.com/vanilla.css" />
+    <style>
+      body {
+        margin: 0 auto;
+        max-width: 1000px;
+      }
+      header {
+        border-bottom: 1px solid #555;
+      }
+      header .title {
+        font-size: 48px;
+        text-align: center;
+      }
+      header .title a {
+        color: var(--text-color);
+        text-decoration: none;
+        text-align: center;
+      }
+      header a, footer a {
+        text-decoration: none;
+      }
+      header li {
+        list-style: none;
+        display: inline-block;
+        padding: 5px 20px;
+        font-size: smaller;
+      }
+      footer {
+        border-top: 1px solid #555;
+        padding: 20px;
+      }
+      footer li {
+        list-style: none;
+        display: inline-block;
+        padding: 5px 20px;
+        font-size: smaller;
+        margin: 0;
+      }
+      footer ul,
+      header ul {
+        text-align: center;
+        padding: 0;
+        margin: 0;
+      }
+      form * {
+        margin: 10px;
+      }
+    </style>
   </head>
   <body>
     <header>
       <div class="title">
-
-        <a {{with .Site.Home.OutputFormats.Get "PLAIN"}}
-              href="{{.Permalink}}"
-           {{end}}>
-          {{default site.Home.Title .Site.Title}}
-        </a>
+        <a href="{{site.Home.Permalink}}"> {{default site.Home.Title .Site.Title}} </a>
       </div>
       <ul>
-      {{range site.Menus.main}}
-        {{$name := .Name | humanize}}
-        {{ with site.GetPage .URL }}
-          {{with .OutputFormats.Get "PLAIN" }}
-            <li><a href="{{.Permalink}}">{{$name}}</a></li>
+        {{range site.Menus.main}}
+            {{ with site.GetPage .URL }}
+              <li><a href="{{.Permalink}}">{{.Name | humanize}}</a></li>
+            {{ else }}
+              <li><a href="{{.URL}}">{{.Name | humanize}}</a></li>
+            {{end}}
           {{end}}
-        {{end}}
-      {{end}}
       </ul>
     </header>
-    {{block "main" .}}
+    {{block "pre" .}}
+    {{ end }}
     <h1>{{default .File.ContentBaseName .Title | humanize}}</h1>
     {{.Content}}
+    {{if .RegularPages}}
+    <h2> Pages </h2>
+    <ul>
+    {{range .RegularPages}}
+    <li>
+      <a href="{{.Permalink}}">{{default .File.ContentBaseName .Title | humanize}}</a>
+    </li>
+    {{end}}
+    </ul>
+    {{end}}
+
+    {{if gt (len .Sections) 0}}
+    <h2>Subsections</h2>
+    <ul>
+      {{range .Sections}}
+    <li>
+      <a href="{{.Permalink}}">{{default (path.Base .File.Dir) .Title | humanize}}</a>
+    </li>
+      {{end}}
+    </ul>
+    {{end}}
+    {{block "post" .}}
+
     {{end}}
     <footer>
       <ul>
-      {{range site.Menus.footer}}
-        {{$name := .Name | humanize}}
-        {{ with site.GetPage .URL }}
-          {{with .OutputFormats.Get "PLAIN" }}
-            <li><a href="{{.Permalink}}">{{$name}}</a></li>
-          {{end}}
-        {{end}}
-      {{end}}
+        {{range site.Menus.footer}} {{ with site.GetPage .URL }}
+        <li><a href="{{.Permalink}}">{{.Name | humanize}}</a></li>
+        {{end}} {{end}}
       </ul>
       <center><small>{{$.Param "copyright" | markdownify}}</small></center>
     </footer>

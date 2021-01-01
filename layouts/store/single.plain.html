@@ -1,0 +1,26 @@
+{{define "post"}}
+  {{$netlify := "false"}}
+  {{if getenv "NETLIFY" }}
+  {{ $netlify = "true" }}
+  {{end}}
+  {{ $defines := dict "REMOVE_FORM_ON_SUBMISSION" (default "false" (site.Param "RemoveFormOnSubmission")) "BASE_URL" (print "\"" site.BaseURL "\"" ) "NETLIFY" $netlify}}
+  {{ $js := resources.Get "index.js" | js.Build (dict "defines" $defines "minify" (not site.IsServer))}}
+
+  <script type="text/javascript" src="{{ $js.RelPermalink }}" defer></script>
+{{$product := (dict "colors" "" "rating" 0 "price" 0)}}
+{{if .Page.Params.product}}
+  {{$product = (partialCached "product.html" "nothing").Get .Page.Params.product}}
+{{end}}
+<h2>Purchase</h2>
+    <form>
+    <input type="hidden" value="{{.Page.Params.product}}" name="name">
+    {{if gt (len $product.colors) 0}}
+    <select name="color">
+      {{range split $product.colors ","}}
+        <option value="{{trim . " "}}">{{trim . " "}}</option>
+      {{end}}
+    </select>
+    {{end}}
+    <button class="buyNow">Buy now</button>
+    </form>
+{{end}}

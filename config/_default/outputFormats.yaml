@@ -3,3 +3,4 @@ PLAIN:
   isHTML: true
   name: plain
   path: /plain
+  permalinkable: true
