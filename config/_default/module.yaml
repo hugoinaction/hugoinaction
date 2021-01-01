@@ -1,3 +1,4 @@
 imports:
   - path: github.com/hugoinaction/TermsAndPrivacy
   - path: github.com/hugoinaction/AcmeShared
+  - path: github.com/gohugoio/hugo-mod-jslibs/instantpage
