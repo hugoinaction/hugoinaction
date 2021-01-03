@@ -6,6 +6,7 @@ import Store from "./store"
 function init() {
   FormHandler.init();
   Search.init();
+  document.addEventListener("turbolinks:load", router);
   router();
 }
 
@@ -21,8 +22,4 @@ function router() {
   }
 }
 
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', init);
-} else {
-  init();
-}
+init();

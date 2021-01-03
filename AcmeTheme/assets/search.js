@@ -1,7 +1,7 @@
 import Fuse from 'fuse.js'
 
 const MAX_SEARCH_RESULTS = 5;
-
+let index;
 export default {
   async init() {
     try {
@@ -11,7 +11,7 @@ export default {
         return;
       }
       let data = await response.json();
-      const index = new Fuse(data, {
+      index = new Fuse(data, {
         keys: [{
           name: 'title',
           weight: 20
@@ -22,10 +22,13 @@ export default {
           name: 'content'
         }]
       });
-      const searchBox = document.querySelector("#search input");
-      const result = document.querySelector("#search div");
 
-      function showResults() {
+      function showResults(e) {
+        const searchBox = document.querySelector("#search input");
+        if (e.target !== searchBox) {
+          return;
+        }
+        const result = document.querySelector("#search div");
         result.style.display = "block";
         if (searchBox.value.length > 0) {
           const results = index.search(searchBox.value);
@@ -38,8 +41,12 @@ export default {
         }
       }
 
-      searchBox.addEventListener("input", showResults);
-      searchBox.addEventListener("keyup", event => {
+      document.addEventListener("input", showResults);
+      document.addEventListener("keyup", event => {
+        const searchBox = document.querySelector("#search input");
+        if (event.target !== searchBox) {
+          return;
+        }
         if (event.key === "Enter") {
           const results = index.search(searchBox.value);
           if (results.length > 0) {
@@ -47,11 +54,16 @@ export default {
           }
         }
       })
-      searchBox.addEventListener("focusout", (e) => {
+      document.addEventListener("focusout", (e) => {
+        const searchBox = document.querySelector("#search input");
+        if (e.target !== searchBox) {
+          return;
+        }
+        const result = document.querySelector("#search div");
         setTimeout(() => result.style.display = "none", 100);
 
       });
-      searchBox.addEventListener("focusin", showResults);
+      document.addEventListener("focusin", showResults);
     } catch (e) {
       this.removeSearch();
     }
