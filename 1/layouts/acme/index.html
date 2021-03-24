@@ -1,0 +1,84 @@
+{{define "body"}}
+{{$title:= default site.Title .Page.Title}}
+<section>
+  <main>
+    <img src="./image/logo.svg" width="60px">
+    {{with $title}}<h1 class="intro">{{.}}</h1>{{end}}
+    {{with .Param "subtitle"}}<h2>{{. | humanize | markdownify}}</h2>{{end}}
+    {{.Content}}
+    <nav>
+      <ul>
+        {{ range site.Menus.main }}
+        <li><a href="{{.URL}}">{{.Name | humanize}}</a></li>
+        {{end}}
+      </ul>
+    </nav>
+  </main>
+</section>
+<section>
+  {{/* Recent Blog Posts */}}
+  <article>
+    <h1> Recent Blog Posts</h1>
+    <div class="posts">
+      {{ range first 3 (where (where site.RegularPages ".Section" "blog" ) ".Draft" false)}}
+      <div class="post">
+        <a href="{{.Permalink}}">{{default (.File.ContentBaseName | humanize | title) .Title}}</a>
+        <summary>{{.Summary}}</summary>
+      </div>
+      {{end}}
+    </div>
+  </article>
+</section>
+{{with .Page.Params.testimonials}}
+<section>
+  <article>
+    <h1>Our clients</h1>
+    <div class="testimonials">
+      <ol>
+        {{range .}}
+        <li>
+          <details>
+            <summary>
+              <h3>{{.author | title}}</h3>
+            </summary>
+            <p>{{.content}}</p>
+          </details>
+        </li>
+        {{end}}
+      </ol>
+      <small>Click each to see testimonials.</small>
+    </div>
+  </article>
+</section>
+{{end}}
+<section>
+  <article>
+    <h1> Our Products</h1>
+    <table>
+      {{$products := resources.GetMatch "products.csv"}}
+      {{$parsedProducts := $products | transform.Unmarshal (dict "delimiter" ",")}}
+      {{ range $i, $value := $parsedProducts  }}
+      {{if eq $i 0}}<thead>{{end}}
+        <tr>
+          {{range $value}}
+          <td>{{ . }}</td>
+          {{ end }}
+        </tr>
+        {{if eq $i 0}}</thead>{{end}}
+      {{ end }}
+    </table>
+    <a href="{{$products.RelPermalink}}" download>Click here to download this listing.</a>
+  </article>
+</section>
+<footer>
+  <nav>
+    <ul>
+      {{ range site.Menus.footer }}
+      <li><a href="{{.URL}}">{{.Name | humanize}}</a></li>
+      {{ end }}
+    </ul>
+  </nav>
+  <br>
+  {{.Param "copyright" | markdownify}}
+</footer>
+{{ end }}
