@@ -13,11 +13,6 @@ cascade:
 - _target:
     kind: page
   layout: blog
-  type: modern
-- _target:
-    kind: section
-  type: modern
-  layout: list
 ---
 The Acme Blog
 ============
