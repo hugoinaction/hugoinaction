@@ -3,7 +3,7 @@
 
 <head>
   <link rel="stylesheet" type="text/css" href="/index.css">
-  {{with (default site.Title .Page.Title)}}<title>{{.}}</title>{{end}}
+  {{with (default .Site.Title .Page.Title)}}<title>{{.}}</title>{{end}}
   {{with .Page.Description}}
   <meta name="description" content="{{.}}" />{{end}}
 </head>
