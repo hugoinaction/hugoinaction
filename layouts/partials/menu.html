@@ -1,7 +1,7 @@
-{{with site.Menus.footer }} 
+{{with $ }} 
   <nav>
     <ul>
-    {{range .}}
+    {{range $}}
       <li>
         <a href="{{.URL}}">{{.Name | humanize}}</a>
       </li>

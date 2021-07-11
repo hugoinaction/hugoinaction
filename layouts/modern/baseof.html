@@ -48,7 +48,7 @@
     {{end}}
     {{block "footer" .}}
       <footer class="dark">
-        {{ partial "menu.html" . }}
+        {{ partial "menu.html" site.Menus.footer }}
         <ul>
           {{with site.Author.facebook}}
             <li>
