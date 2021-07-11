@@ -7,6 +7,7 @@
     {{end}}
     <meta name="viewport" 
       content="width=device-width, initial-scale=1.0" />
+    {{partialCached "favicon.png.html" $ "nothing"}}
     {{partialCached "index.css.html" $ "nothing"}}
     {{$title := default site.Title .Title}}
     {{with $title}}<title>{{.}}</title>{{end}}
