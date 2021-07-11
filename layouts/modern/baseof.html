@@ -12,7 +12,7 @@
     {{$title := default site.Title .Title}}
     {{with $title}}<title>{{.}}</title>{{end}}
   </head>
-  <body class="home">
+  <body class="{{block "bodyClass" .}}{{end}}">
     {{block "body" .}}
       <main>
         {{with .Title}}
