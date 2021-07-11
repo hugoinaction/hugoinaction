@@ -49,4 +49,14 @@
     {{end}}
   </aside>
 </div>
+{{with site.RegularPages.Related .}}
+<div id="related">
+  <h2>Related Pages</h2>
+  <ul class="posts">
+    {{range first 5 .}}
+     {{partialCached "card.html" . .Permalink}}
+    {{end}}
+  </ul>
+</div>
+{{end}}
 {{end}}
