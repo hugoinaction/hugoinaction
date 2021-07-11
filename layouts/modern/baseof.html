@@ -7,6 +7,8 @@
     {{end}}
     <meta name="viewport" 
       content="width=device-width, initial-scale=1.0" />
+    {{ template "_internal/twitter_cards.html" . }}
+    {{ template "_internal/opengraph.html" . }}
     {{partialCached "favicon.png.html" $ "nothing"}}
     {{partialCached "index.css.html" $ "nothing"}}
     {{$title := default site.Title .Title}}
