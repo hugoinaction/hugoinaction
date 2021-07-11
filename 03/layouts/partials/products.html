@@ -1,0 +1,15 @@
+{{$scratch := newScratch}}
+{{$products := resources.GetMatch "products.csv"}}
+{{$parsedProducts := $products | transform.Unmarshal (dict "delimiter" ",")}}
+
+{{$index := index $parsedProducts 0}}
+
+{{ range $i, $r := $parsedProducts }}
+  {{ if ne $i 0}}
+    {{range $j := seq (sub (len $index) 1)}}
+      {{ $scratch.SetInMap (index $r 0) (index $index $j) (index $r $j) }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{return $scratch.Values}}
