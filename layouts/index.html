@@ -5,17 +5,14 @@
     {{if $.Description}}<meta name="description" content="{{$.Description}}">{{end}}
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./index.css">
-    {{$title := $.Title}}
-    {{if not $title}}
-    {{$title = site.Title}}
-    {{end}}
+    {{$title := default site.Title $.Title}}
     {{if $title}}<title>{{$title}}</title>{{end}}
   </head>
   <body class="home">
     <section>
       <img src="./image/logo.svg" alt="Acme Logo" width="64"/>
       {{if $title}}<h1>{{$title}}</h1>{{end}}
-      {{if $.Params.Subtitle}}<h2>{{$.Params.Subtitle}}</h2>{{end}}
+      {{if $.Param "subtitle"}}<h2>{{$.Param "subtitle"}}</h2>{{end}}
       <a href="./blog">Explore</a>
     </section>
     <footer>
