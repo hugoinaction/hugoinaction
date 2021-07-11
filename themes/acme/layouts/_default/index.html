@@ -64,7 +64,7 @@
         <h1>From our blog</h1>
         <ul class="posts">
           {{range first 3 .}}
-             {{partialCached "card.html" . .Permalink}}
+             {{.Render "card"}}
           {{end}}
         </ul>
     </section>
