@@ -33,6 +33,25 @@
       {{with .Param "subtitle"}}<h2>{{. | humanize | markdownify}}</h2>{{end}}
       <a href="{{ref . (.Param "explore")}}">Explore</a>
     </section>
+    {{with .Resources.GetMatch "products.csv"}}
+    <section id="products">
+      <h1>Our Products</h1>
+      {{with . | transform.Unmarshal (dict "delimiter" ",")}}
+        <table>
+          {{range $i, $value := .}}
+            {{if eq $i 0}}<thead>{{end}}
+              <tr>
+                {{range $value}}
+                <td>{{.}}</td>
+                {{end}}
+              </tr>
+              {{if eq $i 0}}</thead>{{end}}
+            {{end}}
+        </table>
+      {{end}}
+      <a href="{{.Permalink}}" download>Download listing</a>
+    </section>
+    {{end}}
     <section id="description">
       {{.Content}}
     </section>
