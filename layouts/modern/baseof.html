@@ -7,7 +7,7 @@
     {{end}}
     <meta name="viewport" 
       content="width=device-width, initial-scale=1.0" />
-    {{ $css := resources.GetMatch "index.css"}}
+    {{ $css := resources.GetMatch "index.scss"| resources.ToCSS}}
     <link rel="stylesheet" type="text/css" href="{{$css.Permalink}}">
     {{$title := default site.Title .Title}}
     {{with $title}}<title>{{.}}</title>{{end}}
