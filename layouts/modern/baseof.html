@@ -7,8 +7,7 @@
     {{end}}
     <meta name="viewport" 
       content="width=device-width, initial-scale=1.0" />
-    {{ $css := resources.GetMatch "index.scss"| resources.ToCSS}}
-    <link rel="stylesheet" type="text/css" href="{{$css.Permalink}}">
+    {{partialCached "index.css.html" $ "nothing"}}
     {{$title := default site.Title .Title}}
     {{with $title}}<title>{{.}}</title>{{end}}
   </head>
@@ -16,8 +15,7 @@
     {{block "header" .}}
       <header>
       <a href="{{ site.BaseURL | relLangURL }}">
-      <img src="{{ site.BaseURL }}/image/logo.svg" alt="Acme Logo" 
-               width="48" />
+      {{partialCached "logo.svg" $ "nothing"}}
           Acme Corporation
       </a>
       {{ partialCached "menu.html" (dict "Menu" site.Menus.main "Button" true) "main" }}
