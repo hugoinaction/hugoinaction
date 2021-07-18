@@ -28,7 +28,8 @@
 header:before {
   background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cpattern id='a' patternUnits='userSpaceOnUse' width='4' height='4'%3E%3Cpath d='M-1 1l2-2M0 4l4-4M3 5l2-2' stroke='rgba(255,255,255,.9)' stroke-width='1.5'/%3E%3C/pattern%3E%3Crect width='100%25' height='100%25' fill='url(%23a)'/%3E%3C/svg%3E")!important;
 }
-#related {
+#related,
+.comments {
   width: 100%;
   background-color: #fff;
   border-color: rgba(243,244,246,.4);
@@ -39,7 +40,8 @@ header:before {
   box-shadow: 0 0 transparent,0 0 transparent,0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -2px rgba(0,0,0,.05);
 }
 @media (min-width:640px) {
-  #related {
+  #related,
+  .comments {
     max-width: 640px;
   }
 }
@@ -49,7 +51,8 @@ header:before {
     line-height: 1.75rem;
     padding: .75rem 1.25rem;
   }
-  #related {
+  #related,
+  .comments {
     max-width: 768px;
   }
 }
@@ -57,16 +60,19 @@ header:before {
   .btn {
     padding: 1rem 1.5rem;
   }
-  #related {
+  #related,
+  .comments {
     max-width: 1024px;
   }
 }
 @media (min-width:1280px) {
-  #related {
+  #related,
+  .comments {
     max-width: 1280px;
   }
 }
-#related h2 {
+#related h2,
+.comments h2 {
   font-weight: 700;
   margin-left: auto;
   margin-right: auto;
@@ -79,7 +85,8 @@ header:before {
   text-align: center;
 }
 #related h2:after,
-.blog #content aside h2:after {
+.blog #content aside h2:after,
+.comments h2:after {
   content: "";
   height: 1px;
   width: 50%;
@@ -87,6 +94,9 @@ header:before {
   position: absolute;
   bottom: .5rem;
   left: 25%;
+}
+.comments form div {
+  margin: 1rem;
 }
 .subsections {
   background-color: #fff;
@@ -260,7 +270,8 @@ li.subsection h3 {
 }
 @media (min-width:1024px) {
   #related h2,
-  .blog #content aside h2 {
+  .blog #content aside h2,
+  .comments h2 {
     font-size: 1.25rem;
     line-height: 1.75rem;
     padding-top: 1rem;
@@ -296,7 +307,8 @@ li.subsection h3 {
 }
 @media (min-width:1536px) {
   #related,
-  .blog #content aside {
+  .blog #content aside,
+  .comments {
     max-width: 1536px;
   }
 }
