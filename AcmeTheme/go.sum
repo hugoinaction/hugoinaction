@@ -1,2 +1,4 @@
 github.com/hugoinaction/AcmeSupport v0.0.0-20210718141503-769966737a52 h1:laRXOzTYMyK8g70rG/ZfrwVkcoFgqKraPQmwTeCryAA=
 github.com/hugoinaction/AcmeSupport v0.0.0-20210718141503-769966737a52/go.mod h1:kGNexn9VmQvIar/+RG6cW2Q1daLa/QPwWCLLX/N7gNA=
+github.com/hugoinaction/hugo-debug-utils v0.0.0-20200427035302-d4636e5c27cf h1:6rMTTNHfMot+cuzlkQsw9Na6xIrKmjCf2TneR95m75g=
+github.com/hugoinaction/hugo-debug-utils v0.0.0-20200427035302-d4636e5c27cf/go.mod h1:YA0Taxzbbqz9oEvtMUW/uuPRE2v93r0WPMLkWaqiuBs=
