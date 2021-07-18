@@ -1,3 +1,8 @@
 module:
   hugoVersion:
     min: 0.84.3
+  imports:
+    path: github.com/hugoinaction/AcmeSupport
+    mounts:
+      - source: assets
+        target: assets
