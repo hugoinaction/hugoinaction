@@ -1,0 +1,33 @@
+{{define "bodyClass"}}page survey{{end}}
+
+{{ define "body" }}
+<main>
+  <h2>{{.Title}}</h2>
+  {{.Content}}
+  {{if getenv "NETLIFY" }}
+  <form name="{{.Title}}" netlify="true">
+  {{ else }}
+  <form action="https://formspree.io/f/{{.Param "form"}}" method="post">
+  {{ end }}
+    <ol>
+    {{ range $index, $item := .Params.survey }}
+      <li>
+        <label for="question{{$index}}">{{$item.question}}</label>
+      {{if $item.answer}}  
+        <select id="question{{$index}}" name="question{{$index}}" required>
+          <option value=""></option>
+          {{range $item.answer}}
+            <option value="{{.}}" name="{{.}}">{{.}}</option>
+          {{end}}
+        </select>
+      {{else}}
+        <input id="question{{$index}}" 
+          name="question{{$index}}" type="text" required>
+      {{end}}
+      </li>
+    {{ end }} 
+    </ol>
+    <button type="submit">Submit</button>
+  </form>
+</main>
+{{ end }}
