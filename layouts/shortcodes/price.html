@@ -1,2 +1,0 @@
-{{$product := default (.Get 0) (.Get "product")}}
-$ {{index (index (partialCached "products.html" "cache") $product) "Price" }}

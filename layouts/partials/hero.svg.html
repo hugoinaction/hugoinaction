@@ -1,2 +1,0 @@
-{{ $hero := resources.GetMatch "image/hero.svg.tpl" | resources.ExecuteAsTemplate "hero.svg" "nothing" }}
-<img class="hero" src="{{$hero.Permalink}}" alt="Acme Corporation" width="24rem" />

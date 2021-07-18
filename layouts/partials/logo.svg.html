@@ -1,2 +1,0 @@
-{{ $logo := resources.GetMatch "image/logo.svg.tpl" | resources.ExecuteAsTemplate "logo.svg" "nothing" }}
-<img src="{{$logo.Permalink}}" alt="Acme Logo" width="48" />
