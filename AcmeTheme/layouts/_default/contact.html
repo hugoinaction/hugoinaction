@@ -16,14 +16,24 @@
       {{.Content}}
     </div>
 
+  {{if getenv "NETLIFY" }}
     <form netlify="true" name="Contact">
+  {{ else }}
+    <form action="https://formspree.io/f/{{.Param "contact"}}" method="post"> 
+  {{ end }}
         <div>
           <label for="name">Name:</label>
           <input name="name" type="text" required>
         </div>
         <div>
           <label for="email">Email:</label>
-          <input name="email" type="email" required>
+          <input
+            {{ if getenv "NETLIFY" }}
+              name="email"
+            {{ else }} 
+              name="_replyto"
+            {{ end }}
+            type="email" required>
         </div>
         <div>
           <label for="message">Message:</label>
