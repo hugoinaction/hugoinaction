@@ -1,6 +1,8 @@
 import Fuse from 'fuse.js'
 
 let index = null;
+const MAX_SEARCH_RESULTS = 5;
+
 export default {
   async init() {
     try {
@@ -21,10 +23,30 @@ export default {
           name: 'content'
         }]
       });
-      // Just to test. Do not leave in code.
-      console.log(index.search('acme'));
+      document.addEventListener("input", this.showResults);
     } catch (e) {
       this.removeSearch();
+    }
+  },
+
+  showResults(event) {
+    const searchBox = document.querySelector("#search input");
+    if (event.target !== searchBox) {
+      return;
+    }
+    const result = document.querySelector("#search div");
+    if (searchBox.value.length > 0) {
+      const results = index.search(searchBox.value);
+      result.innerHTML = results
+        .slice(0, MAX_SEARCH_RESULTS)
+        .map(x => `<a href="${x.item.url}">
+          <img src="${x.item.cover || ""}" width="40" height="40">
+          <h3>${x.item.title}</h3>
+          <span>${x.item.content.substr(0,40)}</span>
+        </a>`)
+        .join("");
+    } else {
+      result.innerHTML = '';
     }
   },
 
