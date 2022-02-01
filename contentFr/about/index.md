@@ -22,7 +22,7 @@ Fabrication
 
 Chez Acme Corporation, nous sommes fiers de ce que nous créons. Notre processus de fabrication passe par **3 différentes** étapes de fabrication fine pour vous donner les meilleures formes possibles.
 
-<img style="float:right; margin: 20px;" src="draw.fr.jpg">
+<img style="float:right; margin: 20px;" src="draw.jpg">
 
 1. **Dessin** Nos formes sont dessinées avec une précision au 1/100 de millimètre.
    * Nous utilisons des outils de dessin vectoriel avancés pour créer notre catalogue.
