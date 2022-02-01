@@ -56,10 +56,10 @@
         </ul>
       </section>
     {{end}}
-    {{with 
-      (where site.RegularPages 
+    {{with
+      (where site.RegularPages
       ".Section" "in" site.Params.mainSections)
-    }} 
+    }}
     <section id="blog">
         <h1>From our blog</h1>
         <ul class="posts">
@@ -75,11 +75,22 @@
     <div>
       <ol>
         {{range .}}
+        {{$author := default "" .author}}
+        {{$content := default "" .content}}
+        {{$from := default "" .from}}
+        {{if .tweet}}
+          {{$tweet := getJSON
+            "https://publish.twitter.com/oembed?url=" 
+            .tweet  "&omit_script=1&hide_media=1&hide_thread=1&dnt=true" }}
+          {{$author = $tweet.author_name }}
+          {{$from = "via Twitter"}}
+          {{$content = $tweet.html }}
+        {{end}}
         <li>
-            <p>{{.content}}</p>
+            <p>{{$content | safeHTML}}</p>
             <div>
-              <h2>{{.author}}</h2>
-              <h3>{{.from}}</h3>
+              <h2>{{$author | title}}</h2>
+              <h3>{{$from}}</h3>
             </div>
         </li>
         {{end}}
