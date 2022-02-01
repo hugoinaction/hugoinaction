@@ -1,6 +1,7 @@
 {
   "comments": {
     "dependencies": {
+      "@sendgrid/mail": "project",
       "mathjax": "project",
       "node-fetch": "project",
       "stripe": "project"
@@ -12,6 +13,7 @@
     }
   },
   "dependencies": {
+    "@sendgrid/mail": "7.4.6",
     "mathjax": "3.2.0",
     "node-fetch": "2.6.1",
     "stripe": "8.169.0"
@@ -24,8 +26,8 @@
   "main": "api.js",
   "name": "acme-corporation-website",
   "scripts": {
-    "start": "node api.js",
-    "postinstall": "node api/postinstall.js"
+    "postinstall": "node api/postinstall.js",
+    "start": "node api.js"
   },
   "version": "0.1.0"
 }
