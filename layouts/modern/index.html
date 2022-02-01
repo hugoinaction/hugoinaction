@@ -1,21 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    {{with .Description}}<meta name="description" content="{{.}}">{{end}}
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./index.css">
-    {{$title := default site.Title .Title}}
-    {{with $title}}<title>{{.}}</title>{{end}}
-  </head>
-  <body class="home">
-    <header>
-      <a href="{{ site.BaseURL | relLangURL }}">
-        <img src="./image/logo.svg" alt="Acme Logo" 
+{{define "body"}}
+{{$title := default site.Title .Title}}
+  <header>
+    <a href="{{ site.BaseURL | relLangURL }}">
+    <img src="./image/logo.svg" alt="Acme Logo" 
              height="36" width="48" />
         Acme Corporation
-      </a>
-      {{with site.Menus.main }}
+    </a>
+    {{with site.Menus.main }}
         <nav>
           <button class="hamburger">&#9776;</button>
           <ul>
@@ -153,5 +144,4 @@
       </ul>
       <div>{{.Param "copyright" | markdownify}}</div>
   </footer>
-  </body>
-</html>
+{{ end }}
