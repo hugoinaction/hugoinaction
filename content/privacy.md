@@ -1,9 +1,9 @@
 Privacy Policy
 ==============
 
-Last updated August 19, 2019
+Last updated **August 19, 2019**
 
-Thank you for choosing to be part of our community at Acme Corporation TM (“Company”, “we”, “us”, or “our”). We are committed to protecting your personal information and your right to privacy. If you have any questions or concerns about our notice or our practices with regard to your personal information, please contact us at contact@example.org.
+Thank you for choosing to be part of our community at *Acme Corporation TM* (*“Company”*, *“we”*, *“us”*, or *“our”*). We are committed to protecting your personal information and your right to privacy. If you have any questions or concerns about our notice or our practices with regard to your personal information, please contact us at [contact@example.org](mailto:contact@example.org).
 
 When you visit our website -- https://hugoinaction.com and use our services, you trust us with your personal information. We take your privacy very seriously. In this privacy notice, we describe our privacy notice. We seek to explain to you in the clearest way possible what information we collect, how we use it, and what rights you have in relation to it. We hope you take some time to read through it carefully, as it is important. If there are any terms in this privacy notice that you do not agree with, please discontinue the use of our Sites and our services.
 
@@ -16,7 +16,7 @@ WHAT INFORMATION DO WE COLLECT?
 
 Information automatically collected
 
-Some information – such as IP address and/or browser, and device characteristics – is collected automatically when you visit our Services.
+__*Some information – such as IP address and/or browser, and device characteristics – is collected automatically when you visit our Services.*__
 
 We automatically collect certain information when you visit, use or navigate the Services. This information does not reveal your specific identity (like your name or contact information) but may include device and usage information, such as your IP address, browser, and device characteristics, operating system, language preferences, referring URLs, device name, country, location, information about how and when you use our Services and other technical information. This information is primarily needed to maintain the security and operation of our Services and for our internal analytics and reporting purposes.
 
@@ -25,7 +25,7 @@ Like many businesses, we also collect information through cookies and similar te
 HOW DO WE USE YOUR INFORMATION?
 ---------------------------------
 
-We process your information for purposes based on legitimate business interests, the fulfillment of our contract with you, compliance with our legal obligations, and/or your consent.
+__*We process your information for purposes based on legitimate business interests, the fulfillment of our contract with you, compliance with our legal obligations, and/or your consent.*__
 
 We use personal information collected via our Services for a variety of business purposes described below. We process your personal information for these purposes in reliance on our legitimate business interests in order to enter into or perform a contract with you, with your consent, and/or for compliance with our legal obligations. We indicate the specific processing grounds we rely on next to each purpose listed below.
 
@@ -42,7 +42,7 @@ We use the information we collect or receive:
 WILL YOUR INFORMATION BE SHARED WITH ANYONE?
 ---------------------------------------------
 
-We only share information with your consent, to comply with laws, to provide you with services, to protect your rights, or to fulfill business obligations.
+__*We only share information with your consent, to comply with laws, to provide you with services, to protect your rights, or to fulfill business obligations.*__
 
 We may process or share data based on the following legal basis:
 
@@ -74,7 +74,7 @@ More specifically, we may need to process your data or share your personal infor
 DO WE USE COOKIES AND OTHER TRACKING TECHNOLOGIES?
 --------------------------------------------------
 
-We may use cookies and other tracking technologies to collect and store your information.
+__*We may use cookies and other tracking technologies to collect and store your information.*__
 
 We may use cookies and similar tracking technologies (like web beacons and pixels) to access or store information. Specific information about how we use such technologies and how you can refuse certain cookies is set out in our Cookie Policy.
 
@@ -82,7 +82,7 @@ We may use cookies and similar tracking technologies (like web beacons and pixel
 HOW LONG DO WE KEEP YOUR INFORMATION?
 -------------------------------------
 
-We keep your information for as long as necessary to fulfill the purposes outlined in this privacy notice unless otherwise required by law.
+__*We keep your information for as long as necessary to fulfill the purposes outlined in this privacy notice unless otherwise required by law.*__
 
 We will only keep your personal information for as long as it is necessary for the purposes set out in this privacy notice, unless a longer retention period is required or permitted by law (such as tax, accounting or other legal requirements). No purpose in this policy will require us keeping your personal information for longer than 90 days .
 
@@ -92,21 +92,21 @@ HOW DO WE KEEP YOUR INFORMATION SAFE?
 --------------------------------------
 
 
-We aim to protect your personal information through a system of organizational and technical security measures.
+__*We aim to protect your personal information through a system of organizational and technical security measures.*__
 
 We have implemented appropriate technical and organizational security measures designed to protect the security of any personal information we process. However, please also remember that we cannot guarantee that the internet itself is 100% secure. Although we will do our best to protect your personal information, transmission of personal information to and from our Services is at your own risk. You should only access the services within a secure environment.
 
 DO WE COLLECT INFORMATION FROM MINORS?
 --------------------------------------
 
-We do not knowingly collect data from or market to children under 18 years of age.
+__*We do not knowingly collect data from or market to children under 18 years of age.*__
 
 We do not knowingly solicit data from or market to children under 18 years of age. By using the Services, you represent that you are at least 18 or that you are the parent or guardian of such a minor and consent to such minor dependent’s use of the Services. If we learn that personal information from users less than 18 years of age has been collected, we will deactivate the account and take reasonable measures to promptly delete such data from our records. If you become aware of any data we have collected from children under age 18, please contact us at dpo@exmaple.org.
 
 WHAT ARE YOUR PRIVACY RIGHTS?
 -----------------------------
 
-In some regions, such as the European Economic Area, you have rights that allow you greater access to and control over your personal information. You may review, change, or terminate your account at any time.
+__*In some regions, such as the European Economic Area, you have rights that allow you greater access to and control over your personal information. You may review, change, or terminate your account at any time.*__
 
 In some regions (like the European Economic Area), you have certain rights under applicable data protection laws. These may include the right (i) to request access and obtain a copy of your personal information, (ii) to request rectification or erasure; (iii) to restrict the processing of your personal information; and (iv) if applicable, to data portability. In certain circumstances, you may also have the right to object to the processing of your personal information. To make such a request, please use the contact details provided below. We will consider and act upon any request in accordance with applicable data protection laws.
 
@@ -124,7 +124,7 @@ Most web browsers and some mobile operating systems and mobile applications incl
 DO CALIFORNIA RESIDENTS HAVE SPECIFIC PRIVACY RIGHTS?
 ----------------------------------------------------
 
-Yes, if you are a resident of California, you are granted specific rights regarding access to your personal information.
+__*Yes, if you are a resident of California, you are granted specific rights regarding access to your personal information.*__
 
 California Civil Code Section 1798.83, also known as the “Shine The Light” law, permits our users who are California residents to request and obtain from us, once a year and free of charge, information about categories of personal information (if any) we disclosed to third parties for direct marketing purposes and the names and addresses of all third parties with which we shared personal information in the immediately preceding calendar year. If you are a California resident and would like to make such a request, please submit your request in writing to us using the contact information provided below.
 
@@ -133,14 +133,14 @@ If you are under 18 years of age, reside in California, and have a registered ac
 DO WE MAKE UPDATES TO THIS POLICY?
 -----------------------------------
 
-Yes, we will update this policy as necessary to stay compliant with relevant laws.
+__*Yes, we will update this policy as necessary to stay compliant with relevant laws.*__
 
 We may update this privacy notice from time to time. The updated version will be indicated by an updated “Revised” date and the updated version will be effective as soon as it is accessible. If we make material changes to this privacy notice, we may notify you either by prominently posting a notice of such changes or by directly sending you a notification. We encourage you to review this privacy notice frequently to be informed of how we are protecting your information.
 
 HOW CAN YOU CONTACT US ABOUT THIS POLICY?
 ----------------------------------------
 
-If you have questions or comments about this policy, you may contact our Data Protection Officer (DPO), DPO Sample, by email at dpo@exmaple.org, by phone at (999)999-9999, or by post to:
+If you have questions or comments about this policy, you may contact our Data Protection Officer (DPO), DPO Sample, by email at [dpo@exmaple.org](mnailto:dpo@exmaple.org), by phone at [(999)999-9999](tel:9999999999), or by post to:
 
 Acme Corporation
 Data Protection Officer

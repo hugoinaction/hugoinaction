@@ -62,3 +62,36 @@ Horizontal Lines:
 
     Preformatted text
 
+## Inline formatting
+
+*Italics*
+
+_Italics_
+
+__Bold__
+
+__*Bold+Italics*__
+
+**_Bold+Italics_**
+
+this_is_not_emphasis
+
+~~Strike-through~~
+
+Content with a -- (dash) and a --- (long dash).
+
+[link](http://link/path/to/target)
+
+[link](http://link/path/to/target "TITLE ON LINK")
+
+[Shared links with footnotes][target 1]
+
+[Second shared link][target 1]
+
+[target 1]
+
+[target 1]: http://footnote.com
+
+Sample inline code `a++` can be specified here.
+
+![Alt Text](/image/logo.png "Optional Tooltip")
