@@ -11,23 +11,26 @@
         {{ partialCached "menu.html" (dict "Menu" site.Menus.footer) "footer" }}
       </div>
     </section>
-    {{with resources.GetMatch "products.csv"}}
-    <section id="products">
+    {{with (partialCached "products.html" "cache")}}
+    <section id="store">
       <h1>Our Products</h1>
-      {{with . | transform.Unmarshal (dict "delimiter" ",")}}
-        <table>
-          {{range $i, $value := .}}
-            {{if eq $i 0}}<thead>{{end}}
-              <tr>
-                {{range $value}}
-                <td>{{.}}</td>
-                {{end}}
-              </tr>
-              {{if eq $i 0}}</thead>{{end}}
-            {{end}}
-        </table>
-      {{end}}
-      <a href="{{.Permalink}}" download>Download listing</a>
+      <ul>
+        {{range $name, $data := .}}
+        <li>
+          <a href="#">
+            {{$img := resources.GetMatch (print "image/products/" $name ".*") | images.Filter (images.Overlay (resources.GetMatch "image/watermark.*") 0 0 )}}
+            {{$img := $img.Resize "1000x"}}
+            <img src="{{$img.Permalink}}" alt="{{$name}}">
+            <h2>{{$name}}</h2>
+            <div class="price">$ {{$data.Price}}</div>
+            <div class="rating">
+              {{range (seq $data.Rating)}}&starf;{{end}}
+              {{- range seq (sub 5 ($data.Rating | int))}}&star;{{end}}
+            </div>
+          </a>
+        </li>
+        {{end}}
+      </ul>
     </section>
     {{end}}
     <section id="description">
