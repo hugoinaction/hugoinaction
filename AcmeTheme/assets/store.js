@@ -1,8 +1,17 @@
 let cart = [];
 let products = {};
+let stripe = undefined;
 
 export default {
   async init() {
+    const s = document.createElement('script');
+    s.setAttribute('src', "https://js.stripe.com/v3/");
+    s.onload = () => { 
+      stripe = Stripe("pk_test_51HzWldGtPsFUGVMkhc6CpV68fwK7E4dzvI6m9Q2RsTA92TBB7AD0NDxnGdgG1jbP65eWz89KTMs8x2tE8mwuS7uN003Q3yiak0"); 
+    };
+    s.defer = true; 
+    document.body.appendChild(s); 
+
     document.addEventListener("click", this.handleClick.bind(this));
     window.addEventListener('storage', this.updateCart.bind(this));
     await this.productInfo();
@@ -15,7 +24,28 @@ export default {
       this.addToCart(event.target.form);
     } else if (event.target.matches("#cart .delete")) {
       this.onDelete(event);
+    } else if (event.target.id === "checkout") { 
+      this.onCheckout();
     }
+  },
+
+  async onCheckout() { 
+    try {
+      const url = NETLIFY ? new URL(window.location.origin + "/.netlify/functions/checkout")
+                          : new URL("https://hugoinaction.herokuapp.com/checkout");
+      cart.forEach(x => url.searchParams.append("products", `${x.name}_${x.color}`));
+      url.searchParams.append("success", encodeURIComponent(window.location.pathname + "?purchase=success"));
+      url.searchParams.append("cancel", encodeURIComponent(window.location.pathname + "?purchase=cancel"));
+      const response = await window.fetch(url.href);
+      if (response.ok) {
+        const resp = await response.json(); 
+        stripe.redirectToCheckout({
+          sessionId: resp.sessionId
+        });
+      }
+    } catch (e) { 
+      console.log("Error", e);
+    } 
   },
 
   addToCart(form) {
@@ -84,7 +114,8 @@ export default {
         +
         `<div class="empty">
           Please add some items to the cart.
-        </div>`;
+        </div>
+        <button id="checkout">Checkout</button>`;
     }
   }
 }

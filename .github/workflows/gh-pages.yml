@@ -30,7 +30,7 @@ jobs:
 
 
       - name: Build
-        run: hugo --minify --baseURL=https://hugoinaction.github.io/GitHubPagesRebuild
+        run: hugo --minify --baseURL=https://hugoinaction.github.io/GitHubPagesStore
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3

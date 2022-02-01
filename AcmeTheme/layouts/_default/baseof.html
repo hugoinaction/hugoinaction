@@ -16,7 +16,9 @@
     {{with $title}}<title>{{.}}</title>{{end}}
     {{ $defines := dict 
       "REMOVE_FORM_ON_SUBMISSION" (default "false" (site.Param "RemoveFormOnSubmission")) 
-      "BASE_URL" (print "\"" site.BaseURL "\"") }}
+      "BASE_URL" (print "\"" site.BaseURL "\"") 
+      "NETLIFY" (default "false" (getenv "NETLIFY"))
+      }}
     {{ $js := resources.Get "index.js" | js.Build (dict "defines" $defines "minify" hugo.IsProduction )}}
     <script type="text/javascript" src="{{ $js.RelPermalink }}" defer></script>
   </head>
