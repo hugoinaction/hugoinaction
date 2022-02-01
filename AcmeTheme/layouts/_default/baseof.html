@@ -66,5 +66,8 @@
         <div>{{.Param "copyright" | markdownify}}</div>
     </footer>
   {{end}}
+  {{if not hugo.IsProduction}}
+    {{ partial "debug/debug.html" (dict "context" .) }}
+  {{end}}
   </body>
 </html>
