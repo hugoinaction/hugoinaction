@@ -22,7 +22,7 @@
   {{with $paginator.Pages}}
     <ul class="posts">
       {{ range .}}
-        {{partialCached "card.html" . .Permalink}}
+        {{.Render "card"}}
       {{ end }}
     </ul>
   {{end}}
