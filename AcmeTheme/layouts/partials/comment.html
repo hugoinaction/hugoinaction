@@ -1,5 +1,19 @@
 <div class="comments">
 <h2> Comments </h2>
+{{$comments := dict}}
+{{if getenv "NETLIFY" }}
+  {{$comments = partialCached "netlifyCommentList.html" .}}
+{{else}}
+  {{$comments = partialCached "formspreeCommentList.html" .}}
+{{end}}
+
+{{range (index $comments .RelPermalink)}}
+<div class="comment">
+  <img width="100" height="100" alt="{{.name}} Avatar" src="https://www.gravatar.com/avatar/{{ md5 .email }}?s=100&d=wavatar">
+  <div class="author">{{.name}}</div>
+  <div class="message">{{.message}}</div>
+</div>
+{{end}}
 {{ if .Disabled  }}
   <div>
     Comments have been disabled by the website administrator.
