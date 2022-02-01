@@ -19,10 +19,24 @@
     Comments have been disabled by the website administrator.
   </div>
 {{ else }}
+<template id="comment-success">
+  <div class="success">
+    {{default "Your comment has been successfully submitted for moderation. It will be available on the website soon." (site.Param "comment-success")}}
+  </div>
+</template>
+<template id="comment-error" >
+  <div class="error">
+    {{default "We are facing an issue submitting the comment. Please try again later." (site.Param "comment-error")}}
+  </div>
+</template>
+
+<form data-dynamic-form
+data-success="#comment-success"
+data-error="#comment-error"
   {{if getenv "NETLIFY" }}
-    <form netlify="true" name="Comments">
+    netlify="true" name="Comments">
   {{ else }}
-    <form action="https://formspree.io/f/{{.FormspreeCommentForm}}" method="post">
+    action="https://formspree.io/f/{{.FormspreeCommentForm}}" method="post">
   {{ end }}
   <input type="hidden" name="url" value="{{.RelPermalink}}">
     <div>

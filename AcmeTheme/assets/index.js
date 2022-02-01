@@ -1,6 +1,6 @@
 function addFormHandler() {
   document.addEventListener('submit', async event => {
-    if (!event.target instanceof HTMLFormElement) { return; }
+    if (event.target?.dataset?.dynamicForm === undefined) {return;}
       event.preventDefault();
       const form = event.target;
       const data = new FormData(form);
@@ -12,11 +12,11 @@ function addFormHandler() {
         headers: { 'Accept': 'application/json'}
       });
       if (response.ok) {
-          form.insertAdjacentHTML('afterend',
-            '<div class = "success">The form has been submitted.</div>');
+        form.insertAdjacentHTML('afterend',
+          document.querySelector(form.dataset.success).innerHTML);
       } else {
         form.insertAdjacentHTML('afterend',
-          '<div class = "error">The form could not be submitted. Please try again later.</div>');
+          document.querySelector(form.dataset.error).innerHTML);
       }
       const message = form.nextElementSibling;
       form.reset();
