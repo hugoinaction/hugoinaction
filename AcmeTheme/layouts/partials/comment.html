@@ -21,7 +21,7 @@
 {{ else }}
 <template id="comment-success">
   <div class="success">
-    {{default "Your comment has been successfully submitted for moderation. It will be available on the website soon." (site.Param "comment-success")}}
+    {{default "Your comment has been successfully submitted." (site.Param "comment-success")}}
   </div>
 </template>
 <template id="comment-error" >
@@ -29,8 +29,17 @@
     {{default "We are facing an issue submitting the comment. Please try again later." (site.Param "comment-error")}}
   </div>
 </template>
+<template id="comment-pre">
+<div class="comment">
+  <img width="100" height="100" alt="[[name]] Avatar" src="https://www.gravatar.com/avatar/[[emailhash]]?s=100&d=wavatar">
+  <div class="author">[[name]]</div>
+  <div class="message">[[message]]</div>
+</div>
+</template>
+
 
 <form data-dynamic-form
+data-pre="#comment-pre"
 data-success="#comment-success"
 data-error="#comment-error"
   {{if getenv "NETLIFY" }}

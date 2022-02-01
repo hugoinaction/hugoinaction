@@ -1,3 +1,5 @@
+import md5 from "md5"
+
 export default {
   init() {
     document.addEventListener('submit', async event => {
@@ -13,8 +15,18 @@ export default {
           headers: { "Accept": "application/json" }
         });
         if (response.ok) {
-          form.insertAdjacentHTML('afterend',
-            document.querySelector(form.dataset.success).innerHTML);
+          if (form.dataset.pre) {
+            let content = document.querySelector(form.dataset.pre).innerHTML;
+            for (let pair of data) {
+              let key = pair[0], value = pair[1];
+              content = content.replaceAll(`[[${key}]]`,value);
+              if (key === "email") {
+                content = content.replaceAll(`[[emailhash]]`, md5(value));  }
+              }
+              form.insertAdjacentHTML('beforebegin', content);
+            }
+            form.insertAdjacentHTML('afterend',
+              document.querySelector(form.dataset.success).innerHTML);
         } else {
           form.insertAdjacentHTML('afterend',
             document.querySelector(form.dataset.error).innerHTML);

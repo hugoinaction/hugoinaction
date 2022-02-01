@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/hugoinaction/hugoinaction#readme",
   "devDependencies": {
-    "fuse.js": "^6.4.6"
+    "fuse.js": "^6.4.6",
+    "md5": "2.3.0"
   }
 }
