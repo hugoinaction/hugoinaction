@@ -14,7 +14,9 @@
     <link rel="stylesheet" type="text/css" href="{{$css}}">
     {{$title := default site.Title .Title}}
     {{with $title}}<title>{{.}}</title>{{end}}
-    {{ $defines := dict "REMOVE_FORM_ON_SUBMISSION" (default "false" (site.Param "RemoveFormOnSubmission")) }}
+    {{ $defines := dict 
+      "REMOVE_FORM_ON_SUBMISSION" (default "false" (site.Param "RemoveFormOnSubmission")) 
+      "BASE_URL" (print "\"" site.BaseURL "\"") }}
     {{ $js := resources.Get "index.js" | js.Build (dict "defines" $defines "minify" hugo.IsProduction )}}
     <script type="text/javascript" src="{{ $js.RelPermalink }}" defer></script>
   </head>
@@ -25,6 +27,10 @@
       <img src="{{partialCached "logo.svg" $ "nothing"}}" alt="Acme Logo" height="36" width="48" />
           Acme Corporation
       </a>
+        <span id="search">
+          <input type="search" placeholder="Search">
+        <div></div>
+      </span>
       {{ partialCached "menu.html" (dict "Menu" site.Menus.main "Button" true) "main" }}
       </header>
     {{ end }}

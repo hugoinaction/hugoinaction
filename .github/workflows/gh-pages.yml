@@ -22,8 +22,6 @@ jobs:
 
       - name: Build
         run: hugo --minify --baseURL=https://hugoinaction.github.io/GitHubPages
-        env:
-          COMMENTS_TOKEN: ${{ secrets.COMMENTS_TOKEN }}
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
