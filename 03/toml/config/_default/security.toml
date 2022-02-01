@@ -1,0 +1,4 @@
+enableInlineShortcodes = true
+
+[funcs]
+getenv = [ "NETLIFY", "COMMENTS_TOKEN", "LATEX2SVG_PASSWORD" ]
