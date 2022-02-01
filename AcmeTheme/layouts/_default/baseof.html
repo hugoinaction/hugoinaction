@@ -14,6 +14,8 @@
     <link rel="stylesheet" type="text/css" href="{{$css}}">
     {{$title := default site.Title .Title}}
     {{with $title}}<title>{{.}}</title>{{end}}
+    {{ $js := resources.Get "index.js" | js.Build (dict "minify" hugo.IsProduction) }}
+    <script type="text/javascript" src="{{ $js.RelPermalink }}" defer></script>
   </head>
   <body class="{{block "bodyClass" .}}{{end}}">
     {{block "header" .}}
