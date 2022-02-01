@@ -1,0 +1,3 @@
+[getjson]
+dir = ":resourceDir/getJSON"
+maxAge = -1
