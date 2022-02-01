@@ -1,2 +1,3 @@
 imports:
-  path: github.com/hugoinaction/AcmeCommon
+  - path: github.com/hugoinaction/TermsAndPrivacy
+  - path: github.com/hugoinaction/AcmeCommon

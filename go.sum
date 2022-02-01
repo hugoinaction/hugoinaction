@@ -2,6 +2,8 @@ github.com/hugoinaction/AcmeCommon v0.0.0-20220201175810-87390b83462d/go.mod h1:
 github.com/hugoinaction/AcmeSupport v0.0.0-20220201175812-abfd2f9e63bb/go.mod h1:kGNexn9VmQvIar/+RG6cW2Q1daLa/QPwWCLLX/N7gNA=
 github.com/hugoinaction/Eclectic v0.0.0-20211028054648-e00855069d1b h1:Eb+WRwrbjI4eAvQHhRze3qRoAYs2/CfDSWFf0ZA1iyQ=
 github.com/hugoinaction/Eclectic v0.0.0-20211028054648-e00855069d1b/go.mod h1:z4ORsG6K5BF+U3ssVkl+7kzy770SWHxNXfWYzdQrqGc=
+github.com/hugoinaction/TermsAndPrivacy v0.0.0-20200223231951-1c7c1972007a h1:pJIHysSc7qVpIdVbVnRyqw27iApGv8ld7l5amtIKjdg=
+github.com/hugoinaction/TermsAndPrivacy v0.0.0-20200223231951-1c7c1972007a/go.mod h1:SKLyKoQovP9Eq2onrKoJg9nk2ncwqv5T6li5aMsD4/Q=
 github.com/hugoinaction/Universal v0.0.0-20210709125610-ce21286916b5 h1:J1x9ysdIwztwgmFwfue591iw0JqgZfahRgs5p5d/lFM=
 github.com/hugoinaction/Universal v0.0.0-20210709125610-ce21286916b5/go.mod h1:tn5626W3c7g5nJ84Hsoe7/Oj1vT5D7xe9yyNhMe72X8=
 github.com/hugoinaction/hugo-debug-utils v0.0.0-20211028054537-1bc4208d4235/go.mod h1:YA0Taxzbbqz9oEvtMUW/uuPRE2v93r0WPMLkWaqiuBs=
