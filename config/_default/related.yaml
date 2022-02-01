@@ -1,0 +1,8 @@
+threshold: 10
+includeNewer: true
+indices:
+- name: tags 
+  weight: 10
+- name: date
+  weight: 1
+  pattern: 2006
