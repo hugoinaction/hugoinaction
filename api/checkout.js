@@ -1,5 +1,5 @@
 const env = require("./env.json");
-const endpoint =  env.NETLIFY ? "https://chapter-12-04.hugoinaction.com" : "https://hugoinaction.github.io/GitHubPagesStore";
+const endpoint =  env.NETLIFY ? "https://chapter-12-05.hugoinaction.com" : "https://hugoinaction.github.io/GitHubPagesStore";
 const stripe = require('stripe')(env.STRIPE_PRIVATE_KEY);
 const fetch = require("node-fetch");
 const origin = new URL(endpoint).origin;

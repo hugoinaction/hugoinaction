@@ -16,12 +16,40 @@ export default {
     window.addEventListener('storage', this.updateCart.bind(this));
     await this.productInfo();
     this.updateCart();
+
+    const location = new URL(window.location.href);
+    if (location.searchParams.get("purchase") === "success") {
+      if (!location.searchParams.get("retain")) {
+        cart.length = 0; 
+        this.save();
+      }
+      document.body.insertAdjacentHTML("beforeend", `
+      <div class="alert success">
+        <div class="head">Order Confirmed.</div> 
+        Your product will be e-mailed soon.
+        <a class="close" href="#">Close</a>
+      </div>`); 
+      location.searchParams.delete("purchase");
+      location.searchParams.delete("retain");
+      window.history.replaceState(null, "", location); 
+      document.querySelector(".alert.success .close").addEventListener("click", e => {
+        document.body.removeChild(document.querySelector(".alert.success"));
+        e.preventDefault();
+      });
+      setTimeout(() => {
+        document.body.removeChild(document.querySelector(".alert.success"));
+      }, 5000);
+    }
   },
 
   handleClick(event) {
     if (event.target.classList.contains("addToCart")) {
       event.preventDefault();
       this.addToCart(event.target.form);
+    } else if (event.target.classList.contains("buyNow")) {
+      event.preventDefault();
+      const data = new FormData(event.target.form);
+      this.onCheckout([{ name: data.get("name"), color: data.get("color") }], true);
     } else if (event.target.matches("#cart .delete")) {
       this.onDelete(event);
     } else if (event.target.id === "checkout") { 
@@ -29,12 +57,12 @@ export default {
     }
   },
 
-  async onCheckout() { 
+  async onCheckout(data = cart, retain = false) { 
     try {
       const url = NETLIFY ? new URL(window.location.origin + "/.netlify/functions/checkout")
                           : new URL("https://hugoinaction.herokuapp.com/checkout");
-      cart.forEach(x => url.searchParams.append("products", `${x.name}_${x.color}`));
-      url.searchParams.append("success", encodeURIComponent(window.location.pathname + "?purchase=success"));
+      data.forEach(x => url.searchParams.append("products", `${x.name}_${x.color}`));
+      url.searchParams.append("success", encodeURIComponent(window.location.pathname + `?purchase=success&retain=${retain}`));
       url.searchParams.append("cancel", encodeURIComponent(window.location.pathname + "?purchase=cancel"));
       const response = await window.fetch(url.href);
       if (response.ok) {
