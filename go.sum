@@ -1,3 +1,4 @@
+github.com/hugoinaction/AcmeCommon v0.0.0-20220201175810-87390b83462d/go.mod h1:C9/TZoRRcat2ivTzO1tKCA7nGni/8PyFIlvNPr3vOo4=
 github.com/hugoinaction/AcmeSupport v0.0.0-20220201175812-abfd2f9e63bb/go.mod h1:kGNexn9VmQvIar/+RG6cW2Q1daLa/QPwWCLLX/N7gNA=
 github.com/hugoinaction/Eclectic v0.0.0-20211028054648-e00855069d1b h1:Eb+WRwrbjI4eAvQHhRze3qRoAYs2/CfDSWFf0ZA1iyQ=
 github.com/hugoinaction/Eclectic v0.0.0-20211028054648-e00855069d1b/go.mod h1:z4ORsG6K5BF+U3ssVkl+7kzy770SWHxNXfWYzdQrqGc=
