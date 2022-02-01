@@ -14,6 +14,7 @@ export default {
 
     document.addEventListener("click", this.handleClick.bind(this));
     window.addEventListener('storage', this.updateCart.bind(this));
+    document.addEventListener("turbo:load", this.updateCart.bind(this)); 
     await this.productInfo();
     this.updateCart();
 

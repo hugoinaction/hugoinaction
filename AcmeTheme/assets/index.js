@@ -1,6 +1,7 @@
 import FormHandler from "formHandler"
 import Search from "./search"
 import Store from "./store"
+import * as Turbo from "@hotwired/turbo"
 
 function init() {
   FormHandler.init();
@@ -10,6 +11,7 @@ function init() {
     const strings = JSON.parse(document.getElementById("js-strings") .content.textContent);
     navigator.serviceWorker.register(strings.serviceWorker, {scope: '/'});
   }
+  Turbo.start();
 }
 
 init();

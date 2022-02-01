@@ -1,6 +1,7 @@
 {
   "comments": {
     "dependencies": {
+      "@hotwired/turbo": "project",
       "@sendgrid/mail": "project",
       "mathjax": "project",
       "node-fetch": "project",
@@ -13,6 +14,7 @@
     }
   },
   "dependencies": {
+    "@hotwired/turbo": "7.0.0-rc.1",
     "@sendgrid/mail": "7.4.6",
     "mathjax": "3.2.0",
     "node-fetch": "2.6.1",
