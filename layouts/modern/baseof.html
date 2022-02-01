@@ -7,6 +7,8 @@
     {{end}}
     <meta name="viewport" 
       content="width=device-width, initial-scale=1.0" />
+    {{ template "_internal/twitter_cards.html" . }}
+    {{ template "_internal/opengraph.html" . }}
     <link rel="icon" type="image/png" href="{{partialCached "favicon.png.html" $ "nothing"}}">
     {{ $css := partialCached "index.css.html" $ "nothing"}}
     <link rel="stylesheet" type="text/css" href="{{$css}}">
