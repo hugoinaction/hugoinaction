@@ -20,18 +20,7 @@
                width="48" />
           Acme Corporation
       </a>
-      {{with site.Menus.main }}
-          <nav>
-            <button class="hamburger">&#9776;</button>
-            <ul>
-              {{range .}}
-                <li>
-                  <a href="{{.URL}}">{{.Name | humanize}}</a>
-                </li>
-              {{end}}
-            </ul>
-          </nav>
-        {{end}}
+      {{ partial "menu.html" (dict "Menu" site.Menus.main "Button" true) }}
       </header>
     {{ end }}
     {{block "body" .}}
@@ -48,7 +37,7 @@
     {{end}}
     {{block "footer" .}}
       <footer class="dark">
-        {{ partial "menu.html" site.Menus.footer }}
+        {{ partial "menu.html" (dict "Menu" site.Menus.footer) }}
         <ul>
           {{with site.Author.facebook}}
             <li>

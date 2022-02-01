@@ -1,7 +1,10 @@
-{{with $ }} 
+{{with $.Menu }} 
   <nav>
+    {{if $.Button}}
+      <button class="hamburger">&#9776;</button>
+    {{end}}
     <ul>
-    {{range $}}
+    {{range $.Menu}}
       <li>
         <a href="{{.URL}}">{{.Name | humanize}}</a>
       </li>
