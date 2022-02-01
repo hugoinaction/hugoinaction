@@ -79,6 +79,24 @@
         </ul>
     </section>
     {{end}}
+    {{with .Param "testimonials"}}
+    <section id="testimonials">
+    <h1>Customer endorsement</h1>
+    <div>
+      <ol>
+        {{range .}}
+        <li>
+            <p>{{.content}}</p>
+            <div>
+              <h2>{{.author}}</h2>
+              <h3>{{.from}}</h3>
+            </div>
+        </li>
+        {{end}}
+      </ol>
+    </div>
+    </section>
+    {{end}}
     <footer class="dark">
       {{with site.Menus.footer }}
       <nav>
