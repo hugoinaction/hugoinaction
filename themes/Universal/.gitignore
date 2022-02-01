@@ -1,5 +1,0 @@
-.DS_Store
-public
-*.lock/
-npm-debug.log
-/node_modules/*
