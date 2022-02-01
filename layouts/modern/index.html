@@ -2,25 +2,6 @@
 
 {{define "body"}}
 {{$title := default site.Title .Title}}
-  <header>
-    <a href="{{ site.BaseURL | relLangURL }}">
-    <img src="./image/logo.svg" alt="Acme Logo" 
-             height="36" width="48" />
-        Acme Corporation
-    </a>
-    {{with site.Menus.main }}
-        <nav>
-          <button class="hamburger">&#9776;</button>
-          <ul>
-            {{range .}}
-              <li>
-                <a href="{{.URL}}">{{.Name | humanize}}</a>
-              </li>
-            {{end}}
-          </ul>
-        </nav>
-      {{end}}
-    </header>
     <section id="intro">
       {{with $title}}<h1>{{.}}</h1>{{end}}
       {{with .Param "subtitle"}}<h2>{{. | humanize | markdownify}}</h2>{{end}}
@@ -109,41 +90,4 @@
     </div>
     </section>
     {{end}}
-    <footer class="dark">
-      {{with site.Menus.footer }}
-      <nav>
-        <ul>
-        {{range .}}
-        <li>
-          <a href="{{.URL}}">{{.Name | humanize}}</a>
-        </li>
-        {{end}}
-        </ul>
-      </nav>
-      {{end}}
-      <ul>
-        {{with site.Author.facebook}}
-          <li>
-            <a href="{{.}}" aria-label="Facebook">
-              <i class="  icon-facebook"></i>
-            </a>
-          </li>
-        {{end}}
-        {{with site.Author.twitter}}
-          <li>
-            <a href="{{.}}" aria-label="Twitter">
-              <i class="icon-twitter"></i>
-            </a>
-          </li>
-        {{end}}
-        {{with site.Author.email}}
-          <li>
-            <a href="mailto:{{.}}" aria-label="email">
-              <i class="icon-email"></i>
-            </a>
-          </li>
-        {{end}}
-      </ul>
-      <div>{{.Param "copyright" | markdownify}}</div>
-  </footer>
 {{ end }}
