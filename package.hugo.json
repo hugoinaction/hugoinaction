@@ -5,7 +5,8 @@
     "@easylogic/editor": "0.10.72"
   },
   "dependencies": {
-    "mathjax": "3.2.0"
+    "mathjax": "3.2.0",
+    "node-fetch": "2.6.1"
   },
   "main": "api.js",
   "scripts": {
