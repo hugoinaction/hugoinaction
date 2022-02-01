@@ -4,7 +4,6 @@ menu:
     name: Blog
     identifier: blog
     weight: 110
-    post: From our editor
   footer:
     name: Blog
     weight: 100

@@ -9,10 +9,6 @@ A circle is a simple closed curve that divides the plane into two regions: an in
 
 A circle may also be defined as a special kind of ellipse in which the two foci are coincident and the eccentricity is 0, or the two-dimensional shape enclosing the most area per unit perimeter squared, using calculus of variations.
 
-## Price
-
-The circle is priced at `{{< price product="Circle" >}}`.
-
 ## Terminology
 
 * **Annulus** a ring-shaped object, the region bounded by two concentric circles.
