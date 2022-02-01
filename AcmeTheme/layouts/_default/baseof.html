@@ -9,9 +9,29 @@
       content="width=device-width, initial-scale=1.0" />
     {{ template "_internal/twitter_cards.html" . }}
     {{ template "_internal/opengraph.html" . }}
-    <link rel="icon" type="image/png" href="{{partialCached "favicon.png.html" $ "nothing"}}">
+
+    {{ $favicon := partialCached "favicon.png.html" $ "nothing"}}
+    {{ $logo := partialCached "logo.svg" $ "nothing"}}
+    {{ $background := partialCached "background.svg.html" $ "nothing" }} 
+    {{ $hero := partialCached "hero.svg.html" $ "nothing" }}
     {{ $css := partialCached "index.css.html" $ "nothing"}}
+
+    {{$manifest := (dict
+        "name" (default site.Home.Title site.Title) "display" "minimal-ui"
+        "icons" (slice (dict
+          "src" $logo
+          "type" "image/svg+xml" 
+          "sizes" "155x155"
+          ))
+          "start_url" "/"
+        )
+    }}
+    {{ $manifestFile := ($manifest | jsonify | resources.FromString "/manifest.webmanifest").Permalink}}
+
+    <link rel="manifest" href="{{$manifestFile}}">
+    <link rel="icon" type="image/png" href="{{$favicon}}">
     <link rel="stylesheet" type="text/css" href="{{$css}}">
+
     {{$title := default site.Title .Title}}
     {{with $title}}<title>{{.}}</title>{{end}}
     {{ $defines := dict 
@@ -21,10 +41,16 @@
       }}
     {{ $js := resources.Get "index.js" | js.Build (dict "defines" $defines "minify" hugo.IsProduction )}}
     <script type="text/javascript" src="{{ $js.RelPermalink }}" defer></script>
-    <template id="js-strings">
+
+    {{$params := dict "pages" 
+        (slice "/" "/offline" $favicon $logo $background $hero $js.Permalink $css $manifestFile )}}
+      {{ $sw := resources.Get "serviceWorker.js" |
+      js.Build (dict "minify" hugo.IsProduction "params" $params)}}
+          <template id="js-strings">
       {{ dict 
             "i18n_ORDER_CONFIRMED" (i18n "orderConfirmed")
             "i18n_EMAIL_SOON" (i18n "emailSoon")
+            "serviceWorker" $sw.Permalink
             | jsonify
       }}
     </template>
