@@ -7,7 +7,12 @@ A circle is a simple closed shape. It is the set of all points in a plane that a
 <!--more-->
 A circle is a simple closed curve that divides the plane into two regions: an interior and an exterior. In everyday use, the term "circle" may be used interchangeably to refer to either the boundary of the figure, or to the whole figure including its interior; in strict technical usage, the circle is only the boundary and the whole figure is called a disc.
 
-A circle may also be defined as a special kind of ellipse in which the two foci are coincident and the eccentricity is 0, or the two-dimensional shape enclosing the most area per unit perimeter squared, using calculus of variations.
+A circle may also be defined as a special kind of ellipse in which the two foci are coincident and the eccentricity is 0, or the two-dimensional shape enclosing the most area per unit perimeter squared, using calculus of variations. The area of a circle is {{<latex display="false">}} \pi r^2 {{</latex>}}
+
+Equation
+--------
+
+{{<latex>}}\text{Area} = \pi r^2{{</latex>}}
 
 ## Price
 
