@@ -1,0 +1,31 @@
+<div class="comments">
+<h2> Comments </h2>
+{{ if .Disabled  }}
+  <div>
+    Comments have been disabled by the website administrator.
+  </div>
+{{ else }}
+  {{if getenv "NETLIFY" }}
+    <form netlify="true" name="Comments">
+  {{ else }}
+    <form action="https://formspree.io/f/{{.FormspreeCommentForm}}" method="post">
+  {{ end }}
+  <input type="hidden" name="url" value="{{.RelPermalink}}">
+    <div>
+      <label for="name">Name:</label>
+      <input id="name" name="name" type="text" required>
+    </div>
+    <div>
+      <label for="email">Email:</label>
+      <input id="email" name="email" type="email" required>
+    </div>
+    <div>
+      <label for="message">Comment:</label>
+      <textarea id="message" name="message" cols="50" rows="10" required></textarea>
+    </div>
+    <div>
+      <button type="submit">Send</button>
+    </div>
+  </form>
+  {{end}}
+</div>
