@@ -1,0 +1,10 @@
+module:
+  mounts:
+    - source: debug-bar/template
+      target: layouts/partials/debug
+    - source: debug-bar/css
+      target: assets/css
+    - source: debug-bar/js
+      target: assets/js
+    - source: console
+      target: layouts/partials/console
