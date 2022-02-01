@@ -70,6 +70,20 @@
       <footer class="dark">
         {{ partialCached "menu.html" (dict "Menu" site.Menus.footer) "footer" }}
         <ul>
+          {{ with .OutputFormats.Get "Plain" }}
+            <li>
+              <a href="{{ .RelPermalink }}" aria-label="Reader Mode" target="_blank">
+                <i class="icon-reader"></i>
+              </a>
+            </li>
+          {{end}}
+          {{ with .OutputFormats.Get "RSS" }}
+            <li>
+              <a href="{{ .RelPermalink }}" aria-label="RSS" target="_blank">
+                <i class="icon-rss"></i>
+              </a>
+            </li>
+          {{end}}
           {{with site.Author.facebook}}
             <li>
               <a href="{{.}}" aria-label="Facebook">
@@ -91,6 +105,7 @@
               </a>
             </li>
           {{end}}
+
         </ul>
         <br>
         {{ if .IsTranslated }}

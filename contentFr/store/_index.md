@@ -6,7 +6,7 @@ menu:
     identifier: store
     weight: 140
     post: Achetez maintenant
-outputs: [html, json]
+outputs: [html, json, rss, plain]
 ---
 
 Obtenez certaines des meilleures formes numériques créées avec précision et correctement entretenues.

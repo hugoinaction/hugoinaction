@@ -15,9 +15,6 @@ testimonials:
     content: >
              Précision incontestable. Garantie de sécurité.
              Nous aimons ce que propose Acme.
-
-
-outputs: [html, json]
 ---
 
 Acme est le **meilleur**
