@@ -1,3 +1,4 @@
-baseURL: https://chapter-02-01.hugoinaction.com
+baseURL: https://chapter-02-02.hugoinaction.com
 languageCode: en-us
 title: My New Hugo Site
+theme: Eclectic
