@@ -63,7 +63,10 @@
           {{range first 3 .}}
           <li class="post">
             <a href="{{.Permalink}}">
-            <img alt="{{.Title}}" loading="lazy" src="{{(.Resources.GetMatch "cover.*").Permalink}}" />
+            {{$title := .Title}}
+            {{with (.Resources.GetMatch "cover.*")}}
+              <img alt="{{$title}}" loading="lazy" src="{{(.Resize "1000x").Permalink}}" />
+            {{end}}
               <h2>
                 {{.Title}}
               </h2>
