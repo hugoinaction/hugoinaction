@@ -20,7 +20,7 @@
                width="48" />
           Acme Corporation
       </a>
-      {{ partial "menu.html" (dict "Menu" site.Menus.main "Button" true) }}
+      {{ partialCached "menu.html" (dict "Menu" site.Menus.main "Button" true) }}
       </header>
     {{ end }}
     {{block "body" .}}
@@ -37,7 +37,7 @@
     {{end}}
     {{block "footer" .}}
       <footer class="dark">
-        {{ partial "menu.html" (dict "Menu" site.Menus.footer) }}
+        {{ partialCached "menu.html" (dict "Menu" site.Menus.footer) }}
         <ul>
           {{with site.Author.facebook}}
             <li>
