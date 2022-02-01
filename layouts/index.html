@@ -56,6 +56,29 @@
         </ul>
       </section>
     {{end}}
+    {{with 
+      (where site.RegularPages 
+      ".Section" "in" site.Params.mainSections)
+    }} 
+    <section id="blog">
+        <h1>From our blog</h1>
+        <ul class="posts">
+          {{range first 3 .}}
+          <li class="post">
+            <a href="{{.Permalink}}">
+              <h2>
+                {{.Title}}
+              </h2>
+              <article>
+                {{.Summary}} 
+              </article>
+              <div>Read More</div>
+            </a>
+          </li>
+          {{end}}
+        </ul>
+    </section>
+    {{end}}
     <footer class="dark">
       {{with site.Menus.footer }}
       <nav>
