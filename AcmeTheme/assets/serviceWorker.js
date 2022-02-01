@@ -41,7 +41,7 @@ import * as params from '@params';
       return event.respondWith(fetch(request).catch(() => offline(400)));
     }
 
-    if (request.headers.get('Accept').indexOf('text/html') !== -1) {
+    if (request.headers.get('Accept').indexOf('text/html') !== -1 || request.url.match(/\.(js|css)$/)) {
       event.respondWith(
         fetch(request)
           .then(function (response) {
@@ -55,7 +55,7 @@ import * as params from '@params';
           .catch(function () {
             return caches.match(request)
               .then(function (response) {
-                return response || offline(200)
+                return response || (request.url.match(/\.(js|css)$/) ? new Response('') : offline(200))
               })
           })
       );
