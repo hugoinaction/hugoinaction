@@ -1,3 +1,6 @@
+import Fuse from 'fuse.js'
+
+let index = null;
 export default {
   async init() {
     try {
@@ -7,8 +10,19 @@ export default {
         return;
       }
       let data = await response.json();
-      // Just for debugging.
-      console.log(data);
+      index = new Fuse(data, {
+        keys: [{
+          name: 'title',
+          weight: 20
+        }, {
+          name: 'tag',
+          weight: 5
+        }, {
+          name: 'content'
+        }]
+      });
+      // Just to test. Do not leave in code.
+      console.log(index.search('acme'));
     } catch (e) {
       this.removeSearch();
     }
