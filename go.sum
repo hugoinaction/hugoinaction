@@ -1,3 +1,5 @@
+github.com/hugoinaction/AcmeTheme v0.8.0 h1:/g8dUDpVG22pC4KWer9qj3mlt+4Aod52liZtB6PkAiQ=
+github.com/hugoinaction/AcmeTheme v0.8.0/go.mod h1:naygfZKSDEHJpSCSNXIzPp8oNxzX4Wg9t7SY9XZg8+8=
 github.com/hugoinaction/Eclectic v0.0.0-20211028054648-e00855069d1b h1:Eb+WRwrbjI4eAvQHhRze3qRoAYs2/CfDSWFf0ZA1iyQ=
 github.com/hugoinaction/Eclectic v0.0.0-20211028054648-e00855069d1b/go.mod h1:z4ORsG6K5BF+U3ssVkl+7kzy770SWHxNXfWYzdQrqGc=
 github.com/hugoinaction/Universal v0.0.0-20210709125610-ce21286916b5 h1:J1x9ysdIwztwgmFwfue591iw0JqgZfahRgs5p5d/lFM=
