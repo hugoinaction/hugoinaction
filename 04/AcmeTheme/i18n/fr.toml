@@ -1,0 +1,143 @@
+[[root]]
+id = "search"
+translation = "Chercher"
+
+[[root]]
+id = "subsections"
+translation = "Sous-sections"
+
+[[root]]
+id = "posts"
+translation = "Des postes"
+
+[[root]]
+id = "products"
+translation = "Nos produits"
+
+[[root]]
+id = "toc"
+translation = "Table des matières"
+
+[[root]]
+id = "webSections"
+translation = "Rubriques du site Web"
+
+[[root]]
+id = "webSectionsSubTitle"
+translation = "Ce site Web a ces principaux domaines"
+
+[[root]]
+id = "fromBlog"
+translation = "De notre blog"
+
+[[root]]
+id = "testimonials"
+translation = "Approbation du client"
+
+[[root]]
+id = "contactSuccess"
+translation = "Merci de nous contacter. Vous aurez bientôt de nos nouvelles."
+
+[[root]]
+id = "contactError"
+translation = "Nous rencontrons un problème lors de l'envoi du formulaire de contact. Veuillez réessayer plus tard."
+
+[[root]]
+id = "commentError"
+translation = "Nous sommes confrontés à un problème lors de la soumission du commentaire. Veuillez réessayer plus tard."
+
+[[root]]
+id = "commentSuccess"
+translation = "Votre commentaire a été soumis avec succès."
+
+[[root]]
+id = "commentDisabled"
+translation = "Les commentaires ont été désactivés par l'administrateur du site."
+
+[[root]]
+id = "name"
+translation = "Nom"
+
+[[root]]
+id = "email"
+translation = "E-mail"
+
+[[root]]
+id = "news"
+translation = "Nouvelles"
+
+[[root]]
+id = "addToCart"
+translation = "Ajouter au panier"
+
+[[root]]
+id = "buyNow"
+translation = "Acheter maintenant"
+
+[[root]]
+id = "message"
+translation = "Un message"
+
+[[root]]
+id = "comment"
+translation = "Commenter"
+
+[[root]]
+id = "send"
+translation = "Envoyer"
+
+[[root]]
+id = "submit"
+translation = "Soumettre"
+
+[[root]]
+id = "orderConfirmed"
+translation = "Commande confirmée."
+
+[[root]]
+id = "emailSoon"
+translation = "Votre produit sera bientôt envoyé par e-mail."
+
+[[root]]
+id = "read"
+translation = "Lire la suite"
+
+[[root]]
+id = "cartEmpty"
+translation = "Veuillez ajouter quelques articles au panier."
+
+[[root]]
+id = "related"
+translation = "Pages associées"
+
+[[root]]
+id = "relatedProduct"
+translation = "Produits connexes"
+
+[[root]]
+id = "specs"
+translation = "Caractéristiques"
+
+[[root]]
+id = "explore"
+translation = "Explorer"
+
+[[root]]
+id = "info"
+translation = "Information"
+
+[[root]]
+id = "readTime"
+translation = "Temps de lecture"
+
+[[root]]
+id = "wordCount"
+translation = "Nombre de mots"
+
+[[root]]
+id = "tags"
+translation = "Mots clés"
+
+[[root]]
+id = "translations"
+translation = "Traductions"

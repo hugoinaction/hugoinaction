@@ -1,0 +1,72 @@
+- id: search
+  translation: Search
+- id: subsections
+  translation: Subsections
+- id: posts
+  translation: Posts
+- id: products
+  translation: Our Products
+- id: toc
+  translation: Table of Contents
+- id: webSections
+  translation: Website sections
+- id: webSectionsSubTitle
+  translation: This website has these major areas
+- id: fromBlog
+  translation: From our blog
+- id: testimonials
+  translation: Customer endorsement
+- id: contactSuccess
+  translation: Thank you for contacting us. You will hear from us soon.
+- id: contactError
+  translation: We are facing an issue submitting the contact form. Please try again later.
+- id: commentError
+  translation: We are facing an issue submitting the comment. Please try again later.
+- id: commentSuccess
+  translation: Your comment has been successfully submitted.
+- id: commentDisabled
+  translation: Comments have been disabled by the website administrator.
+- id: name
+  translation: Name
+- id: email
+  translation: Email
+- id: news
+  translation: News
+- id: addToCart
+  translation: Add to Cart
+- id: buyNow
+  translation: Buy Now
+- id: message
+  translation: Message
+- id: comment
+  translation: Comment
+- id: send
+  translation: Send
+- id: submit
+  translation: Submit
+- id: orderConfirmed
+  translation: Order Confirmed.
+- id: emailSoon
+  translation: Your product will be e-mailed soon.
+- id: read
+  translation: Read More
+- id: cartEmpty
+  translation: Please add some items to the cart.
+- id: related
+  translation: Related Pages
+- id: relatedProduct
+  translation: Related Products
+- id: specs
+  translation: Specifications
+- id: explore
+  translation: Explore
+- id: info
+  translation: Information
+- id: readTime
+  translation: Reading time
+- id: wordCount
+  translation: Word Count
+- id: tags
+  translation: Tags
+- id: translations
+  translation: Translations
