@@ -7,7 +7,7 @@ categories: [ligne, fabrication]
 ---
 L'usinage est l'un des divers processus dans lesquels un morceau de matière première est découpé dans une forme et une taille finales souhaitées par un processus d'enlèvement de matière contrôlé. Les procédés qui ont ce thème commun, l'enlèvement de matière contrôlé, sont aujourd'hui collectivement connus sous le nom de fabrication soustractive,[1] à la différence des procédés d'ajout de matière contrôlé, qui sont connus sous le nom de fabrication additive. Ce qu'implique exactement la partie "contrôlée" de la définition peut varier, mais cela implique presque toujours l'utilisation de machines-outils (en plus des outils électriques et des outils à main).
 
-{{% productInfo %}}
+{{% productInfo_fr %}}
 
 L'usinage fait partie de la fabrication de nombreux produits métalliques, mais il peut également être utilisé sur des matériaux tels que le bois, le plastique, la céramique et les composites.[2] Une personne qui se spécialise dans l'usinage s'appelle un machiniste. Une pièce, un bâtiment ou une entreprise où l'usinage est effectué s'appelle un atelier d'usinage. Une grande partie de l'usinage moderne est réalisée par commande numérique par ordinateur (CNC), dans laquelle les ordinateurs sont utilisés pour contrôler le mouvement et le fonctionnement des fraiseuses, des tours et d'autres machines de découpe.
 
