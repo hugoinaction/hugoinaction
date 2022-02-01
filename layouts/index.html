@@ -2,17 +2,17 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    {{if $.Description}}<meta name="description" content="{{$.Description}}">{{end}}
+    {{with $.Description}}<meta name="description" content="{{.}}">{{end}}
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./index.css">
     {{$title := default site.Title $.Title}}
-    {{if $title}}<title>{{$title}}</title>{{end}}
+    {{with $title}}<title>{{.}}</title>{{end}}
   </head>
   <body class="home">
     <section>
       <img src="./image/logo.svg" alt="Acme Logo" width="64"/>
-      {{if $title}}<h1>{{$title}}</h1>{{end}}
-      {{if $.Param "subtitle"}}<h2>{{$.Param "subtitle"}}</h2>{{end}}
+      {{with $title}}<h1>{{.}}</h1>{{end}}
+      {{with $.Param "subtitle"}}<h2>{{.}}</h2>{{end}}
       <a href="./blog">Explore</a>
     </section>
     <footer>
