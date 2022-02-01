@@ -1,0 +1,2 @@
+{{ $css := resources.Match "*.css.tpl" | resources.Concat "index.css" | resources.ExecuteAsTemplate "index.css" "nothing" | resources.Minify }}
+{{return $css.Permalink}}
