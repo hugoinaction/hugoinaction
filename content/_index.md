@@ -26,6 +26,7 @@ testimonials:
 
 
   - tweet: https://twitter.com/atishay811/status/1259605801968128000
+outputs: [html, json]
 ---
 
 Acme is the **best**
