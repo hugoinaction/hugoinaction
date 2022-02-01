@@ -3,6 +3,7 @@ menu:
   footer:
     name: Terms of Use
     weight: 200
+type: modern
 ---
 Terms of Use
 ============
