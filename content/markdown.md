@@ -210,8 +210,7 @@ Gabby
 
 
 *Highlight*
-{{< highlight js 
-"linenos=table,hl_lines=3-4,linenostart=1080" >}}
+{{< highlight js "linenos=table,hl_lines=3-4,linenostart=1080" >}}
 // Enjoy your work
 if (!tired()) {
     keepCoding();
