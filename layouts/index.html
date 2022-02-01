@@ -5,12 +5,16 @@
     {{if $.Description}}<meta name="description" content="{{$.Description}}">{{end}}
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./index.css">
-    {{if $.Title}}<title>{{$.Title}}</title>{{else if site.Title}}<title>{{site.Title}}</title>{{end}}
+    {{$title := $.Title}}
+    {{if not $title}}
+    {{$title = site.Title}}
+    {{end}}
+    {{if $title}}<title>{{$title}}</title>{{end}}
   </head>
   <body class="home">
     <section>
       <img src="./image/logo.svg" alt="Acme Logo" width="64"/>
-      {{if $.Title}}<h1>{{$.Title}}</h1>{{else if site.Title}}<h1>{{site.Title}}</h1>{{end}}
+      {{if $title}}<h1>{{$title}}</h1>{{end}}
       {{if $.Params.Subtitle}}<h2>{{$.Params.Subtitle}}</h2>{{end}}
       <a href="./blog">Explore</a>
     </section>
