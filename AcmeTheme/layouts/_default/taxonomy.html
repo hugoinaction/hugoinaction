@@ -11,13 +11,13 @@
   {{ $paginator := .Paginate $pages }}
   {{if and (eq $paginator.PageNumber 1)
             (gt (len .Sections) 0) }}
-  <h2>Subsections</h2>
+  <h2>{{i18n "subsections"}}</h2>
     <ul class="subsections">
     {{range .Sections}}
       {{partialCached "subsection" . .Permalink}}
     {{end}}
     </ul>
-  <h2>Posts</h2>
+  <h2>{{i18n "posts"}}</h2>
   {{ end }}
   {{with $paginator.Pages}}
     <ul class="posts">

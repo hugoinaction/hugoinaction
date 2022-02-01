@@ -16,17 +16,17 @@
 {{end}}
 {{ if .Disabled  }}
   <div>
-    Comments have been disabled by the website administrator.
+    {{i18n "commentDisabled"}}
   </div>
 {{ else }}
 <template id="comment-success">
   <div class="success">
-    {{default "Your comment has been successfully submitted." (site.Param "comment-success")}}
+    {{default (i18n "commentSuccess") (site.Param "comment-success")}}
   </div>
 </template>
 <template id="comment-error" >
   <div class="error">
-    {{default "We are facing an issue submitting the comment. Please try again later." (site.Param "comment-error")}}
+    {{default (i18n "commentError") (site.Param "comment-error")}}
   </div>
 </template>
 <template id="comment-pre">
@@ -49,19 +49,19 @@ data-error="#comment-error"
   {{ end }}
   <input type="hidden" name="url" value="{{.RelPermalink}}">
     <div>
-      <label for="name">Name:</label>
+      <label for="name">{{i18n "name"}}:</label>
       <input id="name" name="name" type="text" required>
     </div>
     <div>
-      <label for="email">Email:</label>
+      <label for="email">{{i18n "email"}}:</label>
       <input id="email" name="email" type="email" required>
     </div>
     <div>
-      <label for="message">Comment:</label>
+      <label for="message">{{i18n "comment"}}:</label>
       <textarea id="message" name="message" cols="50" rows="10" required></textarea>
     </div>
     <div>
-      <button type="submit">Send</button>
+      <button type="submit">{{i18n "send"}}</button>
     </div>
   </form>
   {{end}}

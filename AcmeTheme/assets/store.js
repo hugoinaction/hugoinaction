@@ -23,10 +23,11 @@ export default {
         cart.length = 0; 
         this.save();
       }
+      const strings = JSON.parse(document.getElementById("js-strings").content.textContent);
       document.body.insertAdjacentHTML("beforeend", `
       <div class="alert success">
-        <div class="head">Order Confirmed.</div> 
-        Your product will be e-mailed soon.
+        <div class="head">${strings.i18n_ORDER_CONFIRMED}</div> 
+        ${strings.i18n_EMAIL_SOON}
         <a class="close" href="#">Close</a>
       </div>`); 
       location.searchParams.delete("purchase");

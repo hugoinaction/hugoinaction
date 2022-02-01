@@ -17,12 +17,12 @@
     </div>
     <template id="contact-success">
       <div class="success">
-      {{default "Thank you for contacting us. You will hear from us soon." ($.Param "contact-success")}}
+      {{default (i18n "contactSuccess") ($.Param "contact-success")}}
     </div>
     </template>
     <template id="contact-error">
       <div class="error">
-        {{default "We are facing an issue submitting the contact form. Please try again later." ($.Param "contact-error")}}
+        {{default (i18n "contactError") ($.Param "contact-error")}}
       </div>
     </template>
 
@@ -32,11 +32,11 @@
       <form data-dynamic-form data-success="#contact-success" data-error="#contact-error" action="https://formspree.io/f/{{.Param "contact"}}" method="post">
     {{ end }}
           <div>
-          <label for="name">Name:</label>
+          <label for="name">{{i18n "name"}}:</label>
           <input id="name" name="name" type="text" required>
         </div>
         <div>
-          <label for="email">Email:</label>
+          <label for="email">{{i18n "email"}}:</label>
           <input
             {{ if getenv "NETLIFY" }}
               id="email" name="email"
@@ -46,11 +46,11 @@
             type="email" required>
         </div>
         <div>
-          <label for="message">Message:</label>
+          <label for="message">{{i18n "message"}}:</label>
           <textarea id="message" name="message" cols="50" rows="10" required></textarea>
         </div>
         <div>
-          <button type="submit">Send</button>
+          <button type="submit">{{i18n "send"}}</button>
         </div>
     </form>
   </div>

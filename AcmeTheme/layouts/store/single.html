@@ -30,16 +30,16 @@ store page
         </label>
       {{end}}
       </div>
-      <button class="addToCart" type="submit">Add to Cart</button>
-      <button class="buyNow" type="submit">Buy Now</button>
+      <button class="addToCart" type="submit">{{i18n "addToCart"}}</button>
+      <button class="buyNow" type="submit">{{i18n "buyNow"}}</button>
     </form>
-    <h2>Specifications</h2>
+    <h2>{{i18n "specs"}}</h2>
     {{.Content}}
   </div>
 </main>
 {{with where (site.RegularPages.Related .) ".Section" "store"}}
 <div id="related">
-  <h2>Related Products</h2>
+  <h2>{{i18n "relatedProduct"}}</h2>
   <ul class="products">
     {{range first 3 .}}
      {{.Render "card"}}

@@ -21,16 +21,23 @@
       }}
     {{ $js := resources.Get "index.js" | js.Build (dict "defines" $defines "minify" hugo.IsProduction )}}
     <script type="text/javascript" src="{{ $js.RelPermalink }}" defer></script>
+    <template id="js-strings">
+      {{ dict 
+            "i18n_ORDER_CONFIRMED" (i18n "orderConfirmed")
+            "i18n_EMAIL_SOON" (i18n "emailSoon")
+            | jsonify
+      }}
+    </template>
   </head>
   <body class="{{block "bodyClass" .}}{{end}}">
     {{block "header" .}}
       <header>
       <a href="{{ site.BaseURL | relLangURL }}">
       <img src="{{partialCached "logo.svg" $ "nothing"}}" alt="Acme Logo" height="36" width="48" />
-          Acme Corporation
+          {{site.Title}}
       </a>
         <span id="search">
-          <input type="search" placeholder="Search">
+          <input type="search" placeholder="{{i18n "search"}}">
           <div></div>
       </span>
       <span id="cart">
@@ -40,7 +47,7 @@
         </button>
         <div>
           <div class="empty">
-            Please add some items to the cart.
+            {{i18n "cartEmpty"}}
           </div>
         </div>
       </span>
@@ -85,6 +92,17 @@
             </li>
           {{end}}
         </ul>
+        <br>
+        {{ if .IsTranslated }}
+          <ul>
+              <li>{{i18n "translations"}}:</li>
+              {{ range .Translations }}
+              <li>
+                  <a href="{{ .Permalink }}">{{ .Lang }}</a>
+              </li>
+              {{ end }}
+          </ul>
+        {{end}}
         <div>{{.Param "copyright" | markdownify}}</div>
     </footer>
   {{end}}

@@ -1,6 +1,6 @@
  <li class="post news-item">
   <div class="badge">
-    News
+    {{i18n "news"}}
   </div>
   {{with (.Resources.GetMatch "cover.*")}}
     <img alt="{{$.Title}}" loading="lazy" src="{{(.Resize "1000x").Permalink}}" />
@@ -12,6 +12,6 @@
     <article>
       {{.Summary}} 
     </article>
-    <div>Read More</div>
+    <div>{{i18n "read"}}</div>
   </a>
 </li>
