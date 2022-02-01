@@ -1,5 +1,6 @@
 ---
 title: Our Manufacturing Process Part III
+series: [manufacturing]
 date: "2019-01-03T00:00:00Z"
 tags: [manufacturing]
 categories: [circle, manufacturing]

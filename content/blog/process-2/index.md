@@ -1,5 +1,6 @@
 ---
 title: Our Manufacturing Process Part II
+series: [manufacturing]
 date: "2019-01-02T00:00:00Z"
 tags: [manufacturing]
 categories: [square, manufacturing]
@@ -18,6 +19,6 @@ More recent, advanced machining techniques include precision CNC machining, elec
 
 As a commercial venture, machining is generally performed in a machine shop, which consists of one or more workrooms containing major machine tools. Although a machine shop can be a stand-alone operation, many businesses maintain internal machine shops which support specialized needs of the business.
 
-Machining requires attention to many details for a workpiece to meet the specifications set out in the engineering drawings or blueprints. Beside the obvious problems related to correct dimensions, there is the problem of achieving the correct finish or surface smoothness on the workpiece. The inferior finish found on the machined surface of a workpiece may be caused by incorrect clamping, a dull tool, or inappropriate presentation of a tool. Frequently, this poor surface finish, known as chatter, is evident by an undulating or irregular finish, and the appearance of waves on the machined surfaces of the workpiece.
+Machining requires attention to many details for a workpiece to meet the specifications set out in the engineering drawings or blueprints. Beside the obvious problems related to correct dimensions, there is the problem of achieving the correct finish or surface smoothness on the workpiece. The inferior finish found on the machined surface of a workpiece may be caused by incorrect clamping, a dull tool, or inappropriate presentation of a tool. Frequently, this poor surface finish, known as chatter, is evident by an undulating or irregular finish, and the appearance of waves on the machined surfaces of the workpiece. 
 
 Content from [wikipedia](https://en.wikipedia.org/wiki/Machining)
