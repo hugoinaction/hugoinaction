@@ -2,11 +2,14 @@
 
 {{define "body"}}
 {{$title := default site.Title .Title}}
-    <section id="intro">
-      {{with $title}}<h1>{{.}}</h1>{{end}}
-      {{with .Param "subtitle"}}<h2>{{. | humanize | markdownify}}</h2>{{end}}
-      <a href="{{ref . (.Param "explore")}}">Explore</a>
-      {{ partialCached "menu.html" (dict "Menu" site.Menus.footer) "footer" }}
+    <section id="hero">
+      <img class="hero" src="{{partialCached "hero.svg" $ "nothing"}}" alt="Acme Corporation" width="24rem" />
+      <div class="intro">
+        {{with $title}}<h1>{{.}}</h1>{{end}}
+        {{with .Param "subtitle"}}<h2>{{. | humanize | markdownify}}</h2>{{end}}
+        <a href="{{ref . (.Param "explore")}}">Explore</a>
+        {{ partialCached "menu.html" (dict "Menu" site.Menus.footer) "footer" }}
+      </div>
     </section>
     {{with resources.GetMatch "products.csv"}}
     <section id="products">
