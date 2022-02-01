@@ -8,26 +8,13 @@
     {{$pages = append $pages .RegularPages}}
   {{end}}
   {{$pages = sort $pages "Date" "desc" }}
-
   {{ $paginator := .Paginate $pages }}
   {{if and (eq $paginator.PageNumber 1)
             (gt (len .Sections) 0) }}
   <h2>Subsections</h2>
     <ul class="subsections">
     {{range .Sections}}
-      <li class="subsection">
-        <a href="{{.Permalink}}">
-          <h3>{{(default 
-          (.File.Path | path.Dir | path.Base) 
-            .Title) | humanize}}</h3>
-          <p>Pages: {{len .Pages}}</p>
-          {{$words:= 0}}
-            {{range .Pages}}
-              {{$words = add $words .WordCount}}
-            {{end}}
-          <p>Words: {{$words}}</p>
-        </a>
-      </li>
+      {{partialCached "subsection" . .Permalink}}
     {{end}}
     </ul>
   <h2>Posts</h2>
