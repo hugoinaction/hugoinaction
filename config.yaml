@@ -1,0 +1,4 @@
+baseURL: https://hugoinaction.com/
+languageCode: en-us
+title: Hugo In Action
+minify: true
