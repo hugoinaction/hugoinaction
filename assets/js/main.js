@@ -22,10 +22,10 @@ let b = require('js/bootstrap.bundle.min.js');
 
     if (window.pageYOffset > sticky) {
       header_navbar.classList.add("sticky");
-      logo.src = "assets/img/logo/logo-2.svg";
+      logo.src = '{{(resources.Get "img/logo/logo-2.svg" | resources.Minify ).Permalink}}';
     } else {
       header_navbar.classList.remove("sticky");
-      logo.src = "assets/img/logo/logo.svg";
+      logo.src = '{{(resources.Get "img/logo/logo.svg" | resources.Minify ).Permalink}}';
     }
 
     // show or hide the back-top-top button

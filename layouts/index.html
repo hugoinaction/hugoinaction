@@ -42,7 +42,7 @@
             <div class="col-lg-12">
               <nav class="navbar navbar-expand-lg">
                 <a class="navbar-brand" href="index.html">
-                  <img src="{{(resources.Get "img/logo/logo.svg" | resources.Minify ).Permalink}}" alt="Logo" />
+                  <img src="{{(resources.Get "img/logo/logo.svg" | resources.Minify ).Permalink}}" alt="Logo" width="1400px" />
                 </a>
                 <button
                   class="navbar-toggler"
@@ -103,17 +103,13 @@
         <div class="row align-items-center position-relative">
           <div class="col-lg-6">
             <div class="hero-content">
-              <h1 class="wow fadeInUp" data-wow-delay=".4s">
-                Your using free lite version
-              </h1>
-              <p class="wow fadeInUp" data-wow-delay=".6s">
-                Please, purchase full version to get all sections, features and
-                permission to remove footer credit.
-              </p>
+              <h1 class="wow fadeInUp" data-wow-delay=".4s">{{site.Title}}</h1>
+              <p class="wow fadeInUp" data-wow-delay=".8s">{{.Params.subtitle}}</p>
               <a
-                href="javascript:void(0)"
+                href="{{.Params.buy}}"
+                target="_blank"
                 class="main-btn border-btn btn-hover wow fadeInUp"
-                data-wow-delay=".6s"
+                data-wow-delay=".8s"
                 >Purchase Now</a
               >
               <a href="#features" class="scroll-bottom">
@@ -122,8 +118,19 @@
             </div>
           </div>
           <div class="col-lg-6">
-            <div class="hero-img wow fadeInUp" data-wow-delay=".5s">
-              <img src="assets/img/hero/hero-img.png" alt="" />
+            <div class="hero-img wow fadeInUp" data-wow-delay=".6s">
+
+
+              <div class="book">
+                <div class="back">back</div>
+                <div class="page6">Page 6</div>
+                <div class="page5"><p>Page 5</p></div>
+                <div class="page4"></div>
+                <div class="page3"></div>
+                <div class="page2"></div>
+                <div class="page1"></div>
+                <div class="front"><img src="{{((resources.Get "img/hero/hero-img.jpg").Resize "600x webp").Permalink}}" alt="Hugo In Action Book" width="100%" height="100%"></div>
+              </div>
             </div>
           </div>
         </div>
@@ -507,7 +514,7 @@
     </a>
 
     <!-- ======== JS here ======== -->
-    {{ $JS := resources.Get "js/main.js" | js.Build  }}
+    {{ $JS := resources.Get "js/main.js" | resources.ExecuteAsTemplate "main.js" $ | js.Build  }}
     <script src="{{$JS.Permalink}}"></script>
   </body>
 </html>
