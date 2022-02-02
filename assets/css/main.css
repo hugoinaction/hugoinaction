@@ -2184,17 +2184,7 @@ p {
   padding-bottom: 225px;
 }
 
-/*
-body {
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  perspective: 1200px;
-  background: #ccc;
-}
-*/
+
 .book {
   transform-style: preserve-3d;
   position: relative;
@@ -2211,6 +2201,49 @@ body {
   top: 0; left: 0;
   transform-origin: left center;
   transition: transform .5s ease-in-out, box-shadow .35s ease-in-out;
+}
+
+@media (max-width: 992px) {
+  .hero-img {
+    display:  grid;
+    align-content: center;
+    justify-items: center;
+  }
+  .book {
+    height: 413px;
+    min-width:  331px;
+  }
+  .front, .back, .page1, .page2, .page3, .page4, .page5, .page6 {
+    width: 331px;
+  }
+}
+
+@media (max-width: 767px) {
+  .book {
+    height: 367px;
+    min-width: 296px
+  }
+  .front, .back, .page1, .page2, .page3, .page4, .page5, .page6 {
+    width: 296px;
+  }
+}
+
+@media (max-width: 650px) {
+  .book {
+    height: 275px;
+    min-width: 221px;
+    transition: transform .5s ease-in-out, box-shadow .35s ease-in-out;
+
+  }
+  .book:hover {
+    transform:  translateX(111px);
+  }
+  .front, .back, .page1, .page2, .page3, .page4, .page5, .page6 {
+    width: 221px;
+  }
+  .hero-content {
+    text-align:  center;
+  }
 }
 
 .back {
