@@ -132,7 +132,7 @@
           </div>
         </div>
         <div class="row align-items-center text-center hero-footer wow fadeIn" data-wow-delay="0.8s">
-          <p>A <em>complete working guide</em> to be successful with one of the <em>fastest</em>, most popular, open-source <em>static-site builder</em>.</p>
+          <p>A <em>complete working guide</em> to be successful with one of the <em>fastest</em>, popular, open-source, community-maintained <em>static-site builder</em>.</p>
         </div>
       </div>
     </section>
@@ -166,7 +166,7 @@
               <div class="content">
                 <h3>Powerful</h3>
                 <p>
-                  Have <em>full control</em> over the theme, share content, settings and templates across websites, <em>enable comments</em>, surveys, add server-side processing, <em>ecommerce</em>.
+                  Have <em>full control</em> over the theme, share content, settings and templates across websites, <em>enable comments</em>, surveys, add server-side processing, <em>eCommerce</em>.
                 </p>
               </div>
             </div>
@@ -196,7 +196,7 @@
           <div class="col-xl-6 col-lg-6">
             <div class="about-img">
               <img src="{{((resources.Get "img/about/about-1.png").Resize "1500x webp").Permalink}}"
-              alt="" class="w-100" />
+              alt="Hugo in action store home page" class="w-100 wow fadeInUp" />
               <img
                 src="{{(resources.Get "img/about/about-left-shape.svg" | resources.Minify).Permalink}}"
                 alt=""
@@ -213,22 +213,32 @@
             <div class="about-content">
               <div class="section-title mb-30">
                 <h2 class="mb-25 wow fadeInUp" data-wow-delay=".2s">
-                  The best of Hugo
+                  Best of Hugo
                 </h2>
                 <p class="wow fadeInUp" data-wow-delay=".4s">
-                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                  dinonumy eirmod tempor invidunt ut labore et dolore magna
-                  aliquyam erat, sed diam voluptua. At vero eos et accusam et
-                  justo duo dolores et ea rebum. Stet clita kasd gubergren, no
-                  sea takimata sanctus est Lorem.Lorem ipsum dolor sit amet.
+                  Hugo is a rich framework. It has a well thought out system for a huge amount of use cases that can be solved by static sites. The big problems are already solved.
                 </p>
               </div>
+              <ul class="mb-5 fadeInUp wow" data-wow-delay=".4s">
+                <li><em>Authoring</em> - Markdown, YAML (Chapter 3)</li>
+                <li><em>Organization</em> - Bundles, Taxonomies, Shortcodes (Chapter 4)</li>
+                <li><em>Building</em> - Go template language, content types and layouts (Chapters 5 - 7)</li>
+                <li><em>Share and Reuse</em> - Modules (Chapters 8)</li>
+              </ul>
               <a
                 href="https://chapter-13-09.hugoinaction.com/"
                 target="_blank"
                 class="main-btn btn-hover border-btn wow fadeInUp"
                 data-wow-delay=".6s"
-                >See what you will build</a
+                >
+                <i class="lni lni-link"></i> Browse
+                </a>
+              <a
+                href="https://github.com/hugoinaction/hugoinaction/"
+                target="_blank"
+                class="main-btn btn-hover border-btn wow fadeInUp"
+                data-wow-delay=".6s"
+                ><i class="lni lni-github-original"></i> GitHub</a
               >
             </div>
           </div>
@@ -245,31 +255,37 @@
             <div class="about-content">
               <div class="section-title mb-30">
                 <h2 class="mb-25 wow fadeInUp" data-wow-delay=".2s">
-                  The best of the Jamstack
+                  Best of the Jamstack
                 </h2>
                 <p class="wow fadeInUp" data-wow-delay=".4s">
-                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                  diam nonumy eirmod tempor invidunt ut labore et dolore magna
-                  aliquyam erat, sed diam voluptua.
+                  The Jamstack completes Hugo by providing the dynamic behaviors of the modern web without compromising performance.
                 </p>
               </div>
-              <ul>
-                <li>Quick Access</li>
-                <li>Easily to Manage</li>
-                <li>24/7 Support</li>
+              <ul class="mb-5 fadeInUp wow" data-wow-delay=".4s">
+                <li><em>Dynamic Forms</em> - APIs via form providers (Chapter 9)</li>
+                <li><em>User interaction</em> - Really fast JavaScript builder (Chapter 10)</li>
+                <li><em>Custom Integration</em> - Functions and custom API code (Chapter 11)</li>
+                <li><em>Reuse</em> - Take it all to a eCommerce (Chapter 12)</li>
               </ul>
               <a
                 href="https://chapter-13-09.hugoinaction.com/store/"
                 target="_blank"
                 class="main-btn btn-hover border-btn wow fadeInUp"
                 data-wow-delay=".6s"
-                >Try out the store</a
+                ><i class="lni lni-link"></i> Browse</a
+              >
+              <a
+                href="https://github.com/hugoinaction/hugoinaction/tree/chapter-13-09/api"
+                target="_blank"
+                class="main-btn btn-hover border-btn wow fadeInUp"
+                data-wow-delay=".6s"
+                ><i class="lni lni-github-original"></i> GitHub</a
               >
             </div>
           </div>
           <div class="col-xl-6 col-lg-6 order-first order-lg-last">
             <div class="about-img-2">
-              <img src="{{((resources.Get "img/about/about-2.png").Resize "1500x webp").Permalink}}" alt="" class="w-100" />
+              <img src="{{((resources.Get "img/about/about-2.png").Resize "1500x webp").Permalink}}" alt="Hugo in action store page" class="w-100 wow fadeInUp" />
               <img
                 src="{{((resources.Get "img/about/about-right-shape.svg" | resources.Minify).Permalink)}}"
                 alt=""
@@ -438,7 +454,7 @@
               <div class="footer-widget">
                 <div class="logo mb-30">
                   <a href="index.html">
-                    <img src="assets/img/logo/logo.svg" alt="" />
+                    <img src="{{(resources.Get "img/logo/logo.svg" | resources.Minify ).Permalink}}" alt="Logo" />
                   </a>
                 </div>
                 <p class="desc mb-30 text-white">

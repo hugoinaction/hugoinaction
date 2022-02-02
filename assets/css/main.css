@@ -948,6 +948,10 @@ em {
 }
 
 /* ====== feature css ====== */
+.feature-section {
+  background:  rgba(88,100,255,.1);
+}
+
 @media (max-width: 767px) {
   .feature-section.pt-120 {
     padding-top: 80px;
@@ -969,7 +973,8 @@ em {
   width: 130px;
   height: 130px;
   border-radius: 50%;
-  background: rgba(88, 100, 255, 0.1);
+  background: white;
+  box-shadow: inset 0px 0px 6px rgba(0,0,0,0.2);
   color: #5864FF;
   margin: auto;
   margin-bottom: 30px;
@@ -1120,6 +1125,19 @@ em {
   padding: 75px 0;
 }
 
+.about-img > img:not(.shape), .about-img-2 > img:not(.shape) {
+  box-shadow:  0 0 6px #FFF, 0 0 2px #333;
+  filter:drop-shadow(0 0  1px #000);
+  border-radius:  4px;
+  transform:  scale(0.8);
+  transition: all 0.3s ease-out 0s;
+}
+
+.about-img > img:not(.shape):hover, .about-img-2 > img:not(.shape):hover {
+  transform:  scale(0.9);
+   box-shadow:  0 0 6px #333, 0 0 2px #333;
+}
+
 @media only screen and (min-width: 768px) and (max-width: 991px), (max-width: 767px) {
   .about-section .about-img {
     margin-bottom: 70px;
@@ -1250,6 +1268,10 @@ em {
   top: 6.5px;
   -webkit-box-shadow: 0px 14px 15px rgba(78, 110, 241, 0.26);
   box-shadow: 0px 14px 15px rgba(78, 110, 241, 0.26);
+}
+
+.about-content a {
+  margin-right: 20px;
 }
 
 /* ====== feature-extended css ====== */
