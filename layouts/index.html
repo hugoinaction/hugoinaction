@@ -110,11 +110,8 @@
                 target="_blank"
                 class="main-btn border-btn btn-hover wow fadeInUp"
                 data-wow-delay=".8s"
-                >Purchase Now</a
+                >Buy Now</a
               >
-              <a href="#features" class="scroll-bottom">
-                <i class="lni lni-arrow-down"></i
-              ></a>
             </div>
           </div>
           <div class="col-sm-6">
@@ -134,6 +131,9 @@
             </div>
           </div>
         </div>
+        <div class="row align-items-center text-center hero-footer wow fadeIn" data-wow-delay="0.8s">
+          <p>A <em>complete working guide</em> to be successful with one of the <em>fastest</em>, most popular, open-source <em>static-site builder</em>.</p>
+        </div>
       </div>
     </section>
     <!-- ======== hero-section end ======== -->
@@ -141,17 +141,19 @@
     <!-- ======== feature-section start ======== -->
     <section id="features" class="feature-section pt-120">
       <div class="container">
+         <div class="row justify-content-center section-title">
+            <h2 class="col-12 mb-25 wow fadeInUp text-center">Build a compelling website</h2>
+         </div>
         <div class="row justify-content-center">
           <div class="col-lg-4 col-md-8 col-sm-10">
             <div class="single-feature">
               <div class="icon">
-                <i class="lni lni-bootstrap"></i>
+                <i class="lni lni-angle-double-right"></i>
               </div>
               <div class="content">
-                <h3>Bootstrap 5</h3>
+                <h3>Fast</h3>
                 <p>
-                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                  diam nonumy eirmod tempor invidunt ut labore
+                  Get a <em>100/100</em> lighthouse score. Compile in milliseconds, load in milliseconds and be <em>ready to read in milliseconds</em>.
                 </p>
               </div>
             </div>
@@ -159,13 +161,12 @@
           <div class="col-lg-4 col-md-8 col-sm-10">
             <div class="single-feature">
               <div class="icon">
-                <i class="lni lni-layout"></i>
+                <i class="lni lni-invention"></i>
               </div>
               <div class="content">
-                <h3>Clean Design</h3>
+                <h3>Powerful</h3>
                 <p>
-                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                  diam nonumy eirmod tempor invidunt ut labore
+                  Have <em>full control</em> over the theme, share content, settings and templates across websites, <em>enable comments</em>, surveys, add server-side processing, <em>ecommerce</em>.
                 </p>
               </div>
             </div>
@@ -173,13 +174,12 @@
           <div class="col-lg-4 col-md-8 col-sm-10">
             <div class="single-feature">
               <div class="icon">
-                <i class="lni lni-coffee-cup"></i>
+                <i class="lni lni-dollar"></i>
               </div>
               <div class="content">
-                <h3>Easy to Use</h3>
+                <h3>Low Maintenance</h3>
                 <p>
-                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                  diam nonumy eirmod tempor invidunt ut labore
+                  Move major areas to <em>compile time</em>. Run with <em>few dependencies</em>. Move operations to a third-party.
                 </p>
               </div>
             </div>
@@ -195,14 +195,15 @@
         <div class="row align-items-center">
           <div class="col-xl-6 col-lg-6">
             <div class="about-img">
-              <img src="assets/img/about/about-1.png" alt="" class="w-100" />
+              <img src="{{((resources.Get "img/about/about-1.png").Resize "1500x webp").Permalink}}"
+              alt="" class="w-100" />
               <img
-                src="assets/img/about/about-left-shape.svg"
+                src="{{(resources.Get "img/about/about-left-shape.svg" | resources.Minify).Permalink}}"
                 alt=""
                 class="shape shape-1"
               />
               <img
-                src="assets/img/about/left-dots.svg"
+                src="{{(resources.Get "img/about/left-dots.svg" | resources.Minify).Permalink}}"
                 alt=""
                 class="shape shape-2"
               />
@@ -212,7 +213,7 @@
             <div class="about-content">
               <div class="section-title mb-30">
                 <h2 class="mb-25 wow fadeInUp" data-wow-delay=".2s">
-                  Perfect Solution Thriving Online Business
+                  The best of Hugo
                 </h2>
                 <p class="wow fadeInUp" data-wow-delay=".4s">
                   Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
@@ -223,10 +224,11 @@
                 </p>
               </div>
               <a
-                href="javascript:void(0)"
+                href="https://chapter-13-09.hugoinaction.com/"
+                target="_blank"
                 class="main-btn btn-hover border-btn wow fadeInUp"
                 data-wow-delay=".6s"
-                >Discover More</a
+                >See what you will build</a
               >
             </div>
           </div>
@@ -243,7 +245,7 @@
             <div class="about-content">
               <div class="section-title mb-30">
                 <h2 class="mb-25 wow fadeInUp" data-wow-delay=".2s">
-                  Easy to Use with Tons of Awesome Features
+                  The best of the Jamstack
                 </h2>
                 <p class="wow fadeInUp" data-wow-delay=".4s">
                   Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
@@ -257,23 +259,24 @@
                 <li>24/7 Support</li>
               </ul>
               <a
-                href="javascript:void(0)"
+                href="https://chapter-13-09.hugoinaction.com/store/"
+                target="_blank"
                 class="main-btn btn-hover border-btn wow fadeInUp"
                 data-wow-delay=".6s"
-                >Learn More</a
+                >Try out the store</a
               >
             </div>
           </div>
           <div class="col-xl-6 col-lg-6 order-first order-lg-last">
             <div class="about-img-2">
-              <img src="assets/img/about/about-2.png" alt="" class="w-100" />
+              <img src="{{((resources.Get "img/about/about-2.png").Resize "1500x webp").Permalink}}" alt="" class="w-100" />
               <img
-                src="assets/img/about/about-right-shape.svg"
+                src="{{((resources.Get "img/about/about-right-shape.svg" | resources.Minify).Permalink)}}"
                 alt=""
                 class="shape shape-1"
               />
               <img
-                src="assets/img/about/right-dots.svg"
+                src="{{((resources.Get "img/about/right-dots.svg" | resources.Minify).Permalink)}}"
                 alt=""
                 class="shape shape-2"
               />

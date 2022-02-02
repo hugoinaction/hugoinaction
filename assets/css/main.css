@@ -762,11 +762,29 @@ p {
 /* ====== hero-area ===== */
 .hero-section {
   position: relative;
+  min-height: 100vh;
   z-index: 1;
   padding: 160px 0 50px;
   background-image: url({{(resources.Get "img/hero/hero-bg.svg"| resources.Minify).Permalink}});
   background-position: top center;
   background-repeat: no-repeat;
+}
+
+.hero-footer {
+  min-height:  140px;
+}
+
+.hero-footer p {
+  position:  absolute;
+  bottom:  20px;
+  padding:  10px 10%;
+  left:  0;
+  right: 0;
+}
+
+em {
+  color:  rgb(88, 100, 255);
+  font-weight:  700;
 }
 
 @media (max-width: 767px) {
@@ -2191,6 +2209,7 @@ p {
   height: 551px;
   cursor: pointer;
   backface-visibility: visible;
+  z-index: 99;
 }
 
 .front, .back, .page1, .page2, .page3, .page4, .page5, .page6 {
