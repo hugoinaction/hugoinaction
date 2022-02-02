@@ -100,4 +100,12 @@ let b = require('js/bootstrap.bundle.min.js');
 
   // WOW active
   new WOW().init();
+
+  document.querySelector('.code').addEventListener('click', function (el) {
+    el.preventDefault();
+    navigator.clipboard.writeText("au35jai");
+    let x = el.currentTarget;
+    x.innerHTML = "<code>Copied</code>";
+    setTimeout(() => {x.innerHTML = '<code>au35jai</code>';}, 5000)
+  })
 })();

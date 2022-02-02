@@ -251,6 +251,18 @@ p {
   color: #5864FF;
 }
 
+.main-btn.white-btn {
+  background: white;
+  color: #5864FF;
+}
+
+code {
+  background: white;
+  border-radius: 4px;
+  color:  #5864FF;
+  padding:  5px;
+}
+
 .btn-hover {
   position: relative;
   overflow: hidden;
