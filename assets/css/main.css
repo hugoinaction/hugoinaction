@@ -2253,9 +2253,9 @@ p {
 .front, .page1, .page3, .page5 {
   border-bottom-right-radius: .5em;
   border-top-right-radius: .5em;
+  overflow:  hidden;
 }
 .front {
-  overflow:  hidden;
   transform: rotateY(-20deg) scale(1.03);
 }
 
@@ -2268,10 +2268,15 @@ p {
   background:  black;
 }
 
+.page5 img {
+  border-right: 1px solid #ccc;
+}
+
 .back, .page2, .page4, .page6 {
   border-bottom-right-radius: .5em;
   border-top-right-radius: .5em;
   box-shadow: 1em 1em 2em 0 rgba(0, 0, 0, .2);
+  overflow:  hidden;
 }
 
 .page1 { 
