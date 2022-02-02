@@ -647,6 +647,7 @@ p {
 
 .navbar-brand img {
   max-width: 180px;
+  /*padding: 0 50px;*/
 }
 
 .navbar-toggler {

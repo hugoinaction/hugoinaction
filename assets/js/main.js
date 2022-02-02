@@ -21,11 +21,15 @@ let b = require('js/bootstrap.bundle.min.js');
     const logo = document.querySelector(".navbar-brand img");
 
     if (window.pageYOffset > sticky) {
-      header_navbar.classList.add("sticky");
-      logo.src = '{{(resources.Get "img/logo/logo-2.svg" | resources.Minify ).Permalink}}';
+      if (!header_navbar.classList.contains("sticky")) {
+        header_navbar.classList.add("sticky");
+        logo.src = '{{(resources.Get "img/logo/logo-2.svg" | resources.Minify ).Permalink}}';
+      }
     } else {
-      header_navbar.classList.remove("sticky");
-      logo.src = '{{(resources.Get "img/logo/logo.svg" | resources.Minify ).Permalink}}';
+      if (header_navbar.classList.contains("sticky")) {
+        header_navbar.classList.remove("sticky");
+        logo.src = '{{(resources.Get "img/logo/logo.svg" | resources.Minify ).Permalink}}';
+      }
     }
 
     // show or hide the back-top-top button
