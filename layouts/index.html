@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Hugo In Action</title>
+    <meta name="description" content="Hugo in Action, a book to learn Hugo and the Jamstack in detail." />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="{{((resources.Get "img/favicon.png").Resize "48x webp drawing" ).Permalink}}"
+    />
+    {{ $CSS := resources.Match "css/**.css" | resources.Concat "main.css" | resources.ExecuteAsTemplate "main.css" $ | resources.Minify }}
+    <link rel="stylesheet" href="{{$CSS.Permalink}}" />
+  </head>
+  <body>
+    <!-- ======== preloader start ======== -->
+    <div class="preloader">
+      <div class="loader">
+        <div class="spinner">
+          <div class="spinner-container">
+            <div class="spinner-rotator">
+              <div class="spinner-left">
+                <div class="spinner-circle"></div>
+              </div>
+              <div class="spinner-right">
+                <div class="spinner-circle"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- preloader end -->
+
+    <!-- ======== header start ======== -->
+    <header class="header">
+      <div class="navbar-area">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-lg-12">
+              <nav class="navbar navbar-expand-lg">
+                <a class="navbar-brand" href="index.html">
+                  <img src="{{(resources.Get "img/logo/logo.svg" | resources.Minify ).Permalink}}" alt="Logo" width="1400px" />
+                </a>
+                <button
+                  class="navbar-toggler"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#navbarSupportedContent"
+                  aria-controls="navbarSupportedContent"
+                  aria-expanded="false"
+                  aria-label="Toggle navigation"
+                >
+                  <span class="toggler-icon"></span>
+                  <span class="toggler-icon"></span>
+                  <span class="toggler-icon"></span>
+                </button>
+
+                <div
+                  class="collapse navbar-collapse sub-menu-bar"
+                  id="navbarSupportedContent"
+                >
+                  <ul id="nav" class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                      <a class="page-scroll active" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="page-scroll" href="#features">Features</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="page-scroll" href="#about">About</a>
+                    </li>
+
+<!--                     <li class="nav-item">
+                      <a class="page-scroll" href="#why">Why</a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="javascript:void(0)">Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="javascript:void(0)">Clients</a>
+                    </li> -->
+                  </ul>
+                </div>
+                <!-- navbar collapse -->
+              </nav>
+              <!-- navbar -->
+            </div>
+          </div>
+          <!-- row -->
+        </div>
+        <!-- container -->
+      </div>
+      <!-- navbar area -->
+    </header>
+    <!-- ======== header end ======== -->
+
+    <!-- ======== hero-section start ======== -->
+    <section id="home" class="hero-section">
+      <div class="container">
+        <div class="row align-items-center position-relative">
+          <div class="col-sm-6">
+            <div class="hero-content">
+              <h1 class="wow fadeInUp" data-wow-delay=".4s">{{site.Title}}</h1>
+              <p class="wow fadeInUp" data-wow-delay=".8s">{{.Params.subtitle}}</p>
+              <a
+                href="{{.Params.buy}}"
+                target="_blank"
+                class="main-btn border-btn btn-hover wow fadeInUp"
+                data-wow-delay=".8s"
+                >Buy Now</a
+              >
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="hero-img wow fadeInUp" data-wow-delay=".6s">
+
+
+              <div class="book">
+                <div class="back"></div>
+                <div class="page6"><img src="{{((resources.Get "img/hero/ch02-1.png").Resize "600x webp").Permalink}}" alt="Chapter 2 Page 1" width="100%" height="100%"></div>
+                <div class="page5"><img src="{{((resources.Get "img/hero/ch02.png").Resize "600x webp").Permalink}}" alt="Chapter 2" width="100%" height="100%"></div>
+                <div class="page4"></div>
+                <div class="page3"></div>
+                <div class="page2"></div>
+                <div class="page1"></div>
+                <div class="front"><img src="{{((resources.Get "img/hero/hero-img.jpg").Resize "600x webp").Permalink}}" alt="Hugo In Action Book" width="100%" height="100%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row align-items-center text-center hero-footer wow fadeIn" data-wow-delay="0.8s">
+          <p>A <em>complete working guide</em> to be successful with one of the <em>fastest</em>, popular, open-source, community-maintained <em>static-site builder</em>.</p>
+        </div>
+      </div>
+    </section>
+    <!-- ======== hero-section end ======== -->
+
+    <!-- ======== feature-section start ======== -->
+    <section id="features" class="feature-section pt-120">
+      <div class="container">
+         <div class="row justify-content-center section-title">
+            <h2 class="col-12 mb-25 wow fadeInUp text-center">Build a compelling website</h2>
+         </div>
+        <div class="row justify-content-center">
+          <div class="col-lg-4 col-md-8 col-sm-10">
+            <div class="single-feature">
+              <div class="icon">
+                <i class="lni lni-angle-double-right"></i>
+              </div>
+              <div class="content">
+                <h3>Fast</h3>
+                <p>
+                  Get a <em>100/100</em> lighthouse score. Compile in milliseconds, load in milliseconds and be <em>ready to read in milliseconds</em>.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-8 col-sm-10">
+            <div class="single-feature">
+              <div class="icon">
+                <i class="lni lni-invention"></i>
+              </div>
+              <div class="content">
+                <h3>Powerful</h3>
+                <p>
+                  Have <em>full control</em> over the theme, share content, settings and templates across websites, <em>enable comments</em>, surveys, add server-side processing, <em>eCommerce</em>.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-8 col-sm-10">
+            <div class="single-feature">
+              <div class="icon">
+                <i class="lni lni-dollar"></i>
+              </div>
+              <div class="content">
+                <h3>Low Maintenance</h3>
+                <p>
+                  Move major areas to <em>compile time</em>. Run with <em>few dependencies</em>. Move operations to a third-party.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ======== feature-section end ======== -->
+
+    <!-- ======== about-section start ======== -->
+    <section id="about" class="about-section pt-150">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-xl-6 col-lg-6">
+            <div class="about-img">
+              <img src="{{((resources.Get "img/about/about-1.png").Resize "1500x webp").Permalink}}"
+              alt="Hugo in action store home page" class="w-100 wow fadeInUp" />
+              <img
+                src="{{(resources.Get "img/about/about-left-shape.svg" | resources.Minify).Permalink}}"
+                alt=""
+                class="shape shape-1"
+              />
+              <img
+                src="{{(resources.Get "img/about/left-dots.svg" | resources.Minify).Permalink}}"
+                alt=""
+                class="shape shape-2"
+              />
+            </div>
+          </div>
+          <div class="col-xl-6 col-lg-6">
+            <div class="about-content">
+              <div class="section-title mb-30">
+                <h2 class="mb-25 wow fadeInUp" data-wow-delay=".2s">
+                  Best of Hugo
+                </h2>
+                <p class="wow fadeInUp" data-wow-delay=".4s">
+                  Hugo is a rich framework. It has a well thought out system for a huge amount of use cases that can be solved by static sites. The big problems are already solved.
+                </p>
+              </div>
+              <ul class="mb-5 fadeInUp wow" data-wow-delay=".4s">
+                <li><em>Authoring</em> - Markdown, YAML (Chapter 3)</li>
+                <li><em>Organization</em> - Bundles, Taxonomies, Shortcodes (Chapter 4)</li>
+                <li><em>Building</em> - Go template language, content types and layouts (Chapters 5 - 7)</li>
+                <li><em>Share and Reuse</em> - Modules (Chapters 8)</li>
+              </ul>
+              <a
+                href="https://chapter-13-09.hugoinaction.com/"
+                target="_blank"
+                class="main-btn btn-hover border-btn wow fadeInUp"
+                data-wow-delay=".6s"
+                >
+                <i class="lni lni-link"></i> Browse
+                </a>
+              <a
+                href="https://github.com/hugoinaction/hugoinaction/"
+                target="_blank"
+                class="main-btn btn-hover border-btn wow fadeInUp"
+                data-wow-delay=".6s"
+                ><i class="lni lni-github-original"></i> GitHub</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ======== about-section end ======== -->
+
+    <!-- ======== about2-section start ======== -->
+    <section id="about" class="about-section pt-150">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-xl-6 col-lg-6">
+            <div class="about-content">
+              <div class="section-title mb-30">
+                <h2 class="mb-25 wow fadeInUp" data-wow-delay=".2s">
+                  Best of the Jamstack
+                </h2>
+                <p class="wow fadeInUp" data-wow-delay=".4s">
+                  The Jamstack completes Hugo by providing the dynamic behaviors of the modern web without compromising performance.
+                </p>
+              </div>
+              <ul class="mb-5 fadeInUp wow" data-wow-delay=".4s">
+                <li><em>Dynamic Forms</em> - APIs via form providers (Chapter 9)</li>
+                <li><em>User interaction</em> - Really fast JavaScript builder (Chapter 10)</li>
+                <li><em>Custom Integration</em> - Functions and custom API code (Chapter 11)</li>
+                <li><em>Reuse</em> - Take it all to a eCommerce (Chapter 12)</li>
+              </ul>
+              <a
+                href="https://chapter-13-09.hugoinaction.com/store/"
+                target="_blank"
+                class="main-btn btn-hover border-btn wow fadeInUp"
+                data-wow-delay=".6s"
+                ><i class="lni lni-link"></i> Browse</a
+              >
+              <a
+                href="https://github.com/hugoinaction/hugoinaction/tree/chapter-13-09/api"
+                target="_blank"
+                class="main-btn btn-hover border-btn wow fadeInUp"
+                data-wow-delay=".6s"
+                ><i class="lni lni-github-original"></i> GitHub</a
+              >
+            </div>
+          </div>
+          <div class="col-xl-6 col-lg-6 order-first order-lg-last">
+            <div class="about-img-2">
+              <img src="{{((resources.Get "img/about/about-2.png").Resize "1500x webp").Permalink}}" alt="Hugo in action store page" class="w-100 wow fadeInUp" />
+              <img
+                src="{{((resources.Get "img/about/about-right-shape.svg" | resources.Minify).Permalink)}}"
+                alt=""
+                class="shape shape-1"
+              />
+              <img
+                src="{{((resources.Get "img/about/right-dots.svg" | resources.Minify).Permalink)}}"
+                alt=""
+                class="shape shape-2"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ======== about2-section end ======== -->
+
+    <!-- ======== feature-section start ======== -->
+    <!-- <section id="why" class="feature-extended-section pt-100">
+      <div class="feature-extended-wrapper">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-xxl-5 col-xl-6 col-lg-8 col-md-9">
+              <div class="section-title text-center mb-60">
+                <h2 class="mb-25 wow fadeInUp" data-wow-delay=".2s">
+                  Why Hugo in Action?
+                </h2>
+                <p class="wow fadeInUp" data-wow-delay=".4s">
+                  Hugo in Action has a running throughout the book which in step by step turns a simple HTML page into a flexible and adaptable web development system. Here is some an example of tricks that you will learn:
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-4 col-md-6">
+              <div class="single-feature-extended">
+                <div class="icon">
+                  <i class="lni lni-display"></i>
+                </div>
+                <div class="content">
+                  <h3>Content reuse</h3>
+                  <p>
+                    Use content isolation via bundles and front matter, reusing snippets with shortcodes and reuse content along websites with Hugo Modules.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+              <div class="single-feature-extended">
+                <div class="icon">
+                  <i class="lni lni-leaf"></i>
+                </div>
+                <div class="content">
+                  <h3>Dynamic comments & surveys</h3>
+                  <p>
+                    Build content controlled forms using a form service (Netlify forms & Formspree)
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+              <div class="single-feature-extended">
+                <div class="icon">
+                  <i class="lni lni-grid-alt"></i>
+                </div>
+                <div class="content">
+                  <h3>Ready to Use</h3>
+                  <p>
+                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                    diam nonumy eirmod tempor invidunt ut labore
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+              <div class="single-feature-extended">
+                <div class="icon">
+                  <i class="lni lni-javascript"></i>
+                </div>
+                <div class="content">
+                  <h3>Vanilla JS</h3>
+                  <p>
+                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                    diam nonumy eirmod tempor invidunt ut labore
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+              <div class="single-feature-extended">
+                <div class="icon">
+                  <i class="lni lni-layers"></i>
+                </div>
+                <div class="content">
+                  <h3>Essential Sections</h3>
+                  <p>
+                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                    diam nonumy eirmod tempor invidunt ut labore
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+              <div class="single-feature-extended">
+                <div class="icon">
+                  <i class="lni lni-rocket"></i>
+                </div>
+                <div class="content">
+                  <h3>Highly Optimized</h3>
+                  <p>
+                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                    diam nonumy eirmod tempor invidunt ut labore
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section> -->
+    <!-- ======== feature-section end ======== -->
+
+    <!-- ======== buy-section start ======== -->
+    <section id="contact" class="buy-section pt-120">
+      <div class="container">
+        <div class="buy-wrapper img-bg">
+          <div class="row align-items-center">
+            <div class="col-md-8">
+              <div class="section-title mb-15">
+                <h2 class="text-white mb-25">Special 35% off</h2>
+                <p class="text-white pr-5">
+                  Use promo code <a href="#" class="code"><code>au35jai</code></a> to get 30% off on Hugo In Action
+                </p>
+              </div>
+            </div>
+            <div class="col-md-4">
+                <a href="{{.Params.buy}}"
+                target="_blank"class="main-btn btn-hover white-btn">
+                  Buy Now
+                </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ======== buy-section end ======== -->
+
+    <!-- ======== footer start ======== -->
+    <footer class="footer">
+      <div class="container">
+        <div class="widget-wrapper">
+          <div class="row">
+            <div class="col-12" style="color:white; text-align: center">
+              <div class="footer-logo">
+                <img src="{{((resources.Get "img/logo/logo.svg" | resources.Minify).Permalink)}}" alt="logo" width="130px" />
+                <br>
+                Hugo in Action. Static sites and dynamic Jamstack apps.
+              </div>
+              <div>&copy; Copyright <script>document.write(new Date().getFullYear())</script> Atishay Jain. All right reserved.</div>
+            </div>
+            <!-- <div class="col-xl-4 col-lg-4 col-md-6"> -->
+            <!--   <div class="footer-widget"> -->
+            <!--     <div class="logo mb-30"> -->
+            <!--       <a href="index.html"> -->
+            <!--         <img src="{{(resources.Get "img/logo/logo.svg" | resources.Minify ).Permalink}}" alt="Logo" /> -->
+            <!--       </a> -->
+            <!--     </div> -->
+            <!--     <p class="desc mb-30 text-white">Hugo in Action. A book about everything Hugo and the Jamstack.</p> -->
+                <!-- <ul class="socials"> -->
+                <!--   <!-- TODO Links from various stores. --> -->
+                <!--   <li> -->
+                <!--     <a href="jvascript:void(0)"> -->
+                <!--       <i class="lni lni-facebook-filled"></i> -->
+                <!--     </a> -->
+                <!--   </li> -->
+                <!--   <li> -->
+                <!--     <a href="jvascript:void(0)"> -->
+                <!--       <i class="lni lni-twitter-filled"></i> -->
+                <!--     </a> -->
+                <!--   </li> -->
+                <!--   <li> -->
+                <!--     <a href="jvascript:void(0)"> -->
+                <!--       <i class="lni lni-instagram-filled"></i> -->
+                <!--     </a> -->
+                <!--   </li> -->
+                <!--   <li> -->
+                <!--     <a href="jvascript:void(0)"> -->
+                <!--       <i class="lni lni-linkedin-original"></i> -->
+                <!--     </a> -->
+                <!--   </li> -->
+                <!-- </ul> -->
+            <!--   </div> -->
+            <!-- </div> -->
+
+            <!-- <div class="col-xl-2 col-lg-2 col-md-6"> -->
+            <!--   <div class="footer-widget"> -->
+            <!--     <h3>About Us</h3> -->
+            <!--     <ul class="links"> -->
+            <!--       <li><a href="javascript:void(0)">Home</a></li> -->
+            <!--       <li><a href="javascript:void(0)">Feature</a></li> -->
+            <!--       <li><a href="javascript:void(0)">About</a></li> -->
+            <!--       <li><a href="javascript:void(0)">Testimonials</a></li> -->
+            <!--     </ul> -->
+            <!--   </div> -->
+            <!-- </div> -->
+
+            <!-- <div class="col-xl-3 col-lg-3 col-md-6"> -->
+            <!--   <div class="footer-widget"> -->
+            <!--     <h3>Features</h3> -->
+            <!--     <ul class="links"> -->
+            <!--       <li><a href="javascript:void(0)">How it works</a></li> -->
+            <!--       <li><a href="javascript:void(0)">Privacy policy</a></li> -->
+            <!--       <li><a href="javascript:void(0)">Terms of service</a></li> -->
+            <!--       <li><a href="javascript:void(0)">Refund policy</a></li> -->
+            <!--     </ul> -->
+            <!--   </div> -->
+            <!-- </div> -->
+
+            <!-- <div class="col-xl-3 col-lg-3 col-md-6"> -->
+            <!--   <div class="footer-widget"> -->
+            <!--     <h3>Other Products</h3> -->
+            <!--     <ul class="links"> -->
+            <!--       <li><a href="jvascript:void(0)">Accounting Software</a></li> -->
+            <!--       <li><a href="jvascript:void(0)">Billing Software</a></li> -->
+            <!--       <li><a href="jvascript:void(0)">Booking System</a></li> -->
+            <!--       <li><a href="jvascript:void(0)">Tracking System</a></li> -->
+            <!--     </ul> -->
+            <!--   </div> -->
+            <!-- </div> -->
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- ======== footer end ======== -->
+
+    <!-- ======== scroll-top ======== -->
+    <a href="#" class="scroll-top btn-hover">
+      <i class="lni lni-chevron-up"></i>
+    </a>
+
+    <!-- ======== JS here ======== -->
+    {{ $JS := resources.Get "js/main.js" | resources.ExecuteAsTemplate "main.js" $ | js.Build  }}
+    <script src="{{$JS.Permalink}}"></script>
+  </body>
+</html>
