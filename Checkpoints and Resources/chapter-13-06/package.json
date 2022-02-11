@@ -15,7 +15,7 @@
   "dependencies": {
     "@sendgrid/mail": "7.4.6",
     "mathjax": "3.2.0",
-    "node-fetch": "2.6.1",
+    "node-fetch": "2.6.7",
     "stripe": "8.169.0"
   },
   "devDependencies": {
