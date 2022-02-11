@@ -1,0 +1,11 @@
+{{$values := newScratch}}
+	{{range .Pages}}
+		{{if .Params.product}}
+			{{$values.Add .Params.product (index (partialCached "products.html" "nothing") .Params.product)}}
+			{{ if (.Resources.GetMatch "cover.*")}}
+				 {{$img := (.Resources.GetMatch "cover.*") | images.Filter (images.Overlay (resources.GetMatch "image/watermark.*") 0 0 )}}
+				{{$values.SetInMap .Params.product "Cover" ($img.Fill "80x80 center").Permalink}}
+			{{end}}
+		{{end}}
+	{{end}}
+{{$values.Values | jsonify}}

@@ -1,0 +1,112 @@
+<footer>
+    {{- if .Site.Params.Footer -}}
+    <div class="items-{{len .Site.Params.Footer}} items">
+    {{- $RSS := (.OutputFormats.Get "RSS") -}}
+    {{- range .Site.Params.Footer -}}
+    <section>
+        <h2>
+        {{ .title }}
+        </h2>
+        {{- with .content -}}
+        <p>
+        {{ . | markdownify }}
+        </p>
+        {{- end -}}
+        {{- if isset . "newsletter" -}}
+            <h2>{{.newsletter}}</h2>
+            {{- partialCached "util/newsletter" . -}}
+        {{- end -}}
+        {{$page := .}}
+        {{$count := 100}}
+        {{ if gt .recentCount -1 }}
+        {{ $count = .recentCount }}
+        {{ end }}
+        {{- if .menu -}}
+        <ul class="sidebar-nav">
+            {{ range $.Site.Menus.footer }}
+            <li><a class="footer-menu" href="{{ .URL }}" title="{{ .Title }}">{{ default .Page.Title .Name }}</a></li>
+            {{ end }}
+        </ul>
+
+        {{- end -}}
+        {{ with .recents }}
+        <ul>
+            {{ range first ($count) (where (where $.Site.Pages "Section" .) ".Kind" "==" "page" )}}
+            <li>
+                <a href={{.Permalink}}>{{ default (.File.ContentBaseName | humanize) .Title }}</a> -
+                {{$date := .Date}}
+                {{ if and (not $date) .GitInfo }}
+                {{$date = .GitInfo.AuthorDate}}
+                {{- end -}}
+<time datetime="{{ $date.Format "2006-01-02T15:04:05Z07:00" }}">{{ $date.Format "Monday, Jan 2, 2006."}}</time>
+            </li>
+            {{ end }}
+        </ul>
+        {{ end }} {{ with .contact }}
+        <ul class="contact-us">
+            {{ with $.Site.Author.email }}
+            <li>
+                <a target="_blank" href="mailto:{{ . }}" rel="noopener">
+ {{ $icon := resources.Get "image/line-awesome/fa-envelope.svg" | resources.Minify }} {{ replace $icon.Content "<svg " "<svg width=\"30px\" "  | safeHTML }}
+                    {{$middle := replaceRE "^.*@" "" .}}
+                    <span>{{replaceRE "@.*$" "" .}} [at] {{ replaceRE "\\..*" "" $middle }} [dot] {{ replaceRE "^.*\\." "" . }}</span>
+                </a>
+            </li>
+            {{ end }} {{ with $.Site.Author.linkedin }}
+            <li>
+                <a target="_blank" href="{{ . }}" rel="noopener">
+                    {{ $icon := resources.Get "image/line-awesome/fa-linkedin.svg" | resources.Minify }}
+                    {{ replace $icon.Content "<svg " "<svg width=\"30px\" " | safeHTML }}
+                    <span>{{ replaceRE "https://" "" . }}</span>
+                </a>
+            </li>
+            {{ end }} {{ with $.Site.Author.github }}
+            <li>
+                <a target="_blank" href="{{ . }}" rel="noopener">
+                    {{ $icon := resources.Get "image/line-awesome/fa-github.svg" | resources.Minify }}
+                    {{ replace $icon.Content "<svg " "<svg width=\"30px\" "  | safeHTML }}
+                    <span>{{ replaceRE "https://" "" . }}</span>
+                </a>
+            </li>
+            {{ end }} {{ with $.Site.Author.twitter }}
+            <li>
+                <a target="_blank" href="{{ . }}" rel="noopener">
+                    {{ $icon := resources.Get "image/line-awesome/fa-twitter.svg" | resources.Minify }}
+                    {{ replace $icon.Content "<svg " "<svg width=\"30px\" "  | safeHTML }}
+                    <span>{{ replaceRE "https://" "" . }}</span>
+                </a>
+            </li>
+            {{ end }} {{ with $.Site.Author.facebook }}
+            <li>
+                <a target="_blank" href="{{ . }}" rel="noopener">
+                    {{ $icon := resources.Get "image/line-awesome/fa-facebook.svg" | resources.Minify }}
+                    {{ replace $icon.Content "<svg " "<svg width=\"30px\" " | safeHTML }}
+                    <span>{{ replaceRE "https://" "" . }}</span>
+                </a>
+            </li>
+            {{ end }}
+            {{ with $RSS }}
+            <li>
+                <h2>Updates</h2>
+                <a target="_blank" href="{{ .RelPermalink }}" rel="noopener">
+                    {{ $icon := resources.Get "image/line-awesome/fa-rss.svg" | resources.Minify }}
+                    {{ replace $icon.Content "<svg " "<svg width=\"30px\" " | safeHTML }}
+                    <span>RSS Feed</span>
+                </a>
+            </li>
+            {{ end }}
+        </ul>
+        {{ end }}
+    </section>
+    {{ end }}
+    </div>
+    {{- end -}}
+    <div id="copyright">
+        {{- replace .Site.Params.copyright "{now}" (print "<time class='now' datetime='"  (now.Format "2006-01-02T15:04:05Z07:00") "'>" (dateFormat "2006" now) "</time>")| markdownify | safeHTML }} Last Updated -
+<time datetime="{{ now.Format "2006-01-02T15:04:05Z07:00" }}">{{ dateFormat "Monday, Jan 2, 2006." now}}</time> <br>
+    <!-- DO NOT REMOVE. LICENSE REQUIRES THIS ATTRIBUTION SHOULD STAY INTACT-->
+    Themed using <a href="">Eclectic</a> by <a href="https://atishay.me">Atishay</a>
+    <!-- END DO NOT REMOVE SECTION -->
+    </div>
+
+</footer>

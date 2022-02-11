@@ -1,0 +1,72 @@
+- id: search
+  translation: Chercher
+- id: subsections
+  translation: Sous-sections
+- id: posts
+  translation: Des postes
+- id: products
+  translation: Nos produits
+- id: toc
+  translation: Table des matières
+- id: webSections
+  translation: Rubriques du site Web
+- id: webSectionsSubTitle
+  translation: Ce site Web a ces principaux domaines
+- id: fromBlog
+  translation: De notre blog
+- id: testimonials
+  translation: Approbation du client
+- id: contactSuccess
+  translation: Merci de nous contacter. Vous aurez bientôt de nos nouvelles.
+- id: contactError
+  translation: Nous rencontrons un problème lors de l'envoi du formulaire de contact. Veuillez réessayer plus tard.
+- id: commentError
+  translation: Nous sommes confrontés à un problème lors de la soumission du commentaire. Veuillez réessayer plus tard.
+- id: commentSuccess
+  translation: Votre commentaire a été soumis avec succès.
+- id: commentDisabled
+  translation: Les commentaires ont été désactivés par l'administrateur du site.
+- id: name
+  translation: Nom
+- id: email
+  translation: E-mail
+- id: news
+  translation: Nouvelles
+- id: addToCart
+  translation: Ajouter au panier
+- id: buyNow
+  translation: Acheter maintenant
+- id: message
+  translation: Un message
+- id: comment
+  translation: Commenter
+- id: send
+  translation: Envoyer
+- id: submit
+  translation: Soumettre
+- id: orderConfirmed
+  translation: Commande confirmée.
+- id: emailSoon
+  translation: Votre produit sera bientôt envoyé par e-mail.
+- id: read
+  translation: Lire la suite
+- id: cartEmpty
+  translation: Veuillez ajouter quelques articles au panier.
+- id: related
+  translation: Pages associées
+- id: relatedProduct
+  translation: Produits connexes
+- id: specs
+  translation: Caractéristiques
+- id: explore
+  translation: Explorer
+- id: info
+  translation: Information
+- id: readTime
+  translation: Temps de lecture
+- id: wordCount
+  translation: Nombre de mots
+- id: tags
+  translation: Mots clés
+- id: translations
+  translation: Traductions

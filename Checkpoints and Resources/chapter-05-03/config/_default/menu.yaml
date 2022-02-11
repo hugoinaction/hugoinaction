@@ -1,0 +1,9 @@
+main:
+  - identifier: about
+    name: About
+    url: /about
+    weight: 100
+  - identifier: contact
+    name: Contact
+    url: /contact
+    weight: 200

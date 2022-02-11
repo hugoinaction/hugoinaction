@@ -1,0 +1,43 @@
+baseURL: https://chapter-02-03.hugoinaction.com
+languageCode: en-us 
+title: Acme Corporation 
+theme: Eclectic 
+author: 
+  facebook: "https://facebook.com/example" 
+  twitter: "https://twitter.com/example" 
+  email: "contact@example.org" 
+  name: "Acme Corporation" 
+  location: New York 
+  phone: (999) 999-9999 
+  hours: "**Mon-Fri:** 9:00AM - 6:00PM, ET" 
+
+menu:
+  main: 
+    - identifier: about 
+      name: About 
+      url: /about 
+      weight: 100 
+    - identifier: contact 
+      name: Contact 
+      url: /contact 
+      weight: 200 
+params: 
+  color: "#4f46e5"
+  copyright: "Copyright &copy; 2022 Acme Corporation.
+    All Rights Reserved."
+  footer:
+  - title: About
+    content: >
+      Acme Corporation is the world's leading
+      manufacturer of digital shapes. From squares and
+      circles to triangles and hexagons, we have it
+      all. Browse through our collection of various
+      forms with different thicknesses and line styles.
+      We shape the world. You live in it.
+
+
+  - title: Recent Blog Posts
+    recents: blog
+    recentCount: 7
+  - title: Contact Us
+    contact: true

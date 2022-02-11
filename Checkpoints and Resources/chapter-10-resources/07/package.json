@@ -1,0 +1,15 @@
+{
+  "comments": {
+    "dependencies": {},
+    "devDependencies": {
+      "@easylogic/editor": "project",
+      "fuse.js": "github.com/hugoinaction/AcmeTheme"
+    }
+  },
+  "devDependencies": {
+    "@easylogic/editor": "0.10.72",
+    "fuse.js": "^6.4.6"
+  },
+  "name": "acme-corporation-website",
+  "version": "0.1.0"
+}

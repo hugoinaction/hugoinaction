@@ -1,0 +1,26 @@
+<meta charset="utf-8">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+{{- with .Site.Params.color}}
+<meta name="theme-color" content="{{.}}">
+{{- end -}}
+{{- hugo.Generator }}
+<meta name="robots" content="index, follow">
+
+{{- block "favicon" . }}
+{{- if (fileExists "assets/image/favicon.svg") }}
+  {{- $iconSVG := resources.Get "image/favicon.svg" | resources.Minify }}
+  <link rel="icon" type="image/svg" href="{{ $iconSVG.RelPermalink }}" />
+{{- end -}}
+
+{{- if (fileExists "assets/image/favicon.png") }}
+{{- $icon := resources.Get "image/favicon.png" -}}
+  <link rel="apple-touch-icon-precomposed" href="{{ ($icon.Resize " 180x180 ").RelPermalink }}" />
+  <link rel="icon" type="image/png" href="{{ ($icon.Resize " 196x196 ").RelPermalink }}" />
+  {{- end -}}
+{{- end -}}
+{{- $title := .Site.Title -}}
+{{- with .OutputFormats.Get "RSS" -}}
+  <link href="{{ .RelPermalink }}" rel="alternate" type="application/rss+xml" title="{{ $title }}" />
+  <link href="{{ .RelPermalink }}" rel="feed" type="application/rss+xml" title="{{ $title }}" />
+{{- end -}}

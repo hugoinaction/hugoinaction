@@ -1,0 +1,10 @@
+{{$count := default 5 (default (.Get 0) (.Get "count"))}}
+{{/* Preprocess to speed up */}}
+{{$inner := .Inner | markdownify}}
+{{if gt $count 0}}
+<ul>
+  {{ range seq $count}}
+  <li>{{$inner}}</li>
+  {{end}}
+</ul>
+{{end}}

@@ -1,0 +1,90 @@
+<div class="debug">
+  <div class="debug-badge">
+    <div class="debug-toggle">
+
+    </div>
+  </div>
+
+  <div class="debug-content">
+    <div class="debug-header">
+      <!-- Tab links -->
+      <div class="tabs">
+        <div class="tab">
+          <button class="tablinks active" onclick="openTab(event, 'tab-overview')">Overview</button>
+          <button class="tablinks" onclick="openTab(event, 'tab-params')">Params</button>
+          <button class="tablinks" onclick="openTab(event, 'tab-site')">Site</button>
+        </div>
+
+        <div id="tab-overview" class="tabcontent" style="display: block;">
+          <table class="debugprint">
+            <tr>
+              <th class="key">Key</th>
+              <th class="value">Value</th>
+            </tr>
+            <tr>
+              <td class="key">Content Source</td>
+              <td class="value">{{ with .context.File }}{{ .Path }}{{ end }}</td>
+            </tr>
+            <tr>
+              <td class="key">Type</td>
+              <td class="value">{{ .context.Page.Type }}</td>
+            </tr>
+            <tr>
+              <td class="key">Kind</td>
+              <td class="value">{{ .context.Page.Kind }}</td>
+            </tr>
+            <tr>
+              <td class="key">Section</td>
+              <td class="value">{{ .context.Page.Section }}</td>
+            </tr>
+            <tr>
+              <td class="key">Layout</td>
+              <td class="value">{{ .context.Page.Layout }}</td>
+            </tr>
+
+          </table>
+        </div>
+
+        <!-- Tab content -->
+        <!-- <div id="tab-params" class="tabcontent">
+          {{ $PageVarNames   := (slice "Name" "Title" "Type" "Kind" "Section" "Draft" "Type" "Layout" "Permalink" "RelPermalink" "Data") }}
+          {{ $PageVarSymbols := (slice .context.Page.Name  .context.Page.Title  .context.Page.ResourceType  .context.Page.Kind  .context.Page.Section  .context.Page.Draft  .context.Page.Type  .context.Page.Layout  .context.Page.Permalink  .context.Page.RelPermalink  .context.Page.Data ) }}
+          <table class="debugprint">
+            <tr>
+              <th class="key">Page Variable</th>
+              <th class="value">Value</th>
+            </tr>
+            {{ range $idx, $elem := $PageVarNames }}
+            <tr>
+              <td class="key">{{ printf "%s" $elem  | safeHTML  }}</td>
+              <td class="value">{{ printf "%#v" (index $PageVarSymbols $idx) | htmlUnescape }}</td>
+            </tr>
+            {{ end }}
+          </table>
+        </div> -->
+
+        <div id="tab-params" class="tabcontent">
+          {{ partial "debug/debugprint.html" .context.Params }}
+        </div>
+
+        <div id="tab-site" class="tabcontent">
+          {{ partial "debug/debugprint.html" site }}
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{{ $js := resources.Get "js/debug.js" }}
+{{ if .Site.IsServer }}
+<script type="text/javascript" src="{{ $js.RelPermalink }}"></script>
+{{ else }}
+<script type="text/javascript" src="{{ ($js | minify).RelPermalink }}"></script>
+{{ end }}
+
+{{- $debugprint := resources.Get "css/debugprint.css" -}}
+{{- $debug := resources.Get "css/debug.css" -}}
+{{- $css := slice $debug $debugprint | resources.Concat "css/debug.css" -}}
+<link rel="stylesheet" href="{{ $css.Permalink }}" media="screen">

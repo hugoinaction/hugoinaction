@@ -1,0 +1,51 @@
+/* CSS for Pretty Print for Debug (debugprint.html) */
+/* https://github.com/kaushalmodi/hugo-debugprint/blob/master/layouts/partials/debugprint.html */
+/* https://github.com/kaushalmodi/hugo-debugprint/blob/master/layouts/partials/debugprint.css */
+.debugprint_wrap {
+    padding: 20px;
+    display: inline-block;
+    margin: 10px auto;
+    border-radius: 5px;
+    border: 2px solid #ddd;
+}
+.debugprint td, .debugprint th {
+    padding-left: 4px;
+    padding-right: 4px;
+}
+.debugprint th {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+.debugprint tr {
+    padding: 5px 10px;
+}
+.debugprint .key {
+    font-weight: bold;
+}
+.debugprint .type {
+    /* Hide Type columns in debugprint */
+    /* display: none; */
+    font-size: 0.9em;
+    font-family: monospace;
+    font-style: italic;
+}
+.debugprint .value {
+    font-family: monospace;
+}
+.debugprint .true {
+    color: green;
+}
+.debugprint .false {
+    color: red;
+}
+/* Don't touch the table headers */
+.debugprint th.key,
+.debugprint th.type,
+.debugprint th.value {
+    font-family: helvetica, arial, san-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 1em;
+    font-style: normal;
+}

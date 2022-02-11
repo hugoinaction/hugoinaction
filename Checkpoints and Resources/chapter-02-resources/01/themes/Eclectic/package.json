@@ -1,0 +1,31 @@
+{
+  "name": "Eclectic",
+  "version": "1.0.0",
+  "description": "A theme for high performance customizable hugo websites.",
+  "scripts": {
+    "postinstall": "node postinstall.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/atishay/eclectic-hugo-theme.git"
+  },
+  "keywords": [
+    "Website",
+    "Performance",
+    "Customizable",
+    "Hugo"
+  ],
+  "author": "Atishay Jain <contact@atishay.me>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/atishay/eclectic-hugo-theme/issues"
+  },
+  "homepage": "https://github.com/atishay/eclectic-hugo-theme#readme",
+  "dependencies": {
+    "include-media": "^1.4.9",
+    "line-awesome": "github:icons8/line-awesome"
+  },
+  "devDependencies": {
+    "fs-extra": "^8.0.1"
+  }
+}

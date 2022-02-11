@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    {{with default .Summary .Description}}
+      <meta name="description" content="{{.}}">
+    {{end}}
+    <meta name="viewport" 
+      content="width=device-width, initial-scale=1.0" />
+    {{ template "_internal/twitter_cards.html" . }}
+    {{ template "_internal/opengraph.html" . }}
+    <link rel="icon" type="image/png" href="{{partialCached "favicon.png.html" $ "nothing"}}">
+    {{ $css := partialCached "index.css.html" $ "nothing"}}
+    <link rel="stylesheet" type="text/css" href="{{$css}}">
+    {{$title := default site.Title .Title}}
+    {{with $title}}<title>{{.}}</title>{{end}}
+    {{ $defines := dict 
+      "REMOVE_FORM_ON_SUBMISSION" (default "false" (site.Param "RemoveFormOnSubmission")) 
+      "BASE_URL" (print "\"" site.BaseURL "\"") 
+      "NETLIFY" (default "false" (getenv "NETLIFY"))
+      }}
+    {{ $js := resources.Get "index.js" | js.Build (dict "defines" $defines "minify" hugo.IsProduction )}}
+    <script type="text/javascript" src="{{ $js.RelPermalink }}" defer></script>
+    <template id="js-strings">
+      {{ dict 
+            "i18n_ORDER_CONFIRMED" (i18n "orderConfirmed")
+            "i18n_EMAIL_SOON" (i18n "emailSoon")
+            | jsonify
+      }}
+    </template>
+  </head>
+  <body class="{{block "bodyClass" .}}{{end}}">
+    {{block "header" .}}
+      <header>
+      <a href="{{ site.BaseURL | relLangURL }}">
+      <img src="{{partialCached "logo.svg" $ "nothing"}}" alt="Acme Logo" height="36" width="48" />
+          {{site.Title}}
+      </a>
+        <span id="search">
+          <input type="search" placeholder="{{i18n "search"}}">
+          <div></div>
+      </span>
+      <span id="cart">
+        <button>
+          Cart
+          <div class="badge"></div>
+        </button>
+        <div>
+          <div class="empty">
+            {{i18n "cartEmpty"}}
+          </div>
+        </div>
+      </span>
+      {{ partialCached "menu.html" (dict "Menu" site.Menus.main "Button" true) "main" }}
+      </header>
+    {{ end }}
+    {{block "body" .}}
+      <main>
+        {{with .Title}}
+          <h1>
+            {{.}}
+          </h1>
+        {{end}}
+        <div class="content">
+          {{.Content}}
+        </div>
+      </main>
+    {{end}}
+    {{block "footer" .}}
+      <footer class="dark">
+        {{ partialCached "menu.html" (dict "Menu" site.Menus.footer) "footer" }}
+        <ul>
+          {{ with .OutputFormats.Get "Plain" }}
+            <li>
+              <a href="{{ .RelPermalink }}" aria-label="Reader Mode" target="_blank">
+                <i class="icon-reader"></i>
+              </a>
+            </li>
+          {{end}}
+          {{ with .OutputFormats.Get "RSS" }}
+            <li>
+              <a href="{{ .RelPermalink }}" aria-label="RSS" target="_blank">
+                <i class="icon-rss"></i>
+              </a>
+            </li>
+          {{end}}
+          {{with site.Author.facebook}}
+            <li>
+              <a href="{{.}}" aria-label="Facebook">
+                <i class="  icon-facebook"></i>
+              </a>
+            </li>
+          {{end}}
+          {{with site.Author.twitter}}
+            <li>
+              <a href="{{.}}" aria-label="Twitter">
+                <i class="icon-twitter"></i>
+              </a>
+            </li>
+          {{end}}
+          {{with site.Author.email}}
+            <li>
+              <a href="mailto:{{.}}" aria-label="email">
+                <i class="icon-email"></i>
+              </a>
+            </li>
+          {{end}}
+
+        </ul>
+        <br>
+        {{ if .IsTranslated }}
+          <ul>
+              <li>{{i18n "translations"}}:</li>
+              {{ range .Translations }}
+              <li>
+                  <a href="{{ .Permalink }}">{{ .Lang }}</a>
+              </li>
+              {{ end }}
+          </ul>
+        {{end}}
+        <div>{{.Param "copyright" | markdownify}}</div>
+    </footer>
+  {{end}}
+  {{if not hugo.IsProduction}}
+    {{ partial "debug/debug.html" (dict "context" .) }}
+  {{end}}
+  </body>
+</html>

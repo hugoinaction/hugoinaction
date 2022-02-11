@@ -1,0 +1,30 @@
+<!-- image -->
+<figure {{ with .Get "class" }} class="{{.}}" {{ end }}>
+    {{ if .Get "link"}}<a href="{{ .Get "link" }}" {{ with .Get "target" }} target="{{ . }}" {{ end }}
+        {{ with .Get "rel" }} rel="{{ . }}" {{ end }}>{{ end }}
+        {{ $url := .Get "src" }}
+        {{ if ne (.Get "nomin") "true" }}
+        {{ if gt (.Get "width" ) 0}}
+            {{ if gt (.Get "height") 0 }}
+            {{ $k := $.Page.Resources.GetMatch $url }}
+            {{ $k = $k.Fill (print (.Get "width" ) "x" (.Get "height") " " (default (.Get "anchor") "Center")) }}
+            {{ $url = $k.RelPermalink }}
+            {{ end }}
+        {{end}}
+        {{end}}
+        <img src="{{$url}}" {{ if or (.Get "alt") (.Get "caption") }} alt="{{ with .Get "alt"}}{{.}}{{else}}{{ .Get "caption" }}{{ end }}"
+            {{ end }} {{ with .Get "width" }} width="{{.}}" {{ end }} {{ with .Get "height" }} height="{{.}}" {{ end }} />
+        {{ if .Get "link"}}</a>{{ end }}
+    {{ if or (or (.Get "title") (.Get "caption")) (.Get "attr")}}
+    <figcaption>{{ if isset .Params "title" }}
+        <h4>{{ .Get "title" }}</h4>{{ end }}
+        {{ if or (.Get "caption") (.Get "attr")}}<p>
+            {{ .Get "caption" }}
+            {{ with .Get "attrlink"}}<a href="{{.}}"> {{ end }}
+                {{ .Get "attr" }}
+                {{ if .Get "attrlink"}}</a> {{ end }}
+        </p> {{ end }}
+    </figcaption>
+    {{ end }}
+</figure>
+<!-- image -->

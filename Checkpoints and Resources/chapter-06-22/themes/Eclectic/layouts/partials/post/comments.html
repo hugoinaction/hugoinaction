@@ -1,0 +1,51 @@
+{{ $ID := .File.UniqueID }}
+{{ with $.Site.Params.comment }}
+<section class="comments">
+  <h2>Comments</h2>
+ {{ $comments := getCSV "," ( printf "https://docs.google.com/feeds/download/spreadsheets/Export?key=%s&exportFormat=csv" .sheet ) }}
+ <ul>
+  {{ $hasComment := false }}
+ {{ range $r := $comments }}
+  {{ if eq (index $r 3) $ID}}
+  {{ $hasComment := true }}
+  <li class="comment">
+    {{ $time := index $r 0}}
+    <img intrinsicsize="100x100" width="100px" height="100px" src="https://www.gravatar.com/avatar/{{ md5 (index $r 1) }}?s=100&d=identicon" alt="{{ index $r 2 }}">
+    <span class="commenter-name">{{ index $r 2 }}</span>
+    {{ $icon := resources.Get "image/line-awesome/fa-calendar.svg" | resources.Minify }}
+    {{ replace $icon.Content "<svg " "<svg width=\"30px\" "  | safeHTML }}
+    <time datetime="{{$time}}">{{(time $time).Format "Monday, Jan 2, 2006."}}</time>
+    <div class="commenter-comment">{{ index $r 4 | emojify }}</div>
+  </li>
+  {{ end }}
+ {{ end }}
+  {{ if ne $hasComment true }}
+  <li>
+    No comments yet. Be the first to post.
+  </li>
+  {{ end }}
+ </ul>
+  <h3>Post a new comment</h3>
+<p>We get avatars from
+  <a target="_blank" rel="noopener" href="https://www.gravatar.com">Gravatar</a>. You can use emojis as per the <a target="_blank" href="https://www.webfx.com/tools/emoji-cheat-sheet/" rel="noopener">Emoji cheat sheet.</a></p>
+<form action="https://docs.google.com/forms/d/e/{{.form}}/formResponse">
+  {{- with .name -}}
+  <label for="comment-name" class="sr-only">Name</label>
+  <input id="comment-name" class="comment-name" required type="name" autocomplete="given-name" placeholder="Name" name="{{.}}">
+  {{- end -}}
+ {{- with .email -}}
+  <label for="comment-email" class="sr-only">Email</label>
+  <input id="comment-email" class="comment-email" required type="email" autocomplete="email" placeholder="Email address"
+  name={{.}}>
+  {{- end -}}
+  {{- with .post -}}
+  <input class="comment-id" name="{{.}}" type="hidden" value="{{$ID}}">
+  {{- end -}}
+  {{- with .comment -}}
+  <label for="comment" class="sr-only">Comment</label>
+  <textarea id="comment" rows="10" class="comment-text" name="{{.}}" placeholder="Your comment" required></textarea>
+  {{- end -}}
+  <button type="submit">Post Comment</button>
+</form>
+</section>
+{{- end -}}

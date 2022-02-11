@@ -1,0 +1,149 @@
+{{ $site := .Site}}
+{{$top := . }}
+{{$needsContentRender := true }}
+{{ range .Params.content }}
+{{ $currentContent := . }}
+{{ if .file }}
+    {{ if $top.Resources.GetMatch .file }}
+        {{ $currentContent = $top.Resources.GetMatch .file | transform.Unmarshal }}
+    {{ else }}
+        {{ $currentContent = resources.Get .file | transform.Unmarshal }}
+    {{ end }}
+{{ end }}
+{{ $types := split $currentContent.type " " }}
+<section {{with $currentContent.title}}id="{{. | urlize}}" {{ end }} class="meta {{$currentContent.type | default "default"}}"
+{{ with $currentContent.background }}
+{{ $bg := (partial "util/image.html"  (dict "Page" $top "image" .)).Fill "1400x940" }}
+style="background-image:url({{$bg.RelPermalink}})"
+{{ end }}
+>
+    {{$title := $currentContent.title}}
+    {{ with $currentContent.icon }}
+    {{$title = default $title (findRE "\\w+(?:\\.\\w+)*$" .)}}
+    {{ partialCached "util/icon" (dict "key" . "size" 50 "class" "main-icon" "alt" $title) (print . "main-icon") }}
+    {{ end }}
+    {{ with $currentContent.image }}
+    {{$anchor := .anchor | default "" }}
+    {{ $cover := (partial "util/image.html"  (dict "Page" $top "image" .href)).Fill (print (mul .width 2) "x" (mul .height 2) " " $anchor) }}
+    <img intrinsicsize="{{print (mul .width 2) "x" (mul .height 2)}}" width="{{.width}}" height="{{.height}}" alt="{{.alt}}" src="{{$cover.RelPermalink}}" />
+    {{ end }}
+    {{with $currentContent.title}}<h1>{{. | markdownify}}</h1>{{ end }}
+    {{with $currentContent.subtitle}}<p class="subtitle">{{. | markdownify}}</p>{{ end }}
+    {{with $currentContent.content}}<p>{{. | markdownify}}</p>{{ end }}
+    {{ if in $types "content" }}
+    {{ $needsContentRender = false }}
+    {{ $top.Content }}
+    {{ end }}
+    {{ if in $types "blog" }}
+    <ul class="items items-{{.count | default 6}}">
+        {{ range first (default 6 .count) (where (where $site.Pages ".Section" $currentContent.section) ".Kind" "page" ) }}
+        {{partialCached "util/post.html" . .RelPermalink}}
+        {{ end }}
+    </ul>
+    {{ end }}
+    {{ $defaultFilter := $currentContent.filter }}
+    {{ $filter := false }}
+    {{ $list := "" }}
+    {{ $filters := newScratch }}
+    {{ if in $types "filter" }}
+        {{ range $currentContent.items }}
+            {{ $list = print $list " " (trim .filter " ") }}
+        {{ end }}
+        {{ $list = uniq (split (trim $list " ") " ") }}
+        {{ $title := .title | urlize}}
+        {{ range $index, $element := $list }}
+            {{ $filters.Set $element $index }}
+        <label class="sr-only" for="filter-{{$element}}">{{$element}}</label>
+        <input id="filter-{{$element}}" type="radio" role="button" name="{{$title}}" {{if eq $defaultFilter $element}} checked="true"
+    {{end}} class="filter button filter-{{$index}}" value="{{$element}}">
+        {{ end }}
+    {{ end }}
+    {{ with $currentContent.items}}
+        <div class="items items-{{len .}}">
+            {{ range . }}
+            <div class="item {{ if ne $list "" -}}
+            {{- with .filter -}}
+            {{- range (split (trim . " ") " ") -}}
+                filter-{{$filters.Get .}} {{ end -}}
+            {{- end -}}
+            {{- end -}}">
+{{ $title := .title }}
+{{ with .image }}
+    {{$anchor := .anchor | default "" }}
+    {{ $cover := (partial "util/image.html"  (dict "Page" $top "image" .href)).Fill (print (mul .width 2) "x" (mul .height 2) " " $anchor) }}
+<img class="item-cover" intrinsicsize="{{print (mul .width 2) "x" (mul .height 2)}}" width="{{.width}}" alt="{{.alt | default $title}}" src="{{$cover.RelPermalink}}" />
+{{ end }}
+{{ with .video }}
+<video class="item-cover" loop autoplay muted width="{{.width}}" height="{{.height}}">
+    <source src="{{.href}}" type="{{.format}}">
+    The browser does not support the video format {{.format}}.
+</video>
+{{ end }}
+{{$title := .title }}
+{{ with .icon }}
+{{$title = default $title (findRE "\\w+(?:\\.\\w+)*$" .href)}}
+{{ partialCached "util/icon" (dict "key" .href "size" (default 40 .width) "alt" $title "class" "item-icon") (print . "item-icon") }}
+{{ end }}
+{{ with .title }}
+    <h2>{{. | markdownify }}</h2>
+{{ end }}
+
+{{ with .subtitle }}
+    <h3>{{. | markdownify}}</h3>
+{{ end }}
+
+{{ with .heading }}
+    <h4>{{. | markdownify}}</h4>
+{{ end }}
+
+{{ with .content}}
+    <div class="content">{{. | markdownify}}</div>
+{{ end }}
+
+{{ with .attribution}}
+<small class="attribution">{{. |markdownify}}</small>
+{{ end }}
+{{ $title := default .title "" }}
+{{ with .links}}
+        <div class="links">
+            {{ range . }}
+                <a href="{{.href}}" class="button-small" target="_blank" rel="noopener">
+                    {{ with .icon }}
+                    {{ partialCached "util/icon" (dict "key" . "size" 18 "class" "link-icon" "alt" $title) (print . "link-icon") }}
+                    {{ end }}
+                    <span class="link-text">{{.title | markdownify}}</span>
+                </a>
+            {{ end }}
+        </div>
+{{ end }}
+            </div>
+            {{ end }}
+        </div>
+    {{ end }}
+{{ with .attribution }}
+<small class="attribution">{{. |markdownify}}</small>
+{{ end }}
+</section>
+{{ end }}
+{{ if (and (or (not .Params.Content) .Content) $needsContentRender) }}
+    <section class="meta content with-background">
+        <article>
+            <div class="cover">
+            {{- partial "util/cover.html" (dict "class" "banner-holder" "page" . "width" 1024 "height" 330) -}}
+            </div>
+            {{with .Title}}<h1 class='title'>{{.}}</h1>{{end}}
+            {{ with .Params.subtitle }}
+            <span class='subtitle'>{{.}}</span>
+            {{ end }}
+            {{ .Content }}
+            {{- with .Params.tags }}
+            <div class="tags">
+            {{- range . -}}
+            <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">
+                {{- partialCached "util/icon" (dict "key" "tag" "size" 20) "tag-20" -}} {{ . | humanize }} </a>
+            {{- end -}}
+            </div>
+            {{ end }}
+        </article>
+    </section>
+{{ end }}

@@ -1,0 +1,322 @@
+/**
+ * Specific types for page type list.
+ **/
+.list,
+.terms,
+.page404 {
+    z-index: 1;
+    margin: calc(var(--header-height)/2);
+    @include container-margin;
+    padding: calc(2*var(--content-padding));
+    background: rgba(var(--background-color-rgb), 0.9);
+    border-radius: 5px;
+
+    // box-shadow: 0 0 2px #aaa;
+    &:hover {
+        background: var(--background-color);
+    }
+
+    flex: 1; // Stretch to fill space if needed.
+}
+
+.list {
+    background: transparent;
+
+    &:hover {
+        background: transparent;
+    }
+
+    .content {
+        background: var(--background-color);
+        padding: 5px;
+        background: var(--background-color);
+        padding: 5px 5px 0 5px;
+    }
+}
+
+.terms {
+    background: rgba(var(--background-color-rgb), 0.9);
+
+    &:hover {
+        background: var(--background-color);
+    }
+
+    h4 {
+        display: inline-block;
+    }
+    ol {
+        list-style: none;
+        padding:0;
+    }
+    ol > li  ul{  
+        border: 1px solid var(--theme-color);
+        border-top: 0;
+        border-bottom: 0;
+    }
+    label {
+        padding: 5px 5px 5px 15px;
+        font-weight: bold;
+        cursor: pointer;
+        color: var(--background-color);
+        h4 a {
+            color: var(--background-color);
+        }
+        background: var(--theme-color);
+        &::after {
+            float: right;
+            content: "\276F";
+            width: 1em;
+            height: 1em;
+            text-align: center;
+            transition: all .35s;
+            transform-origin: 50% 100%;
+            right: 5px;
+        }
+        display: block;
+    }
+    li:first-child label {
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+    }
+    li:last-child label {
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+    input {
+        display: none;
+        &~ ul {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.35s cubic-bezier(0, 1.05, 0, 1);
+        }
+    }
+    input:checked {
+        +label {
+            &::after {
+                transform: rotate(90deg);
+            }
+        }
+        ~ ul {
+            max-height: 100vh;
+        }
+    }
+    li:last-child input:checked {
+        +label {
+            border-radius: 0;
+        }
+        ~ul {
+            border-bottom: 1px solid var(--theme-color);
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+    }
+}
+
+// Used in list and meta views.
+.blog-posts {
+    width: 100%;
+    align-content: center;
+    padding: 0;
+}
+
+.blog-post {
+    contain: content;
+    list-style: none;
+    text-align: left;
+    padding: 15px;
+    @include zoomable-image(".banner-holder", (270/360) * 100%);
+    background: var(--background-color);
+    box-shadow: 0 1px 1px $divider;
+    display: flex;
+    flex-direction: column;
+
+    &:hover, &.hover {
+        box-shadow: 0 0 40px $divider;
+    }
+
+    hr {
+        border: none;
+        border-bottom: 1px dashed $divider;
+    }
+
+    h3:hover {
+        color: var(--theme-color);
+    }
+
+    p {
+        flex: 1;
+    }
+
+    .blog-post-footer {
+        display: flex;
+
+        a {
+            font-size: 12px;
+            padding-right: 15px;
+            color: var(--text-color);
+
+            &:hover {
+                color: var(--theme-color);
+            }
+        }
+
+        .categories {
+            svg {
+                fill: var(--theme-color);
+                vertical-align: middle;
+            }
+
+            text-align: right;
+            flex: 1;
+        }
+    }
+}
+
+.pagination {
+    list-style: none;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    padding: 40px 0 0;
+    flex-wrap: wrap;
+    .page-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    @include media("<sm") {
+        .page-item:last-child, .page-item:first-child {
+            display: none;
+        }
+    }
+
+    .page-link {
+        text-decoration: none;
+        background-color: var(--background-color);
+        box-shadow: 0 1px 1px $divider;
+        display: block;
+
+        &:hover {
+            filter: none;
+            box-shadow: 0 0 40px $divider;
+            background: var(--theme-color);
+            color: var(--text-color);
+        }
+
+        padding: 10px;
+        margin: 10px;
+    }
+
+    .active .page-link {
+        background: var(--theme-color);
+        color: var(--background-color);
+        pointer-events: none;
+    }
+
+    .disabled .page-link {
+        background: $divider;
+        color: var(--text-color);
+        pointer-events: none;
+    }
+}
+
+.list {
+    @for $j from 1 through 10 {
+        .blog-post:nth-of-type(#{$j}) {
+            will-change: transform, opacity;
+            animation: fade-up-item-#{$j} 2.0s ease-in-out;
+        }
+    }
+}
+
+.page404 {
+    .number {
+        font-family: cursive, serif;
+        font-size: 200px;
+        text-align: center;
+        line-height: normal;
+    }
+
+    $drop-distance: 300px;
+    $error-animation-step: .5s;
+
+    .error-banner {
+        display: flex;
+        justify-content: center;
+        svg {
+            position: relative;
+            overflow: visible;
+            z-index: 2;
+            transform: translate3d(0, 0, 0);
+            margin: 3em;
+        }
+    }
+
+    @for $i from 1 through 12 {
+
+        [id$=cube-#{$i}],
+        [id$=cube-#{$i + 12}],
+        [id$=cube-#{$i + 24}] {
+            animation: drop-cube-#{$i} .9s cubic-bezier(0.190, 1.000, 0.320, 1.000);
+
+            path {
+                animation: fade-cube-#{$i} .9s cubic-bezier(0.190, 1.000, 0.320, 1.000);
+            }
+        }
+    }
+
+    svg:hover {
+        @for $i from 1 through 12 {
+
+            [id$=cube-#{$i}] path,
+            [id$=cube-#{$i + 12}] path,
+            [id$=cube-#{$i + 24}] path {
+                animation: fade-out-cube-#{$i} .7s cubic-bezier(0.190, 1.000, 0.320, 1.000) infinite;
+            }
+        }
+    }
+
+    @for $i from 1 through 12 {
+        @keyframes drop-cube-#{$i} {
+
+            0%,
+            #{7 * $i}% {
+                transform: translateY($drop-distance);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fade-cube-#{$i} {
+
+            0%,
+            #{7 * $i}% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fade-out-cube-#{$i} {
+            $start: 3 * $i;
+            $mid: 100 - $start;
+
+            0%,
+            #{$start}% {
+                opacity: 1;
+            }
+
+            #{$mid}% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+    }
+}

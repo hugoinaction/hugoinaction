@@ -1,0 +1,21 @@
+{
+  "name": "",
+  "short_name": "",
+  
+  "icons": [{
+      "src": "/image/favicon_hud91e23785cf70a843bfd0b30f5ef61e6_3819_192x192_resize_box_2.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/image/favicon_hud91e23785cf70a843bfd0b30f5ef61e6_3819_512x512_resize_box_2.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "scope": "/",
+  "theme_color": "#FF8822",
+  "background_color": "#FF8822",
+  "display": "standalone"
+}

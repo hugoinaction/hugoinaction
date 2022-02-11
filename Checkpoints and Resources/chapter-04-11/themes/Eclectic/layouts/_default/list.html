@@ -1,0 +1,25 @@
+{{ define "main" }}
+{{- partialCached "util/background.html" "bg" -}}
+<article class="list">
+    <h1 class='title'>{{.Title}}</h1>
+    <span class='subtitle'>{{.Params.Subtitle}}</span>
+    {{with .Content}}<div class="content">{{ .}}</div> {{- end -}}
+    {{if and (not .Paginator.HasPrev) (gt (len .Sections) 0) }}
+        <h2 class='title'>Pages</h2>
+    {{end}}
+    <ul class="blog-posts items-{{.Paginator.PageSize}}">
+        {{ range .Paginator.Pages}}
+        {{- partialCached "util/post.html" . .RelPermalink -}}
+        {{ end }}
+    </ul>
+    {{ template "_internal/pagination.html" . }}
+    {{if and (not .Paginator.HasPrev) (gt (len .Sections) 0) }}
+        <h2 class='title'>Subsections</h2>
+        <ul class="blog-posts items-{{len .Sections}}">
+    {{range .Sections}}
+    {{- partialCached "util/post.html" . .RelPermalink -}}
+    {{end}}
+    </ul>
+    {{end}}
+</article>
+{{ end }}

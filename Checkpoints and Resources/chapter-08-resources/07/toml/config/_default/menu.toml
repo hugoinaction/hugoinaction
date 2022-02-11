@@ -1,0 +1,23 @@
+[[main]]
+identifier = "about"
+name = "About"
+url = "/about"
+weight = 100
+post = "Our facinating origins"
+
+[[main]]
+identifier = "contact"
+name = "Contact"
+url = "/contact"
+weight = 200
+post = "At your service"
+
+[[footer]]
+name = "Privacy Policy"
+weight = 300
+url = "/privacy"
+
+[[footer]]
+name = "Terms of Use"
+weight = 200
+url = "/terms"

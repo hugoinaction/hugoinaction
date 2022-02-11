@@ -1,0 +1,30 @@
+{{$products := (partialCached "products.html" "cache")}}
+{{$data := index $products .Params.product}}
+
+<li class="product">
+  <a href="{{.Permalink}}">
+  {{with (.Resources.GetMatch "cover.*")}}
+    {{$img := . | images.Filter (images.Overlay (resources.GetMatch "image/watermark.*") 0 0 )}}
+    {{$img := $img.Resize "1000x"}}
+    <img loading="lazy" src="{{$img.Permalink}}" alt="{{$.Title}}">
+  {{end}}
+    <h2>{{.Title}}</h2>
+    <div class="price">$ {{$data.Price}}</div>
+    <div class="rating">
+      {{range (seq $data.Rating)}}&starf;{{end}}
+      {{- range seq (sub 5 ($data.Rating | int))}}&star;{{end}}
+    </div>
+  </a>
+  <form>
+    <input type="hidden" name="name" value="{{.Title }}">
+    <div class="colors">
+      {{range $i, $c := split $data.Colors ","}}
+        <label>
+          <input type="radio" name="color" value="{{trim $c " "}}" {{if eq $i 0}}checked{{end}}>
+          <span class="sr-only">{{$c}}</span>
+        </label>
+      {{end}}
+    </div>
+    <button class="addToCart" type="submit">{{i18n "addToCart"}}</button>
+  </form>
+</li>

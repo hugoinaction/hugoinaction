@@ -1,0 +1,68 @@
+{{- $currentPage := . -}}
+{{- if .Params.series -}}
+  {{- $seriesName := index .Params.series 0 -}}
+  {{- $current := 1 -}}
+  {{- $total := 0 -}}
+  {{- $scratch := newScratch -}}
+  {{- range .Site.RegularPages.ByDate -}}
+      {{- if in .Params.series $seriesName -}}
+          {{- $total = add $total 1 -}}
+          {{- if gt $.Date.Unix .Date.Unix -}}
+              {{ $scratch.Add "before" (slice .) }}
+              {{- $current = add $current 1 -}}
+          {{- else if ne . $currentPage -}}
+              {{ $scratch.Add "after" (slice .) }}
+          {{- end -}}
+      {{- end -}}
+  {{- end -}}
+  {{$before := $scratch.Get "before" | default slice}}
+  {{$after := $scratch.Get "after" | default slice}}
+  {{/*
+    * If we have none from before show three after
+    * If we do not have something after show three from before.
+    * If we have one after show two from before and one from after.
+    * Otherwise show one from before and two from after
+    */}}
+  {{- if eq (len $before) 0 -}}
+    {{ .Scratch.Set "Related" ($after | first 3) }}
+  {{- else if eq (len $after) 0 -}}
+    {{ .Scratch.Set "Related" ($before | last 3) }}
+  {{- else if eq (len $after) 1 -}}
+    {{ .Scratch.Set "Related" ($before | last 2) }}
+    {{ .Scratch.Add "Related" $after }}
+  {{- else -}}
+    {{ .Scratch.Set "Related" ($before | last 1) }}
+    {{ .Scratch.Add "Related" ($after | first 2) }}
+  {{- end -}}
+{{- else -}}
+  {{ .Scratch.Set "Related" (.Site.RegularPages.Related . | first 3) }}
+{{- end -}}
+
+
+{{- $related := .Scratch.Get "Related" -}}
+{{- .Scratch.Delete "Related" -}}
+{{- with $related -}}
+<section class="more">
+  {{- if $currentPage.Params.series -}}
+    {{- $seriesName := index $currentPage.Params.series 0 -}}
+    <h2>More in {{$seriesName}}</h2>
+  {{- else -}}
+    <h2>You may also enjoy</h2>
+  {{- end -}}
+    <ul class="items-{{len $related}}">
+  {{- range . -}}
+  <li>
+    <a href="{{.RelPermalink}}">
+      {{- partial "util/cover.html" (dict "class" "img-container" "page" . "width" 400 "height" 300) -}}
+    </a>
+    <a class="description" href="{{ .RelPermalink }}">{{ .Title }}<br>
+      <small>
+        {{- partialCached "util/icon" (dict "key" "hourglass-1" "size" 16) "hourglass-1-16" -}}
+        {{.ReadingTime}} minutes
+      </small>
+    </a>
+  </li>
+  {{- end -}}
+  </ul>
+</section>
+{{- end -}}

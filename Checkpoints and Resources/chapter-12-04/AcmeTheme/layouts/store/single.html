@@ -1,0 +1,55 @@
+{{define "bodyClass"}} 
+store page 
+{{end}}
+
+{{define "body"}}
+{{$products := (partialCached "products.html" "cache")}}
+{{$data := index $products .Params.product}}
+ <main>
+  {{with (.Resources.GetMatch "cover.*")}}
+    {{$img := . | images.Filter (images.Overlay (resources.GetMatch "image/watermark.*") 0 0 )}}
+    {{$img := $img.Resize "1000x"}}
+    <img loading="lazy" src="{{$img.Permalink}}" alt="{{$.Title}}">
+  {{end}}
+  <div>
+    <h1>{{.Title}}</h1>
+    <div class="rating">
+      {{range (seq $data.Rating)}}&starf;{{end}}
+      {{- range seq (sub 5 ($data.Rating | int))}}&star;{{end}}
+    </div>
+    <p>{{.Summary}}</p>
+    <div class="price">$ {{$data.Price}}</div>
+    <form>
+      <input type="hidden" name="name" value="{{.Title }}">
+      <label for="color-selector">Select Color</label>
+      <div class="colors">
+      {{range $i, $c := split $data.Colors ","}}
+        <label>
+          <input type="radio" name="color" value="{{trim $c " "}}" {{if eq $i 0}}checked{{end}}>
+          <span class="sr-only">{{$c}}</span>
+        </label>
+      {{end}}
+      </div>
+      <button class="addToCart" type="submit">Add to Cart</button>
+      <button class="buyNow" type="submit">Buy Now</button>
+    </form>
+    <h2>Specifications</h2>
+    {{.Content}}
+  </div>
+</main>
+{{with where (site.RegularPages.Related .) ".Section" "store"}}
+<div id="related">
+  <h2>Related Products</h2>
+  <ul class="products">
+    {{range first 3 .}}
+     {{.Render "card"}}
+    {{end}}
+  </ul>
+</div>
+{{end}}
+{{ partial "comment.html" (dict 
+  "FormspreeCommentForm" ($.Param "FormspreeCommentForm")
+  "RelPermalink" .Page.RelPermalink 
+  "Disabled" ($.Param "CommentDisabled")
+) }}
+{{end}}

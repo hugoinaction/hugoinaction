@@ -1,0 +1,4 @@
+enableInlineShortcodes: true
+funcs:
+  getenv:
+    - NETLIFY

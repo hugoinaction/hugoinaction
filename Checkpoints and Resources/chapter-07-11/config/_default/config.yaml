@@ -1,0 +1,6 @@
+baseURL: https://chapter-07-11.hugoinaction.com
+languageCode: en-us
+title: Acme Corporation
+enableEmoji: true
+enableGitInfo: true
+Paginate: 3

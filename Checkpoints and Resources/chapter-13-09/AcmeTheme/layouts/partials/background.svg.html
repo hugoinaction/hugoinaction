@@ -1,0 +1,2 @@
+{{ $background := resources.GetMatch "image/background.svg.tpl" | resources.ExecuteAsTemplate "background.svg" "nothing" }}
+{{ return $background.Permalink }}

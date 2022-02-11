@@ -1,0 +1,10 @@
+<div class="newsletter">
+  <form action="{{.action}}" method="post" target="_blank">
+    <label for="newsletter-pot" class="honeypot">Details </label>
+    <input id="newsletter-pot" class="honeypot" type="text" name="{{.honeypot}}" tabindex="-1">
+    <label for="mce-EMAIL" class="sr-only">Email Address </label>
+    <input required class="email" type="email" name="{{.email}}" placeholder="Email Address" id="mce-EMAIL"><button
+      title="Subscribe" type="submit"
+      name="subscribe">{{- partialCached "util/icon" (dict "key" "user-plus" "size" 20) "user-plus-20" -}}</button>
+  </form>
+</div>

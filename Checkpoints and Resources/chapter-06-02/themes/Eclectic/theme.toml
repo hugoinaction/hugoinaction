@@ -1,0 +1,12 @@
+name = "Eclectic"
+license = "MIT"
+licenselink = "https://github.com/atishay/atishay.github.io/blob/master/LICENSE"
+description = "A theme for high performance customizable hugo websites."
+homepage = "https://atishay.me"
+tags = ["Website", "Performance", "Customizable"]
+features = []
+min_version = "0.55"
+
+[author]
+  name = "Atishay Jain"
+  homepage = "https://atishay.me"

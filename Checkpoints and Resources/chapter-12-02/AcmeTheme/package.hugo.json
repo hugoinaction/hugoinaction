@@ -1,0 +1,30 @@
+{
+  "name": "acme-theme",
+  "version": "1.0.0",
+  "description": "Theme for the acme corporation website in Hugo in Action",
+  "main": "n/a",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hugoinaction/hugoinaction.git"
+  },
+  "keywords": [
+    "Acme",
+    "Theme",
+    "Hugo",
+    "in",
+    "Action"
+  ],
+  "author": "Atishay Jain <contact@atishay.me>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hugoinaction/hugoinaction/issues"
+  },
+  "homepage": "https://github.com/hugoinaction/hugoinaction#readme",
+  "devDependencies": {
+    "fuse.js": "^6.4.6",
+    "md5": "2.3.0"
+  }
+}

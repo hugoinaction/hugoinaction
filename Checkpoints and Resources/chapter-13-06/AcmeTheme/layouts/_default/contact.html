@@ -1,0 +1,58 @@
+{{define "bodyClass"}}contact page{{end}}
+{{define "body"}}
+<main>
+  {{$img := .Resources.GetMatch "cover.*"}}
+  {{ if $img }}
+  <img alt="{{.Title}}" width="1920" height="400" loading="lazy" src="{{($img.Fill "1920x400 Center").Permalink}}">
+  {{ end }}
+  {{with .Title}}
+    <h1>
+      {{.}}
+    </h1>
+  {{end}}
+
+  <div class="contact-box">
+    <div class="content">
+      {{.Content}}
+    </div>
+    <template id="contact-success">
+      <div class="success">
+      {{default (i18n "contactSuccess") ($.Param "contact-success")}}
+    </div>
+    </template>
+    <template id="contact-error">
+      <div class="error">
+        {{default (i18n "contactError") ($.Param "contact-error")}}
+      </div>
+    </template>
+
+    {{if getenv "NETLIFY" }}
+      <form data-dynamic-form data-success="#contact-success" data-error="#contact-error" netlify="true" name="Contact">
+    {{ else }}
+      <form data-dynamic-form data-success="#contact-success" data-error="#contact-error" action="https://formspree.io/f/{{.Param "contact"}}" method="post">
+    {{ end }}
+          <div>
+          <label for="name">{{i18n "name"}}:</label>
+          <input id="name" name="name" type="text" required>
+        </div>
+        <div>
+          <label for="email">{{i18n "email"}}:</label>
+          <input
+            {{ if getenv "NETLIFY" }}
+              id="email" name="email"
+            {{ else }} 
+              name="_replyto"
+            {{ end }}
+            type="email" required>
+        </div>
+        <div>
+          <label for="message">{{i18n "message"}}:</label>
+          <textarea id="message" name="message" cols="50" rows="10" required></textarea>
+        </div>
+        <div>
+          <button type="submit">{{i18n "send"}}</button>
+        </div>
+    </form>
+  </div>
+</main>
+{{end}}

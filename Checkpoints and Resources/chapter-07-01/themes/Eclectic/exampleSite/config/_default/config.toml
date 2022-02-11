@@ -1,0 +1,45 @@
+theme = "eclectic"
+
+enableInlineShortcodes = true
+footnoteReturnLinkContents = "^"
+
+# Output format JSON for the home page to enable search
+[outputs]
+  home = [
+   "html",
+   "rss",
+   "json"
+  ]
+
+# The theme has a special support for series.
+# Specifically if series are present and a page has series
+# The related pages under the page come from the same series
+# With the right ordering (one before two after). If that series
+# Does not have enough posts, the related pages from Hugo are used.
+[taxonomies]
+category = "categories"
+tag = "tags"
+series = "series"
+
+# Privacy config for Hugo's internal templates
+# Not specific to eclectic.
+[privacy]
+
+[privacy.vimeo]
+disabled = false
+simple = true
+
+[privacy.twitter]
+disabled = false
+enableDNT = true
+simple = true
+disableInlineCSS = true
+
+[privacy.instagram]
+disabled = false
+simple = true
+
+[privacy.youtube]
+disabled = false
+privacyEnhanced = true
+

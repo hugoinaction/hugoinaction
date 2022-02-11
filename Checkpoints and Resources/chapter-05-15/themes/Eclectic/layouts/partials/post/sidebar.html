@@ -1,0 +1,13 @@
+<aside>
+  {{- partial "post/info" . -}}
+  {{range .Params.sidebar}}
+  <section class="sidebar">
+    {{with .title}}<h2>{{ . | humanize }}</h2>{{end}}
+    {{with .content}}<p>{{ . | markdownify }}</p>{{end}}
+  </section>
+  {{ end }}
+  {{- partialCached "post/tag-cloud" . -}}
+  {{- partialCached "post/site-sidebar" . -}}
+  {{- partialCached "post/newsletter" . -}}
+  {{- partial "post/social" . -}}
+</aside>

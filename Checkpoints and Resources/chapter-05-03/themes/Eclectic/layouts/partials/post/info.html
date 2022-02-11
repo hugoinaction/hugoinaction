@@ -1,0 +1,63 @@
+<section class="info">
+  <h2>Info</h2>
+  <table>
+    <tbody>
+    <tr>
+      <td colspan="2">
+        <p>{{.Description}}</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="published" title="Published">
+      {{- partialCached "util/icon" (dict "key" "calendar" "size" 20) "calendar-20" -}}
+        <span>Published</span>
+      </th>
+      <td>
+        {{- $date := .PublishDate -}}
+        {{- if not $date -}} 
+        {{- $date = .Lastmod -}}
+        {{- end -}}
+        <time datetime="{{ $date.Format " 2006-01-02T15:04:05Z07:00 " }}">{{ $date.Format "Monday, Jan 2, 2006."}}</time>
+      </td>
+    </tr>
+    <tr>
+      <th class="wordCount" title="Word Count">
+        {{- partialCached "util/icon" (dict "key" "bullseye" "size" 20) "bullseye-20" -}}
+        <span>Word Count</span>
+      </th>
+    <td>
+      {{ .WordCount }} words
+    </td>
+  </tr>
+  <tr>
+  <th class="readingTime" title="Reading Time">
+    {{- partialCached "util/icon" (dict "key" "hourglass-1" "size" 20) "hourglass-1-20" -}}
+    <span>Reading Time</span>
+  </th>
+    <td>
+      {{ .ReadingTime }} minutes
+    </td>
+  </tr>
+  {{with .Params.categories}}
+  <tr>
+   <th title="Category">
+     {{- partialCached "util/icon" (dict "key" "caret-square-o-right" "size" 20) "caret-square-o-right-20" -}}
+     <span>Category</span></th>
+       <td>{{ range . }}
+         <a href="{{ "/categories/" | relLangURL }}{{ . | urlize }}">{{ . | humanize }}</a>
+         {{end}}
+       </td>
+  </tr>
+  {{end}}
+  <tr>
+    <td class="tags" title="Tags" colspan="2">
+      {{- partialCached "util/icon" (dict "key" "tags" "size" 20) "tags-20" -}}
+      <span>Tags<br></span>
+      {{- range .Params.tags -}}
+        <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . | humanize }} </a>
+      {{- end -}}
+    </td>
+  </tr>
+</tbody>
+</table>
+</section>

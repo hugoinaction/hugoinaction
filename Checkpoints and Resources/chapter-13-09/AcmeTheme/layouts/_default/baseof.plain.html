@@ -1,0 +1,70 @@
+<html>
+  <head>
+    <link rel="icon" 
+      type="image/png" href="{{(
+      (resources.Get "image/favicon.png" |
+      ).Resize "128x").Permalink }}"> 
+    {{$css := resources.Get "simple.css" | resources.Minify }}
+    <link rel="stylesheet" href="{{$css.Permalink}}" />
+  </head>
+  <body class="{{.Kind}}">
+    <header>
+      <div class="title">
+        <a href="{{site.Home.Permalink}}"> {{default site.Home.Title .Site.Title}} </a>
+      </div>
+      <ul>
+        {{range site.Menus.main}}
+            {{ with site.GetPage .URL }}
+              <li><a href="{{.Permalink}}">{{.Name | humanize}}</a></li>
+            {{ else }}
+              <li><a href="{{.URL}}">{{.Name | humanize}}</a></li>
+            {{end}}
+          {{end}}
+      </ul>
+    </header>
+    {{block "pre" .}}
+    {{ end }}
+    {{$img := .Resources.GetMatch "cover.*"}}
+    {{ if $img }}
+      <img alt="{{.Title}}" width="1920" height="400" loading="lazy" src="{{($img.Fill "1920x400").Permalink}}">
+    {{ end }}
+    {{if not (findRE "<h1.*?>(.|\n)*?</h1>" .Content 1) }}
+      <h1>{{default .File.ContentBaseName .Title | humanize}}</h1>
+    {{end}}
+    <div class="content">
+    {{.Content}}
+    </div>
+    {{if .RegularPages}}
+    <h2> Pages </h2>
+    <ul>
+    {{range .RegularPages}}
+    <li>
+      <a href="{{.Permalink}}">{{default .File.ContentBaseName .Title | humanize}}</a>
+    </li>
+    {{end}}
+    </ul>
+    {{end}}
+
+    {{if gt (len .Sections) 0}}
+    <h2>Subsections</h2>
+    <ul>
+      {{range .Sections}}
+    <li>
+      <a href="{{.Permalink}}">{{default (path.Base .File.Dir) .Title | humanize}}</a>
+    </li>
+      {{end}}
+    </ul>
+    {{end}}
+    {{block "post" .}}
+
+    {{end}}
+    <footer>
+      <ul>
+        {{range site.Menus.footer}} {{ with site.GetPage .URL }}
+        <li><a href="{{.Permalink}}">{{.Name | humanize}}</a></li>
+        {{end}} {{end}}
+      </ul>
+      <center><small>{{$.Param "copyright" | markdownify}}</small></center>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,11 @@
+module:
+  hugoVersion:
+    min: 0.91.2
+  imports:
+    - path: github.com/hugoinaction/AcmeSupport
+      mounts:
+        - source: assets
+          target: assets
+    - path: github.com/hugoinaction/hugo-debug-utils
+    - path: github.com/hugoinaction/AcmeCommon
+    - path: github.com/gohugoio/hugo-mod-jslibs/instantpage

@@ -1,0 +1,6 @@
+baseURL: https://chapter-05-06.hugoinaction.com
+languageCode: en-us
+title: Acme Corporation
+theme: Eclectic
+enableEmoji: true
+enableGitInfo: true

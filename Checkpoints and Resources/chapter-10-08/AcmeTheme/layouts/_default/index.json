@@ -1,0 +1,10 @@
+{{ $result := newScratch }}
+{{ $result.Set "pages" slice }}
+{{ range site.RegularPages }}
+{{ $cover := $result.Get "Null" }}
+{{ with (.Resources.GetMatch "cover.*")}}
+    {{ $cover = (.Resize "100x100 Center").Permalink}}
+{{end}}
+{{ $result.Add "pages" (dict "url" .RelPermalink "content" .Plain "title" .Title "tags" .Params.Tags "cover" $cover) }}
+{{ end }}
+{{ $result.Get "pages" | jsonify }}

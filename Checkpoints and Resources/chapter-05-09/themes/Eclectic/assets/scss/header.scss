@@ -1,0 +1,669 @@
+header {
+    @include container;
+    position: fixed;
+    top: 0;
+    background: var(--background-color);
+    box-shadow: 0 1px 1px $divider,
+                0 -2px var(--theme-color);
+    display: flex;
+    align-items: center;
+    min-height: var(--header-height);
+    flex-wrap: wrap;
+    z-index: 10;
+    will-change: transform;
+    margin-bottom: 7px;
+}
+
+#scroll-indicator {
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    height: 2px;
+    background: var(--theme-color);
+    border-bottom-right-radius: 1px;
+    border-top-right-radius: 1px;
+}
+
+// Logo
+.logo {
+    height: var(--header-height);
+    display: flex;
+    align-items: center;
+    svg {
+        fill: var(--text-color);
+        stroke: var(--text-color);
+        width: 130px;
+        height: 47px;
+    }
+}
+
+// Hamburger Icon
+$hamburger-size: calc(8px + var(--header-height) / 2);
+.hamburger {
+    display: block;
+    width: $hamburger-size;
+    height: $hamburger-size;
+    margin: calc(calc(var(--header-height) - #{$hamburger-size}) / 2) 0;
+    position: absolute;
+    cursor: pointer;
+    top: 0; // hide this
+    opacity: 0; // and place it over the hamburger
+    z-index: 2;
+}
+
+.hamburger ~ .icon {
+    display: block;
+    width: $hamburger-size;
+    height: $hamburger-size;
+    position: relative;
+    background: #EEE;
+    z-index: 1;
+    padding: 4px;
+    fill: rgba(0, 0, 0, 0.5);
+    border-radius: 2px;
+    margin: 0 15px 0 0;
+    svg {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.hamburger:checked ~ .icon {
+    .bar:nth-of-type(2) {
+        opacity: 0;
+    }
+    .bar:nth-of-type(3) {
+        transform: translateY(+5px) translateX(4px) rotateZ(-225deg);
+        transform-origin: center;
+    }
+    .bar:nth-of-type(1) {
+        transform: translateY(-5px) translateX(2px) rotateZ(225deg);
+        transform-origin: center;
+    }
+}
+
+@include media(">=md") {
+    .hamburger,
+    .hamburger ~ .icon {
+        display: none;
+    }
+}
+
+// Menu
+@include media("<md") {
+    .hamburger:checked ~ .top-menu {
+        max-height: 100vh;
+        opacity: 1;
+        padding: 15px 0;
+    }
+}
+
+.top-menu {
+    font-weight: 400;
+    @include media("<md") {
+        // Grow to fill the entire space.
+        flex-grow: 1; // Allow content below to flow
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition: all 0.3s ease-out;
+        border-top: 1px solid #eee;
+    }
+    @include media(">=md") {
+        display: inline-flex;
+        flex-wrap: wrap;
+        align-items: stretch;
+        height: var(--header-height);
+    }
+}
+
+.top-menu-item {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    &.active>a,
+    &:hover>a {
+        color: var(--theme-color);
+    }
+    @include media(">=md") {
+        position: relative;
+        &.active::after {
+            content: " ";
+            background: var(--theme-color);
+            position: absolute;
+            width: 100%;
+            left: 0;
+            bottom: 0;
+            height: 5px;
+        }
+    }
+    a {
+        text-decoration: none;
+        color: inherit;
+        display: inline-block;
+        width: 100%;
+        @include media(">=lg") {
+            padding: 10px 20px;
+        }
+        @include media("<lg") {
+            padding: 5px 8px;
+            font-size: 12px;
+        }
+        @include media("<md") {
+            padding: 12px 0px;
+            font-size: 12px;
+        }
+    }
+    @include media("<md") {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+// Sub Menu
+.sub-menu {
+    position: absolute;
+    top: var(--header-height);
+    max-height: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 8px 16px rgba(10, 10, 10, .1);
+    background: var(--background-color);
+    min-width: 200px;
+    border-color: $divider;
+    transition: max-height, opacity 0.3s ease-out;
+    li {
+        list-style: none;
+        a {
+            padding: 10px;
+        }
+        &.active>a,
+        &:hover>a {
+            color: var(--theme-color);
+        }
+        &:not(:last-child) {
+            border-bottom: 1px dotted $divider;
+        }
+    }
+    @include media("<md") {
+        position: static;
+        max-height: 100vh;
+        box-shadow: none;
+        border-top: 1px solid $divider;
+        border-bottom: 1px dotted $divider;
+        background: transparent;
+    }
+}
+
+@include media(">md") {
+    .top-menu-item:hover .sub-menu {
+        max-height: 100vh;
+        opacity: 1;
+        border: 1px solid $divider;
+    }
+}
+
+// GitHub Corner
+.github-corner {
+    svg {
+        width: var(--header-height);
+        height: var(--header-height);
+        color: var(--background-color);
+        fill: var(--theme-color);
+        position: absolute;
+        top: 0;
+        border: 0;
+        right: 0;
+    }
+    &:before {
+        content: " ";
+        position: absolute;
+        right: 0;
+        top: -200px;
+        height: 200px;
+        z-index: 1;
+        background: var(--theme-color);
+        width: var(--header-height);
+    }
+    .octo-arm {
+        transform-origin: 130px 106px;
+    }
+    position: absolute;
+    top: 0;
+    border: 0;
+    right: 0;
+}
+
+.github-corner:hover .octo-arm {
+    animation: octocat-wave 560ms ease-in-out
+}
+
+@keyframes octocat-wave {
+    0%,
+    100% {
+        transform: rotate(0)
+    }
+    20%,
+    60% {
+        transform: rotate(-25deg)
+    }
+    40%,
+    80% {
+        transform: rotate(10deg)
+    }
+}
+
+@include media("<sm") {
+    .github-corner:hover .octo-arm {
+        animation: none
+    }
+    .github-corner .octo-arm {
+        animation: octocat-wave 560ms ease-in-out
+    }
+}
+
+
+// Hide header on scroll on mobile
+@include media("<md") {
+    #header {
+        transition: transform 0.2s ease-in;
+        #color-picker {
+            transition: opacity 0.2s ease-in;
+        }
+    }
+    .header-unpin {
+        transform: translateY(calc(-2px - var(--header-height)));
+        #color-picker {
+            opacity: 0;
+        }
+    }
+
+    .header-pin {
+        transform: translateY(0);
+        #color-picker {
+            opacity: 1;
+        }
+    }
+}
+
+
+.scroll-up {
+    opacity: 0;
+    width: 30px;
+    height: 30px;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 2;
+    transition: transform 0.2s ease-in,
+    opacity 0.2s ease-in;
+    will-change: transform;
+    svg {
+        background-color: var(--theme-color);
+        padding: 5px;
+        fill:var(--background-color);
+    }
+    &:hover {
+        transform: scale(1.1, 1.1);
+        filter: none;
+    }
+    &.visible {
+        opacity: 1;
+        @include media("<md") {
+            &.unpin {
+                opacity: 0;
+            }
+        }
+    }
+}
+
+
+#searchbox {
+    position: relative;
+    margin-left: auto;
+    max-height: var(--header-height);
+    padding-top: calc(var(--header-height)/4);
+    height: var(--header-height);
+    opacity: 0;
+    &.visible {
+        opacity: 1;
+    }
+    &>svg {
+        position: absolute;
+        left: 7px;
+        top: calc(var(--header-height)/4 + 7px);
+        color: rgba(var(--text-color-rgb), 0.2);
+        pointer-events: none;
+        @include media(">=lg") {
+            top: calc(var(--header-height)/4 + 10px)
+        }
+    }
+    input{
+        height: calc(var(--header-height)/2);
+        line-height: calc(var(--header-height)/2);
+        font-size: calc(var(--header-height)/5);
+        border-radius: 50px;
+        padding: 7px 10px 7px 30px;
+        background: none;
+        width: 170px;
+        & ~ .results {
+            width: 130px;
+        }
+        &:focus {
+            width: 300px;
+            & ~ .results{
+                width: 260px;
+                max-height: 500px;
+                transition: width .2s ease-in-out,
+                max-height 0.5s ease-in-out;
+            }
+            & ~ svg {
+                color: rgba(var(--text-color-rgb), 0.6);
+            }
+        }
+        transition: all .2s ease-in-out;
+    }
+    .results {
+        max-height: 0;
+        overflow: hidden;
+        background: var(--background-color);
+        border-bottom-right-radius: 5px;
+        border-bottom-left-radius: 5px;
+        margin: -2px 20px 0;
+        box-shadow: 0 2px 2px #bbb;
+        & >div {
+            &.hidden {
+                display: none;
+            }
+            &.selected {
+                background: rgba(var(--theme-color-rgb), 0.1);
+            }
+            cursor: pointer;
+            border-bottom: 1px solid #eee;
+            padding: 10px;
+            height: 80px;
+            img {
+                float: left;
+                border-radius: 3px;
+                background: #DDD;
+                min-height: 50px;
+                margin: 5px 10px 5px 0;
+            }
+            h2 {
+                font-size: 12px;
+                line-height: 14px;
+                margin: 0;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                padding: 0;
+                overflow: hidden;
+            }
+            .description {
+                font-size: 10px;
+                line-height: 12px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                height: 30px;
+                text-align: left;
+                padding: 3px 0;
+            }
+            &>span {
+                font-size: 8px;
+                line-height: 10px;
+                display: flex;
+                align-items: center;
+                white-space: nowrap;
+                height: 14px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                .category {
+                    min-width: 0;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                }
+                svg {
+                    margin: 0 2px 0 5px;
+                    min-width: 12px;
+                    &:first-of-type {
+                        margin-left: 0;
+                    }
+                }
+            }
+            &::after {
+                content: " ";
+                display: block;
+                clear: both;
+            }
+        }
+        transition: width .2s ease-in-out;
+    }
+    @include media("<md") {
+        margin: 0;
+        position: absolute;
+        top: 0;
+        z-index: 3;
+        right: calc(50vw - var(--max-width)/2);
+        background: var(--background-color);
+        padding-top: calc(var(--header-height)/4);
+        height: var(--header-height);
+        &>svg {
+            top: calc(7px + var(--header-height)/4)
+        }
+        .results {
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+        input:focus {
+            width: calc(var(--max-width));
+            & ~ .results {
+                width: calc(var(--max-width) - 20px);
+            }
+        }
+    }
+    @media(max-width: $search-follow) {
+        right: var(--header-height);
+        input:focus {
+            margin-left: 20px;
+            width: calc(100vw - 2*var(--header-height));
+            & ~ .results {
+                margin-left: 30px;
+                width: calc(100vw - 2*var(--header-height) - 20px);
+            }
+        }
+        input:focus ~ svg {
+            left:27px;
+        }
+    }
+    @include media("<sm") {
+        input:focus {
+            margin-left: 0;
+            & ~ .results {
+                margin-left: 10px;
+            }
+        }
+        input:focus ~ svg {
+            left: 7px;
+        }
+        input:not(:focus) {
+            width: 0px;
+            padding-left: 25px;
+            border-radius: 0;
+            background: var(--theme-color);
+            border:none;
+            & ~ svg {
+                color: var(--background-color);
+            }
+            & ~ .results {
+                width: 0;
+            }
+        }
+    }
+}
+
+.no-js #color-picker {
+    display: none;
+}
+
+// Color Picker
+#color-picker {
+    position: absolute;
+    top: calc(var(--header-height) + 20px);
+    right: 10px;
+    z-index: 10;
+    .theme {
+        display: none
+    }
+    &:hover {
+        border-radius: 20px;
+        text-align: right;
+        &::before {
+            content: " ";
+            position: absolute;
+            left: -10px;
+            right: 30px;
+            height: 5px;
+            background: var(--theme-color);
+            top: 14px;
+        }
+        &::after {
+            content: " ";
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            left: -19px;
+            top: 9px;
+            display: block;
+            background: var(--theme-color);
+            position: absolute;
+        }
+        .theme {
+            display: inline-block;
+            height: 150px;
+            width: 200px;
+            margin-right: 20px;
+            background: var(--background-color);
+            border: 1px solid var(--theme-color);
+            vertical-align: top;
+            margin-top: 18px;
+            h3 {
+                font-weight: 500;
+                text-align: center;
+            }
+            .colors {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                justify-content: center;
+                margin: 5px;
+            }
+            .custom-color {
+                display: block;
+                text-align: center;
+            }
+            .theme-choice {
+                margin: 5px 3px;
+                width: 20px;
+                height: 20px;
+                background-color: var(--color);
+                border-radius: 3px;
+                cursor: pointer;
+                box-shadow: 1px 1px 1px 0 var(--text-color);
+            }
+            a {
+                margin: 0 5px;
+            }
+        }
+        .picker {
+            vertical-align: middle;
+            color: var(--background-color);
+            background: var(--theme-color);
+            transform: rotateZ(-180deg);
+        }
+    }
+    .picker {
+        height: 30px;
+        width: 30px;
+        padding: 5px;
+        border-radius: 50%;
+        color: var(--theme-color);
+        border: 1px solid var(--theme-color);
+        cursor: pointer;
+        background: rgba(var(--background-color-rgb), 0.8);
+        transition: transform 0.2s ease-in;
+    }
+
+    // Inpired by https://codepen.io/otiext/pen/bkEco
+    input[type="checkbox"] {
+        display: none;
+    }
+
+    span {
+        vertical-align: middle;
+        display: inline-block;
+        padding: 5px 5px 5px 30px;
+    }
+    .toggle {
+        position: relative;
+        display: inline-block;
+        width: 40px;
+        height: 20px;
+        vertical-align: middle;
+    }
+
+    .toggle label,
+    .toggle i {
+        box-sizing: border-box;
+        display: block;
+        background: #ffffff;
+    }
+
+    .toggle label {
+        width: 40px;
+        height: 20px;
+        border-radius: 32px;
+        border: 1px solid #e5e5e5;
+        transition: all 0.30s ease;
+    }
+
+    .toggle i {
+        position: absolute;
+        top: 1px;
+        left: 1px;
+        width: 18px;
+        height: 18px;
+        border-radius: 18px;
+        box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.25),
+            0 3px 3px 0 rgba(0, 0, 0, 0.15);
+        background: #ffffff;
+        transition: all 0.3s cubic-bezier(0.275, -0.450, 0.725, 1.450);
+    }
+
+    input[type="checkbox"]:active+.toggle i {
+        width: 20px;
+    }
+
+    input[type="checkbox"]:active+.toggle label,
+    input[type="checkbox"]:checked+.toggle label {
+        border: 10px solid #666;
+        i {
+            background: #222;
+        }
+    }
+
+    input[type="checkbox"]:checked+.toggle i {
+        left: 21px;
+    }
+
+    input[type="checkbox"]:checked:active+.toggle label {
+        border: 10px solid #e5e5e5;
+    }
+
+    input[type="checkbox"]:checked:active+.toggle i {
+        left: 14px;
+    }
+}

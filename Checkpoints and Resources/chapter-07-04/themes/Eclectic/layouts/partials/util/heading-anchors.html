@@ -1,0 +1,2 @@
+{{/* Adds links to the heading via an anchor tag */}}
+{{ . | replaceRE "(<h[1-9] id=\"([^\"]+)\".+)(</h[1-9]+>)" "${1} <a class=\"heading-anchor\" href=\"#${2}-anchor\" id=\"${2}-anchor\">#</a> ${3}" | safeHTML }}

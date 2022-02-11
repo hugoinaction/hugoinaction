@@ -1,0 +1,44 @@
+{{define "bodyClass"}}page list{{end}}
+{{define "body"}} 
+<main>
+  <h1>{{.Title | humanize}}</h1> 
+  <center>{{.Content}}</center>
+  {{$pages := .RegularPages}}
+  {{range .Sections}}
+    {{$pages = append $pages .RegularPages}}
+  {{end}}
+  {{$pages = sort $pages "Date" "desc" }}
+
+  {{ $paginator := .Paginate $pages }}
+  {{if and (eq $paginator.PageNumber 1)
+            (gt (len .Sections) 0) }}
+  <h2>Subsections</h2>
+    <ul class="subsections">
+    {{range .Sections}}
+      <li class="subsection">
+        <a href="{{.Permalink}}">
+          <h3>{{(default 
+          (.File.Path | path.Dir | path.Base) 
+            .Title) | humanize}}</h3>
+          <p>Pages: {{len .Pages}}</p>
+          {{$words:= 0}}
+            {{range .Pages}}
+              {{$words = add $words .WordCount}}
+            {{end}}
+          <p>Words: {{$words}}</p>
+        </a>
+      </li>
+    {{end}}
+    </ul>
+  <h2>Posts</h2>
+  {{ end }}
+  {{with $paginator.Pages}}
+    <ul class="posts">
+      {{ range .}}
+        {{partialCached "card.html" . .Permalink}}
+      {{ end }}
+    </ul>
+  {{end}}
+{{ template "_internal/pagination.html" (dict "page" . "format" "terse") }}
+</main>
+{{end}}

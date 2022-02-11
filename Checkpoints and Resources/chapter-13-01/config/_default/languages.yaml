@@ -1,0 +1,24 @@
+en:
+  params:
+fr:
+  params:
+    copyright: "droits d'auteur &copy; 2022 Acme Corporation. Tous les droits sont réservés."
+  menu:
+    main:
+      - identifier: about
+        name: À propos
+        url: /fr/about
+        weight: 100
+        post: Nos origines fascinantes
+      - identifier: contact
+        name: contact
+        url: /fr/contact
+        weight: 200
+        post: A votre service
+    footer:
+      - name: Politique de confidentialité
+        weight: 300
+        url: /fr/privacy
+      - name: Conditions d'utilisation
+        weight: 200
+        url: /fr/terms

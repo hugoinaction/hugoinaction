@@ -1,0 +1,17 @@
+{{define "bodyClass"}} page {{end}}
+{{define "body"}}
+<main>
+  {{with .Title}}
+    <h1>
+      {{.}}
+    </h1>
+  {{end}}
+  {{if .Param "toc"}}
+    <h2>Table of Contents</h2>
+    {{.TableOfContents}}
+  {{end}}
+  <div class="content">
+    {{.Content}}
+  </div>
+</main>
+{{end}}

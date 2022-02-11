@@ -1,0 +1,92 @@
+{{define "bodyClass"}} home {{end}}
+
+{{define "body"}}
+{{$title := default site.Title .Title}}
+    <section id="hero">
+      <img class="hero" src="{{partialCached "hero.svg" $ "nothing"}}" alt="Acme Corporation" width="24rem" />
+      <div class="intro">
+        {{with $title}}<h1>{{.}}</h1>{{end}}
+        {{with .Param "subtitle"}}<h2>{{. | humanize | markdownify}}</h2>{{end}}
+        <a href="{{ref . (.Param "explore")}}">{{i18n "explore"}}</a>
+        {{ partialCached "menu.html" (dict "Menu" site.Menus.footer) "footer" }}
+      </div>
+    </section>
+
+    {{with (where site.RegularPages ".Section" "store")}}
+    <section id="store">
+      <h1>{{i18n "products"}}</h1>
+      <ul class="products">
+      {{ range first 5 .}}
+        {{.Render "card"}}
+      {{ end }}
+      </ul>
+    </section>
+    {{end}}
+
+
+    <section id="description">
+      {{.Content}}
+    </section>
+    {{with site.Menus.main }}
+      <section id="menu">
+      <h1>{{i18n "webSections"}}</h1>
+        <h2>{{i18n "webSectionsSubTitle"}}</h2>
+        <ul>
+          {{ range . }}
+          <li>
+            <a href="{{.URL}}">
+              <i class="icon-{{.Identifier}}"></i>
+              {{.Name | humanize}}
+            </a>
+            {{with .Post}}<p>{{.}}</p>{{end}}
+          </li>
+          {{ else }}
+          {{/* Log for the website editor/developer */}}
+          <!-- No menu entries present -->
+          {{end}}
+        </ul>
+      </section>
+    {{end}}
+    {{with
+      (where site.RegularPages
+      ".Section" "in" site.Params.mainSections)
+    }}
+    <section id="blog">
+        <h1>{{i18n "fromBlog"}}</h1>
+        <ul class="posts">
+          {{range first 3 .}}
+             {{.Render "card"}}
+          {{end}}
+        </ul>
+    </section>
+    {{end}}
+    {{with .Param "testimonials"}}
+    <section id="testimonials">
+    <h1>{{i18n "testimonials"}}</h1>
+    <div>
+      <ol>
+        {{range .}}
+        {{$author := default "" .author}}
+        {{$content := default "" .content}}
+        {{$from := default "" .from}}
+        {{if .tweet}}
+          {{$tweet := getJSON
+            "https://publish.twitter.com/oembed?url=" 
+            .tweet  "&omit_script=1&hide_media=1&hide_thread=1&dnt=true" }}
+          {{$author = $tweet.author_name }}
+          {{$from = "via Twitter"}}
+          {{$content = $tweet.html }}
+        {{end}}
+        <li>
+            <p>{{$content | safeHTML}}</p>
+            <div>
+              <h2>{{$author | title}}</h2>
+              <h3>{{$from}}</h3>
+            </div>
+        </li>
+        {{end}}
+      </ol>
+    </div>
+    </section>
+    {{end}}
+{{ end }}

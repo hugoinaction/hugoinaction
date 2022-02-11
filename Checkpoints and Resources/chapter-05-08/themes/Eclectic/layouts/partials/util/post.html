@@ -1,0 +1,32 @@
+<li class="blog-post item">
+    <a href="{{.RelPermalink}}">
+{{- partial "util/cover.html" (dict "class" "banner-holder" "page" . "width" 440 "height" 330) -}}
+    {{- with .Title -}}
+    <h3>{{.}}</h3>
+    {{- else -}}
+    {{if eq .Kind "section" }}
+    <h3>{{path.Dir .File.Path | path.Base | humanize}}</h3>
+    {{ else}}
+    <h3>{{.File.ContentBaseName | humanize}}</h3>
+    {{- end -}}
+    {{- end -}}
+    </a>
+    {{- with .Description -}}
+    <p>{{. | markdownify}}</p>
+    {{- else -}}
+    <p>{{.Summary | markdownify}}</p>
+    {{- end -}}
+    <hr/>
+    <div class="blog-post-footer">
+        <a href="{{.RelPermalink}}">Read More</a>
+        <span class="categories">
+{{with .Params.categories}}
+{{ $icon := resources.Get "image/line-awesome/fa-caret-square-o-right.svg" |  resources.Minify }}
+{{ replace $icon.Content "<svg " " <svg width=\"20px\"" | safeHTML }}
+    {{ range . }}
+      <a href="{{ "/categories/" | relLangURL }}{{ . | urlize }}">{{ . | humanize }}</a>
+      {{end}}
+ {{end}}
+        </span>
+    </div>
+</li>

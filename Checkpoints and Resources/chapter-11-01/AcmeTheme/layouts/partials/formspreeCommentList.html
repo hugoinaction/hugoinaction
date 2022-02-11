@@ -1,0 +1,15 @@
+{{$response := newScratch}}
+{{if and site.Params.FormspreeCommentForm (getenv "COMMENTS_TOKEN")}}
+
+  {{$comments:= getJSON "https://formspree.io/api/0/forms/" site.Params.FormspreeCommentForm "/submissions" (dict "Authorization" (printf "Bearer %s" (getenv "COMMENTS_TOKEN"))) }}
+
+  {{ range sort $comments.submissions "_date" "ASC" }}
+    {{if not ($response.Get .url)}}
+      {{$response.Set .url (slice )}}
+    {{end}}
+
+    {{$response.Add .url .}}
+  {{ end }}
+{{ end }}
+
+{{return $response.Values}}

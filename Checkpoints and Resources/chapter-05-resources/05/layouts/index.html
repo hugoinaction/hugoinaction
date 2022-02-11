@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    {{with .Description}}<meta name="description" content="{{.}}">{{end}}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./index.css">
+    {{$title := default site.Title .Title}}
+    {{with $title}}<title>{{.}}</title>{{end}}
+  </head>
+  <body class="home">
+    <header>
+      <a href="{{ site.BaseURL | relLangURL }}">
+        <img src="./image/logo.svg" alt="Acme Logo" 
+             height="36" width="48" />
+        Acme Corporation
+      </a>
+      {{with site.Menus.main }}
+        <nav>
+          <button class="hamburger">&#9776;</button>
+          <ul>
+            {{range .}}
+              <li>
+                <a href="{{.URL}}">{{.Name | humanize}}</a>
+              </li>
+            {{end}}
+          </ul>
+        </nav>
+      {{end}}
+    </header>
+    <section id="intro">
+      {{with $title}}<h1>{{.}}</h1>{{end}}
+      {{with .Param "subtitle"}}<h2>{{. | humanize | markdownify}}</h2>{{end}}
+      <a href="{{ref . (.Param "explore")}}">Explore</a>
+    </section>
+    <section id="description">
+      {{.Content}}
+    </section>
+    {{with site.Menus.main }}
+      <section id="menu">
+      <h1>Website sections</h1>
+        <h2>This website has these major areas</h2>
+        <ul>
+          {{ range . }}
+          <li>
+            <a href="{{.URL}}">
+              <i class="icon-{{.Identifier}}"></i>
+              {{.Name | humanize}}
+            </a>
+            {{with .Post}}<p>{{.}}</p>{{end}}
+          </li>
+          {{ else }}
+          {{/* Log for the website editor/developer */}}
+          <!-- No menu entries present -->
+          {{end}}
+        </ul>
+      </section>
+    {{end}}
+    <footer class="dark">
+      {{with site.Menus.footer }}
+      <nav>
+        <ul>
+        {{range .}}
+        <li>
+          <a href="{{.URL}}">{{.Name | humanize}}</a>
+        </li>
+        {{end}}
+        </ul>
+      </nav>
+      {{end}}
+      <ul>
+        {{with site.Author.facebook}}
+          <li>
+            <a href="{{.}}" aria-label="Facebook">
+              <i class="  icon-facebook"></i>
+            </a>
+          </li>
+        {{end}}
+        {{with site.Author.twitter}}
+          <li>
+            <a href="{{.}}" aria-label="Twitter">
+              <i class="icon-twitter"></i>
+            </a>
+          </li>
+        {{end}}
+        {{with site.Author.email}}
+          <li>
+            <a href="mailto:{{.}}" aria-label="email">
+              <i class="icon-email"></i>
+            </a>
+          </li>
+        {{end}}
+      </ul>
+      <div>{{.Param "copyright" | markdownify}}</div>
+  </footer>
+  </body>
+</html>

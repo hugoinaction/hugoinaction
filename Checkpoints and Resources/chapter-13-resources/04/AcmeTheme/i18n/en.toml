@@ -1,0 +1,143 @@
+[[root]]
+id = "search"
+translation = "Search"
+
+[[root]]
+id = "subsections"
+translation = "Subsections"
+
+[[root]]
+id = "posts"
+translation = "Posts"
+
+[[root]]
+id = "products"
+translation = "Our Products"
+
+[[root]]
+id = "toc"
+translation = "Table of Contents"
+
+[[root]]
+id = "webSections"
+translation = "Website sections"
+
+[[root]]
+id = "webSectionsSubTitle"
+translation = "This website has these major areas"
+
+[[root]]
+id = "fromBlog"
+translation = "From our blog"
+
+[[root]]
+id = "testimonials"
+translation = "Customer endorsement"
+
+[[root]]
+id = "contactSuccess"
+translation = "Thank you for contacting us. You will hear from us soon."
+
+[[root]]
+id = "contactError"
+translation = "We are facing an issue submitting the contact form. Please try again later."
+
+[[root]]
+id = "commentError"
+translation = "We are facing an issue submitting the comment. Please try again later."
+
+[[root]]
+id = "commentSuccess"
+translation = "Your comment has been successfully submitted."
+
+[[root]]
+id = "commentDisabled"
+translation = "Comments have been disabled by the website administrator."
+
+[[root]]
+id = "name"
+translation = "Name"
+
+[[root]]
+id = "email"
+translation = "Email"
+
+[[root]]
+id = "news"
+translation = "News"
+
+[[root]]
+id = "addToCart"
+translation = "Add to Cart"
+
+[[root]]
+id = "buyNow"
+translation = "Buy Now"
+
+[[root]]
+id = "message"
+translation = "Message"
+
+[[root]]
+id = "comment"
+translation = "Comment"
+
+[[root]]
+id = "send"
+translation = "Send"
+
+[[root]]
+id = "submit"
+translation = "Submit"
+
+[[root]]
+id = "orderConfirmed"
+translation = "Order Confirmed."
+
+[[root]]
+id = "emailSoon"
+translation = "Your product will be e-mailed soon."
+
+[[root]]
+id = "read"
+translation = "Read More"
+
+[[root]]
+id = "cartEmpty"
+translation = "Please add some items to the cart."
+
+[[root]]
+id = "related"
+translation = "Related Pages"
+
+[[root]]
+id = "relatedProduct"
+translation = "Related Products"
+
+[[root]]
+id = "specs"
+translation = "Specifications"
+
+[[root]]
+id = "explore"
+translation = "Explore"
+
+[[root]]
+id = "info"
+translation = "Information"
+
+[[root]]
+id = "readTime"
+translation = "Reading time"
+
+[[root]]
+id = "wordCount"
+translation = "Word Count"
+
+[[root]]
+id = "tags"
+translation = "Tags"
+
+[[root]]
+id = "translations"
+translation = "Translations"

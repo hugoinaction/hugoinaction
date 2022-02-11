@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    {{with default .Summary .Description}}
+      <meta name="description" content="{{.}}">
+    {{end}}
+    <meta name="viewport" 
+      content="width=device-width, initial-scale=1.0" />
+    {{ $css := partialCached "index.css.html" $ "nothing"}}
+    <link rel="stylesheet" type="text/css" href="{{$css}}">
+    {{$title := default site.Title .Title}}
+    {{with $title}}<title>{{.}}</title>{{end}}
+  </head>
+  <body class="{{block "bodyClass" .}}{{end}}">
+    {{block "header" .}}
+      <header>
+      <a href="{{ site.BaseURL | relLangURL }}">
+      <img src="{{partialCached "logo.svg" $ "nothing"}}" alt="Acme Logo" height="36" width="48" />
+          Acme Corporation
+      </a>
+      {{ partialCached "menu.html" (dict "Menu" site.Menus.main "Button" true) "main" }}
+      </header>
+    {{ end }}
+    {{block "body" .}}
+      <main>
+        {{with .Title}}
+          <h1>
+            {{.}}
+          </h1>
+        {{end}}
+        <div class="content">
+          {{.Content}}
+        </div>
+      </main>
+    {{end}}
+    {{block "footer" .}}
+      <footer class="dark">
+        {{ partialCached "menu.html" (dict "Menu" site.Menus.footer) "footer" }}
+        <ul>
+          {{with site.Author.facebook}}
+            <li>
+              <a href="{{.}}" aria-label="Facebook">
+                <i class="  icon-facebook"></i>
+              </a>
+            </li>
+          {{end}}
+          {{with site.Author.twitter}}
+            <li>
+              <a href="{{.}}" aria-label="Twitter">
+                <i class="icon-twitter"></i>
+              </a>
+            </li>
+          {{end}}
+          {{with site.Author.email}}
+            <li>
+              <a href="mailto:{{.}}" aria-label="email">
+                <i class="icon-email"></i>
+              </a>
+            </li>
+          {{end}}
+        </ul>
+        <div>{{.Param "copyright" | markdownify}}</div>
+    </footer>
+  {{end}}
+  </body>
+</html>

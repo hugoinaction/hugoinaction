@@ -1,0 +1,439 @@
+@import "triangle.scss";
+
+.post {
+    z-index: 1;
+    margin: calc(var(--header-height)/2);
+    @include container-margin;
+    padding: calc(2*var(--content-padding));
+    background: rgba(var(--background-color-rgb), 0.9);
+    border-radius: 5px;
+    .yt {
+        border-radius: 5px;
+        position: relative;
+        padding-bottom: 56.25%;
+        height: 0;
+        overflow: hidden;
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border:0;
+        }
+    }
+    .i-tex {
+        transform: scale(0.8);
+    }
+    .tex, .i-tex {
+        color: var(--text-color);
+        &:hover, &.hover {
+            color: black;
+        }
+    }
+    &:hover {
+        background: var(--background-color);
+    }
+    @include media('>=lg') {
+        display: grid;
+        // Fix for the pre tag stretching the width: https://stackoverflow.com/questions/45468633/pre-tag-causing-page-to-scroll-horizontally-in-css-grid
+        grid-template-columns: 2fr 1fr 1fr;
+        grid-template-areas:
+            "main main aside"
+            "buttons buttons aside"
+            "more more aside"
+            "comments comments aside";
+        main {
+            grid-area: main;
+            // Needed for firefox
+            // https://stackoverflow.com/questions/43311943/
+            min-width: 0;
+            contain: content;
+        }
+        aside {
+            grid-area: aside;
+            contain: content;
+        }
+        .buttons {
+            grid-area: buttons;
+        }
+        .more {
+            grid-area: more;
+        }
+        .comments {
+            grid-area: comments;
+        }
+    }
+    main {
+        &>p {
+            font-size: 16px;
+            line-height: 30px;
+            &:first-of-type:first-letter {
+                color: var(--theme-color); //#992E00;
+                margin-top: 7px;
+                margin-right: 5px;
+                float: left;
+                font-size: 80px;
+                line-height: 80px;
+                font-family: NouveauDropCaps, serif;
+                font-display: optional;
+            }
+        }
+        &>ul>li,
+        &>ol>li {
+            font-size: 16px;
+            line-height: 30px;
+        }
+        h1:first-of-type {
+            padding-left: 0;
+        }
+    }
+    .post-anchor {
+        position: relative;
+        margin: 0 0 40px;
+        border-radius: 5px;
+        width: 100%;
+        padding-bottom: 400/800 * 100%;
+        @include zoomable-image(".banner-holder", 0);
+        .banner-holder {
+            height: 100%;
+            position: absolute;
+        }
+    }
+    aside {
+        @include media(">=lg") {
+            padding: 0 calc(2*var(--content-padding));
+        }
+        line-height: 30px;
+        * {
+            text-align: left;
+        }
+        svg {
+            fill: var(--theme-color);
+        }
+        svg:hover, svg.hover {
+            animation: rubberBand 0.5s linear;
+        }
+        th {
+            padding: 0 12px 0 0;
+            svg {
+                vertical-align: middle;
+                margin: 0 5px 0 0;
+            }
+            white-space: nowrap;
+            @include media("<xl", ">=lg") {
+                font-size: 0;
+            }
+            @include media("<md", ">=sm") {
+                font-size: 0;
+            }
+        }
+        .tags, .category {
+            span {
+                font-weight: 700;
+                @include media("<xl", ">=lg") {
+                    display: none;
+                }
+
+                @include media("<md", ">=sm") {
+                    display: none;
+                }
+            }
+            svg {
+                vertical-align: middle;
+                margin: 0 5px 0 0;
+            }
+        }
+        h2 {
+            // Taken padding from section as a hack for column wrapping.
+            padding-top: 20px;
+            margin: 0 0 8px;
+        }
+        section {
+            padding: 0 0 20px;
+            border-bottom: 1px dashed #ddd;
+            .info {
+                font-size: 10px;
+                float: right;
+            }
+        }
+        @include media('<lg', '>=sm') {
+            columns: 2;
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            section {
+                border-bottom: none;
+            }
+        }
+        @include media('<sm') {
+            border-top: 1px dashed #ddd;
+        }
+        .tag-cloud {
+            line-height: 2.0rem;
+        }
+        .tag-cloud>a {
+            white-space: nowrap;
+            color: var(--text-color);
+            padding: 2px;
+            border-radius: 2px;
+            &:hover {
+                color: var(--theme-color);
+                text-decoration: underline;
+            }
+        }
+    }
+    .buttons {
+        margin: 20px 0;
+    }
+    .next {
+        float: right;
+    }
+
+    .comments {
+        ul {
+            padding: 0;
+        }
+        li {
+            list-style: none;
+        }
+        form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-column-gap: 20px;
+            grid-row-gap: 20px;
+            @include media(">=sm") {
+                grid-template-areas:
+                    "input1 input2"
+                    "comment comment"
+                    "button .";
+            }
+            @include media("<sm") {
+                grid-template-areas: "input1 input1" "input2 input2" "comment comment" "button button";
+            }
+        }
+        input:not(:placeholder-shown):not(:focus):invalid {
+            border-color: red;
+        }
+        input:first-child {
+            grid-area: input1;
+        }
+        input:nth-child(2) {
+            grid-area: input2;
+        }
+        textarea {
+            grid-area: comment;
+        }
+        button {
+            grid-area: button;
+            justify-self: flex-start;
+        }
+    }
+}
+
+@font-face {
+    font-family: "NouveauDropCaps";
+    src: url(/fonts/NouveauDropCaps.woff2) format("woff2");
+    unicode-range: U+41-5A;
+}
+
+.comment {
+    min-height: 120px;
+    img {
+        margin: 5px 20px 0 0;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        border: 1px solid $divider;
+        float: left;
+    }
+    svg {
+        fill: var(--text-color);
+        vertical-align: middle;
+        width: 20px;
+        height: 20px;
+    }
+    time {
+        font-size: 12px;
+    }
+}
+.commenter-comment {
+    background: rgba(var(--theme-color-rgb), 0.1);
+    margin-left: 120px;
+    min-height: 80px;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.commenter-name {
+    font-weight: 400;
+    padding: 0 20px 0 0;
+}
+
+.background {
+    // object-fit: cover;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-image: url($cover);
+    background-size: cover;
+}
+.dark .background {
+    background-image: url($coverDark);
+}
+
+.more {
+    ul {
+        padding: 0;
+    }
+    ul.items-3 {
+        @include media(">=md") {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+    }
+
+    li {
+        @include zoomable-image(".img-container", (3/4) * 100%);
+        border-radius: 4px;
+        overflow: hidden;
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 1px 1px $divider;
+        &>.description {
+            font-weight: 400;
+            padding: 10px 10px;
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            border-top: 2px solid transparent;
+            justify-content: space-between;
+            border-bottom-left-radius: 4px;
+            border-bottom-right-radius: 4px;
+        }
+        &:hover, &.hover {
+            .description {
+                border-top-color: var(--theme-color);
+            }
+            box-shadow: 0 1px 10px $divider;
+        }
+    }
+    svg {
+        vertical-align: middle;
+        fill: var(--text-color);
+    }
+    small {
+        color: var(--text-color);
+    }
+}
+
+/////////////////////////////////////////
+// Animations
+/////////////////////////////////////////
+
+@include media(">md") {
+    aside {
+        transform-origin: top left;
+        animation: bounceInRightNoDelay 1.1s ease-in-out;
+    }
+
+    main {
+        transform-origin: top right;
+        animation: bounceInLeftNoDelay 1.1s ease-in-out;
+    }
+
+    .more, .comments {
+        ul li {
+            transform-origin: top center;
+            will-change: opacity, transform;
+        }
+    }
+
+    .comments, .more {
+        &.visible{
+            h2 {
+                animation: fade-up-item-1 $load-up-duration ease-in-out;
+            }
+            ul {
+                @for $i from 1 through 10 {
+                    li:nth-child(#{$i}) {
+                        $j: $i + 1;
+                        animation: fade-up-item-#{$j} $load-up-duration ease-in-out;
+                    }
+                }
+            }
+            &> h3 {
+                animation: fade-up-item-1 $load-up-duration ease-in-out;
+            }
+            &>p {
+                animation: fade-up-item-2 $load-up-duration ease-in-out;
+            }
+        }
+    }
+
+    .comments form.visible {
+        input {
+            animation: fade-up-item-3 $load-up-duration ease-in-out;
+        }
+        textarea {
+            animation: fade-up-item-4 $load-up-duration ease-in-out;
+        }
+        button {
+            animation: fade-up-item-5 $load-up-duration ease-in-out;
+        }
+    }
+}
+
+.honeypot {
+    position: absolute;
+    left: -5000px;
+}
+
+.newsletter {
+    min-width: 220px;
+    width: 100%;
+    .email {
+        width: calc(100% - 50px);
+        display: inline-block;
+    }
+    button {
+        display: inline-block;
+        width: 50px;
+        padding: 0;
+        text-align: center;
+        background: var(--theme-color);
+        color: var(--background-color);
+        &:hover {
+            filter: brightness(95%);
+        }
+    }
+    button, .email {
+        height: 42px;
+        vertical-align: middle;
+    }
+}
+
+.post main {
+    h1, h2, h3, h4, h5, h6 {
+        position: relative;
+        padding-left: 30px;
+    }
+}
+
+.heading-anchor {
+    display: inline-block;
+    color: #DDD;
+    position: absolute;
+    margin-top: calc(-1 * var(--header-height));
+    padding-top: var(--header-height);
+    left: 0;
+}
+
+
+@media (prefers-reduced-motion) {
+
+    .post * {
+        animation: none !important;
+    }
+}

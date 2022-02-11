@@ -1,0 +1,25 @@
+{
+  "name": "{{.Site.Title}}",
+  "short_name": "{{.Site.Title}}",
+  {{- if (fileExists "assets/image/favicon.png") }}
+  {{ $icon := resources.Get "image/favicon.png" }}
+  "icons": [{
+      "src": "{{ ($icon.Resize "192x192").RelPermalink }}",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "{{ ($icon.Resize "512x512").RelPermalink }}",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  {{- end }}
+  "start_url": "/",
+  "scope": "/",
+  {{- with .Site.Params.color}}
+  "theme_color": "{{.}}",
+  "background_color": "{{.}}",
+{{- end }}
+  "display": "standalone"
+}

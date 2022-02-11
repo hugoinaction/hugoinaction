@@ -1,0 +1,11 @@
+[[root]]
+id = "search"
+translation = "search"
+
+[[root]]
+id = "subsections"
+translation = "Subsections"
+
+[[root]]
+id = "posts"
+translation = "Posts"

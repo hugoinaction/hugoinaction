@@ -1,0 +1,104 @@
+{{define "bodyClass"}} home {{end}}
+
+{{define "body"}}
+{{$title := default site.Title .Title}}
+    <section id="hero">
+      <img class="hero" src="{{partialCached "hero.svg" $ "nothing"}}" alt="Acme Corporation" width="24rem" />
+      <div class="intro">
+        {{with $title}}<h1>{{.}}</h1>{{end}}
+        {{with .Param "subtitle"}}<h2>{{. | humanize | markdownify}}</h2>{{end}}
+        <a href="{{ref . (.Param "explore")}}">Explore</a>
+        {{ partialCached "menu.html" (dict "Menu" site.Menus.footer) "footer" }}
+      </div>
+    </section>
+    {{with (partialCached "products.html" "cache")}}
+    <section id="store">
+      <h1>Our Products</h1>
+      <ul>
+        {{range $name, $data := .}}
+        <li>
+          <a href="#">
+            {{$img := resources.GetMatch (print "image/products/" $name ".*") | images.Filter (images.Overlay (resources.GetMatch "image/watermark.*") 0 0 )}}
+            {{$img := $img.Resize "1000x"}}
+            <img src="{{$img.Permalink}}" alt="{{$name}}">
+            <h2>{{$name}}</h2>
+            <div class="price">$ {{$data.Price}}</div>
+            <div class="rating">
+              {{range (seq $data.Rating)}}&starf;{{end}}
+              {{- range seq (sub 5 ($data.Rating | int))}}&star;{{end}}
+            </div>
+          </a>
+        </li>
+        {{end}}
+      </ul>
+    </section>
+    {{end}}
+    <section id="description">
+      {{.Content}}
+    </section>
+    {{with site.Menus.main }}
+      <section id="menu">
+      <h1>Website sections</h1>
+        <h2>This website has these major areas</h2>
+        <ul>
+          {{ range . }}
+          <li>
+            <a href="{{.URL}}">
+              <i class="icon-{{.Identifier}}"></i>
+              {{.Name | humanize}}
+            </a>
+            {{with .Post}}<p>{{.}}</p>{{end}}
+          </li>
+          {{ else }}
+          {{/* Log for the website editor/developer */}}
+          <!-- No menu entries present -->
+          {{end}}
+        </ul>
+      </section>
+    {{end}}
+    {{with 
+      (where site.RegularPages 
+      ".Section" "in" site.Params.mainSections)
+    }} 
+    <section id="blog">
+        <h1>From our blog</h1>
+        <ul class="posts">
+          {{range first 3 .}}
+          <li class="post">
+            <a href="{{.Permalink}}">
+            {{$title := .Title}}
+            {{with (.Resources.GetMatch "cover.*")}}
+              <img alt="{{$title}}" loading="lazy" src="{{(.Resize "1000x").Permalink}}" />
+            {{end}}
+              <h2>
+                {{.Title}}
+              </h2>
+              <article>
+                {{.Summary}} 
+              </article>
+              <div>Read More</div>
+            </a>
+          </li>
+          {{end}}
+        </ul>
+    </section>
+    {{end}}
+    {{with .Param "testimonials"}}
+    <section id="testimonials">
+    <h1>Customer endorsement</h1>
+    <div>
+      <ol>
+        {{range .}}
+        <li>
+            <p>{{.content}}</p>
+            <div>
+              <h2>{{.author}}</h2>
+              <h3>{{.from}}</h3>
+            </div>
+        </li>
+        {{end}}
+      </ol>
+    </div>
+    </section>
+    {{end}}
+{{ end }}

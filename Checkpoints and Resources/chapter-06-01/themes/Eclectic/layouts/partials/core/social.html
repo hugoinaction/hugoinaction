@@ -1,0 +1,193 @@
+{{- block "meta" . -}}
+<link rel="canonical" href="{{.Permalink}}" />
+<meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}"
+/>
+{{- with .Site.Author.name}}
+<meta name="author" content="{{ . }}">
+{{- end -}}
+{{- partialCached "core/manifest.html" . -}}
+{{ end }}
+
+{{- block "opengraph" . -}}
+{{- /* Open Graph */ -}}
+<meta property="og:title" content="{{ .Title }}" />
+<meta property="og:site_name" content="{{ .Site.Title }}" />
+<meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}"
+/>
+<meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}" />
+<meta property="og:url" content="{{ .Permalink }}" />
+{{- with .Params.audio }}
+<meta property="og:audio" content="{{ . }}" />
+{{- end -}}
+
+{{- with .Params.locale }}
+<meta property="og:locale" content="{{ . }}" />
+{{- end -}}
+
+{{- with .Params.video }}
+<meta property="og:video" content="{{ . }}" />
+{{- end -}}
+
+{{- with .Params.image }}
+<meta property="og:image" content="{{ . }}" />
+{{- end -}}
+{{- if .IsPage }}
+{{- if not .PublishDate.IsZero }}<meta property="article:published_time" content="{{ .PublishDate.Format "2006-01-02T15:04:05-07:00" | safeHTML }}"/>
+{{ else if not .Date.IsZero }}<meta property="article:published_time" content="{{ .Date.Format "2006-01-02T15:04:05-07:00" | safeHTML }}"/>
+{{ end }}
+{{- if not .Lastmod.IsZero }}<meta property="article:modified_time" content="{{ .Lastmod.Format "2006-01-02T15:04:05-07:00" | safeHTML }}"/>{{ end }}
+{{- else }}
+{{- if not .Date.IsZero }}
+<meta property="og:updated_time" content="{{ .Date.Format "2006-01-02T15:04:05-07:00" | safeHTML }}"/>
+{{- end }}
+{{- end }}
+
+{{- /* If it is part of a series, link to related articles */}}
+{{- $permalink := .Permalink }}
+{{- $siteSeries := .Site.Taxonomies.series }}{{if $siteSeries}}{{ with .Params.series }}
+{{- range $name := . }}
+  {{- $series := index $siteSeries $name }}
+  {{- range $page := first 6 $series.Pages }}
+    {{- if ne $page.Permalink $permalink }}<meta property="og:see_also" content="{{ $page.Permalink }}" />{{ end }}
+  {{- end -}}
+{{ end }}
+{{- end }}{{ end -}}
+
+
+{{- with .Site.Author.facebook }}
+<meta property="article:author" content="https://www.facebook.com/{{ . }}" />
+<meta property="article:publisher" content="https://www.facebook.com/{{ . }}" />
+{{- end -}}
+
+{{- with .Section }}
+<meta property="article:section" content="{{ . }}" />
+{{- end -}}
+{{- with .Params.tags -}}{{- range first 6 . }}
+<meta property="article:tag" content="{{ . }}" />
+{{- end }}{{ end -}}
+{{- end -}}
+
+{{- with .Site.Author.pinterest }}
+<meta name="p:domain_verify" content="{{.}}" />
+{{end -}}
+
+{{- block "twitter" . -}}
+
+{{- with .Params.image -}}
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="{{ . | absURL }}"/>
+{{ else -}}
+{{- $images := $.Resources.ByType "image" -}}
+{{- $featured := $images.GetMatch "*feature*" -}}
+{{- $featured := cond (ne $featured nil) $featured ($images.GetMatch "{*cover*,*thumbnail*}") -}}
+{{- $params := "1024x512" -}}
+{{- if .Params.coverAnchor -}}
+    {{- $params = print $params " " .Params.coverAnchor -}}
+  {{- else -}}
+    {{- $params = print $params " Center" -}}
+  {{- end -}}
+{{- with $featured -}}
+{{ $img := .Fill $params }}
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="{{ $img.Permalink }}"/>
+{{- else -}}
+{{- with $.Site.Params.image -}}
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="{{ . | absURL }}"/>
+{{- else -}}
+<meta name="twitter:card" content="summary"/>
+{{- end -}}
+{{- end -}}
+{{- end }}
+<meta name="twitter:title" content="{{ .Title }}"/>
+<meta name="twitter:description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end -}}"/>
+{{- with .Site.Author.twitter }}
+<meta name="twitter:site" content="@{{ . }}" />
+<meta name="twitter:creator" content="@{{ . }}" />
+{{- end -}}
+{{- end -}}
+
+{{/* Google News */}}
+{{- if .IsPage }}{{ with .Params.tags }}
+  <meta name="news_keywords" content="{{ range $i, $kw := first 10 . }}{{ if $i }},{{ end }}{{ $kw }}{{ end }}" />
+{{- end }}{{ end -}}
+
+{{- block "jsonld" . }}
+<script type="application/ld+json">
+{
+    "headline": "{{ .Title }}",
+    "publisher": {
+        "@type": "Organization",
+        {{- if (fileExists "assets/image/logo.svg") }}
+        "logo": {
+            "@type": "ImageObject",
+            "url": {{ (resources.Get "image/logo.svg" | resources.Minify).RelPermalink | jsonify | safeJS}}
+        },
+        {{- else if (fileExists "assets/image/logo.png") }}
+        "logo": {
+        "@type": "ImageObject",
+        "url": {{ (resources.Get "image/logo.png" ).RelPermalink | jsonify | safeJS }}
+        },
+        {{- end -}}
+        "name": "{{ .Site.Author.name }}"
+    },
+    "author": {
+        "@type": "Person",
+        "name": "{{ .Site.Author.name }}"
+    },
+    "description": "{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description}}{{ . }}{{ end }}{{ end }}{{ end }}",
+    "name": "{{ .Site.Title }}",
+{{ if eq .Page.Kind "home" }}
+    "@type": "WebSite",
+{{ else if eq .Page.Kind "section"}}
+    "@type": "Blog",
+    "mainEntityOfPage":{"@type":"WebPage","@id":"{{.Permalink}}"},
+{{ else if (and (eq .Page.Kind "page") (ne .Section "") ) }}
+    "@type": "BlogPosting{{.Section}}",
+    "wordCount": {{.WordCount}},
+    "mainEntityOfPage":{"@type":"WebPage","@id":"{{.Permalink}}"},
+{{ else }}
+    "@type": "Article",
+    "wordCount": {{.WordCount}},
+    "mainEntityOfPage":{"@type":"WebPage","@id":"{{.Permalink}}"},
+{{ end }}
+    "@context": "http://schema.org",
+{{- with .Params.image }}
+    "image":"{{ . }}",
+{{ end }}
+{{- if .IsPage }}
+{{- if not .PublishDate.IsZero }}
+    "dateCreated": {{ .PublishDate.Format "2006-01-02T15:04:05-07:00" | jsonify | safeJS }},
+{{- else if not .Date.IsZero }}
+    "datePublished": {{ .Date.Format "2006-01-02T15:04:05-07:00" | jsonify | safeJS }},
+{{- end }}
+{{- if not .Lastmod.IsZero }}
+    "dateModified": {{ .Lastmod.Format "2006-01-02T15:04:05-07:00" | jsonify | safeJS }},
+{{ end }}
+{{- else }}
+{{- if not .Date.IsZero }}
+    "dateModified": {{ .Date.Format "2006-01-02T15:04:05-07:00" | jsonify | safeJS }},
+{{- end }}
+{{- end }}
+    "url": {{.Permalink | jsonify | safeJS}}
+}
+</script>
+
+{{- if isset .Params "video" }}
+<script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "VideoObject",
+        "name": "{{.Title}}",
+        "description": "{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description}}{{ . }}{{ end }}{{ end }}{{ end }}",
+        "contentUrl": "{{.Params.Video}}",
+        {{/* TODO: When we get to the first video
+        "thumbnailUrl": "http://www.example.com/thumbnail.jpg",
+        "uploadDate": "2015-04-05T08:00:00+02:00", "duration": "PT1M33S",
+        "embedUrl": "http://www.example.com/embed?videoetc",
+        "interactionCount": "2347"
+        */}}
+    }
+</script>
+{{- end -}}
+{{- end -}}

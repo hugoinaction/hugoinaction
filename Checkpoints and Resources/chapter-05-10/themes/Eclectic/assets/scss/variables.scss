@@ -1,0 +1,94 @@
+@import "_include-media.scss";
+
+
+$md: 768px;
+$sm: 576px;
+$search-follow: 660px;
+$breakpoints: (xs: 320px, sm: $sm, md: $md, lg: 992px, xl: 1200px);
+$max-carousal: 2;
+$min-carousal: 10;
+$load-up-duration: 2.0s;
+:root {
+    --max-width: 100vw;
+    --header-height: 60px;
+    --background-color-rgb: 255, 255, 255;
+    --text-color-rgb: 0, 0, 0;
+    --theme-color: rgba(var(--theme-color-rgb), 1.0);
+    --background-color: rgba(var(--background-color-rgb), 1.0);
+    --text-color: #666;
+    --content-padding: 15px;
+    --heading-color: #444;
+    --shade-color: #f6f6f6;
+    --hover-color: #111;
+}
+$divider: rgba(var(--text-color-rgb), 0.1);
+$shade: var(--shade-color);
+$headingColor: var(--heading-color);
+$hover-color: var(--hover-color);
+
+@mixin zoomable-image($selector, $height) {
+    #{$selector} {
+        width: 100%;
+        position: relative;
+        padding-bottom: $height;
+        overflow: hidden;
+
+        img {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.2s linear;
+        }
+    }
+
+    &:hover #{$selector} img,
+    #{$selector}.hover img {
+        transform: scale(1.1);
+    }
+}
+
+@include media(">=sm") {
+    :root {
+        --max-width: 540px;
+    }
+}
+
+@include media(">=md") {
+    :root {
+        --max-width: 720px;
+    }
+}
+
+@include media(">=lg") {
+    :root {
+        --header-height: 75px;
+        --max-width: 960px;
+    }
+}
+
+@include media(">=xl") {
+    :root {
+        --max-width: 1140px;
+    }
+}
+
+@mixin container {
+    $padding: calc( (100% - var(--max-width)) /2 + var(--content-padding));
+    width: 100%;
+    padding-left: $padding;
+    padding-right: $padding;
+}
+
+@mixin container-margin {
+    $margin: calc((100% - var(--max-width))/2);
+    width: 100%;
+    padding-left: var(--content-padding);
+    padding-right: var(--content-padding);
+    margin-left: $margin;
+    margin-right: $margin;
+    max-width: var(--max-width);
+}

@@ -1,0 +1,19 @@
+{
+  "name": "acme-corporation-website",
+  "version": "0.1.0",
+  "devDependencies": {
+    "@easylogic/editor": "0.10.72"
+  },
+  "dependencies": {
+    "mathjax": "3.2.0",
+    "node-fetch": "2.6.1",
+    "stripe": "8.169.0",
+    "@sendgrid/mail": "7.4.6",
+    "@hotwired/turbo": "7.0.0-rc.1"
+  },
+  "main": "api.js",
+  "scripts": {
+    "start": "node api.js",
+    "postinstall": "node api/postinstall.js"
+  }
+}

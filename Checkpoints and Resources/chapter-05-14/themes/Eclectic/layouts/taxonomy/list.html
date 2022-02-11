@@ -1,0 +1,14 @@
+{{ define "main" }}
+{{- partialCached "util/background.html" "bg" -}}
+<article class="list">
+    <h1 class='title'>{{.Title | humanize}}</h1>
+    <span class='subtitle'>{{.Params.Subtitle}}</span>
+    {{with .Content}}<div class="content">{{ .}}</div> {{- end -}}
+<ul class="blog-posts items-{{.Paginator.PageSize}}">
+    {{ range .Pages}}
+{{- partialCached "util/post.html" . .RelPermalink -}}
+    {{ end }}
+</ul>
+{{ template "_internal/pagination.html" . }}
+</article>
+{{ end }}

@@ -1,0 +1,7 @@
+{{- $icon := resources.Get (print "image/line-awesome/fa-" $.type ".svg") | resources.Minify -}}
+{{- $class := "icon" -}}
+{{- with $.class}}{{$class = .}}{{end -}}
+{{- $result := print "<svg width=\"" $.size "px\" class=\"" $class "\" " -}}
+{{- $icon = replace $icon.Content "<svg " $result -}}
+{{- $icon = replace $icon "<path " "<path fill=\"currentColor\" " }}
+{{ $icon | safeHTML }}

@@ -1,0 +1,27 @@
+# Theme specific parameters
+# All these parameters are optional.
+
+# NOTE: The theme reads certain files from specified locations. All files are optional but good to have.
+# |                         File                          |                         Purpose                   |
+# |------------------------------------------------------ | ------------------------------------------------- |
+# | assets/image/logo.(svg| png)                          | Website Logo. Use PNG logo if auto dark           |
+# |                                                       | color switch for logo is not desired              |
+# | assets/image/favicon.svg                              | Icon in SVG format                                |
+# | assets/image/favicon.png                              | Icon in PNG format                                |
+# |------------------------------------------------------ | ------------------------------------------------- |
+
+
+# Specify text in the copyright section. Supports Markdown content.
+# Can use special variable `{now}` which is replaced with the current year via JavaScript (A common use case in copyright)
+copyright = "&copy; 2016-{now} [Atishay Jain](https://atishay.me). All rights reserved."
+# Theme color for the website. Can be any RGB color. It is a responsibility of the website creator to ensure contrast.
+color = "#FF8822"
+
+# Automatically switches to the dark mode based on the OS/Browser settings
+checksDarkMode = true
+# Show color picker to switch color themes.
+colorPickerEnabled = true
+# Combinations to show in the color picker.
+colorVariations = [ {name = "violet", color = "8800D3"}, {name = "red", color = "FF0000"}]
+# Github link. Shows the github corner at the top right which links to the github website.
+github = "https://github.com/atishay/eclectic-hugo-theme"

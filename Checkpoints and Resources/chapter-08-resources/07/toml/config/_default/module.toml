@@ -1,0 +1,5 @@
+[[imports]]
+path = "github.com/hugoinaction/TermsAndPrivacy"
+
+[[imports]]
+path = "github.com/hugoinaction/AcmeCommon"

@@ -1,0 +1,7 @@
+baseURL: https://chapter-11-01.hugoinaction.com
+languageCode: en-us
+title: Acme Corporation
+enableEmoji: true
+enableGitInfo: true
+Paginate: 3
+theme: github.com/hugoinaction/AcmeTheme

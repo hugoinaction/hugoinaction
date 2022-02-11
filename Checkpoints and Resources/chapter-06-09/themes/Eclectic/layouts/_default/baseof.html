@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html class="no-js {{ partial "class.html" . -}}" lang="en">
+<head>
+    {{- partial "core/head.html" . -}}
+    {{- block "resources" . -}}
+    {{- partialCached "core/resources.html" . -}}
+    {{- end -}}
+    {{- block "head" . }}{{- end }}
+</head>
+    <body>
+        {{- partial "header.html" . -}}
+        {{- block "main" . }}{{- end }}
+        {{- partialCached "footer.html" . -}}
+        {{- if .Site.Params.DebugMenu -}}
+        {{- partial "debug/debug.html" (dict "context" .) -}}
+        {{- end -}}
+    </body>
+</html>

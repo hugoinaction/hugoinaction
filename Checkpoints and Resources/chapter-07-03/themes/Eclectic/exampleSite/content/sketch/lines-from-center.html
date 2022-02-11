@@ -1,0 +1,23 @@
+---
+title: "Lines from center"
+date: 2019-03-04T22:15:42-03:00
+description: "this is a p5js sketch"
+---
+
+<div id="sketch"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/p5.min.js"></script>
+<script>
+  var sketch = document.getElementById('sketch')
+  function setup() {
+    var canvas = createCanvas(sketch.offsetWidth, windowHeight)
+    canvas.parent('#sketch')
+  }
+
+  function draw() {
+    line(width/2, height/2, mouseX, mouseY)
+  }
+
+  function windowResized() {
+    resizeCanvas(sketch.offsetWidth, windowHeight);
+  }
+</script>

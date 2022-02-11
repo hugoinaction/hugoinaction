@@ -1,0 +1,32 @@
+{{ define "head" }}
+<link rel="preload" href="/fonts/NouveauDropCaps.woff2" as="font" crossorigin>
+{{ end }}
+
+{{ define "main" }}
+{{- partialCached "util/background.html" "bg" -}}
+<div class="post">
+<main>
+{{- if $.Page.Resources.GetMatch "cover.*" -}}
+<div class="post-anchor">
+{{- partial "util/cover.html" (dict "class" "banner-holder" "page" . "width" 800 "height" 400) -}}
+</div>
+{{- end -}}
+<h1>{{.Title}}</h1>
+{{- partial "util/heading-anchors.html" .Content -}}
+{{- $title := default .Title "" -}}
+{{- with .Params.youtube -}}
+<h2>Video</h2>
+<p>Here is the video:
+{{- partial "post/youtube.html" (dict "id" . "title" $title) -}}
+</p>
+{{- end -}}
+</main>
+{{- partial "post/sidebar.html" . -}}
+<section class="buttons">
+<a class="button previous {{if not .PrevInSection}} disabled{{end}}" href="{{if .PrevInSection}}{{.PrevInSection.RelPermalink}}{{end}}">Older</a>
+<a class="button next {{if not .NextInSection}} disabled{{end}}" href="{{if .NextInSection}}{{.NextInSection.RelPermalink}}{{end}}">Newer</a>
+</section>
+{{- partial "post/similar.html" . -}}
+{{- partial "post/comments.html" . -}}
+</div>
+{{- end -}}

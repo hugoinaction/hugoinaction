@@ -1,0 +1,24 @@
+{
+  "comments": {
+    "dependencies": {
+      "mathjax": "project"
+    },
+    "devDependencies": {
+      "@easylogic/editor": "project",
+      "fuse.js": "github.com/hugoinaction/AcmeTheme"
+    }
+  },
+  "dependencies": {
+    "mathjax": "3.2.0"
+  },
+  "devDependencies": {
+    "@easylogic/editor": "0.10.72",
+    "fuse.js": "^6.4.6"
+  },
+  "main": "api.js",
+  "name": "acme-corporation-website",
+  "scripts": {
+    "start": "node api.js"
+  },
+  "version": "0.1.0"
+}

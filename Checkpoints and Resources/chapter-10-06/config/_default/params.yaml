@@ -1,0 +1,11 @@
+color: "#DC2626"
+copyright: "Copyright &copy; 2022 Acme Corporation. All Rights Reserved."
+TermsAndPrivacy:
+  company_name: Acme Corporation 
+  contact_email: contact@example.org 
+  website: https://hugoinaction.com 
+  contact_dpo_email: dpo@hugoinaction.com 
+  contact_dpo_phone: 9999999999
+FormspreeCommentForm: xpzozyyg
+NetlifyCommentForm: 5f6af880fd7ebf0007984d2f
+RemoveFormOnSubmission: true

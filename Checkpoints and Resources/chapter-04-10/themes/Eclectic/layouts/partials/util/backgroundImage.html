@@ -1,0 +1,7 @@
+{{ $cover := (resources.Get "image/background.jpg").Fill "1400x787" }}
+{{- if (fileExists "assets/image/background.svg") -}}
+{{ $cover = (resources.Get "image/background.svg") }}
+{{- else if (fileExists "assets/image/background.png") -}}
+{{ $cover = (resources.Get "image/background.png").Fill "1400x787" }}
+{{- end -}}
+{{- return $cover -}}

@@ -1,0 +1,121 @@
+{{ define "main" }}
+{{- with $.Page.Resources.GetMatch "cover.*" -}}
+<div class="contact-cover">
+<img width="1440" height="300" intrinsicsize="2880x600" alt="Contact Cover" role="presentation" src="{{(.Fill "2880x600 Top").RelPermalink}}" />
+</div>
+{{- end -}}
+<article class="contact">
+    <h1 class='title'>{{.Title}}</h1>
+    {{ with .Params.subtitle }}
+    <span class='subtitle'>{{.}}</span>
+    {{ end }}
+    {{- .Content -}}
+    <section>
+        <aside>
+            <section>
+                <h2>Location</h2>
+                <ul>
+                    {{- with $.Site.Author.email -}}
+                    <li>
+                        <a target="_blank" href="mailto:{{ . }}" rel="noopener">
+                        {{ $icon := resources.Get "image/line-awesome/fa-envelope.svg" | resources.Minify }} {{ replace $icon.Content "<svg" "<svg width=\"30px\""  | safeHTML }}
+                            {{$middle := replaceRE "^.*@" "" .}}
+                            <span>{{replaceRE "@.*$" "" .}} [at] {{ replaceRE "\\..*" "" $middle }} [dot] {{ replaceRE "^.*\\." "" . }}</span>
+                        </a>
+                    </li>
+                    {{- end -}}
+                    {{- with $.Site.Author.phone -}}
+                    <li>
+                        {{ $icon := resources.Get "image/line-awesome/fa-phone.svg" | resources.Minify }} {{ replace $icon.Content "<svg" "<svg width=\"30px\""  | safeHTML }}
+                            <span>{{.}}</span>
+                    </li>
+                    {{- end -}}
+                    {{- with $.Site.Author.location -}}
+                    <li>
+                        <a target="_blank" href="https://www.google.com/maps/place/{{.}}" rel="noopener"> <!-- Google maps search here -->
+                        {{ $icon := resources.Get "image/line-awesome/fa-compass.svg" | resources.Minify }} {{ replace $icon.Content "<svg" "<svg width=\"30px\""  | safeHTML }}
+                            <span>{{.}}</span>
+                        </a>
+                    </li>
+                    {{- end -}}
+                </ul>
+            </section>
+            {{- with $.Site.Author.hours -}}
+            <section>
+                <h2>Contact Hours</h2>
+                <ul>
+                    <li>
+                        <a target="_blank" href="https://www.timeanddate.com/time/zone/?query={{$.Site.Author.location}}" rel="noopener">
+                        {{ $icon := resources.Get "image/line-awesome/fa-clock-o.svg" | resources.Minify }} {{ replace $icon.Content "<svg" "<svg width=\"30px\""  | safeHTML }}
+                            {{$middle := replaceRE "^.*@" "" .}}
+                            <span>{{. | markdownify}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </section>
+            {{- end -}}
+            <section>
+                <h2>Social Links</h2>
+                <ul class="social">
+                    {{ with $.Site.Author.linkedin }}
+            <li>
+                <a target="_blank" href="{{ . }}" rel="noopener">
+                    {{ $icon := resources.Get "image/line-awesome/fa-linkedin.svg" | resources.Minify }}
+                    {{ replace $icon.Content "<svg " "<svg width=\"30px\" " | safeHTML }}
+                    <span>{{ replaceRE "https://" "" . }}</span>
+                </a>
+            </li>
+            {{ end }} {{ with $.Site.Author.github }}
+            <li>
+                <a target="_blank" href="{{ . }}" rel="noopener">
+                    {{ $icon := resources.Get "image/line-awesome/fa-github.svg" | resources.Minify }}
+                    {{ replace $icon.Content "<svg " "<svg width=\"30px\" "  | safeHTML }}
+                    <span>{{ replaceRE "https://" "" . }}</span>
+                </a>
+            </li>
+            {{ end }} {{ with $.Site.Author.twitter }}
+            <li>
+                <a target="_blank" href="{{ . }}" rel="noopener">
+                    {{ $icon := resources.Get "image/line-awesome/fa-twitter.svg" | resources.Minify }}
+                    {{ replace $icon.Content "<svg " "<svg width=\"30px\" "  | safeHTML }}
+                    <span>{{ replaceRE "https://" "" . }}</span>
+                </a>
+            </li>
+            {{ end }} {{ with $.Site.Author.facebook }}
+            <li>
+                <a target="_blank" href="{{ . }}" rel="noopener">
+                    {{ $icon := resources.Get "image/line-awesome/fa-facebook.svg" | resources.Minify }}
+                    {{ replace $icon.Content "<svg " "<svg width=\"30px\" " | safeHTML }}
+                    <span>{{ replaceRE "https://" "" . }}</span>
+                </a>
+            </li>
+            {{ end }}
+                </ul>
+            </section>
+        </aside>
+        {{if $.Page.Params.response }}
+        <div class="contact-response">
+            {{- default "Thank you" $.Site.Params.contact.response -}}
+        </div>
+        {{else}}
+        <form id="contact-us-form" name="{{- default "contact" $.Site.Params.contact.name -}}" method="POST" {{with $.Site.Params.contact.action }} action="{{.}}" {{ end }} data-netlify="true" netlify-honeypot="email">
+            <label class="sr-only" for="contact-name">Name</label>
+            <input id="contact-name" class="contact-name" required type="name" autocomplete="given-name" placeholder="Name" name="name">
+            <label for="contact-email" class="sr-only">Email</label>
+            <input id="contact-email" class="contact-email" required type="email" autocomplete="email" placeholder="Email address" name="email-address">
+            <label for="email" class="sr-only">Don't fill</label>
+            <input id="email" tabindex="-1" class="email" type="text" autocomplete="email"
+                placeholder="Email address" name="email">
+            <label for="contact-subject" class="sr-only">Subject</label>
+            <input id="contact-subject" class="contact-subject" name="subject" type="text" autocomplete placeholder="Subject">
+            <label for="contact-message" class="sr-only">Message</label>
+            <textarea id="contact-message" rows="10" class="contact-message" name="message" placeholder="Message" required></textarea>
+            <button type="submit">Submit</button>
+        </form>
+        {{end}}
+    </section>
+{{- with .Params.Footnote -}}
+<small>{{. | markdownify}}</small>
+{{- end -}}
+</article>
+{{ end }}

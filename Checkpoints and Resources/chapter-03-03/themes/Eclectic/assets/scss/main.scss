@@ -1,0 +1,27 @@
+/*
+  Hello
+  {{- $color := (int (print "0x" ($.Site.Params.color | default "#f92b3f" | strings.TrimLeft "#"))) -}}
+  {{- $b := mod $color 256 -}}
+  {{- $color = sub $color $b -}}
+  {{- $color = div $color 256 -}}
+  {{- $g := mod $color 256 -}}
+  {{- $color = sub $color $g -}}
+  {{- $r := div $color 256 -}}
+  {{- $cover := partial "util/backgroundImage.html" . -}}
+  {{- $coverDark := partial "util/backgroundImageDark.html" . -}}
+*/
+$cover: "{{$cover.RelPermalink}}";
+$coverDark: "{{$coverDark.RelPermalink}}";
+
+:root {
+  --theme-color-rgb: {{$r}}, {{$g}}, {{$b}};
+}
+@import "variables.scss";
+@import "dark.scss";
+@import "global.scss";
+@import "header.scss";
+@import "list.scss";
+@import "post.scss";
+@import "contact.scss";
+@import "meta.scss";
+@import "footer.scss";

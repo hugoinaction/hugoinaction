@@ -1,0 +1,11 @@
+{{define "bodyClass"}}editor{{end}}
+{{define "body"}}
+{{ $js := resources.Get "editor.js" | js.Build }}
+<script type="text/javascript" src="{{ $js.RelPermalink }}" defer></script>
+{{ $style := readFile "node_modules/@easylogic/editor/dist/editor.css" |
+  resources.FromString "editor.scss" | toCSS | minify }}
+<link rel="stylesheet" href="{{ $style.Permalink }}">
+<div id="app">
+  <div class="loader"></div>
+</div>
+{{end}}

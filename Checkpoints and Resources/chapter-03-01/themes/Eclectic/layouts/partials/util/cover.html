@@ -1,0 +1,13 @@
+{{- with $.page.Resources.GetMatch "cover.*" -}}
+<div class="{{$.class}}">
+    {{ $cover := . }}
+    {{ $params := print $.width "x" $.height }}
+    {{ if $.page.Params.coverAnchor }}
+        {{ $params = print $params " " $.page.Params.coverAnchor }}
+    {{ else }}
+        {{ $params = print $params " Center" }}
+    {{end}}
+        {{ $cover = .Fill $params }}
+<img intrinsicsize="{{print $.width "x" $.height}}" width="{{$.width}}" height="{{$.height}}" alt="{{$.page.Title}}" role="banner" class="banner" src="{{$cover.RelPermalink}}" />
+</div>
+{{- end -}}

@@ -1,0 +1,32 @@
+{{ define "main" }}
+{{- partialCached "util/background.html" "bg" -}}
+<article class="terms">
+    <h1 class='title'>{{.Title}}</h1>
+<span class='subtitle'>The website has the following {{.Title | lower}}.</span>
+{{.Content}}
+<ol>
+    {{ $type := .Type }}
+    {{ range $key, $value := .Data.Terms.Alphabetical }}
+    {{ $name := .Name }}
+    {{ $count := .Count }}
+    {{ $pages := .Pages }}
+    {{ with $.Site.GetPage (printf "/%s/%s" $type $name) }}
+<li>
+<input type="radio" name="categories" id="{{$name}}">
+<label for="{{$name}}">
+    <h4><a href="{{ .RelPermalink }}">{{ $name | humanize }} </a></h4>
+    <small> ({{ $count }} post{{if gt $count 1}}s{{end}})</small>
+</label>
+<ul>
+    {{ range $pages }}
+    <li hugo-nav="{{ .RelPermalink}}"><a
+            href="{{ .RelPermalink}}">{{ default (.File.ContentBaseName | humanize) .LinkTitle }}</a></li>
+    {{ end }}
+</ul>
+</li>
+    {{ end }}
+    {{ end }}
+</ol>
+<input type="radio" name="categories" id="cross" checked>
+</article>
+{{ end }}

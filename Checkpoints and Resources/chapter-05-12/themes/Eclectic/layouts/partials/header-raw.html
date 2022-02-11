@@ -1,0 +1,102 @@
+<a href="#top" class="scroll-up" role="button">
+    <span class="sr-only">Scroll to top</span>
+    {{ $icon := resources.Get "image/line-awesome/fa-angle-up.svg" | resources.Minify }}
+    {{ replace $icon.Content "<svg " " <svg width=\"30px\" " | safeHTML }}
+</a>
+
+<header id="header">
+    {{/*
+        Checkbox Hack for pure CSS Hamburger menu
+        https://codepen.io/erikterwan/pen/EVzeRP
+
+    */}}
+    <input class="hamburger" role="button"  type="checkbox" aria-label="Menu Button" />
+    <a class="icon" aria-hidden="true">
+    {{ $hamburger := resources.Get "image/hamburger.svg" | resources.Minify }}
+        {{ $hamburger.Content | safeHTML }}
+    </a>
+    {{/* End Checkbox hack code. Uses the parallel <ul as well> */}}
+    <a role="button" class="logo" href="{{"index.html" | absURL}}">
+        {{- if (fileExists "assets/image/logo.svg") }}
+        {{ (resources.Get "image/logo.svg").Content | safeHTML }}
+        {{- else if (fileExists "assets/image/logo.png") -}}
+        <img height="47px" src="{{((resources.Get "image/logo.png").Resize "x47").RelPermalink}}">
+        {{- else -}}
+        {{ .Site.Title }}
+        {{- end -}}
+        <span class="sr-only">Logo</span>
+    </a>
+    <ul role="menubar" class="top-menu">
+{{ $currentPage := . }}
+{{/* Finding the best category to pin the current page to. */}}
+{{ $fallback := "home" }}
+{{ range .Site.Menus.main }}
+{{ if or ($currentPage.HasMenuCurrent "top" .) ($currentPage.IsMenuCurrent "top" .) }}
+{{$fallback = .Name}}
+{{else if eq $currentPage.Section .Name}}
+{{$fallback = .Name}}
+{{end}}
+{{ end}}
+{{/* Current Category is now found. We just need to fit inside it */}}
+{{ range .Site.Menus.main }}
+<li role="menuitem" class="top-menu-item {{ if eq $fallback .Name }}active{{ end }}">
+            <a href="{{.URL}}">{{ .Name | upper }}</a>
+            {{ if .HasChildren }}
+                <ul class="sub-menu" role="menu">
+{{ range .Children }}
+                <li class="{{ if $currentPage.IsMenuCurrent "top" . }}active{{ end }}">
+                    <a href="{{ .URL }}">{{ .Name | upper }}</a>
+                </li>
+{{ end }}
+                </ul>
+            {{ end }}
+        </li>
+{{ end }}
+    </ul>
+    <div id="searchbox">
+        <label class="sr-only" for="search">Search</label>
+        <input id="search" type="text" placeholder="Search" spellcheck="true">
+        {{- partialCached "util/icon" (dict "key" "search" "size" 20) "search-20" -}}
+        <section class="results">
+        </section>
+    </div>
+    {{with .Site.Params.github }}
+    <a href="{{.}}" class="github-corner" aria-label="View source on Github">
+        {{ $iconSVG := resources.Get "image/octocat.svg" | resources.Minify }}
+        {{ $iconSVG.Content | safeHTML }}
+    </a>
+    {{ end }}
+    {{if .Site.Params.colorPickerEnabled}}
+    <div id="color-picker">
+        <div class="theme">
+            <h3>Select Theme Color </h3>
+            <div class="colors">
+            {{- range .Site.Params.colorVariations -}}
+            <div class="theme-choice" data-color="{{.color}}" style="--color: #{{.color}}" title="{{.name}}"></div>
+            {{- end -}}
+            </div>
+            <a class="custom-color" href="#">Custom Color</a>
+            <div class="bg">
+                <span>Dark:</span>
+                <input type="checkbox" id="color-switch" name="" value="">
+                <div class="toggle">
+                    <label for="color-switch"><i></i></label>
+                </div>
+            </div>
+        </div>
+        {{- partialCached "util/icon" (dict "key" "gear" "size" 20 "class" "picker" ) "gear-20" -}}
+    </div>
+    {{ end }}
+    <div id="scroll-indicator"></div>
+</header>
+{{/* https://css-tricks.com/markup-for-breadcrumbs/
+ https://jsonld.com/breadcrumb/
+{{ $url := replace .Permalink ( printf "%s" .Site.BaseURL) "" }} {{ $.Scratch.Add "path" / }}
+<nav class="breadcrumbs">
+        <a href="/">home</a>
+    {{ range $index, $element := split $url "/" }} {{ $.Scratch.Add "path" $element }} {{ if ne $element "" }}
+        <a href='{{ $.Scratch.Get "path" }}'>{{ . }}</a>
+    {{ $.Scratch.Add "path" "/" }} {{ end }} {{ end }}
+</nav>
+    {{ $.Scratch.delete "path" }}
+    */}}

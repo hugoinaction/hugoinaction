@@ -1,0 +1,2 @@
+User-agent: *{{ range (where .Data.Pages "Section" "in" (slice "store" "survey") )}}
+Disallow: {{.RelPermalink}}{{end}}

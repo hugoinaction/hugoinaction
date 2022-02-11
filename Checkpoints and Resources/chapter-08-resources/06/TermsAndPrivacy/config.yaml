@@ -1,0 +1,4 @@
+module:
+  mounts:
+    - source: content
+      target: content

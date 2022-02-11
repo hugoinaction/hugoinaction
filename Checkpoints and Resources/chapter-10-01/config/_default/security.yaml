@@ -1,0 +1,5 @@
+enableInlineShortcodes: true
+funcs:
+  getenv:
+    - NETLIFY
+    - COMMENTS_TOKEN

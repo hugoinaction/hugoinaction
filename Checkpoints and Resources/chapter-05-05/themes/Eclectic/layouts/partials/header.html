@@ -1,0 +1,5 @@
+{{- if in $.Site.Params.sharedHeader .Section -}}
+{{- partialCached "header-raw.html" . .Section -}}
+{{- else -}}
+{{- partial "header-raw.html" . -}}
+{{- end -}}

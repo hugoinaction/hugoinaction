@@ -1,0 +1,12 @@
+{{- partialCached "core/sharedHead.html" . -}}
+
+{{/* NOTE: the Site's title, and if there is a page title, that is set too */}}
+<title>{{ block "title" . }}{{ with .Params.Title }}{{ . }} | {{ end }}{{ .Site.Title }}{{ end }}</title>
+
+{{- block "social" . -}}
+  {{- partial "core/social.html" . -}}
+{{- end -}}
+
+{{ block "preload" . }}
+<link rel="preload" href="/index.json" as="fetch" crossorigin importance="low">
+{{- end -}}

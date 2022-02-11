@@ -1,0 +1,22 @@
+{{/* Social Links https://www.mrcooper.com/blog/2018/05/14/5-outdoor-space-ideas-youll-love/ */}}
+<section class="sidebar">
+<h2>Share this Post</h2>
+<a target="_blank" href="https://www.facebook.com/sharer.php?u={{ .Permalink }}" rel="noopener">
+  {{ $icon := resources.Get "image/line-awesome/fa-facebook.svg" | resources.Minify }}
+  {{ replace $icon.Content "<svg " "<svg width=\"30px\" " | safeHTML }}
+</a>
+<a target="_blank" href="https://twitter.com/intent/tweet?url={{ .Permalink }}" rel="noopener">
+  {{ $icon := resources.Get "image/line-awesome/fa-twitter.svg" | resources.Minify }}
+  {{ replace $icon.Content "<svg " "<svg width=\"30px\" "  | safeHTML }}
+</a>
+<a target="_blank" href="https://www.linkedin.com/shareArticle?url={{ .Permalink }}" rel="noopener">
+  {{ $icon := resources.Get "image/line-awesome/fa-linkedin.svg" | resources.Minify }}
+  {{ replace $icon.Content "<svg " "<svg width=\"30px\" " | safeHTML }}
+</a>
+<a target="_blank"
+  href="https://pinterest.com/pin/create/bookmarklet/?url={{ .Permalink }}"
+  rel="noopener">
+  {{ $icon := resources.Get "image/line-awesome/fa-pinterest.svg" | resources.Minify }}
+  {{ replace $icon.Content "<svg " "<svg width=\"30px\" " | safeHTML }}
+</a>
+</section>

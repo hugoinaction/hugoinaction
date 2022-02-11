@@ -1,0 +1,5 @@
+{{- $op := .Page.Resources.GetMatch .image -}}
+{{- if not (.Page.Resources.GetMatch .image) -}}
+{{- $op = resources.Get .image -}}
+{{- end -}}
+{{- return $op -}}

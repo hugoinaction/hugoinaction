@@ -1,0 +1,6 @@
+{{range $.Site.Params.sidebar}}
+<section class="sidebar">
+    {{with .title}}<h2>{{ . | humanize }}</h2>{{end}}
+    {{with .content}}<p>{{ . | markdownify }}</p>{{end}}
+</section>
+{{ end }}

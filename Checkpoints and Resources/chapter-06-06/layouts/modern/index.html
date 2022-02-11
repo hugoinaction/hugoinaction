@@ -1,0 +1,94 @@
+{{define "bodyClass"}} home {{end}}
+
+{{define "body"}}
+{{$title := default site.Title .Title}}
+    <section id="intro">
+      {{with $title}}<h1>{{.}}</h1>{{end}}
+      {{with .Param "subtitle"}}<h2>{{. | humanize | markdownify}}</h2>{{end}}
+      <a href="{{ref . (.Param "explore")}}">Explore</a>
+      {{ partial "menu.html" site.Menus.footer }}
+    </section>
+    {{with resources.GetMatch "products.csv"}}
+    <section id="products">
+      <h1>Our Products</h1>
+      {{with . | transform.Unmarshal (dict "delimiter" ",")}}
+        <table>
+          {{range $i, $value := .}}
+            {{if eq $i 0}}<thead>{{end}}
+              <tr>
+                {{range $value}}
+                <td>{{.}}</td>
+                {{end}}
+              </tr>
+              {{if eq $i 0}}</thead>{{end}}
+            {{end}}
+        </table>
+      {{end}}
+      <a href="{{.Permalink}}" download>Download listing</a>
+    </section>
+    {{end}}
+    <section id="description">
+      {{.Content}}
+    </section>
+    {{with site.Menus.main }}
+      <section id="menu">
+      <h1>Website sections</h1>
+        <h2>This website has these major areas</h2>
+        <ul>
+          {{ range . }}
+          <li>
+            <a href="{{.URL}}">
+              <i class="icon-{{.Identifier}}"></i>
+              {{.Name | humanize}}
+            </a>
+            {{with .Post}}<p>{{.}}</p>{{end}}
+          </li>
+          {{ else }}
+          {{/* Log for the website editor/developer */}}
+          <!-- No menu entries present -->
+          {{end}}
+        </ul>
+      </section>
+    {{end}}
+    {{with 
+      (where site.RegularPages 
+      ".Section" "in" site.Params.mainSections)
+    }} 
+    <section id="blog">
+        <h1>From our blog</h1>
+        <ul class="posts">
+          {{range first 3 .}}
+          <li class="post">
+            <a href="{{.Permalink}}">
+              <h2>
+                {{.Title}}
+              </h2>
+              <article>
+                {{.Summary}} 
+              </article>
+              <div>Read More</div>
+            </a>
+          </li>
+          {{end}}
+        </ul>
+    </section>
+    {{end}}
+    {{with .Param "testimonials"}}
+    <section id="testimonials">
+    <h1>Customer endorsement</h1>
+    <div>
+      <ol>
+        {{range .}}
+        <li>
+            <p>{{.content}}</p>
+            <div>
+              <h2>{{.author}}</h2>
+              <h3>{{.from}}</h3>
+            </div>
+        </li>
+        {{end}}
+      </ol>
+    </div>
+    </section>
+    {{end}}
+{{ end }}
