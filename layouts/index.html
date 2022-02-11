@@ -73,7 +73,7 @@
                       <a class="page-scroll" href="#about">About</a>
                     </li>
 
-                    <li class="nav-item">
+<!--                     <li class="nav-item">
                       <a class="page-scroll" href="#why">Why</a>
                     </li>
                     <li class="nav-item">
@@ -81,7 +81,7 @@
                     </li>
                     <li class="nav-item">
                       <a href="javascript:void(0)">Clients</a>
-                    </li>
+                    </li> -->
                   </ul>
                 </div>
                 <!-- navbar collapse -->
@@ -119,7 +119,7 @@
 
 
               <div class="book">
-                <div class="back">back</div>
+                <div class="back"></div>
                 <div class="page6"><img src="{{((resources.Get "img/hero/ch02-1.png").Resize "600x webp").Permalink}}" alt="Chapter 2 Page 1" width="100%" height="100%"></div>
                 <div class="page5"><img src="{{((resources.Get "img/hero/ch02.png").Resize "600x webp").Permalink}}" alt="Chapter 2" width="100%" height="100%"></div>
                 <div class="page4"></div>
@@ -304,18 +304,17 @@
     <!-- ======== about2-section end ======== -->
 
     <!-- ======== feature-section start ======== -->
-    <section id="why" class="feature-extended-section pt-100">
+    <!-- <section id="why" class="feature-extended-section pt-100">
       <div class="feature-extended-wrapper">
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-xxl-5 col-xl-6 col-lg-8 col-md-9">
               <div class="section-title text-center mb-60">
                 <h2 class="mb-25 wow fadeInUp" data-wow-delay=".2s">
-                  Why Choose SaaSpal
+                  Why Hugo in Action?
                 </h2>
                 <p class="wow fadeInUp" data-wow-delay=".4s">
-                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                  diam nonumy eirmod tempor invidunt ut labore et dolore
+                  Hugo in Action has a running throughout the book which in step by step turns a simple HTML page into a flexible and adaptable web development system. Here is some an example of tricks that you will learn:
                 </p>
               </div>
             </div>
@@ -328,10 +327,9 @@
                   <i class="lni lni-display"></i>
                 </div>
                 <div class="content">
-                  <h3>SaaS Focused</h3>
+                  <h3>Content reuse</h3>
                   <p>
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                    diam nonumy eirmod tempor invidunt ut labore
+                    Use content isolation via bundles and front matter, reusing snippets with shortcodes and reuse content along websites with Hugo Modules.
                   </p>
                 </div>
               </div>
@@ -342,10 +340,9 @@
                   <i class="lni lni-leaf"></i>
                 </div>
                 <div class="content">
-                  <h3>Awesome Design</h3>
+                  <h3>Dynamic comments & surveys</h3>
                   <p>
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                    diam nonumy eirmod tempor invidunt ut labore
+                    Build content controlled forms using a form service (Netlify forms & Formspree)
                   </p>
                 </div>
               </div>
@@ -409,13 +406,13 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
     <!-- ======== feature-section end ======== -->
 
-    <!-- ======== subscribe-section start ======== -->
-    <section id="contact" class="subscribe-section pt-120">
+    <!-- ======== buy-section start ======== -->
+    <section id="contact" class="buy-section pt-120">
       <div class="container">
-        <div class="subscribe-wrapper img-bg">
+        <div class="buy-wrapper img-bg">
           <div class="row align-items-center">
             <div class="col-md-8">
               <div class="section-title mb-15">
@@ -435,84 +432,90 @@
         </div>
       </div>
     </section>
-    <!-- ======== subscribe-section end ======== -->
+    <!-- ======== buy-section end ======== -->
 
     <!-- ======== footer start ======== -->
     <footer class="footer">
       <div class="container">
         <div class="widget-wrapper">
           <div class="row">
-            <div class="col-xl-4 col-lg-4 col-md-6">
-              <div class="footer-widget">
-                <div class="logo mb-30">
-                  <a href="index.html">
-                    <img src="{{(resources.Get "img/logo/logo.svg" | resources.Minify ).Permalink}}" alt="Logo" />
-                  </a>
-                </div>
-                <p class="desc mb-30 text-white">
-                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                  dinonumy eirmod tempor invidunt.
-                </p>
-                <ul class="socials">
-                  <li>
-                    <a href="jvascript:void(0)">
-                      <i class="lni lni-facebook-filled"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="jvascript:void(0)">
-                      <i class="lni lni-twitter-filled"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="jvascript:void(0)">
-                      <i class="lni lni-instagram-filled"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="jvascript:void(0)">
-                      <i class="lni lni-linkedin-original"></i>
-                    </a>
-                  </li>
-                </ul>
+            <div class="col-12" style="color:white; text-align: center">
+              <div class="footer-logo">
+                <img src="{{((resources.Get "img/logo/logo.svg" | resources.Minify).Permalink)}}" alt="logo" width="130px" />
+                <br>
+                Hugo in Action. Static sites and dynamic Jamstack apps.
               </div>
+              <div>&copy; Copyright <script>document.write(new Date().getFullYear())</script> Atishay Jain. All right reserved.</div>
             </div>
+            <!-- <div class="col-xl-4 col-lg-4 col-md-6"> -->
+            <!--   <div class="footer-widget"> -->
+            <!--     <div class="logo mb-30"> -->
+            <!--       <a href="index.html"> -->
+            <!--         <img src="{{(resources.Get "img/logo/logo.svg" | resources.Minify ).Permalink}}" alt="Logo" /> -->
+            <!--       </a> -->
+            <!--     </div> -->
+            <!--     <p class="desc mb-30 text-white">Hugo in Action. A book about everything Hugo and the Jamstack.</p> -->
+                <!-- <ul class="socials"> -->
+                <!--   <!-- TODO Links from various stores. --> -->
+                <!--   <li> -->
+                <!--     <a href="jvascript:void(0)"> -->
+                <!--       <i class="lni lni-facebook-filled"></i> -->
+                <!--     </a> -->
+                <!--   </li> -->
+                <!--   <li> -->
+                <!--     <a href="jvascript:void(0)"> -->
+                <!--       <i class="lni lni-twitter-filled"></i> -->
+                <!--     </a> -->
+                <!--   </li> -->
+                <!--   <li> -->
+                <!--     <a href="jvascript:void(0)"> -->
+                <!--       <i class="lni lni-instagram-filled"></i> -->
+                <!--     </a> -->
+                <!--   </li> -->
+                <!--   <li> -->
+                <!--     <a href="jvascript:void(0)"> -->
+                <!--       <i class="lni lni-linkedin-original"></i> -->
+                <!--     </a> -->
+                <!--   </li> -->
+                <!-- </ul> -->
+            <!--   </div> -->
+            <!-- </div> -->
 
-            <div class="col-xl-2 col-lg-2 col-md-6">
-              <div class="footer-widget">
-                <h3>About Us</h3>
-                <ul class="links">
-                  <li><a href="javascript:void(0)">Home</a></li>
-                  <li><a href="javascript:void(0)">Feature</a></li>
-                  <li><a href="javascript:void(0)">About</a></li>
-                  <li><a href="javascript:void(0)">Testimonials</a></li>
-                </ul>
-              </div>
-            </div>
+            <!-- <div class="col-xl-2 col-lg-2 col-md-6"> -->
+            <!--   <div class="footer-widget"> -->
+            <!--     <h3>About Us</h3> -->
+            <!--     <ul class="links"> -->
+            <!--       <li><a href="javascript:void(0)">Home</a></li> -->
+            <!--       <li><a href="javascript:void(0)">Feature</a></li> -->
+            <!--       <li><a href="javascript:void(0)">About</a></li> -->
+            <!--       <li><a href="javascript:void(0)">Testimonials</a></li> -->
+            <!--     </ul> -->
+            <!--   </div> -->
+            <!-- </div> -->
 
-            <div class="col-xl-3 col-lg-3 col-md-6">
-              <div class="footer-widget">
-                <h3>Features</h3>
-                <ul class="links">
-                  <li><a href="javascript:void(0)">How it works</a></li>
-                  <li><a href="javascript:void(0)">Privacy policy</a></li>
-                  <li><a href="javascript:void(0)">Terms of service</a></li>
-                  <li><a href="javascript:void(0)">Refund policy</a></li>
-                </ul>
-              </div>
-            </div>
+            <!-- <div class="col-xl-3 col-lg-3 col-md-6"> -->
+            <!--   <div class="footer-widget"> -->
+            <!--     <h3>Features</h3> -->
+            <!--     <ul class="links"> -->
+            <!--       <li><a href="javascript:void(0)">How it works</a></li> -->
+            <!--       <li><a href="javascript:void(0)">Privacy policy</a></li> -->
+            <!--       <li><a href="javascript:void(0)">Terms of service</a></li> -->
+            <!--       <li><a href="javascript:void(0)">Refund policy</a></li> -->
+            <!--     </ul> -->
+            <!--   </div> -->
+            <!-- </div> -->
 
-            <div class="col-xl-3 col-lg-3 col-md-6">
-              <div class="footer-widget">
-                <h3>Other Products</h3>
-                <ul class="links">
-                  <li><a href="jvascript:void(0)">Accounting Software</a></li>
-                  <li><a href="jvascript:void(0)">Billing Software</a></li>
-                  <li><a href="jvascript:void(0)">Booking System</a></li>
-                  <li><a href="jvascript:void(0)">Tracking System</a></li>
-                </ul>
-              </div>
-            </div>
+            <!-- <div class="col-xl-3 col-lg-3 col-md-6"> -->
+            <!--   <div class="footer-widget"> -->
+            <!--     <h3>Other Products</h3> -->
+            <!--     <ul class="links"> -->
+            <!--       <li><a href="jvascript:void(0)">Accounting Software</a></li> -->
+            <!--       <li><a href="jvascript:void(0)">Billing Software</a></li> -->
+            <!--       <li><a href="jvascript:void(0)">Booking System</a></li> -->
+            <!--       <li><a href="jvascript:void(0)">Tracking System</a></li> -->
+            <!--     </ul> -->
+            <!--   </div> -->
+            <!-- </div> -->
           </div>
         </div>
       </div>

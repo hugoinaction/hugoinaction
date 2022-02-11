@@ -1327,43 +1327,43 @@ em {
 
 /* ======= subscribe css ======= */
 @media (max-width: 767px) {
-  .subscribe-section .section-title h2 {
+  .buy-section .section-title h2 {
     font-size: 24px;
   }
 }
 
 @media only screen and (min-width: 480px) and (max-width: 767px) {
-  .subscribe-section .section-title h2 {
+  .buy-section .section-title h2 {
     font-size: 32px;
   }
 }
 
-.subscribe-section .subscribe-wrapper {
+.buy-section .buy-wrapper {
   background-image: url({{(resources.Get "img/subscribe/subscribe-bg.svg" | resources.Minify).Permalink}});
   padding: 65px 50px 50px;
   border-radius: 30px;
 }
 
 @media (max-width: 767px) {
-  .subscribe-section .subscribe-wrapper {
+  .buy-section .buy-wrapper {
     padding-left: 20px;
     padding-right: 20px;
   }
 }
 
 @media only screen and (min-width: 480px) and (max-width: 767px) {
-  .subscribe-section .subscribe-wrapper {
+  .buy-section .buy-wrapper {
     padding-left: 30px;
     padding-right: 30px;
   }
 }
 
-.subscribe-section .subscribe-wrapper .subscribe-form {
+.buy-section .buy-wrapper .subscribe-form {
   position: relative;
   margin-bottom: 15px;
 }
 
-.subscribe-section .subscribe-wrapper .subscribe-form input {
+.buy-section .buy-wrapper .subscribe-form input {
   width: 100%;
   padding: 20px 30px;
   padding-right: 142px;
@@ -1375,32 +1375,32 @@ em {
   transition: all 0.3s ease-out 0s;
 }
 
-.subscribe-section .subscribe-wrapper .subscribe-form input:focus {
+.buy-section .buy-wrapper .subscribe-form input:focus {
   -webkit-box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.35);
   box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.35);
 }
 
-.subscribe-section .subscribe-wrapper .subscribe-form input::-webkit-input-placeholder {
+.buy-section .buy-wrapper .subscribe-form input::-webkit-input-placeholder {
   opacity: 0.7;
   color: #5B657E;
 }
 
-.subscribe-section .subscribe-wrapper .subscribe-form input:-ms-input-placeholder {
+.buy-section .buy-wrapper .subscribe-form input:-ms-input-placeholder {
   opacity: 0.7;
   color: #5B657E;
 }
 
-.subscribe-section .subscribe-wrapper .subscribe-form input::-ms-input-placeholder {
+.buy-section .buy-wrapper .subscribe-form input::-ms-input-placeholder {
   opacity: 0.7;
   color: #5B657E;
 }
 
-.subscribe-section .subscribe-wrapper .subscribe-form input::placeholder {
+.buy-section .buy-wrapper .subscribe-form input::placeholder {
   opacity: 0.7;
   color: #5B657E;
 }
 
-.subscribe-section .subscribe-wrapper .subscribe-form button {
+.buy-section .buy-wrapper .subscribe-form button {
   position: absolute;
   top: 2px;
   right: 2px;
@@ -1411,7 +1411,7 @@ em {
 }
 
 @media (max-width: 767px) {
-  .subscribe-section .subscribe-wrapper .subscribe-form button {
+  .buy-section .buy-wrapper .subscribe-form button {
     position: static;
     margin-top: 20px;
     background: #fff;
@@ -1421,7 +1421,7 @@ em {
 }
 
 @media only screen and (min-width: 480px) and (max-width: 767px) {
-  .subscribe-section .subscribe-wrapper .subscribe-form button {
+  .buy-section .buy-wrapper .subscribe-form button {
     position: absolute;
     margin-top: 0px;
     color: #fff;
@@ -2309,7 +2309,7 @@ em {
   overflow:  hidden;
 }
 .front {
-  transform: rotateY(-20deg) scale(1.03);
+  transform: rotateY(-20deg) scale(1.03) translateZ(2px);
 }
 
 .back {
