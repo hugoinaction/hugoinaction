@@ -149,6 +149,12 @@ The branches in this repository correspond to the sections of Hugo In Action. Ea
 | [chapter-13-08](https://github.com/hugoinaction/hugoinaction/tree/chapter-13-08)                | 13.2.2 | Added instant page to prefetch links. | https://chapter-13-08.hugoinaction.com | [chapter-13-07..chapter-13-08](https://github.com/hugoinaction/hugoinaction/compare/chapter-13-07..chapter-13-08) |
 | [chapter-13-09](https://github.com/hugoinaction/hugoinaction/tree/chapter-13-09)                | 13.2.3 | Added Turbo to make better page transitions. | https://chapter-13-09.hugoinaction.com | [chapter-13-08..chapter-13-09](https://github.com/hugoinaction/hugoinaction/compare/chapter-13-08..chapter-13-09) |
 
+
+Updates
+---------
+July 6, 2022 - Fixed some bugs around search results clickability and keyboard handling in chapter 10.
+
+
 Hugo In Action Website
 ---------------------
 [![Netlify Status](https://api.netlify.com/api/v1/badges/83ef031c-395c-40f2-a263-20d073bf8d26/deploy-status)](https://app.netlify.com/sites/hugoinaction/deploys)
