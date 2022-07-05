@@ -8,4 +8,5 @@ module:
           target: assets
     - path: github.com/hugoinaction/hugo-debug-utils
     - path: github.com/hugoinaction/AcmeCommon
+    - path: github.com/hugoinaction/AcmeSearchSupport
     - path: github.com/gohugoio/hugo-mod-jslibs/instantpage
