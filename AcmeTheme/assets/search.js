@@ -1,4 +1,5 @@
 import Fuse from 'fuse.js'
+import AcmeSearchSupport from "SearchSupport"
 
 let index = null;
 const MAX_SEARCH_RESULTS = 5;
@@ -24,6 +25,7 @@ export default {
         }]
       });
       document.addEventListener("input", this.showResults);
+      AcmeSearchSupport(); 
     } catch (e) {
       this.removeSearch();
     }
