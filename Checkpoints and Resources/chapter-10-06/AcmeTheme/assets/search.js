@@ -1,4 +1,5 @@
 import Fuse from 'fuse.js'
+import AcmeSearchSupport from "SearchSupport"
 
 let index = null;
 export default {
