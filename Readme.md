@@ -153,7 +153,7 @@ The branches in this repository correspond to the sections of Hugo In Action. Ea
 Updates
 ---------
 July 6, 2022 - Fixed some bugs around search results clickability and keyboard handling in chapter 10.
-
+Sept 7, 2024 - Removed google analytics async as it is not supported in Hugo any more (https://github.com/gohugoio/hugo/pull/11468/files)
 
 Hugo In Action Website
 ---------------------
