@@ -1,0 +1,61 @@
+<rss version="2.0"
+  xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Acme Corporation</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content on Acme Corporation</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>contact@example.org (Acme Corporation)</managingEditor>
+    <webMaster>contact@example.org (Acme Corporation)</webMaster>
+    
+        <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+<title></title>
+<link>http://localhost:1313/about/</link>
+<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>contact@example.org (Acme Corporation)</author>
+      <guid>http://localhost:1313/about/</guid>
+<description></description>
+<category></category></item>
+    
+    <item>
+<title></title>
+<link>http://localhost:1313/contact/</link>
+<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>contact@example.org (Acme Corporation)</author>
+      <guid>http://localhost:1313/contact/</guid>
+<description></description>
+<category></category></item>
+    
+    <item>
+<title></title>
+<link>http://localhost:1313/credits/</link>
+<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>contact@example.org (Acme Corporation)</author>
+      <guid>http://localhost:1313/credits/</guid>
+<description></description>
+<category></category></item>
+    
+    <item>
+<title></title>
+<link>http://localhost:1313/privacy/</link>
+<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>contact@example.org (Acme Corporation)</author>
+      <guid>http://localhost:1313/privacy/</guid>
+<description></description>
+<category></category></item>
+    
+    <item>
+<title></title>
+<link>http://localhost:1313/terms/</link>
+<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>contact@example.org (Acme Corporation)</author>
+      <guid>http://localhost:1313/terms/</guid>
+<description></description>
+<category></category></item>
+    
+  </channel>
+</rss>

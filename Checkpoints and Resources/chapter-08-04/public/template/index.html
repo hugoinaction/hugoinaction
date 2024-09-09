@@ -1,0 +1,398 @@
+<script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><h1>Hugo Templates</h1>
+<h2>Variables</h2>
+<b>Custom Variables</b>                                        <br />
+
+Site Title: Acme Corporation                                      <br />
+
+
+Page Title: Template Page                                      <br />
+                                                               <br />
+<b>Data Types</b>                                              <br />
+Integer: 2                                                 <br />
+Float: 3.14                                                <br />
+Boolean: false                                             <br />
+String: hello                                            <br />
+                                                               <br />
+Slice: [foo bar buzz]                            <br />
+Dict: map[h:20 key1:val1 w:10]                     <br />
+Time: 2020-01-01 00:00:00 &#43;0800 &#43;0800                     <br />
+                                                               <br />
+
+
+Scratch: {map[message:Hello] {{0 0} 0 0 {{} 0} {{} 0}}}                                        <br />
+Getter: Hello                           <br />
+
+
+Updated: Hello World                            <br />
+
+
+
+
+Dict: map[english:Hello World french:Bonjour le monde]                             <br />
+<h2> Functions </h2>
+<b>Boolean Functions</b>
+5 &lt; 3 : false                                          <br />
+5 &gt; 3 : true                                          <br />
+5 &ge; 3 : true                                          <br />
+5 &le; 3 : false                                          <br />
+5 = 3 : false                                             <br />
+5 &ne; 3 : true                                          <br />
+                                                               <br />
+<b>Logical Functions</b>
+true and false : false                            <br />
+true or false : true                              <br />
+not true : false                                        <br />
+                                                               <br />
+<b>Arithmetic Functions</b>
+2 + 3 : 5                                            <br />
+2 - 3 : -1                                            <br />
+2 x 3 : 6                                            <br />
+2 &divide; 3 : 0                <br />
+2 &divide; 3 : 0.6666666666666666              <br />
+2 % 3 : 2                                            <br />
+2 % 3? : false                                       <br />
+                                                               <br />
+<b>Nested Functions</b>
+5/(2 + (3 x 2.0)) : 0.625              <br />
+                                                               <br />
+<b>Piped Functions</b>
+5/(2 + (3 x 2.0)) : 0.625              <br />
+                                                               <br />
+<b>Nested + Piped Hybrid</b>
+5/(2 + (3 x 2.0)) : 0.625              <br />
+
+<h2> Conditionals </h2>
+<b>If</b>
+
+
+
+false is false.
+                                                        <br />
+                                                               <br />
+<b>With</b>
+
+
+
+
+test is the value of the condition
+                                                       <br />
+                                                               <br />
+<b>Cond</b>
+
+page
+
+<h2>Loops</h2>
+<b>All website pages:</b>
+<ul>
+
+<li> About Us</li>
+
+<li> General</li>
+
+<li> Line</li>
+
+<li> Tags</li>
+
+<li> Unknown</li>
+
+<li> Manufacturing</li>
+
+<li> Our Manufacturing Process Part IV</li>
+
+<li> Series</li>
+
+<li> Circle</li>
+
+<li> Manufacturing</li>
+
+<li> Manufacturing</li>
+
+<li> Our Manufacturing Process Part III</li>
+
+<li> Our Manufacturing Process Part II</li>
+
+<li> Square</li>
+
+<li> Line</li>
+
+<li> Our Manufacturing Process Part I</li>
+
+<li> </li>
+
+<li> </li>
+
+<li> </li>
+
+<li> </li>
+
+<li> </li>
+
+<li> </li>
+
+<li> </li>
+
+<li> Acme Corporation</li>
+
+<li> Building Squares</li>
+
+<li> Categories</li>
+
+<li> Circle</li>
+
+<li> Circle</li>
+
+<li> Curve</li>
+
+<li> Design</li>
+
+<li> Line</li>
+
+<li> Product</li>
+
+<li> Public</li>
+
+<li> Shape</li>
+
+<li> Shape</li>
+
+<li> Shaper</li>
+
+<li> Square</li>
+
+<li> Square License</li>
+
+<li> Style</li>
+
+<li> Template Page</li>
+
+<li> Terms of Use</li>
+
+<li> Triangle</li>
+
+<li> Tropical triangles</li>
+
+</ul>
+<b>Range context</b>
+<ul>
+
+
+<li> About Us @ Acme Corporation</li>
+
+<li> General @ Acme Corporation</li>
+
+<li> Line @ Acme Corporation</li>
+
+<li> Tags @ Acme Corporation</li>
+
+<li> Unknown @ Acme Corporation</li>
+
+<li> Manufacturing @ Acme Corporation</li>
+
+<li> Our Manufacturing Process Part IV @ Acme Corporation</li>
+
+<li> Series @ Acme Corporation</li>
+
+<li> Circle @ Acme Corporation</li>
+
+<li> Manufacturing @ Acme Corporation</li>
+
+<li> Manufacturing @ Acme Corporation</li>
+
+<li> Our Manufacturing Process Part III @ Acme Corporation</li>
+
+<li> Our Manufacturing Process Part II @ Acme Corporation</li>
+
+<li> Square @ Acme Corporation</li>
+
+<li> Line @ Acme Corporation</li>
+
+<li> Our Manufacturing Process Part I @ Acme Corporation</li>
+
+<li>  @ Acme Corporation</li>
+
+<li>  @ Acme Corporation</li>
+
+<li>  @ Acme Corporation</li>
+
+<li>  @ Acme Corporation</li>
+
+<li>  @ Acme Corporation</li>
+
+<li>  @ Acme Corporation</li>
+
+<li>  @ Acme Corporation</li>
+
+<li> Acme Corporation @ Acme Corporation</li>
+
+<li> Building Squares @ Acme Corporation</li>
+
+<li> Categories @ Acme Corporation</li>
+
+<li> Circle @ Acme Corporation</li>
+
+<li> Circle @ Acme Corporation</li>
+
+<li> Curve @ Acme Corporation</li>
+
+<li> Design @ Acme Corporation</li>
+
+<li> Line @ Acme Corporation</li>
+
+<li> Product @ Acme Corporation</li>
+
+<li> Public @ Acme Corporation</li>
+
+<li> Shape @ Acme Corporation</li>
+
+<li> Shape @ Acme Corporation</li>
+
+<li> Shaper @ Acme Corporation</li>
+
+<li> Square @ Acme Corporation</li>
+
+<li> Square License @ Acme Corporation</li>
+
+<li> Style @ Acme Corporation</li>
+
+<li> Template Page @ Acme Corporation</li>
+
+<li> Terms of Use @ Acme Corporation</li>
+
+<li> Triangle @ Acme Corporation</li>
+
+<li> Tropical triangles @ Acme Corporation</li>
+
+</ul>
+<h2>Debugging</h2>
+&amp;page.siteWrapper{s:(*hugolib.Site)(0x14000ab2000)}
+
+<h2>
+  Image Processing & Manipulation
+</h2>
+
+<style>
+  img {
+    display: inline;
+    max-width: 200px;
+    border: 1px solid black;
+  }
+</style>
+<style>
+  figure {
+   display: inline-block;
+  }
+</style>
+<center>
+<figure>
+  <img src="/image/hia.jpg">
+  <figcaption>Original</figcaption>
+</figure>
+
+<br>
+<figure>
+  <img src="/image/hia_hu873d2b5a656b04986ec864b458546076_2688641_200x100_resize_q75_box.jpg">
+  <figcaption>Resize</figcaption>
+</figure>
+
+<figure>
+  <img src="/image/hia_hu873d2b5a656b04986ec864b458546076_2688641_200x100_fit_q75_box.jpg">
+  <figcaption>Fit</figcaption>
+</figure>
+
+<figure>
+  <img src="/image/hia_hu873d2b5a656b04986ec864b458546076_2688641_200x100_fill_q75_box_top.jpg">
+  <figcaption>Fill Top</figcaption>
+</figure>
+
+<figure>
+  <img src="/image/hia_hu873d2b5a656b04986ec864b458546076_2688641_200x100_fill_q75_box_bottom.jpg">
+  <figcaption>Fill Bottom</figcaption>
+</figure>
+
+<figure>
+  <img src="/image/hia_hu873d2b5a656b04986ec864b458546076_2688641_200x100_fill_q75_box_center.jpg">
+  <figcaption>Fill center</figcaption>
+</figure>
+
+<figure>
+  <img src="/image/hia_hu873d2b5a656b04986ec864b458546076_2688641_200x100_fill_q75_box_smart1.jpg">
+  <figcaption>Fill smart</figcaption>
+</figure>
+
+<br>
+
+<figure>
+  <img src="/image/hia_hu873d2b5a656b04986ec864b458546076_2688641_filter_7399803135209696293.jpg">
+  <figcaption>Brightness -40</figcaption>
+</figure>
+
+<figure>
+  <img src="/image/hia_hu873d2b5a656b04986ec864b458546076_2688641_filter_6036372389473351711.jpg">
+  <figcaption>ColorBalance 100 200 300</figcaption>
+</figure>
+
+<figure>
+  <img src="/image/hia_hu873d2b5a656b04986ec864b458546076_2688641_filter_1789463837679186650.jpg">
+  <figcaption>Colorize 200 100 50</figcaption>
+</figure>
+
+<figure>
+  <img src="/image/hia_hu873d2b5a656b04986ec864b458546076_2688641_filter_6379710842050130329.jpg">
+  <figcaption>Contrast 30</figcaption>
+</figure>
+
+<figure>
+  <img src="/image/hia_hu873d2b5a656b04986ec864b458546076_2688641_filter_18341980908687182000.jpg">
+  <figcaption>Gamma 3</figcaption>
+</figure>
+
+<figure>
+  <img src="/image/hia_hu873d2b5a656b04986ec864b458546076_2688641_filter_14457665958266252150.jpg">
+  <figcaption>GaussianBlur 80</figcaption>
+</figure>
+
+<figure>
+  <img src="/image/hia_hu873d2b5a656b04986ec864b458546076_2688641_filter_9739959048444501483.jpg">
+  <figcaption>Grayscale</figcaption>
+</figure>
+
+<figure>
+  <img src="/image/hia_hu873d2b5a656b04986ec864b458546076_2688641_filter_7870892032178766482.jpg">
+  <figcaption>Hue 100</figcaption>
+</figure>
+
+<figure>
+  <img src="/image/hia_hu873d2b5a656b04986ec864b458546076_2688641_filter_8715308564451795310.jpg">
+  <figcaption>Invert</figcaption>
+</figure>
+
+<figure>
+  <img src="/image/hia_hu873d2b5a656b04986ec864b458546076_2688641_filter_11680834743509692852.jpg">
+  <figcaption>Pixelate 100</figcaption>
+</figure>
+
+<figure>
+  <img src="/image/hia_hu873d2b5a656b04986ec864b458546076_2688641_filter_11680834743509692852.jpg">
+  <figcaption>Pixelate 100</figcaption>
+</figure>
+
+<figure>
+  <img src="/image/hia_hu873d2b5a656b04986ec864b458546076_2688641_filter_7586084889428583115.jpg">
+  <figcaption>Saturation 80</figcaption>
+</figure>
+
+<figure>
+  <img src="/image/hia_hu873d2b5a656b04986ec864b458546076_2688641_filter_14414530351955031240.jpg">
+  <figcaption>Sepia 200</figcaption>
+</figure>
+
+<figure>
+  <img src="/image/hia_hu873d2b5a656b04986ec864b458546076_2688641_filter_8730766545102106901.jpg">
+  <figcaption>Sigmoid 20 10</figcaption>
+</figure>
+
+<figure>
+  <img src="/image/hia_hu873d2b5a656b04986ec864b458546076_2688641_filter_11140463407354187401.jpg">
+  <figcaption>UnsharpMask 40 1.2 0.5</figcaption>
+</figure>
+</center>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Triangle on Acme Corporation</title>
+    <link>http://localhost:1313/tags/triangle/</link>
+    <description>Recent content in Triangle on Acme Corporation</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <managingEditor>contact@example.org (Acme Corporation)</managingEditor>
+    <webMaster>contact@example.org (Acme Corporation)</webMaster>
+    <atom:link href="http://localhost:1313/tags/triangle/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Tropical triangles</title>
+      <link>http://localhost:1313/blog/tropical-triangles/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>contact@example.org (Acme Corporation)</author>
+      <guid>http://localhost:1313/blog/tropical-triangles/</guid>
+      <description>&lt;p&gt;A triangle is a polygon with three edges and three vertices. It is one of the basic shapes in geometry. A triangle with vertices A, B, and C is denoted △ ABC.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

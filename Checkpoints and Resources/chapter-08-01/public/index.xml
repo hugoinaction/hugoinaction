@@ -1,0 +1,198 @@
+<rss version="2.0"
+  xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Acme Corporation</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content on Acme Corporation</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>contact@example.org (Acme Corporation)</managingEditor>
+    <webMaster>contact@example.org (Acme Corporation)</webMaster>
+    
+        <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+<title>About Us</title>
+<link>http://localhost:1313/about/</link>
+<pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
+      <author>contact@example.org (Acme Corporation)</author>
+      <guid>http://localhost:1313/about/</guid>
+<description>World&#39;s leading manufacturer of digital shapes. We shape the world. You live in it.</description>
+<category></category></item>
+    
+    <item>
+<title>Line</title>
+<link>http://localhost:1313/blog/line/</link>
+<pubDate>Wed, 03 Jul 2019 15:53:42 -0700</pubDate>
+      <author>contact@example.org (Acme Corporation)</author>
+      <guid>http://localhost:1313/blog/line/</guid>
+<description></description>
+<category>General</category>
+<media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/blog/line/cover_hu90472768be795e9656a8003eab7a04a7_25273_1024x512_fill_box_center_3.png" medium="image" width="1024" height="512"/></item>
+    
+    <item>
+<title>Our Manufacturing Process Part IV</title>
+<link>http://localhost:1313/blog/process-4/</link>
+<pubDate>Fri, 04 Jan 2019 00:00:00 +0000</pubDate>
+      <author>contact@example.org (Acme Corporation)</author>
+      <guid>http://localhost:1313/blog/process-4/</guid>
+<description></description>
+<category></category>
+<media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/blog/process-4/cover_hud9949164f33296b940c3365d1d09af90_3836494_1024x512_fill_q75_box_center.jpg" medium="image" width="1024" height="512"/></item>
+    
+    <item>
+<title>Our Manufacturing Process Part III</title>
+<link>http://localhost:1313/blog/process-3/</link>
+<pubDate>Thu, 03 Jan 2019 00:00:00 +0000</pubDate>
+      <author>contact@example.org (Acme Corporation)</author>
+      <guid>http://localhost:1313/blog/process-3/</guid>
+<description></description>
+<category>CircleManufacturing</category>
+<media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/blog/process-3/cover_hu3ce1a9ee9536371ad50b8c5a6f974877_1224306_1024x512_fill_q75_box_center.jpg" medium="image" width="1024" height="512"/></item>
+    
+    <item>
+<title>Our Manufacturing Process Part II</title>
+<link>http://localhost:1313/blog/process-2/</link>
+<pubDate>Wed, 02 Jan 2019 00:00:00 +0000</pubDate>
+      <author>contact@example.org (Acme Corporation)</author>
+      <guid>http://localhost:1313/blog/process-2/</guid>
+<description></description>
+<category>SquareManufacturing</category>
+<media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/blog/process-2/cover_hu2ffad51294c12bb5620084491796e85c_272137_1024x512_fill_q75_box_center.jpg" medium="image" width="1024" height="512"/></item>
+    
+    <item>
+<title>Our Manufacturing Process Part I</title>
+<link>http://localhost:1313/blog/process-1/</link>
+<pubDate>Tue, 01 Jan 2019 00:00:00 +0000</pubDate>
+      <author>contact@example.org (Acme Corporation)</author>
+      <guid>http://localhost:1313/blog/process-1/</guid>
+<description></description>
+<category>LineManufacturing</category>
+<media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/blog/process-1/cover_hu8f8e1bfda069c7a1b75f77464cdd1ac7_859432_1024x512_fill_q75_box_center.jpg" medium="image" width="1024" height="512"/></item>
+    
+    <item>
+<title></title>
+<link>http://localhost:1313/contact/</link>
+<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>contact@example.org (Acme Corporation)</author>
+      <guid>http://localhost:1313/contact/</guid>
+<description></description>
+<category></category></item>
+    
+    <item>
+<title></title>
+<link>http://localhost:1313/credits/</link>
+<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>contact@example.org (Acme Corporation)</author>
+      <guid>http://localhost:1313/credits/</guid>
+<description></description>
+<category></category></item>
+    
+    <item>
+<title></title>
+<link>http://localhost:1313/markdown/</link>
+<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>contact@example.org (Acme Corporation)</author>
+      <guid>http://localhost:1313/markdown/</guid>
+<description></description>
+<category></category></item>
+    
+    <item>
+<title></title>
+<link>http://localhost:1313/privacy/</link>
+<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>contact@example.org (Acme Corporation)</author>
+      <guid>http://localhost:1313/privacy/</guid>
+<description></description>
+<category></category></item>
+    
+    <item>
+<title>Building Squares</title>
+<link>http://localhost:1313/blog/building-squares/</link>
+<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>contact@example.org (Acme Corporation)</author>
+      <guid>http://localhost:1313/blog/building-squares/</guid>
+<description></description>
+<category>ShapeDesign</category>
+<media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/blog/building-squares/cover_hu3da72d97dae931970831d68d7af702d0_222820_1024x512_fill_q75_box_center.jpg" medium="image" width="1024" height="512"/></item>
+    
+    <item>
+<title>Circle</title>
+<link>http://localhost:1313/blog/community/circle/</link>
+<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>contact@example.org (Acme Corporation)</author>
+      <guid>http://localhost:1313/blog/community/circle/</guid>
+<description></description>
+<category>ShapePublic</category>
+<media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/blog/community/circle/cover_hu970919c39417967ec24caa24affdbeb1_560968_1024x512_fill_q75_box_center.jpg" medium="image" width="1024" height="512"/></item>
+    
+    <item>
+<title>Curve</title>
+<link>http://localhost:1313/blog/community/curve/</link>
+<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>contact@example.org (Acme Corporation)</author>
+      <guid>http://localhost:1313/blog/community/curve/</guid>
+<description></description>
+<category>ShapePublic</category>
+<media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/blog/community/curve/cover_hub232108180ab9296cad5fd6dfec6d589_270243_1024x512_fill_q75_box_center.jpg" medium="image" width="1024" height="512"/></item>
+    
+    <item>
+<title>Sample data driven page using eclectic.</title>
+<link>http://localhost:1313/data-driven/</link>
+<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>contact@example.org (Acme Corporation)</author>
+      <guid>http://localhost:1313/data-driven/</guid>
+<description></description>
+<category></category></item>
+    
+    <item>
+<title>Shaper</title>
+<link>http://localhost:1313/news/shaper/</link>
+<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>contact@example.org (Acme Corporation)</author>
+      <guid>http://localhost:1313/news/shaper/</guid>
+<description></description>
+<category>ShapePublic</category>
+<media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/news/shaper/cover_hud2a0c0bb2f851e7b0f80e1bfb2d67811_319723_1024x512_fill_q75_box_center.jpg" medium="image" width="1024" height="512"/></item>
+    
+    <item>
+<title>Square License</title>
+<link>http://localhost:1313/news/square-license/</link>
+<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>contact@example.org (Acme Corporation)</author>
+      <guid>http://localhost:1313/news/square-license/</guid>
+<description></description>
+<category>SquareGeneral</category>
+<media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/news/square-license/cover_hu59593a7ad40b7ed9085d27f1b8bb7685_396100_1024x512_fill_q75_box_center.jpg" medium="image" width="1024" height="512"/></item>
+    
+    <item>
+<title>Template Page</title>
+<link>http://localhost:1313/template/</link>
+<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>contact@example.org (Acme Corporation)</author>
+      <guid>http://localhost:1313/template/</guid>
+<description></description>
+<category></category></item>
+    
+    <item>
+<title>Terms of Use</title>
+<link>http://localhost:1313/terms/</link>
+<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>contact@example.org (Acme Corporation)</author>
+      <guid>http://localhost:1313/terms/</guid>
+<description></description>
+<category></category></item>
+    
+    <item>
+<title>Tropical triangles</title>
+<link>http://localhost:1313/blog/tropical-triangles/</link>
+<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>contact@example.org (Acme Corporation)</author>
+      <guid>http://localhost:1313/blog/tropical-triangles/</guid>
+<description></description>
+<category>ShapeDesign</category>
+<media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/blog/tropical-triangles/cover_hu9b94b542eeb0f0f3aed01c5205e212dd_520226_1024x512_fill_q75_box_center.jpg" medium="image" width="1024" height="512"/></item>
+    
+  </channel>
+</rss>

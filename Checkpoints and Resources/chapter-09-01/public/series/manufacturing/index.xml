@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Manufacturing on Acme Corporation</title>
+    <link>http://localhost:1313/series/manufacturing/</link>
+    <description>Recent content in Manufacturing on Acme Corporation</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <managingEditor>contact@example.org (Acme Corporation)</managingEditor>
+    <webMaster>contact@example.org (Acme Corporation)</webMaster>
+    <lastBuildDate>Thu, 10 Feb 2022 23:04:42 -0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/series/manufacturing/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Our Manufacturing Process Part IV</title>
+      <link>http://localhost:1313/blog/process-4/</link>
+      <pubDate>Fri, 04 Jan 2019 00:00:00 +0000</pubDate><author>contact@example.org (Acme Corporation)</author>
+      <guid>http://localhost:1313/blog/process-4/</guid>
+      <description>A cutting tool has one or more sharp cutting edges and is made of a material that is harder than the work material. The cutting edge serves to separate chip from the parent work material. Connected to the cutting edge are the two surfaces of the tool:&#xA;The rake face; and The flank. The rake face which directs the flow of newly formed chip, is oriented at a certain angle is called the rake angle &amp;ldquo;α&amp;rdquo;.</description>
+    </item>
+    <item>
+      <title>Our Manufacturing Process Part III</title>
+      <link>http://localhost:1313/blog/process-3/</link>
+      <pubDate>Thu, 03 Jan 2019 00:00:00 +0000</pubDate><author>contact@example.org (Acme Corporation)</author>
+      <guid>http://localhost:1313/blog/process-3/</guid>
+      <description>Machining is any process in which a cutting tool is used to remove small chips of material from the workpiece (the workpiece is often called the &amp;ldquo;work&amp;rdquo;). To perform the operation, relative motion is required between the tool and the work. This relative motion is achieved in most machining operation by means of a primary motion, called &amp;ldquo;cutting speed&amp;rdquo; and a secondary motion called &amp;ldquo;feed&amp;rdquo;.[7] The shape of the tool and its penetration into the work surface, combined with these motions, produce the desired shape of the resulting work surface.</description>
+    </item>
+    <item>
+      <title>Our Manufacturing Process Part II</title>
+      <link>http://localhost:1313/blog/process-2/</link>
+      <pubDate>Wed, 02 Jan 2019 00:00:00 +0000</pubDate><author>contact@example.org (Acme Corporation)</author>
+      <guid>http://localhost:1313/blog/process-2/</guid>
+      <description>The three principal machining processes are classified as turning, drilling and milling. Other operations falling into miscellaneous categories include shaping, planing, boring, broaching and sawing.[5]&#xA;Turning operations are operations that rotate the workpiece as the primary method of moving metal against the cutting tool. Lathes are the principal machine tool used in turning. Milling operations are operations in which the cutting tool rotates to bring cutting edges to bear against the workpiece.</description>
+    </item>
+    <item>
+      <title>Our Manufacturing Process Part I</title>
+      <link>http://localhost:1313/blog/process-1/</link>
+      <pubDate>Tue, 01 Jan 2019 00:00:00 +0000</pubDate><author>contact@example.org (Acme Corporation)</author>
+      <guid>http://localhost:1313/blog/process-1/</guid>
+      <description>Machining is any of various processes in which a piece of raw material is cut into a desired final shape and size by a controlled material-removal process. The processes that have this common theme, controlled material removal, are today collectively known as subtractive manufacturing,[1] in distinction from processes of controlled material addition, which are known as additive manufacturing. Exactly what the &amp;ldquo;controlled&amp;rdquo; part of the definition implies can vary, but it almost always implies the use of machine tools (in addition to just power tools and hand tools).</description>
+    </item>
+  </channel>
+</rss>

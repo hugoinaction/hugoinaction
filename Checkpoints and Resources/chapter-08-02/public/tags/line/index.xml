@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Line on Acme Corporation</title>
+    <link>http://localhost:1313/tags/line/</link>
+    <description>Recent content in Line on Acme Corporation</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <managingEditor>contact@example.org (Acme Corporation)</managingEditor>
+    <webMaster>contact@example.org (Acme Corporation)</webMaster>
+    <atom:link href="http://localhost:1313/tags/line/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Curve</title>
+      <link>http://localhost:1313/blog/community/curve/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>contact@example.org (Acme Corporation)</author>
+      <guid>http://localhost:1313/blog/community/curve/</guid>
+      <description>&lt;p&gt;In mathematics, a curve (also called a curved line in older texts) is, generally speaking, an object similar to a line but that need not be straight. Thus, a curve is a generalization of a line, in that it may be curved.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

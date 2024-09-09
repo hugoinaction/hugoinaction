@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on Acme Corporation</title>
+    <link>http://localhost:1313/categories/</link>
+    <description>Recent content in Categories on Acme Corporation</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <managingEditor>contact@example.org (Acme Corporation)</managingEditor>
+    <webMaster>contact@example.org (Acme Corporation)</webMaster>
+    <atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>General</title>
+      <link>http://localhost:1313/categories/general/</link>
+      <pubDate>Wed, 03 Jul 2019 15:53:42 -0700</pubDate><author>contact@example.org (Acme Corporation)</author>
+      <guid>http://localhost:1313/categories/general/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Circle</title>
+      <link>http://localhost:1313/categories/circle/</link>
+      <pubDate>Thu, 03 Jan 2019 00:00:00 +0000</pubDate><author>contact@example.org (Acme Corporation)</author>
+      <guid>http://localhost:1313/categories/circle/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Manufacturing</title>
+      <link>http://localhost:1313/categories/manufacturing/</link>
+      <pubDate>Thu, 03 Jan 2019 00:00:00 +0000</pubDate><author>contact@example.org (Acme Corporation)</author>
+      <guid>http://localhost:1313/categories/manufacturing/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Square</title>
+      <link>http://localhost:1313/categories/square/</link>
+      <pubDate>Wed, 02 Jan 2019 00:00:00 +0000</pubDate><author>contact@example.org (Acme Corporation)</author>
+      <guid>http://localhost:1313/categories/square/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Line</title>
+      <link>http://localhost:1313/categories/line/</link>
+      <pubDate>Tue, 01 Jan 2019 00:00:00 +0000</pubDate><author>contact@example.org (Acme Corporation)</author>
+      <guid>http://localhost:1313/categories/line/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Design</title>
+      <link>http://localhost:1313/categories/design/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>contact@example.org (Acme Corporation)</author>
+      <guid>http://localhost:1313/categories/design/</guid>
+      <description>The design category is the heart of what we do.</description>
+    </item>
+    <item>
+      <title>Public</title>
+      <link>http://localhost:1313/categories/public/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>contact@example.org (Acme Corporation)</author>
+      <guid>http://localhost:1313/categories/public/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Shape</title>
+      <link>http://localhost:1313/categories/shape/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>contact@example.org (Acme Corporation)</author>
+      <guid>http://localhost:1313/categories/shape/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

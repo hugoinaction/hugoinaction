@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Circle on Acme Corporation</title>
+    <link>http://localhost:1313/tags/circle/</link>
+    <description>Recent content in Circle on Acme Corporation</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <managingEditor>contact@example.org (Acme Corporation)</managingEditor>
+    <webMaster>contact@example.org (Acme Corporation)</webMaster>
+    <atom:link href="http://localhost:1313/tags/circle/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Circle</title>
+      <link>http://localhost:1313/blog/community/circle/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>contact@example.org (Acme Corporation)</author>
+      <guid>http://localhost:1313/blog/community/circle/</guid>
+      <description>&lt;p&gt;A circle is a simple closed shape. It is the set of all points in a plane that are at a given distance from a given point, the centre; equivalently it is the curve traced out by a point that moves in a plane so that its distance from a given point is constant. The distance between any of the points and the centre is called the radius. This article is about circles in Euclidean geometry, and, in particular, the Euclidean plane, except where otherwise noted.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

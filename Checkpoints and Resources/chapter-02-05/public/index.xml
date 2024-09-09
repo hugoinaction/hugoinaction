@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Acme Corporation</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content on Acme Corporation</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <managingEditor>contact@example.org (Acme Corporation)</managingEditor>
+    <webMaster>contact@example.org (Acme Corporation)</webMaster>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title></title>
+      <link>http://localhost:1313/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>contact@example.org (Acme Corporation)</author>
+      <guid>http://localhost:1313/about/</guid>
+      <description>Acme Corporation TM is the world&amp;rsquo;s leading manufacturer of digital shapes. From squares and circles to triangles and hexagons, we have it all. Browse through our collection of various forms with different thicknesses and line styles.&#xA;We shape the world. You live in it.&#xA;We provide smiles to hundreds of happy customers.&#xA;Manufacturing&#xA;At Acme Corporation, we take pride in what we create. Our manufacturing process goes through 3 different stages of fine workmanship to give you the best possible shapes.</description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/contact/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>contact@example.org (Acme Corporation)</author>
+      <guid>http://localhost:1313/contact/</guid>
+      <description>Contact Us Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus id interdum velit laoreet id donec ultrices tincidunt arcu. Faucibus scelerisque eleifend donec pretium. Facilisi morbi tempus iaculis urna id volutpat lacus laoreet non. Rutrum quisque non tellus orci. Tincidunt dui ut ornare lectus sit amet est placerat in. Erat velit scelerisque in dictum non consectetur a erat nam.</description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/credits/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>contact@example.org (Acme Corporation)</author>
+      <guid>http://localhost:1313/credits/</guid>
+      <description>Credits This website uses resources from a variety of places. Here is to all of them:&#xA;Built using Hugo Styled using Tailwind CSS Using Treact UI Kit from Owais Khan Background based on am image designed by BiZkettE1 / Freepik Early code using Eclectic and Universal About Us - Font Cheveux d&amp;rsquo;ange on drawing from PxHere. The text for the news image using font Chomsky Regular by copypaste on 1001fonts. Cover Images: Manufaturing I - Image by gefrorene_wand from Pixabay Manufacturing II - Image by Michael Schwarzenberger from Pixabay Manufacturing III - Image by gefrorene_wand from Pixabay Manufacturig IV - Image by Robert Wilkos from Pixabay Squares - Image by Pexels from Pixabay Triangles - Image by Alexandr Nebesyuk from Pixabay Circle - Image by PublicDomainPictures from Pixabay Curve - Image by Free-Photos from Pixabay News- Shaper - Image by tookapic from Pixabay Square License - Image by ds_30 from Pixabay Shape Blog (French) - Image by PIRO4D from Pixabay Home Page About Image: Photo by Angela Pencheva on Unsplash Contact Image: Photo by Cristofer Jeschke on Unsplash Blog icon: Pen by Icon Lauk from the Noun Project News icon: News Camera by Ben Davis from the Noun Project About icon: Info by i cons from the Noun Project Contact icon: Phone by Aulia from the Noun Project Facebook icon: from iconmonstr RSS icon: from iconmonstr Twitter icon: from iconmonstr Email icon: from icomonstr Hero image (Instruction Manual) from Undraw Plain text icon: Chrome Reader Mode by Justin Blake from the Noun Project Blog Page: Tags icon: Tag by Factoricons from the Noun Project Editor icon: App by Tienan from the Noun Project Contact Us: Map from OpenGeoFiction Store Add to Cart: https://uxwing.</description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/privacy/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>contact@example.org (Acme Corporation)</author>
+      <guid>http://localhost:1313/privacy/</guid>
+      <description>Privacy Policy&#xA;Last updated August 19, 2019&#xA;Thank you for choosing to be part of our community at Acme Corporation TM (“Company”, “we”, “us”, or “our”). We are committed to protecting your personal information and your right to privacy. If you have any questions or concerns about our notice or our practices with regard to your personal information, please contact us at contact@example.org.&#xA;When you visit our website &amp;ndash; https://hugoinaction.com and use our services, you trust us with your personal information.</description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/terms/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>contact@example.org (Acme Corporation)</author>
+      <guid>http://localhost:1313/terms/</guid>
+      <description>Terms&#xA;By accessing the website for Acme Corporation, you are agreeing to be bound by these terms of service, all applicable laws and regulations, and agree that you are responsible for compliance with any applicable local laws. If you do not agree with any of these terms, you are prohibited from using or accessing this site. The materials contained in this website are protected by applicable copyright and trademark law.</description>
+    </item>
+  </channel>
+</rss>

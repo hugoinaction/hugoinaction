@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Shape on Acme Corporation</title>
+    <link>http://localhost:1313/tags/shape/</link>
+    <description>Recent content in Shape on Acme Corporation</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <managingEditor>contact@example.org (Acme Corporation)</managingEditor>
+    <webMaster>contact@example.org (Acme Corporation)</webMaster>
+    <atom:link href="http://localhost:1313/tags/shape/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Building Squares</title>
+      <link>http://localhost:1313/blog/building-squares/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>contact@example.org (Acme Corporation)</author>
+      <guid>http://localhost:1313/blog/building-squares/</guid>
+      <description>&lt;p&gt;In geometry, a square is a regular quadrilateral, which means that it has four equal sides and four equal angles (90-degree angles, or (100-gradian angles or right angles). It can also be defined as a rectangle in which two adjacent sides have equal length. A square with vertices ABCD would be denoted ◻ ABCD.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Circle</title>
+      <link>http://localhost:1313/blog/community/circle/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>contact@example.org (Acme Corporation)</author>
+      <guid>http://localhost:1313/blog/community/circle/</guid>
+      <description>&lt;p&gt;A circle is a simple closed shape. It is the set of all points in a plane that are at a given distance from a given point, the centre; equivalently it is the curve traced out by a point that moves in a plane so that its distance from a given point is constant. The distance between any of the points and the centre is called the radius. This article is about circles in Euclidean geometry, and, in particular, the Euclidean plane, except where otherwise noted.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Curve</title>
+      <link>http://localhost:1313/blog/community/curve/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>contact@example.org (Acme Corporation)</author>
+      <guid>http://localhost:1313/blog/community/curve/</guid>
+      <description>&lt;p&gt;In mathematics, a curve (also called a curved line in older texts) is, generally speaking, an object similar to a line but that need not be straight. Thus, a curve is a generalization of a line, in that it may be curved.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Shaper</title>
+      <link>http://localhost:1313/news/shaper/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>contact@example.org (Acme Corporation)</author>
+      <guid>http://localhost:1313/news/shaper/</guid>
+      <description>Drawing is a form of visual art in which a person uses various drawing instruments to mark paper or another two-dimensional medium. Instruments include graphite pencils, pen and ink, various kinds of paints, inked brushes, colored pencils, crayons, charcoal, chalk, pastels, various kinds of erasers, markers, styluses, and various metals (such as silverpoint). Digital drawing is the act of using a computer to draw. Common methods of digital drawing include a stylus or finger on a touchscreen device, stylus- or finger-to-touchpad, or in some cases, a mouse.</description>
+    </item>
+    <item>
+      <title>Square License</title>
+      <link>http://localhost:1313/news/square-license/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>contact@example.org (Acme Corporation)</author>
+      <guid>http://localhost:1313/news/square-license/</guid>
+      <description>A license (American English) or licence (British English) is an official permission or permit to do, use, or own something (as well as the document of that permission or permit).&#xA;A license can be granted by a party to another party as an element of an agreement between those parties. A shorthand definition of a license is &amp;ldquo;an authorization to use licensed material.&amp;rdquo;&#xA;In particular, a license may be issued by authorities, to allow an activity that would otherwise be forbidden.</description>
+    </item>
+    <item>
+      <title>Tropical triangles</title>
+      <link>http://localhost:1313/blog/tropical-triangles/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>contact@example.org (Acme Corporation)</author>
+      <guid>http://localhost:1313/blog/tropical-triangles/</guid>
+      <description>&lt;p&gt;A triangle is a polygon with three edges and three vertices. It is one of the basic shapes in geometry. A triangle with vertices A, B, and C is denoted △ ABC.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
