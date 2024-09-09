@@ -3,7 +3,7 @@
 {{$main := $syntax}}
 {{if $.Param "scss" }}
   {{- $sass := resources.Get "scss/main.scss" -}}
-  {{- $cssOpts := cond (.Site.IsServer) (dict "enableSourceMap" true ) (dict "outputStyle" "compressed") -}}
+  {{- $cssOpts := cond (hugo.IsServer) (dict "enableSourceMap" true ) (dict "outputStyle" "compressed") -}}
     {{- $main = $sass | resources.ExecuteAsTemplate "main.scss" . | toCSS $cssOpts -}}
 {{- else -}}
     {{ $main = resources.Get "compiled/main.css" | resources.ExecuteAsTemplate "main.css" .}}
@@ -26,7 +26,7 @@
   {{- end -}}
 
 {{- $main := resources.Get "js/main.js" | resources.ExecuteAsTemplate "js/main.js" . -}}
-{{- if .Site.IsServer }}
+{{- if hugo.IsServer }}
 <script type="text/javascript" src="{{ $main.RelPermalink }}" defer></script>
 {{- $res = $res | append $main.RelPermalink -}}
 {{- else -}}
@@ -35,9 +35,6 @@
 {{- $res = $res | append $js.RelPermalink -}}
 {{- end -}}
 
-{{- if not .Site.IsServer }}
-{{ template "_internal/google_analytics_async.html" . }}
-{{- end -}}
 
 {{- $sw := resources.Get "js/sw.js" -}}
 {{- $sw = $sw | resources.ExecuteAsTemplate "sw.js" (dict "page" . "res" $res) | resources.Minify -}}
