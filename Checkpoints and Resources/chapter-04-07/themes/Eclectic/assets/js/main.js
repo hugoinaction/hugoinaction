@@ -405,7 +405,7 @@ new Search();
   ///////////////////////////////////////////
   // Service Worker
   ///////////////////////////////////////////
-  /*{{ if not .Site.IsServer  }}*/
+  /*{{ if not hugo.IsServer  }}*/
   if ('serviceWorker' in navigator && window.location.pathname !== '/offline') {
     navigator.serviceWorker.register('/sw.min.js', { scope: '/' });
   }
