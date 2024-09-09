@@ -78,7 +78,7 @@
 </div>
 
 {{ $js := resources.Get "js/debug.js" }}
-{{ if .Site.IsServer }}
+{{ if hugo.IsServer }}
 <script type="text/javascript" src="{{ $js.RelPermalink }}"></script>
 {{ else }}
 <script type="text/javascript" src="{{ ($js | minify).RelPermalink }}"></script>
