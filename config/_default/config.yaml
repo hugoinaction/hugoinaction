@@ -1,7 +1,7 @@
 baseURL: https://chapter-07-18.hugoinaction.com
-languageCode: en-us
+locale: en-us
 title: Acme Corporation
 theme: AcmeTheme
 enableEmoji: true
 enableGitInfo: true
-Paginate: 3
+paginate: 3
