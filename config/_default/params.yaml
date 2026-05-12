@@ -6,3 +6,11 @@ TermsAndPrivacy:
   website: https://hugoinaction.com 
   contact_dpo_email: dpo@hugoinaction.com 
   contact_dpo_phone: 9999999999
+author:
+  facebook: "https://facebook.com/example"
+  twitter: "https://twitter.com/example"
+  email: "contact@example.org"
+  name: "Acme Corporation"
+  location: New York
+  phone: (999) 999-9999
+  hours: "**Mon-Fri:** 9:00AM - 6:00PM, ET"
