@@ -1,5 +1,5 @@
-{{define "bodyClass"}} 
-{{ path.Dir .Page.FirstSection.File.Path }} page 
+{{define "bodyClass"}}
+{{ with .Page.FirstSection.File }}{{ path.Dir .Path }}{{ end }} page
 {{end}}
 {{define "body"}}
 <main>
