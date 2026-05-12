@@ -1,8 +1,4 @@
 ---
-menu:
-  footer:
-    name: Terms of Use
-    weight: 200
 toc: true
 title: Terms of Use
 ---
