@@ -15,7 +15,7 @@
             <section>
                 <h2>Location</h2>
                 <ul>
-                    {{- with $.Site.Author.email -}}
+                    {{- with $.Site.Params.author.email -}}
                     <li>
                         <a target="_blank" href="mailto:{{ . }}" rel="noopener">
                         {{ $icon := resources.Get "image/line-awesome/fa-envelope.svg" | resources.Minify }} {{ replace $icon.Content "<svg" "<svg width=\"30px\""  | safeHTML }}
@@ -24,13 +24,13 @@
                         </a>
                     </li>
                     {{- end -}}
-                    {{- with $.Site.Author.phone -}}
+                    {{- with $.Site.Params.author.phone -}}
                     <li>
                         {{ $icon := resources.Get "image/line-awesome/fa-phone.svg" | resources.Minify }} {{ replace $icon.Content "<svg" "<svg width=\"30px\""  | safeHTML }}
                             <span>{{.}}</span>
                     </li>
                     {{- end -}}
-                    {{- with $.Site.Author.location -}}
+                    {{- with $.Site.Params.author.location -}}
                     <li>
                         <a target="_blank" href="https://www.google.com/maps/place/{{.}}" rel="noopener"> <!-- Google maps search here -->
                         {{ $icon := resources.Get "image/line-awesome/fa-compass.svg" | resources.Minify }} {{ replace $icon.Content "<svg" "<svg width=\"30px\""  | safeHTML }}
@@ -40,12 +40,12 @@
                     {{- end -}}
                 </ul>
             </section>
-            {{- with $.Site.Author.hours -}}
+            {{- with $.Site.Params.author.hours -}}
             <section>
                 <h2>Contact Hours</h2>
                 <ul>
                     <li>
-                        <a target="_blank" href="https://www.timeanddate.com/time/zone/?query={{$.Site.Author.location}}" rel="noopener">
+                        <a target="_blank" href="https://www.timeanddate.com/time/zone/?query={{$.Site.Params.author.location}}" rel="noopener">
                         {{ $icon := resources.Get "image/line-awesome/fa-clock-o.svg" | resources.Minify }} {{ replace $icon.Content "<svg" "<svg width=\"30px\""  | safeHTML }}
                             {{$middle := replaceRE "^.*@" "" .}}
                             <span>{{. | markdownify}}</span>
@@ -57,7 +57,7 @@
             <section>
                 <h2>Social Links</h2>
                 <ul class="social">
-                    {{ with $.Site.Author.linkedin }}
+                    {{ with $.Site.Params.author.linkedin }}
             <li>
                 <a target="_blank" href="{{ . }}" rel="noopener">
                     {{ $icon := resources.Get "image/line-awesome/fa-linkedin.svg" | resources.Minify }}
@@ -65,7 +65,7 @@
                     <span>{{ replaceRE "https://" "" . }}</span>
                 </a>
             </li>
-            {{ end }} {{ with $.Site.Author.github }}
+            {{ end }} {{ with $.Site.Params.author.github }}
             <li>
                 <a target="_blank" href="{{ . }}" rel="noopener">
                     {{ $icon := resources.Get "image/line-awesome/fa-github.svg" | resources.Minify }}
@@ -73,7 +73,7 @@
                     <span>{{ replaceRE "https://" "" . }}</span>
                 </a>
             </li>
-            {{ end }} {{ with $.Site.Author.twitter }}
+            {{ end }} {{ with $.Site.Params.author.twitter }}
             <li>
                 <a target="_blank" href="{{ . }}" rel="noopener">
                     {{ $icon := resources.Get "image/line-awesome/fa-twitter.svg" | resources.Minify }}
@@ -81,7 +81,7 @@
                     <span>{{ replaceRE "https://" "" . }}</span>
                 </a>
             </li>
-            {{ end }} {{ with $.Site.Author.facebook }}
+            {{ end }} {{ with $.Site.Params.author.facebook }}
             <li>
                 <a target="_blank" href="{{ . }}" rel="noopener">
                     {{ $icon := resources.Get "image/line-awesome/fa-facebook.svg" | resources.Minify }}
