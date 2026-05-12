@@ -44,7 +44,7 @@
         </ul>
         {{ end }} {{ with .contact }}
         <ul class="contact-us">
-            {{ with $.Site.Author.email }}
+            {{ with $.Site.Params.author.email }}
             <li>
                 <a target="_blank" href="mailto:{{ . }}" rel="noopener">
  {{ $icon := resources.Get "image/line-awesome/fa-envelope.svg" | resources.Minify }} {{ replace $icon.Content "<svg " "<svg width=\"30px\" "  | safeHTML }}
@@ -52,7 +52,7 @@
                     <span>{{replaceRE "@.*$" "" .}} [at] {{ replaceRE "\\..*" "" $middle }} [dot] {{ replaceRE "^.*\\." "" . }}</span>
                 </a>
             </li>
-            {{ end }} {{ with $.Site.Author.linkedin }}
+            {{ end }} {{ with $.Site.Params.author.linkedin }}
             <li>
                 <a target="_blank" href="{{ . }}" rel="noopener">
                     {{ $icon := resources.Get "image/line-awesome/fa-linkedin.svg" | resources.Minify }}
@@ -60,7 +60,7 @@
                     <span>{{ replaceRE "https://" "" . }}</span>
                 </a>
             </li>
-            {{ end }} {{ with $.Site.Author.github }}
+            {{ end }} {{ with $.Site.Params.author.github }}
             <li>
                 <a target="_blank" href="{{ . }}" rel="noopener">
                     {{ $icon := resources.Get "image/line-awesome/fa-github.svg" | resources.Minify }}
@@ -68,7 +68,7 @@
                     <span>{{ replaceRE "https://" "" . }}</span>
                 </a>
             </li>
-            {{ end }} {{ with $.Site.Author.twitter }}
+            {{ end }} {{ with $.Site.Params.author.twitter }}
             <li>
                 <a target="_blank" href="{{ . }}" rel="noopener">
                     {{ $icon := resources.Get "image/line-awesome/fa-twitter.svg" | resources.Minify }}
@@ -76,7 +76,7 @@
                     <span>{{ replaceRE "https://" "" . }}</span>
                 </a>
             </li>
-            {{ end }} {{ with $.Site.Author.facebook }}
+            {{ end }} {{ with $.Site.Params.author.facebook }}
             <li>
                 <a target="_blank" href="{{ . }}" rel="noopener">
                     {{ $icon := resources.Get "image/line-awesome/fa-facebook.svg" | resources.Minify }}
