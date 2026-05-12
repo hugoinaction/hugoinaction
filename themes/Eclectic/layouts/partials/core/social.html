@@ -2,7 +2,7 @@
 <link rel="canonical" href="{{.Permalink}}" />
 <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}"
 />
-{{- with .Site.Author.name}}
+{{- with .Site.Params.author.name}}
 <meta name="author" content="{{ . }}">
 {{- end -}}
 {{- partialCached "core/manifest.html" . -}}
@@ -54,7 +54,7 @@
 {{- end }}{{ end -}}
 
 
-{{- with .Site.Author.facebook }}
+{{- with .Site.Params.author.facebook }}
 <meta property="article:author" content="https://www.facebook.com/{{ . }}" />
 <meta property="article:publisher" content="https://www.facebook.com/{{ . }}" />
 {{- end -}}
@@ -67,7 +67,7 @@
 {{- end }}{{ end -}}
 {{- end -}}
 
-{{- with .Site.Author.pinterest }}
+{{- with .Site.Params.author.pinterest }}
 <meta name="p:domain_verify" content="{{.}}" />
 {{end -}}
 
@@ -101,7 +101,7 @@
 {{- end }}
 <meta name="twitter:title" content="{{ .Title }}"/>
 <meta name="twitter:description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end -}}"/>
-{{- with .Site.Author.twitter }}
+{{- with .Site.Params.author.twitter }}
 <meta name="twitter:site" content="@{{ . }}" />
 <meta name="twitter:creator" content="@{{ . }}" />
 {{- end -}}
@@ -129,11 +129,11 @@
         "url": {{ (resources.Get "image/logo.png" ).RelPermalink | jsonify | safeJS }}
         },
         {{- end -}}
-        "name": "{{ .Site.Author.name }}"
+        "name": "{{ .Site.Params.author.name }}"
     },
     "author": {
         "@type": "Person",
-        "name": "{{ .Site.Author.name }}"
+        "name": "{{ .Site.Params.author.name }}"
     },
     "description": "{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description}}{{ . }}{{ end }}{{ end }}{{ end }}",
     "name": "{{ .Site.Title }}",
