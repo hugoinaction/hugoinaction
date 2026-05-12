@@ -1,2 +1,3 @@
 enableRobotsTXT: true
-minify: true
+minify:
+  minifyOutput: true
