@@ -1,7 +1,7 @@
 ---
 title: Surveys
 cascade:
-  _build:
+  build:
     list: false
 ---
 
