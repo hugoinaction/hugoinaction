@@ -79,9 +79,7 @@
         {{$content := default "" .content}}
         {{$from := default "" .from}}
         {{if .tweet}}
-          {{$tweet := getJSON
-            "https://publish.twitter.com/oembed?url=" 
-            .tweet  "&omit_script=1&hide_media=1&hide_thread=1&dnt=true" }}
+          {{$tweetResource := resources.GetRemote (print "https://publish.twitter.com/oembed?url=" .tweet "&omit_script=1&hide_media=1&hide_thread=1&dnt=true")}}{{$tweet := dict}}{{with $tweetResource}}{{$tweet = . | transform.Unmarshal}}{{end}}
           {{$author = $tweet.author_name }}
           {{$from = "via Twitter"}}
           {{$content = $tweet.html }}
