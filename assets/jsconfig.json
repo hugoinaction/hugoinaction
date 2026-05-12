@@ -3,6 +3,7 @@
   "baseUrl": ".",
   "paths": {
    "*": [
+    "../../../../../Library/Caches/hugo_cache/modules/filecache/modules/pkg/mod/github.com/hugoinaction/!acme!search!support@v0.0.0-20220705181021-73e7a1ec10ef/assets/*",
     "../AcmeTheme/assets/*"
    ]
   }
