@@ -92,21 +92,21 @@
       </nav>
       {{end}}
       <ul>
-        {{with site.Author.facebook}}
+        {{with site.Params.author.facebook}}
           <li>
             <a href="{{.}}" aria-label="Facebook">
               <i class="  icon-facebook"></i>
             </a>
           </li>
         {{end}}
-        {{with site.Author.twitter}}
+        {{with site.Params.author.twitter}}
           <li>
             <a href="{{.}}" aria-label="Twitter">
               <i class="icon-twitter"></i>
             </a>
           </li>
         {{end}}
-        {{with site.Author.email}}
+        {{with site.Params.author.email}}
           <li>
             <a href="mailto:{{.}}" aria-label="email">
               <i class="icon-email"></i>
