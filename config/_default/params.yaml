@@ -10,3 +10,11 @@ FormspreeCommentForm: xpzozyyg
 NetlifyCommentForm: 5f6af880fd7ebf0007984d2f
 RemoveFormOnSubmission: true
 Latex2Svg: https://chapter-11-01.hugoinaction.com/.netlify/functions/latex2svg
+author:
+  facebook: "https://facebook.com/example"
+  twitter: "https://twitter.com/example"
+  email: "contact@example.org"
+  name: "Acme Corporation"
+  location: New York
+  phone: (999) 999-9999
+  hours: "**Mon-Fri:** 9:00AM - 6:00PM, ET"
