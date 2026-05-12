@@ -8,3 +8,11 @@ TermsAndPrivacy:
   contact_dpo_phone: 9999999999
 FormspreeCommentForm: xpzozyyg
 NetlifyCommentForm: 5f6af880fd7ebf0007984d2f
+author:
+  facebook: "https://facebook.com/example"
+  twitter: "https://twitter.com/example"
+  email: "contact@example.org"
+  name: "Acme Corporation"
+  location: New York
+  phone: (999) 999-9999
+  hours: "**Mon-Fri:** 9:00AM - 6:00PM, ET"
