@@ -10,11 +10,11 @@ menu:
     weight: 100
 
 cascade:
-- _target:
+- target:
     kind: page
   layout: blog
   type: modern
-- _target:
+- target:
     kind: section
   type: modern
   layout: list
