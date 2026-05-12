@@ -10,7 +10,7 @@ menu:
     weight: 100
 
 cascade:
-- _target:
+- target:
     kind: page
   layout: blog
 ---
