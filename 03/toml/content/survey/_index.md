@@ -1,6 +1,6 @@
 ---
 cascade:
-  _build:
+  build:
     list: false
 ---
 
