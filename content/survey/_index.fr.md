@@ -1,7 +1,7 @@
 ---
 title: Enquêtes
 cascade:
-  _build:
+  build:
     list: false
 ---
 
