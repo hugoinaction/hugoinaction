@@ -44,7 +44,7 @@ const SearchSupport = () => {
         searchBox.blur();
         break;
       case 'Enter':
-        window.location = (selected || document.querySelector("#search a"))?.click();
+        (selected || document.querySelector("#search a"))?.click();
         break;
       }
   });
