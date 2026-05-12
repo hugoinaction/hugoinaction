@@ -7,7 +7,7 @@
     {{end}}
     <meta name="viewport" 
       content="width=device-width, initial-scale=1.0" />
-    {{ $css := resources.GetMatch "index.scss"| resources.ToCSS}}
+    {{ $css := resources.GetMatch "index.scss"| css.Sass}}
     <link rel="stylesheet" type="text/css" href="{{$css.Permalink}}">
     {{$title := default site.Title .Title}}
     {{with $title}}<title>{{.}}</title>{{end}}
@@ -39,21 +39,21 @@
       <footer class="dark">
         {{ partialCached "menu.html" (dict "Menu" site.Menus.footer) "footer" }}
         <ul>
-          {{with site.Author.facebook}}
+          {{with site.Params.author.facebook}}
             <li>
               <a href="{{.}}" aria-label="Facebook">
                 <i class="  icon-facebook"></i>
               </a>
             </li>
           {{end}}
-          {{with site.Author.twitter}}
+          {{with site.Params.author.twitter}}
             <li>
               <a href="{{.}}" aria-label="Twitter">
                 <i class="icon-twitter"></i>
               </a>
             </li>
           {{end}}
-          {{with site.Author.email}}
+          {{with site.Params.author.email}}
             <li>
               <a href="mailto:{{.}}" aria-label="email">
                 <i class="icon-email"></i>
