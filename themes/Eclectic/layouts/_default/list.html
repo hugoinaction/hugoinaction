@@ -7,7 +7,7 @@
     {{if and (not .Paginator.HasPrev) (gt (len .Sections) 0) }}
         <h2 class='title'>Pages</h2>
     {{end}}
-    <ul class="blog-posts items-{{.Paginator.PageSize}}">
+    <ul class="blog-posts items-paginated">
         {{ range .Paginator.Pages}}
         {{- partialCached "util/post.html" . .RelPermalink -}}
         {{ end }}
