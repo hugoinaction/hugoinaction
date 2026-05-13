@@ -1,0 +1,6 @@
+[build]
+  command = "(test -f package.json && npm install || true) && hugo mod clean --all && hugo --minify"
+  publish = "public"
+
+[build.environment]
+  HUGO_VERSION = "0.161.1"
