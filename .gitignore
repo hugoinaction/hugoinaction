@@ -1,3 +1,4 @@
 public
 *.lock
 node_modules
+api/result.json
